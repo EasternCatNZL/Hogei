@@ -11,6 +11,7 @@ public class DungeonManager : MonoBehaviour {
     [Header("Prefabs")]
     public GameObject Camera = null;
     public GameObject Player = null;
+    public GameObject PlayerUI = null;
 
     [Header("Tags")]
     public string playerTag = "Player";
@@ -80,6 +81,7 @@ public class DungeonManager : MonoBehaviour {
             player = Instantiate(Player, SpawnPoint, Quaternion.identity);
             cam = Instantiate(Camera, SpawnPoint, Quaternion.identity);
             cam.GetComponent<ARPGCamera>().TrackingTarget = player.transform;
+            Instantiate(PlayerUI, Vector3.zero, Quaternion.identity);
         }
         else
         {
