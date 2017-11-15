@@ -474,6 +474,8 @@ GameObject:
   - component: {fileID: 136371109445713758}
   - component: {fileID: 114699757833382486}
   - component: {fileID: 114194061120105970}
+  - component: {fileID: 114600522793332348}
+  - component: {fileID: 114026732612181044}
   m_Layer: 10
   m_Name: WallShrimp
   m_TagString: Enemy
@@ -1221,6 +1223,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114026732612181044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772827149684748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+  MaxHealth: 10
 --- !u!114 &114194061120105970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1233,6 +1248,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+--- !u!114 &114600522793332348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772827149684748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985ec833c8872ef42ac596ff0b54dec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
 --- !u!114 &114699757833382486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1245,7 +1272,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenSprays: 1.5
+  minTimeBetweenSprays: 0.1
   numBulletWaves: 5
+  maxNumBulletWaves: 5
   bulletObject: {fileID: 1857529508437080, guid: ae712c6fafc3af14697e9b336d235922,
     type: 2}
   bulletBaseSetupDistance: 0.5
@@ -1254,6 +1283,7 @@ MonoBehaviour:
   bulletStartMoveTimeDelay: 0.2
   bulletAngleChange: 90
   patternBulletSpeed: 2
+  maxBulletSpeed: 10
   facingAngle: 0
   bulletBankTag: Bullet Bank
 --- !u!136 &136371109445713758

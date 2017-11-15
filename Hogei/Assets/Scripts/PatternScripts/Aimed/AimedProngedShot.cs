@@ -99,7 +99,7 @@ public class AimedProngedShot : MonoBehaviour {
     public void ScaleShotVars(int level)
     {
         //time between sprays
-        scaledTimeBetweenSprays = timeBetweenSprays - level;
+        scaledTimeBetweenSprays = timeBetweenSprays - (level / 3);
         //check not below min
         if (scaledTimeBetweenSprays < minTimeBetweenSprays)
         {
