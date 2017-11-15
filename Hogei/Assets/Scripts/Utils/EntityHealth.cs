@@ -10,6 +10,9 @@ public class EntityHealth : MonoBehaviour {
     [Tooltip("Maximum health the entity can have")]
     public float MaxHealth = 10;
 
+    [Header("Audio")]
+    public AudioSource deathSound;
+
     bool DOTActive;
     float DOTDamage;
     float DOTDuration;
@@ -18,7 +21,9 @@ public class EntityHealth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         CurrentHealth = MaxHealth;
-	}
+        deathSound.playOnAwake = false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
