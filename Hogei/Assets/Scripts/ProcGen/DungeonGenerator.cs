@@ -317,6 +317,26 @@ public class DungeonGenerator : MonoBehaviour
         Corridors.Clear();
     }
 
+    public GameObject GetFurthestRoom()
+    {
+        if(Rooms.Length < 2)
+        {
+            return null;
+        }
+        GameObject Furthest = null;
+        Vector3 maxDist = Vector3.zero;
+        foreach(GameObject room in Rooms)
+        {
+            Vector3 newDist = room.transform.position - Rooms[0].transform.position;
+            if(newDist.magnitude > maxDist.magnitude)
+            {
+                maxDist = newDist;
+                Furthest = room;
+            }
+        }
+        return Furthest;
+    }
+
     public GameObject GetRoom(int _Index)
     {
         if (_Index >= Rooms.Length)
