@@ -1245,11 +1245,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenSprays: 1
+  minTimeBetweenSprays: 0.5
+  scaledTimeBetweenSprays: 0
   bulletObject: {fileID: 1324714931859808, guid: dbed68e095856564aa98102c59597ea6,
     type: 2}
   bulletSpeed: 5
+  maxBulletSpeed: 10
+  scaledBulletSpeed: 0
   angleChangePerShot: 50
-  bulletBankTag: Bullet Bank
+  minAngleChangePerShot: 4
+  scaledAngleChangePerShot: 0
 --- !u!136 &136194998056921360
 CapsuleCollider:
   m_ObjectHideFlags: 1

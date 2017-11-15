@@ -126,5 +126,7 @@ public class DungeonManager : MonoBehaviour {
         GetComponent<DungeonGenerator>().GenerateDungeon();
         //place player into dungeon
         SpawnPlayer();
+        //turn all players actions back on
+        canDo.TurnAllOn();
     }
 }

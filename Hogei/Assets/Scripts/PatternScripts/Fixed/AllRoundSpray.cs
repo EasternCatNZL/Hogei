@@ -8,9 +8,9 @@ public class AllRoundSpray : MonoBehaviour {
     [Tooltip("Time Between Sprays")]
     public float timeBetweenSprays = 1.5f;
     [Tooltip("Minimum time between sprays")]
-    public float minTimeBetweenSprays = 0.1f;
+    public float minTimeBetweenSprays = 0.2f;
     //scaled time between sprays
-    private float scaledTimeBetweenSprays = 0.0f;
+    public float scaledTimeBetweenSprays = 0.0f;
 
     [Header("Bullet Vars")]
     [Tooltip("Bullet object")]
@@ -21,7 +21,7 @@ public class AllRoundSpray : MonoBehaviour {
     [Tooltip("Max speed of bullet")]
     public float maxBulletSpeed = 10.0f;
     //scaled speed of bullet
-    private float scaledBulletSpeed = 0.0f;
+    public float scaledBulletSpeed = 0.0f;
 
     [Header("Angle Control")]
     [Tooltip("Angle change per shot in spray")]
@@ -30,7 +30,7 @@ public class AllRoundSpray : MonoBehaviour {
     [Range(0.0f, 360.0f)]
     public float minAngleChangePerShot = 4.0f;
     //scaled angle change per shot
-    private float scaledAngleChangePerShot = 0.0f;
+    public float scaledAngleChangePerShot = 0.0f;
 
 
     //[Header("Tags")]
@@ -71,7 +71,7 @@ public class AllRoundSpray : MonoBehaviour {
     public void ScaleShotVars(int level)
     {
         //time between sprays
-        scaledTimeBetweenSprays = timeBetweenSprays - level;
+        scaledTimeBetweenSprays = timeBetweenSprays - (level / 4);
         //check not below min
         if (scaledTimeBetweenSprays < minTimeBetweenSprays)
         {

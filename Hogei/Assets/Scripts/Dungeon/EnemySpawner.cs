@@ -14,9 +14,11 @@ public class EnemySpawner : MonoBehaviour {
 
     //script refs
     private DungeonManager manager;
+    private RoomActivate roomAct;
 
 	// Use this for initialization
 	void Start () {
+        roomAct = GetComponentInParent<RoomActivate>();
         manager = GameObject.FindGameObjectWithTag(dungeonTag).GetComponent<DungeonManager>();
         if(manager == null)
         {
@@ -39,6 +41,8 @@ public class EnemySpawner : MonoBehaviour {
         {
             //spawn an enemy
             GameObject enemyClone = Instantiate(Enemy[Random.Range(0, Enemy.Length)], EnemySpawnPoints[i].position, Quaternion.identity);
+            //Name the enemy
+            enemyClone.name = "Enemy" + i.ToString();
             //scale enemy values by level
             //TODO: Refractor
             if (enemyClone.GetComponent<AdjustableCircularSpray>())
@@ -61,6 +65,11 @@ public class EnemySpawner : MonoBehaviour {
             {
                 enemyClone.GetComponent<NightBird>().ScaleShotVars(manager.currentFloor);
             }
+            else if (enemyClone.GetComponent<AimedProngedShot>()){
+                enemyClone.GetComponent<AimedProngedShot>().ScaleShotVars(manager.currentFloor);
+            }
+            //place new enemy into roomactivate enemy array
+            roomAct.myEnemies.Add(enemyClone);
         }
     }
 }

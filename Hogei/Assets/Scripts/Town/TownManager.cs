@@ -6,7 +6,11 @@ public class TownManager : MonoBehaviour {
 
     [Header("Player object")]
     [Tooltip("The player object")]
-    public GameObject player;
+    public GameObject playerObject;
+
+    [Header("Camera object")]
+    [Tooltip("The camera object")]
+    public GameObject cameraObject;
 
     [Header("Player spawn point")]
     public Transform playerSpawn;
@@ -14,12 +18,18 @@ public class TownManager : MonoBehaviour {
     [Header("Tags")]
     public string playerTag = "Player";
 
-	// Use this for initialization
-	void Start () {
+    //object refs
+    private GameObject player;
+    private GameObject cam;
+
+    // Use this for initialization
+    void Start () {
         //if player not yet in scene, spawn one in
         if (!GameObject.FindGameObjectWithTag(playerTag))
         {
-            Instantiate(player, playerSpawn.position, Quaternion.identity);
+            player = Instantiate(playerObject, playerSpawn.position, Quaternion.identity);
+            cam = Instantiate(cameraObject, Vector3.zero, Quaternion.identity);
+            cam.GetComponent<ARPGCamera>().TrackingTarget = player.transform;
         }
 	}
 	

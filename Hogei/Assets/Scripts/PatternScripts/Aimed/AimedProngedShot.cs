@@ -10,7 +10,7 @@ public class AimedProngedShot : MonoBehaviour {
     [Tooltip("Minimum time between sprays")]
     public float minTimeBetweenSprays = 0.1f;
     //scaled time between sprays
-    private float scaledTimeBetweenSprays = 0.0f;
+    public float scaledTimeBetweenSprays = 0.0f;
 
     [Header("Bullet Vars")]
     [Tooltip("Bullet object")]
@@ -21,21 +21,21 @@ public class AimedProngedShot : MonoBehaviour {
     [Tooltip("Max num of bullet layers")]
     public int maxNumBulletLayers = 5;
     //scaled num of layers
-    private int scaledNumLayers = 0;
+    public int scaledNumLayers = 0;
 
     [Tooltip("Number of arcs")]
     public int numArcs = 2;
     [Tooltip("Max num of arcs")]
     public int maxNumArcs = 4;
     //scaled num of arcs
-    private int scaledNumArcs = 0;
+    public int scaledNumArcs = 0;
 
     [Tooltip("First layer speed")]
     public float firstLayerBulletSpeed = 1.0f;
     [Tooltip("Max speed of bullet")]
     public float maxBulletSpeed = 10.0f;
     //scaled speed of bullet
-    private float scaledBulletSpeed = 0.0f;
+    public float scaledBulletSpeed = 0.0f;
     [Tooltip("Layer speed increment value")]
     public float layerSpeedIncrementValue = 0.5f;
 
@@ -51,7 +51,7 @@ public class AimedProngedShot : MonoBehaviour {
     [Range(0.0f, 360.0f)]
     public float minAngleChangePerShot = 1.0f;
     //scaled angle change per shot
-    private float scaledAngleChangePerShot = 0.0f;
+    public float scaledAngleChangePerShot = 0.0f;
 
     [Header("Tags")]
     //[Tooltip("Bullet bank tag")]
@@ -96,7 +96,7 @@ public class AimedProngedShot : MonoBehaviour {
     }
 
     //scales the values based on how deep player is
-    public void ScaledShotVars(int level)
+    public void ScaleShotVars(int level)
     {
         //time between sprays
         scaledTimeBetweenSprays = timeBetweenSprays - level;

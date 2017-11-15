@@ -6,7 +6,7 @@ public class RoomActivate : MonoBehaviour {
 
     [Header("Enemies")]
     [Tooltip("The enemies inside this room")]
-    public GameObject[] myEnemies = new GameObject[0];
+    public List<GameObject> myEnemies = new List<GameObject>();
 
     [Header("Tags")]
     [Tooltip("Player tag")]
@@ -28,7 +28,7 @@ public class RoomActivate : MonoBehaviour {
         if (other.gameObject.CompareTag(playerTag))
         {
             //for all enemies
-            for (int i = 0; i < myEnemies.Length; i++)
+            for (int i = 0; i < myEnemies.Count; i++)
             {
                 //activate all enemies enemystate script
                 myEnemies[i].GetComponent<EnemyState>().SetIsActive(true);
