@@ -1233,13 +1233,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenSprays: 5
+  minTimeBetweenSprays: 1
   timeBetweenLayers: 0.5
   bulletObject: {fileID: 1324714931859808, guid: dbed68e095856564aa98102c59597ea6,
     type: 2}
   numSpray: 3
+  maxNumSprays: 6
   numBulletLayers: 2
+  maxNumBulletLayers: 3
   numBulletsPerLayer: 8
+  maxNumBulletsPerLayer: 24
   firstLayerBulletSpeed: 2
+  maxBulletSpeed: 10
   layerSpeedIncrementValue: 1
   angleChangePerShot: 16
   startingAngle: 40

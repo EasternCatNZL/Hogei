@@ -1042,6 +1042,8 @@ GameObject:
   - component: {fileID: 4290438593454584}
   - component: {fileID: 95404398625878690}
   - component: {fileID: 114814537271295410}
+  - component: {fileID: 114506666775573872}
+  - component: {fileID: 65243975854080936}
   m_Layer: 0
   m_Name: Room_1_Big 1
   m_TagString: Untagged
@@ -8008,7 +8010,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166821730395260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.97, y: 0, z: 0.72}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4899243523316612}
@@ -31301,6 +31303,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300168, guid: 33929fac590894e41b50d45bef2e160c, type: 3}
+--- !u!65 &65243975854080936
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166821730395260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17, y: 5, z: 25}
+  m_Center: {x: -0.75, y: 2, z: 1.32}
 --- !u!95 &95153278290528506
 Animator:
   serializedVersion: 3
@@ -31584,7 +31598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c6014d37fed6849947ec7706906977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 4
   Enemy:
   - {fileID: 1541064058968632, guid: 9aa99bd352d04544a99e3b86aa568a7c, type: 2}
   - {fileID: 1817670115808592, guid: 133ae1faf1dfdb04fb49cf4068242bfb, type: 2}
@@ -31593,6 +31606,20 @@ MonoBehaviour:
   - {fileID: 4885571310358424}
   - {fileID: 4926102555181470}
   - {fileID: 4577957285325968}
+  dungeonTag: Dungeon
+--- !u!114 &114506666775573872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166821730395260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f1bf6b0bf01f14e8f9c394cc8aa926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myEnemies: []
+  playerTag: Player
 --- !u!114 &114814537271295410
 MonoBehaviour:
   m_ObjectHideFlags: 1

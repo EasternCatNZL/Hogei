@@ -504,6 +504,8 @@ GameObject:
   - component: {fileID: 4730255781514568}
   - component: {fileID: 95531754473854750}
   - component: {fileID: 114042598570822514}
+  - component: {fileID: 114488228134801020}
+  - component: {fileID: 65535937166243192}
   m_Layer: 0
   m_Name: Room_4_Big 1
   m_TagString: Untagged
@@ -6978,7 +6980,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121675946719400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -63.11, y: 80.23, z: -87.6176}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4013425299733092}
@@ -21054,6 +21056,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300412, guid: 7ce689d068c3ea345ae70679e45c8d75, type: 3}
+--- !u!65 &65535937166243192
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121675946719400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16, y: 5, z: 17}
+  m_Center: {x: 0, y: 2, z: -3}
 --- !u!95 &95531754473854750
 Animator:
   serializedVersion: 3
@@ -21102,7 +21116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c6014d37fed6849947ec7706906977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 4
   Enemy:
   - {fileID: 1273770039992876, guid: 866bc690cc7c0ed4d8d7742c7fc7f3a7, type: 2}
   - {fileID: 1817670115808592, guid: 133ae1faf1dfdb04fb49cf4068242bfb, type: 2}
@@ -21113,3 +21126,17 @@ MonoBehaviour:
   - {fileID: 4332633706531504}
   - {fileID: 4845990883748594}
   - {fileID: 4975321535020102}
+  dungeonTag: Dungeon
+--- !u!114 &114488228134801020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121675946719400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f1bf6b0bf01f14e8f9c394cc8aa926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myEnemies: []
+  playerTag: Player

@@ -235,6 +235,7 @@ public class DungeonGenerator : MonoBehaviour
             Rooms[cor.Room1].GetComponent<RoomGenerator>().AddCorridor(Rooms[cor.Room2]);
             Rooms[cor.Room2].GetComponent<RoomGenerator>().AddCorridor(Rooms[cor.Room1]);
         }
+        Rooms[0].GetComponentInChildren<EnemySpawner>().gameObject.SetActive(false);
         print("PIANO");
     }
 

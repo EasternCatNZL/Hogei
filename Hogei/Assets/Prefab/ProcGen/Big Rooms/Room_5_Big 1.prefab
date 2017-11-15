@@ -1810,6 +1810,8 @@ GameObject:
   - component: {fileID: 4305146478990776}
   - component: {fileID: 95385524362991086}
   - component: {fileID: 114689025185186374}
+  - component: {fileID: 65202467255195546}
+  - component: {fileID: 114329932045851252}
   m_Layer: 0
   m_Name: Room_5_Big 1
   m_TagString: Untagged
@@ -7221,7 +7223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368495243631370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -72.26, y: 93, z: -103.401375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4907964245435338}
@@ -26841,6 +26843,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300254, guid: 2d2fd532815c2594993d37761627306d, type: 3}
+--- !u!65 &65202467255195546
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368495243631370}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30, y: 5, z: 22}
+  m_Center: {x: 0, y: 2, z: 4.05}
 --- !u!95 &95061727653186518
 Animator:
   serializedVersion: 3
@@ -27011,6 +27025,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114329932045851252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368495243631370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f1bf6b0bf01f14e8f9c394cc8aa926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myEnemies: []
+  playerTag: Player
 --- !u!114 &114618801803745818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -27022,7 +27049,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c6014d37fed6849947ec7706906977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 4
   Enemy:
   - {fileID: 1541064058968632, guid: 9aa99bd352d04544a99e3b86aa568a7c, type: 2}
   - {fileID: 1541064058968632, guid: 9aa99bd352d04544a99e3b86aa568a7c, type: 2}
@@ -27036,6 +27062,7 @@ MonoBehaviour:
   - {fileID: 4208973682128046}
   - {fileID: 4177639379442736}
   - {fileID: 4242490903542584}
+  dungeonTag: Dungeon
 --- !u!114 &114689025185186374
 MonoBehaviour:
   m_ObjectHideFlags: 1
