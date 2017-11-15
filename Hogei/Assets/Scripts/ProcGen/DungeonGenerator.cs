@@ -47,6 +47,12 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
+        GenerateDungeon();
+    }
+
+    //Generate dungeon
+    public void GenerateDungeon()
+    {
         GenerateRooms();
         for (int i = 0; i < 10; ++i)
         {
@@ -299,7 +305,7 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    void DeleteDungeon()
+    public void DeleteDungeon()
     {
         for (int i = 0; i < Rooms.Length; ++i)
         {

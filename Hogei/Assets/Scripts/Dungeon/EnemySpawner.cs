@@ -8,12 +8,16 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject[] Enemy;
     public Transform[] EnemySpawnPoints;
 
+    [Header("Tags")]
+    [Tooltip("Dungeon tag")]
+    public string dungeonTag = "Dungeon";
+
     //script refs
     private DungeonManager manager;
 
 	// Use this for initialization
 	void Start () {
-        manager = GetComponent<DungeonManager>();
+        manager = GameObject.FindGameObjectWithTag(dungeonTag).GetComponent<DungeonManager>();
         if(manager == null)
         {
 

@@ -18,4 +18,19 @@ public class WhatCanIDO : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    //All in one funcs
+    public void TurnAllOn()
+    {
+        canMove = true;
+        canShoot = true;
+        canAbility = true;
+    }
+
+    public void TurnAllOff()
+    {
+        canMove = false;
+        canShoot = false;
+        canAbility = false;
+    }
 }

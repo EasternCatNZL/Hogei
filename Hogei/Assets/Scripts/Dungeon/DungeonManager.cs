@@ -14,12 +14,17 @@ public class DungeonManager : MonoBehaviour {
 
     [Header("Tags")]
     public string playerTag = "Player";
+    public string enemyTag = "Enemy";
 
     //control vars
-    [HideInInspector]
-    public int currentFloor = 0;
+    //[HideInInspector]
+    public int currentFloor = 1;
     private float delayStartTime = 0;
     private bool isExiting = false;
+
+    //object refs
+    private GameObject player;
+    private GameObject cam;
 
     //script refs
     private EntityHealth playerHealth;
@@ -28,6 +33,14 @@ public class DungeonManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //if player already exists <- bringing from town scene
+        if (GameObject.FindGameObjectWithTag(playerTag))
+        {
+            player = GameObject.FindGameObjectWithTag(playerTag);
+            //make a camera
+            cam = Instantiate(Camera, Vector3.zero, Quaternion.identity);
+            cam.GetComponent<ARPGCamera>().TrackingTarget = player.transform;
+        }
         SpawnPlayer();
         dungeonToTown = GetComponent<DungeonToTown>();
     }
@@ -61,9 +74,19 @@ public class DungeonManager : MonoBehaviour {
     public void SpawnPlayer()
     {
         Vector3 SpawnPoint = GetComponent<DungeonGenerator>().GetPlayerSpawn();
-        GameObject player = Instantiate(Player, SpawnPoint, Quaternion.identity);
-        GameObject cam = Instantiate(Camera, SpawnPoint, Quaternion.identity);
-        cam.GetComponent<ARPGCamera>().TrackingTarget = player.transform;
+        //if player does not exist
+        if (!GameObject.FindGameObjectWithTag(playerTag))
+        {
+            player = Instantiate(Player, SpawnPoint, Quaternion.identity);
+            cam = Instantiate(Camera, SpawnPoint, Quaternion.identity);
+            cam.GetComponent<ARPGCamera>().TrackingTarget = player.transform;
+        }
+        else
+        {
+            player.transform.position = SpawnPoint;
+            player.transform.rotation = Quaternion.identity;
+        }
+        
     }
 
     //track player health, and when at 0, prepare to move player out
@@ -81,5 +104,27 @@ public class DungeonManager : MonoBehaviour {
             canDo.canShoot = false;
             canDo.canAbility = false;
         }
+    }
+
+    //Move to next floor in dungeon
+    private void MoveToNextFloor()
+    {
+        //stop the players actions
+        canDo.TurnAllOff();
+        //increment floor
+        currentFloor++;
+        //find all enemies still in scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        //destroy all the objects
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Destroy(enemies[i]);
+        }
+        //destroy the current dungeon
+        GetComponent<DungeonGenerator>().DeleteDungeon();
+        //create a new dungeon
+        GetComponent<DungeonGenerator>().GenerateDungeon();
+        //place player into dungeon
+        SpawnPlayer();
     }
 }
