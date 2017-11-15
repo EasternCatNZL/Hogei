@@ -7,6 +7,13 @@ public class PlayerStraightBullet : MonoBehaviour {
     //script ref
     //private BulletBank bulletBank;
 
+    [Header("Damage")]
+    [Tooltip("Damage dealt by bullet")]
+    public float bulletDamage = 1.0f;
+
+    [Header("Explosion vfx")]
+    public GameObject explosionVFX;
+
     //control vars
     private Rigidbody myRigid;
     private bool isActive = false;
@@ -84,7 +91,12 @@ public class PlayerStraightBullet : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         //any collision
+        if (collision.gameObject.GetComponent<EntityHealth>())
+        {
+            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+        }
         //Deactivate();
+        GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

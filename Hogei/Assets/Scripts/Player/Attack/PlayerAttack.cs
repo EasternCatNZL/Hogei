@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour {
 
     //control vars
     private int currentWeaponIndex = 0;
-    private int numWeapons = 0;
+    public int numWeapons = 0;
     public bool peaShootStrengthened = false;
 
     //script refs
@@ -110,10 +110,10 @@ public class PlayerAttack : MonoBehaviour {
             //decrement the current index
             currentWeaponIndex--;
             //if index becomes -1
-            if(currentWeaponIndex < 0)
+            if(currentWeaponIndex <= 0)
             {
                 //set weapon index to last weapon
-                currentWeaponIndex = numWeapons;
+                currentWeaponIndex = numWeapons - 1;
             }
         }
         //switch to next weapon
@@ -122,12 +122,17 @@ public class PlayerAttack : MonoBehaviour {
             //increment the current index
             currentWeaponIndex++;
             //if weapon becomes larger than number of weapons
-            if(currentWeaponIndex > numWeapons)
+            if(currentWeaponIndex >= numWeapons)
             {
                 //set weapon to first weapon
                 currentWeaponIndex = 0;
             }
         }
+    }
+
+    public int GetWeaponIndex()
+    {
+        return currentWeaponIndex;
     }
 
     //keyboard input check for firing weapon <- to avoid clunkiness in code

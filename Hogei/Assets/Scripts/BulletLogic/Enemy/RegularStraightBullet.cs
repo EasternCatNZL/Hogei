@@ -73,8 +73,9 @@ public class RegularStraightBullet : MonoBehaviour {
         if (collision.gameObject.GetComponent<EntityHealth>())
         {
             collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
-            GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+            
         }
+        GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
         //Deactivate();
         Destroy(gameObject);
     }

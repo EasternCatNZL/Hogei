@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletObject: {fileID: 1383993044565024, guid: 9f34489d8bf419c4dbf297903a5be2ff,
     type: 2}
-  bulletTravelSpeed: 10
+  bulletTravelSpeed: 5
   timeBetweenShots: 0.2
   maxHomingTime: 4
   homingStartDelay: 1
@@ -1951,7 +1951,8 @@ MonoBehaviour:
   mouseInputKey: 0
   prevWeaponInput: 113
   nextWeaponInput: 101
-  peaShootStrengthened: 0
+  numWeapons: 0
+  peaShootStrengthened: 1
 --- !u!114 &114924075356286588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1966,7 +1967,7 @@ MonoBehaviour:
   bulletObject: {fileID: 1626456016074720, guid: f0f969a35ba04ae489601c7585c48e25,
     type: 2}
   bulletTravelSpeed: 10
-  timeBetweenShots: 2
+  timeBetweenShots: 0.1
   distanceToStart: 0.1
 --- !u!114 &114959843512822864
 MonoBehaviour:

@@ -98,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 1383993044565024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4729028004852802}
   m_Father: {fileID: 0}
@@ -261,6 +261,8 @@ MonoBehaviour:
   adjustForce: 1
   homingAdjustInterval: 0.2
   bulletDamage: 1
+  explosionVFX: {fileID: 1450817208295410, guid: 6d814e18f2c46fb4ba628a482d29d815,
+    type: 2}
 --- !u!135 &135442232043498520
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -16,7 +16,10 @@ public class PlayerHomingBullet : MonoBehaviour {
 
     [Header("Damage")]
     [Tooltip("Damage dealt by bullet")]
-    public float bulletDamage = 1.0f;
+    public float bulletDamage = 0.5f;
+
+    [Header("Explosion vfx")]
+    public GameObject explosionVFX;
 
     ////script ref
     //private BulletBank bulletBank;
@@ -166,6 +169,7 @@ public class PlayerHomingBullet : MonoBehaviour {
         {
             collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);            
         }
+        GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
         Deactivate();        
     }
 }
