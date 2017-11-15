@@ -28,6 +28,8 @@ public class TownManager : MonoBehaviour {
         if (!GameObject.FindGameObjectWithTag(playerTag))
         {
             player = Instantiate(playerObject, playerSpawn.position, Quaternion.identity);
+            player.GetComponent<WhatCanIDO>().canShoot = false;
+            player.GetComponent<WhatCanIDO>().canAbility = false;
             cam = Instantiate(cameraObject, Vector3.zero, Quaternion.identity);
             cam.GetComponent<ARPGCamera>().TrackingTarget = player.transform;
         }
