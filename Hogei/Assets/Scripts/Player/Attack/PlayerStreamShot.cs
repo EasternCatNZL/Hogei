@@ -25,11 +25,15 @@ public class PlayerStreamShot : MonoBehaviour {
     ////bullet bank ref
     //private BulletBank bank;
 
+    [Header("Audio")]
+    public AudioSource bulletFireSound;
+
     //control vars
     private float lastShotTime = 0.0f; //time last bullet was fired
 
     // Use this for initialization
     void Start () {
+        bulletFireSound.playOnAwake = false;
         //bank = GameObject.FindGameObjectWithTag(bankTag).GetComponent<BulletBank>();
     }
 	
@@ -64,6 +68,9 @@ public class PlayerStreamShot : MonoBehaviour {
             bullet2.transform.rotation = transform.rotation;
             //set up bullet
             bullet2.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeed, 0, false);
+
+            //play audio
+            bulletFireSound.Play();
         }
     }
 }

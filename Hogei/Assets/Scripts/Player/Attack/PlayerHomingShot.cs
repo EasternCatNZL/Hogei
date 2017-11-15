@@ -22,6 +22,9 @@ public class PlayerHomingShot : MonoBehaviour {
     [Tooltip("How far out to position bullet start from center")]
     public float distanceToStart = 0.1f;
 
+    [Header("Audio")]
+    public AudioSource bulletFireSound;
+
     //[Header("Tags")]
     //[Tooltip("Bullet bank tag")]
     //public string bankTag = "Bullet Bank";
@@ -34,6 +37,7 @@ public class PlayerHomingShot : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        bulletFireSound.playOnAwake = false;
         //bank = GameObject.FindGameObjectWithTag(bankTag).GetComponent<BulletBank>();
     }
 	
@@ -68,6 +72,9 @@ public class PlayerHomingShot : MonoBehaviour {
             bullet2.transform.rotation = transform.rotation;
             //set up bullet
             bullet2.GetComponent<PlayerHomingBullet>().SetupVars(bulletTravelSpeed, maxHomingTime, homingStartDelay);
+
+            //play audio
+            bulletFireSound.Play();
         }
     }
 }

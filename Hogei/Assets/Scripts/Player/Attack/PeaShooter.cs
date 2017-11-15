@@ -22,6 +22,9 @@ public class PeaShooter : MonoBehaviour {
     [Tooltip("Time between bullets in wave")]
     public float timeBetweenWaves = 0.1f;
 
+    [Header("Audio")]
+    public AudioSource bulletFireSound;
+
     //[Header("Tags")]
     //[Tooltip("Bullet bank tag")]
     //public string bankTag = "Bullet Bank";
@@ -34,6 +37,7 @@ public class PeaShooter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        bulletFireSound.playOnAwake = false;
         //bank = GameObject.FindGameObjectWithTag(bankTag).GetComponent<BulletBank>();
 	}
 	
@@ -71,7 +75,8 @@ public class PeaShooter : MonoBehaviour {
             {
                 bullet.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeedSlow, bulletMaxTravelDist, true);
             }
-            
+            //play audio
+            bulletFireSound.Play();
         }
     }
 }
