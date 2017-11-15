@@ -34,6 +34,10 @@ public class SetupStraightBullet : MonoBehaviour {
     public bool isStarting = false;
     private bool isActive = false;
 
+    [Header("Audio")]
+    public AudioSource bulletFireSound;
+    public AudioSource bulletChangeDirectionSound;
+
     //script ref
     //private BulletBank bulletBank;
 
@@ -43,6 +47,8 @@ public class SetupStraightBullet : MonoBehaviour {
     void Start () {
         myRigid = GetComponent<Rigidbody>();
         startTime = Time.time;
+        bulletFireSound.playOnAwake = false;
+        bulletChangeDirectionSound.playOnAwake = false;
         //SetUp();
     }
 	
@@ -71,6 +77,8 @@ public class SetupStraightBullet : MonoBehaviour {
         isStarting = false;
         setupDestination = transform.position + (transform.forward * setupDestinationDistance);
         transform.DOMove(setupDestination, setupTime, false);
+        //play audio
+        bulletFireSound.Play();
         //transform.DOMove(new Vector3(2, 1, 3), 2, false);
         StartCoroutine(BeginMove());
     }
@@ -86,6 +94,8 @@ public class SetupStraightBullet : MonoBehaviour {
         transform.rotation = newRotation;
         //start moving
         myRigid.velocity = transform.forward * travelSpeed;
+        //play audio
+        bulletChangeDirectionSound.Play();
     }
 
     ////ref func

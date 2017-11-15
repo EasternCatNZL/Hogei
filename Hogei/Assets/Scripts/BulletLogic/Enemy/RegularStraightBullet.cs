@@ -16,6 +16,9 @@ public class RegularStraightBullet : MonoBehaviour {
     [Tooltip("Particle emitted by bullet on impact")]
     public GameObject particleObject;
 
+    [Header("Audio")]
+    public AudioSource bulletFireSound;
+
     //script ref
     //private BulletBank bulletBank;
 
@@ -25,7 +28,7 @@ public class RegularStraightBullet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myRigid = GetComponent<Rigidbody>();
-        
+        bulletFireSound.playOnAwake = false;
     }
 	
 	// Update is called once per frame
@@ -45,6 +48,7 @@ public class RegularStraightBullet : MonoBehaviour {
     {
         isActive = true;
         travelSpeed = speed;
+        bulletFireSound.Play();
     }
 
     ////ref func
