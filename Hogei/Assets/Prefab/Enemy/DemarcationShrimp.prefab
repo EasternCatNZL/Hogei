@@ -444,6 +444,8 @@ GameObject:
   - component: {fileID: 136139825152737864}
   - component: {fileID: 114091232821050376}
   - component: {fileID: 114352632881862104}
+  - component: {fileID: 114092565307606984}
+  - component: {fileID: 114979002922032212}
   m_Layer: 10
   m_Name: DemarcationShrimp
   m_TagString: Enemy
@@ -1233,20 +1235,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenSprays: 1.5
+  minTimeBetweenSprays: 1.5
   timeBetweenWaves: 0.8
   bulletObject: {fileID: 1857529508437080, guid: ae712c6fafc3af14697e9b336d235922,
     type: 2}
   numBulletLayers: 1
-  numBulletWaves: 2
+  maxNumBulletLayers: 2
   bulletBaseSetupDistance: 1.5
   bulletStepDistanceIncrease: 1
   bulletSetupTime: 0.7
   bulletStartMoveTimeDelay: 0.3
   bulletAngleChange: 90
   patternBulletSpeed: 5
+  maxBulletSpeed: 10
   angleChangePerShot: 20
+  minAngleChangePerShot: 20
   rotationDirection: 1
   bulletBankTag: Bullet Bank
+--- !u!114 &114092565307606984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734617168083640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985ec833c8872ef42ac596ff0b54dec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
 --- !u!114 &114352632881862104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1259,6 +1276,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+--- !u!114 &114979002922032212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734617168083640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+  MaxHealth: 10
 --- !u!136 &136139825152737864
 CapsuleCollider:
   m_ObjectHideFlags: 1

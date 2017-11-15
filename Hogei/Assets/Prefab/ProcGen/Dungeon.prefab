@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114825568385307030}
   m_Layer: 0
   m_Name: Dungeon
-  m_TagString: Untagged
+  m_TagString: Dungeon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloorTile: {fileID: 1190424755945434, guid: ad83c9e2e826b144ca5bd4ab589b2f10, type: 2}
   WallTile: {fileID: 1895286202337046, guid: ad2645e8c4ab1e24ab9192b2e746eefa, type: 2}
+  ExitPrefab: {fileID: 1417297609583172, guid: ce24bcc52005b334aa34ed524218cb5c, type: 2}
   TileSize: 1
   RoomPrefabs:
   - {fileID: 1121675946719400, guid: f36e3bee23e163049baa79a5718932f2, type: 2}
@@ -82,6 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitDelayDeath: 2
-  Player: {fileID: 1776031495874468, guid: 93bddb56830ef2f45ac6092101caf84a, type: 2}
+  Camera: {fileID: 1092142179861920, guid: f8550a6b1bdb1b64f9bdf959e74dc6fe, type: 2}
+  Player: {fileID: 1892330597440044, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
   playerTag: Player
-  currentFloor: 0
+  enemyTag: Enemy
+  currentFloor: 1

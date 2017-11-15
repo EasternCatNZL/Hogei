@@ -323,6 +323,8 @@ GameObject:
   - component: {fileID: 136168950880094810}
   - component: {fileID: 114064524553170526}
   - component: {fileID: 114889226429047782}
+  - component: {fileID: 114696222359334506}
+  - component: {fileID: 114927215775766294}
   m_Layer: 10
   m_Name: ProngShrimp
   m_TagString: Enemy
@@ -1232,19 +1234,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2c01dc400f4264ba77e5a2e2121526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenSprays: 2
+  timeBetweenSprays: 3
+  minTimeBetweenSprays: 0.2
+  scaledTimeBetweenSprays: 0
   bulletObject: {fileID: 1324714931859808, guid: dbed68e095856564aa98102c59597ea6,
     type: 2}
   numBulletLayers: 1
   maxNumBulletLayers: 5
+  scaledNumLayers: 0
   numArcs: 2
   maxNumArcs: 4
+  scaledNumArcs: 0
   firstLayerBulletSpeed: 1
   maxBulletSpeed: 10
+  scaledBulletSpeed: 0
   layerSpeedIncrementValue: 0.5
   startingAngle: 0
   angleChangePerShot: 16
   minAngleChangePerShot: 1
+  scaledAngleChangePerShot: 0
+  targetTag: Player
+--- !u!114 &114696222359334506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541064058968632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985ec833c8872ef42ac596ff0b54dec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   targetTag: Player
 --- !u!114 &114889226429047782
 MonoBehaviour:
@@ -1258,6 +1278,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+--- !u!114 &114927215775766294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541064058968632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+  MaxHealth: 10
 --- !u!136 &136168950880094810
 CapsuleCollider:
   m_ObjectHideFlags: 1
