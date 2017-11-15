@@ -107,7 +107,7 @@ public class DungeonManager : MonoBehaviour {
     }
 
     //Move to next floor in dungeon
-    private void MoveToNextFloor()
+    public void MoveToNextFloor()
     {
         //stop the players actions
         canDo.TurnAllOff();

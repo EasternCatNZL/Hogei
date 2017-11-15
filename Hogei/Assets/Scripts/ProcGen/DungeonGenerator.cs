@@ -13,6 +13,7 @@ public class DungeonGenerator : MonoBehaviour
 
     public GameObject FloorTile;
     public GameObject WallTile;
+    public GameObject ExitPrefab;
     public float TileSize = 1;
 
     public GameObject[] RoomPrefabs;
@@ -59,6 +60,16 @@ public class DungeonGenerator : MonoBehaviour
             CheckRoomCollisions();
         }
         GenerateCorridors();
+        //Add exit
+        if(ExitPrefab)
+        {
+            Vector3 exitPos = GetFurthestRoom().transform.position;
+            Instantiate(ExitPrefab, exitPos, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError(name + ": Dungeon has no exit prefab");
+        }
     }
 
     //Generate Corridors between the rooms
