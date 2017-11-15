@@ -18,7 +18,7 @@ public class MouseTarget : MonoBehaviour {
         //send a ray from the position of mouse on screen
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
              
-        if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, 256))
+        if (Physics.Raycast(ray, out rayHit, Mathf.Infinity))
         //if (Physics.Raycast(ray, out rayHit, Mathf.Infinity))
             {
             //dubug spawn object

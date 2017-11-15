@@ -8,6 +8,10 @@ public class DungeonManager : MonoBehaviour {
     [Tooltip("Delay before player is transported out after death")]
     public float exitDelayDeath = 2.0f;
 
+    [Header("Prefabs")]
+    public GameObject Camera = null;
+    public GameObject Player = null;
+
     [Header("Tags")]
     public string playerTag = "Player";
 
@@ -24,13 +28,23 @@ public class DungeonManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        SpawnPlayer();
         dungeonToTown = GetComponent<DungeonToTown>();
-        playerHealth = GameObject.FindGameObjectWithTag(playerTag).GetComponent<EntityHealth>();
-        canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(!playerHealth)
+        {
+            playerHealth = GameObject.FindGameObjectWithTag(playerTag).GetComponent<EntityHealth>();
+            canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
+        }
+        else
+        {
+            CheckPlayerHealth();
+        }
+
         if (isExiting)
         {
             if (Time.time > delayStartTime + exitDelayDeath)
@@ -41,11 +55,16 @@ public class DungeonManager : MonoBehaviour {
                 canDo.canMove = true;
             }
         }
-        else
-        {
-            CheckPlayerHealth();
-        }
+
 	}
+
+    public void SpawnPlayer()
+    {
+        Vector3 SpawnPoint = GetComponent<DungeonGenerator>().GetPlayerSpawn();
+        GameObject player = Instantiate(Player, SpawnPoint, Quaternion.identity);
+        GameObject cam = Instantiate(Camera, SpawnPoint, Quaternion.identity);
+        cam.GetComponent<ARPGCamera>().TrackingTarget = player.transform;
+    }
 
     //track player health, and when at 0, prepare to move player out
     private void CheckPlayerHealth()

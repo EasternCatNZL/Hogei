@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1554416950258056}
+  m_IsPrefabParent: 1
+--- !u!1 &1554416950258056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4842133784499590}
+  - component: {fileID: 114142981618181402}
+  - component: {fileID: 114825568385307030}
+  m_Layer: 0
+  m_Name: Dungeon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4842133784499590
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554416950258056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114142981618181402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554416950258056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945e2615b687ef9458520cf4c8bd795e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FloorTile: {fileID: 1190424755945434, guid: ad83c9e2e826b144ca5bd4ab589b2f10, type: 2}
+  WallTile: {fileID: 1895286202337046, guid: ad2645e8c4ab1e24ab9192b2e746eefa, type: 2}
+  TileSize: 1
+  RoomPrefabs:
+  - {fileID: 1121675946719400, guid: f36e3bee23e163049baa79a5718932f2, type: 2}
+  - {fileID: 1368495243631370, guid: e42a7b64acf872f4e97aa0689a27f0e7, type: 2}
+  - {fileID: 1846846867699802, guid: 6b3700de125c07445a15c8f85f794846, type: 2}
+  - {fileID: 1663363699950720, guid: f52ad533801d3dc4381c126ffcdc1df9, type: 2}
+  - {fileID: 1166821730395260, guid: b095ce8c6f10a154882790d33ad5b9a5, type: 2}
+  RoomAmount: 5
+  RoomPadding: 60
+  RoomWidthMin: 12
+  RoomWidthMax: 16
+  RoomLengthMin: 12
+  RoomLengthMax: 16
+  DungeonWidth: 2
+  DungeonLength: 5
+  MaximumCorridorDis: 55
+--- !u!114 &114825568385307030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554416950258056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150930e69d170134fb3f31551d78dc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitDelayDeath: 2
+  Player: {fileID: 1776031495874468, guid: 93bddb56830ef2f45ac6092101caf84a, type: 2}
+  playerTag: Player
+  currentFloor: 0

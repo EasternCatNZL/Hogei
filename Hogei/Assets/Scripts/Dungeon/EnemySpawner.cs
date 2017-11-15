@@ -14,6 +14,10 @@ public class EnemySpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         manager = GetComponent<DungeonManager>();
+        if(manager == null)
+        {
+
+        }
         SpawnEnemies();
 	}
 	

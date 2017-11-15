@@ -25,7 +25,7 @@ public class ARPGCamera : MonoBehaviour {
     private float ZoomAngleRatio = 25.0f;
     
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         //Set intial arm position
         Vector3 ArmPosition = new Vector3(0.0f, HeightOffset, 0.0f);

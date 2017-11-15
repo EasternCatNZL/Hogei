@@ -37,11 +37,22 @@ public class DungeonGenerator : MonoBehaviour
     GameObject[] Rooms;
     List<CorridorData> Corridors;
 
-    void Start()
+    void Awake()
     {
         Rooms = new GameObject[RoomAmount];
         Corridors = new List<CorridorData>();
+
         //FloorTile.transform.localScale *= TileSize / 10;
+    }
+
+    void Start()
+    {
+        GenerateRooms();
+        for (int i = 0; i < 10; ++i)
+        {
+            CheckRoomCollisions();
+        }
+        GenerateCorridors();
     }
 
     //Generate Corridors between the rooms
@@ -310,6 +321,12 @@ public class DungeonGenerator : MonoBehaviour
         {
             return Rooms[_Index];
         }
+    }
+
+    public Vector3 GetPlayerSpawn()
+    {
+        if(Rooms[0] != null) return Rooms[0].transform.position + transform.up;
+        return Vector3.zero;
     }
 
     private void OnDrawGizmos()

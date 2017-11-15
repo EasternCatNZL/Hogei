@@ -11,14 +11,24 @@ public class Movement : MonoBehaviour {
     public float Vert = 0;
 
     Rigidbody Rigid;
+    Animator Anim;
 
     private WhatCanIDO canDo;
     
 
 	// Use this for initialization
 	void Start () {
-        canDo = GetComponent<WhatCanIDO>();
+        if(GetComponent<WhatCanIDO>())
+        {
+            canDo = GetComponent<WhatCanIDO>();
+        }
+        else
+        {
+            Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
+        }
+
         Rigid = GetComponent<Rigidbody>();
+        Anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -50,6 +60,16 @@ public class Movement : MonoBehaviour {
         {
             newPos.z -= 1;
         }
+
+        if(newPos != Vector3.zero)
+        {
+            Anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            Anim.SetBool("IsMoving", false);
+        }
+
         //Rigid.MovePosition(transform.position + newPos * Speed * Time.deltaTime);
         transform.position = transform.position + newPos * Speed * Time.deltaTime;
     }

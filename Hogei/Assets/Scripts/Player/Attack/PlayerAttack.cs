@@ -24,18 +24,32 @@ public class PlayerAttack : MonoBehaviour {
     private PlayerStreamShot streamShot;
     private PlayerHomingShot homingShot;
 
+    //Component
+    private Animator Anim;
+
     // Use this for initialization
     void Start () {
-        canDo = GetComponent<WhatCanIDO>();
+        if (GetComponent<WhatCanIDO>())
+        {
+            canDo = GetComponent<WhatCanIDO>();
+        }
+        else
+        {
+            Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
+        }
+        Anim = GetComponent<Animator>();
         SetupWeapons();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (canDo.canShoot)
+        if (canDo)
         {
-            UseWeapon();
-            SwitchWeapon();
+            if (canDo.canShoot)
+            {
+                UseWeapon();
+                SwitchWeapon();
+            }
         }
 	}
 
@@ -65,6 +79,7 @@ public class PlayerAttack : MonoBehaviour {
         //check if input 
         if (CheckKeyboardInputWeapon())
         {
+            Anim.SetBool("IsShooting", true);
             //try to use current weapon
             switch (currentWeaponIndex)
             {
@@ -80,6 +95,10 @@ public class PlayerAttack : MonoBehaviour {
                     homingShot.UseWeapon();
                     break;
             }
+        }
+        else
+        {
+            Anim.SetBool("IsShooting", false);
         }
     }
 

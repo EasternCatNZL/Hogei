@@ -66,8 +66,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471392400515800}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4785085, y: 0.2266283, z: -10.93556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4309231371720682}
@@ -108,7 +108,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!81 &81806773182247386
 AudioListener:
   m_ObjectHideFlags: 1
@@ -135,12 +134,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrackingTarget: {fileID: 0}
-  HeightOffset: 0.5
+  HeightOffset: 1
   ZoomIntervals: 1
   ZoomMin: 2
-  ZoomMax: 10
-  CameraMin: 25
-  CameraMax: 75
+  ZoomMax: 6
+  CameraMin: 35
+  CameraMax: 65
 --- !u!124 &124157975155772368
 Behaviour:
   m_ObjectHideFlags: 1
