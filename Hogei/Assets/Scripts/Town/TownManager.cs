@@ -9,7 +9,7 @@ public class TownManager : MonoBehaviour {
     public GameObject player;
 
     [Header("Player spawn point")]
-    public Vector3 playerSpawnPos = Vector3.zero;
+    public Transform playerSpawn;
 
     [Header("Tags")]
     public string playerTag = "Player";
@@ -19,7 +19,7 @@ public class TownManager : MonoBehaviour {
         //if player not yet in scene, spawn one in
         if (!GameObject.FindGameObjectWithTag(playerTag))
         {
-            Instantiate(player, playerSpawnPos, Quaternion.identity);
+            Instantiate(player, playerSpawn.position, Quaternion.identity);
         }
 	}
 	
