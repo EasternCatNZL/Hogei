@@ -48,7 +48,7 @@ public class RegularStraightBullet : MonoBehaviour {
     {
         isActive = true;
         travelSpeed = speed;
-        bulletFireSound.Play();
+        //bulletFireSound.Play();
     }
 
     ////ref func

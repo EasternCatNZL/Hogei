@@ -78,7 +78,7 @@ public class SetupStraightBullet : MonoBehaviour {
         setupDestination = transform.position + (transform.forward * setupDestinationDistance);
         transform.DOMove(setupDestination, setupTime, false);
         //play audio
-        bulletFireSound.Play();
+        //bulletFireSound.Play();
         //transform.DOMove(new Vector3(2, 1, 3), 2, false);
         StartCoroutine(BeginMove());
     }
@@ -95,7 +95,7 @@ public class SetupStraightBullet : MonoBehaviour {
         //start moving
         myRigid.velocity = transform.forward * travelSpeed;
         //play audio
-        bulletChangeDirectionSound.Play();
+        //bulletChangeDirectionSound.Play();
     }
 
     ////ref func
