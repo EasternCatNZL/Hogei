@@ -197,18 +197,18 @@ public class CellularAutomata : MonoBehaviour {
         RoomTiles.Clear();
     }
 
-    private void OnDrawGizmos()
-    {
-        if (DebugMode && Application.isPlaying && this.enabled)
-        {
-            for (int i = 0; i < RoomWidth; ++i)
-            {
-                for (int j = 0; j < RoomHeight; ++j)
-                {
-                    UnityEditor.Handles.Label(new Vector3((float)i * 10, 0f, (float)j * 10) + transform.up, CheckNeighbors(i, j).NumNeighbors.ToString() + "\n" + Tiles[i,j].State + " " + Tiles[i,j].NewState);
-                    //UnityEditor.Handles.Label(new Vector3((float)i * 10, 0f, (float)j * 10) + transform.up,"Coords: " + i.ToString() + " " + j.ToString() + "\nState: " + Tiles[i,j].ToString() + " Neighbors: " + CheckNeighbors(i, j).ToString());
-                }
-            }
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    if (DebugMode && Application.isPlaying && this.enabled)
+    //    {
+    //        for (int i = 0; i < RoomWidth; ++i)
+    //        {
+    //            for (int j = 0; j < RoomHeight; ++j)
+    //            {
+    //                UnityEditor.Handles.Label(new Vector3((float)i * 10, 0f, (float)j * 10) + transform.up, CheckNeighbors(i, j).NumNeighbors.ToString() + "\n" + Tiles[i,j].State + " " + Tiles[i,j].NewState);
+    //                //UnityEditor.Handles.Label(new Vector3((float)i * 10, 0f, (float)j * 10) + transform.up,"Coords: " + i.ToString() + " " + j.ToString() + "\nState: " + Tiles[i,j].ToString() + " Neighbors: " + CheckNeighbors(i, j).ToString());
+    //            }
+    //        }
+    //    }
+    //}
 }

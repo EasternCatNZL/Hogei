@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DungeonManager : MonoBehaviour {
 
@@ -87,8 +88,14 @@ public class DungeonManager : MonoBehaviour {
         {
             player.transform.position = SpawnPoint;
             player.transform.rotation = Quaternion.identity;
+            Instantiate(PlayerUI, Vector3.zero, Quaternion.identity);
         }
         
+    }
+
+    public void PlayerDead()
+    {
+
     }
 
     //track player health, and when at 0, prepare to move player out
@@ -105,6 +112,7 @@ public class DungeonManager : MonoBehaviour {
             canDo.canMove = false;
             canDo.canShoot = false;
             canDo.canAbility = false;
+            SceneManager.LoadScene(1);
         }
     }
 

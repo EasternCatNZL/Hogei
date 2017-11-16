@@ -25,11 +25,15 @@ public class TownToDungeon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (!canDo)
+        {
+            canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
+        }
         if (Input.GetKeyDown(inputKey))
         {
             MoveToDungeon();
@@ -53,6 +57,7 @@ public class TownToDungeon : MonoBehaviour {
         {
             //set in port to true
             inPort = true;
+            MoveToDungeon();
         }
     }
 

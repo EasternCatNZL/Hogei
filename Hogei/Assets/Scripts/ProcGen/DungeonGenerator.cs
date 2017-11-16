@@ -367,25 +367,25 @@ public class DungeonGenerator : MonoBehaviour
         return Vector3.zero;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (Application.isPlaying && this.enabled)
-        {
-            for (int i = 0; i < Rooms.Length; ++i)
-            {
-                if (Rooms[i] != null)
-                {
-                    UnityEditor.Handles.Label(Rooms[i].transform.position + transform.up, i.ToString());
-                }
-            }
+    //private void OnDrawGizmos()
+    //{
+    //    if (Application.isPlaying && this.enabled)
+    //    {
+    //        for (int i = 0; i < Rooms.Length; ++i)
+    //        {
+    //            if (Rooms[i] != null)
+    //            {
+    //                UnityEditor.Handles.Label(Rooms[i].transform.position + transform.up, i.ToString());
+    //            }
+    //        }
 
-            foreach (CorridorData cor in Corridors)
-            {
-                Gizmos.color = Color.red;
-                Debug.DrawLine(Rooms[cor.Room1].transform.position + transform.up, Rooms[cor.Room2].transform.position + transform.up, Color.red);
-                string vector = (Rooms[cor.Room1].transform.position - Rooms[cor.Room2].transform.position).ToString() + "\n" + (Rooms[cor.Room1].transform.position - Rooms[cor.Room2].transform.position).magnitude;
-                UnityEditor.Handles.Label((Rooms[cor.Room1].transform.position + Rooms[cor.Room2].transform.position) / 2 + transform.up, vector);
-            }
-        }
-    }
+    //        foreach (CorridorData cor in Corridors)
+    //        {
+    //            Gizmos.color = Color.red;
+    //            Debug.DrawLine(Rooms[cor.Room1].transform.position + transform.up, Rooms[cor.Room2].transform.position + transform.up, Color.red);
+    //            string vector = (Rooms[cor.Room1].transform.position - Rooms[cor.Room2].transform.position).ToString() + "\n" + (Rooms[cor.Room1].transform.position - Rooms[cor.Room2].transform.position).magnitude;
+    //            UnityEditor.Handles.Label((Rooms[cor.Room1].transform.position + Rooms[cor.Room2].transform.position) / 2 + transform.up, vector);
+    //        }
+    //    }
+    //}
 }

@@ -34,6 +34,8 @@ public class PlayerAbilities : MonoBehaviour {
     private float ShieldActiveTime;
     public float ShieldCooldownReset = 0.0f;
     private float ShieldCooldown;
+
+    public GameObject HealthUI = null;
     // CannonBall Ability
 
 
