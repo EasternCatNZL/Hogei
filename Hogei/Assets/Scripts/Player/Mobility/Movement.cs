@@ -10,6 +10,10 @@ public class Movement : MonoBehaviour {
     public float Hori = 0;
     public float Vert = 0;
 
+    [Header("Camera")]
+    [Tooltip("Budget camera that follows the player and nothing else")]
+    public GameObject followCamera;
+
     Rigidbody Rigid;
     Animator Anim;
 
@@ -72,5 +76,12 @@ public class Movement : MonoBehaviour {
 
         //Rigid.MovePosition(transform.position + newPos * Speed * Time.deltaTime);
         transform.position = transform.position + newPos * Speed * Time.deltaTime;
+
+        if (followCamera)
+        {
+            //move the camera the same x and z
+            followCamera.transform.position = followCamera.transform.position + newPos * Speed * Time.deltaTime;
+        }
+        
     }
 }

@@ -31,7 +31,7 @@ public class ARPGCamera : MonoBehaviour {
         Vector3 ArmPosition = new Vector3(0.0f, HeightOffset, 0.0f);
         transform.position = ArmPosition;
         //Set Inital Camera Zoom
-        Vector3 CameraPosition = new Vector3(0.0f, 0.0f, -ZoomAmount);
+        Vector3 CameraPosition = new Vector3(0.0f, ZoomAmount, 0.0f);
         Camera.main.transform.localPosition = CameraPosition;
         //Set Inital Camera Angle
         ZoomAngleRatio = (CameraMax - CameraMin) / ZoomMax;
