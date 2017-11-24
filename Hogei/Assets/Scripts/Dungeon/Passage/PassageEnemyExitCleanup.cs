@@ -23,17 +23,10 @@ public class PassageEnemyExitCleanup : MonoBehaviour {
         //if other is passageway enemy, destroy it
         if (other.gameObject.CompareTag(passageEnemyTag))
         {
-            print("Enemy arrived");
+            //check if this enemy's last way point is self
+            if(other.gameObject.GetComponent<EnemyWaypointManager>().waypointList.Contains(transform))
+            //print("Enemy arrived");
             Destroy(other.gameObject);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag(passageEnemyTag))
-        {
-            print("Enemy arrived");
-            Destroy(collision.gameObject);
         }
     }
 }
