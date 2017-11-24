@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 136969233651011956}
   - component: {fileID: 114580769323968980}
   - component: {fileID: 114371316482987254}
+  - component: {fileID: 114193741127416856}
   m_Layer: 10
   m_Name: Shrimp
   m_TagString: Enemy
@@ -1221,6 +1222,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114193741127416856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552858621752230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a9c10925f7530479573a45e788b454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenSprays: 0.5
+  bulletObject: {fileID: 1258841481705456, guid: 7a100f276fd1a36479737516d510d774,
+    type: 2}
+  bulletSpeed: 5
 --- !u!114 &114371316482987254
 MonoBehaviour:
   m_ObjectHideFlags: 1

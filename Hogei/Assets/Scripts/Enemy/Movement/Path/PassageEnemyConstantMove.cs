@@ -33,6 +33,8 @@ public class PassageEnemyConstantMove : MonoBehaviour {
         float timeToTravel = (Vector3.Distance(waypointManager.waypointList[currentWaypointIndex].position, waypointManager.waypointList[currentWaypointIndex - 1].position)) / travelSpeed;
         //tween to next destination over this amount of time
         transform.DOMove(currentDestination.position, timeToTravel, false);
+        //look at the next waypoint
+        transform.rotation = Quaternion.LookRotation(currentDestination.position - transform.position);
     }
 
     //checks if arrived at waypoint

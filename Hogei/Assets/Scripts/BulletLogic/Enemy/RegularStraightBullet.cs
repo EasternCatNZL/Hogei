@@ -12,13 +12,6 @@ public class RegularStraightBullet : MonoBehaviour {
     [Tooltip("Damage dealt by bullet")]
     public float bulletDamage = 1.0f;
 
-    [Header("Particle effect")]
-    [Tooltip("Particle emitted by bullet on impact")]
-    public GameObject particleObject;
-
-    [Header("Audio")]
-    public AudioSource bulletFireSound;
-
     //script ref
     //private BulletBank bulletBank;
 
@@ -28,7 +21,6 @@ public class RegularStraightBullet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myRigid = GetComponent<Rigidbody>();
-        bulletFireSound.playOnAwake = false;
     }
 	
 	// Update is called once per frame
@@ -79,7 +71,6 @@ public class RegularStraightBullet : MonoBehaviour {
             collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
             
         }
-        GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
         //Deactivate();
         Destroy(gameObject);
     }
