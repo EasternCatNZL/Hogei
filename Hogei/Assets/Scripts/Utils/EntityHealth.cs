@@ -10,8 +10,8 @@ public class EntityHealth : MonoBehaviour {
     [Tooltip("Maximum health the entity can have")]
     public float MaxHealth = 10;
 
-    [Header("Audio")]
-    public AudioSource deathSound;
+    //[Header("Audio")]
+    //public AudioSource deathSound;
 
     bool DOTActive;
     float DOTDamage;
@@ -21,7 +21,7 @@ public class EntityHealth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         CurrentHealth = MaxHealth;
-        deathSound.playOnAwake = false;
+        //deathSound.playOnAwake = false;
 
     }
 	
@@ -30,6 +30,11 @@ public class EntityHealth : MonoBehaviour {
         if(CurrentHealth <= 0.0f)
         {
             Destroy(gameObject);
+            //for room enemies
+            if (transform.parent.GetComponent<RoomEnemyManager>())
+            {
+                transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
+            }
         }
 		if(DOTActive)
         {
