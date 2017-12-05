@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RoomEnemyManager : MonoBehaviour {
 
-    //[Header("Enemy group object")]
-    //[Tooltip("The enemy group object")]
-    //public GameObject enemyGroup;
+    [Header("Operational Space")]
+    [Tooltip("The room size designated to this enemy group")]
+    public int operationSize = 3;
 
     [Header("Enemy List")]
     [Tooltip("List of enemy objects")]

@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class RoomRotatingMovement : MonoBehaviour {
 
+    [Header("Minimum Operation Space")]
+    public float minimumOperationSpace = 2.0f;
+
     [Header("Distance")]
     [Tooltip("The distance away from center enemies are")]
     public float distance = 35.0f;
+    [Tooltip("the base distance that enemies are away from center")]
+    public float baseDistance = 12.0f;
 
     [Header("Speed")]
     [Tooltip("Speed that enemies rotate at")]
@@ -30,6 +35,14 @@ public class RoomRotatingMovement : MonoBehaviour {
     //spread out enemies
     private void SpreadEnemies()
     {
+        //if operation size exists appropriatly
+        if (GetComponent<RoomEnemyManager>().operationSize > 0)
+        {
+            //scale distance by operational space
+            distance = baseDistance * GetComponent<RoomEnemyManager>().operationSize;
+        }
+        
+
         float angleApart = 360.0f / enemiesList.Count;
         //for the number of enemies in list
         for (int i = 0; i < enemiesList.Count; i++)
