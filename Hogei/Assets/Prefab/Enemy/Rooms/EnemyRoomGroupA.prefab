@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 136089148796175412}
   - component: {fileID: 114754713914415736}
   - component: {fileID: 114440066992948452}
+  - component: {fileID: 114565261718165420}
   m_Layer: 10
   m_Name: RoomShrimp
   m_TagString: Enemy
@@ -3685,7 +3686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443c3bcfc45c84441876be8b9d03b6dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimumOperationSpace: 2
   distance: 35
+  baseDistance: 12
   rotationSpeed: 20
 --- !u!114 &114440066992948452
 MonoBehaviour:
@@ -3693,7 +3696,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094025027223176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1816b8879b12e044387b0787ee9726ad, type: 3}
   m_Name: 
@@ -3711,7 +3714,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281729990319060}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1816b8879b12e044387b0787ee9726ad, type: 3}
   m_Name: 
@@ -3723,6 +3726,19 @@ MonoBehaviour:
   startingAngle: 0
   angleChangePerShot: 16
   bulletSpeed: 15
+--- !u!114 &114565261718165420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094025027223176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fbd3f68108405940916a52c2e292825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myIndicator: {fileID: 1318876504951942, guid: e7de1e0cee23b0e4cb92edfdd539efd3,
+    type: 2}
 --- !u!114 &114597539126688104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3773,6 +3789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f528bca62c4cee439fd1b260f8b5d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  operationSize: 3
   enemyList:
   - {fileID: 1094025027223176}
   - {fileID: 1065848784701090}
@@ -3783,7 +3800,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065848784701090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1816b8879b12e044387b0787ee9726ad, type: 3}
   m_Name: 
