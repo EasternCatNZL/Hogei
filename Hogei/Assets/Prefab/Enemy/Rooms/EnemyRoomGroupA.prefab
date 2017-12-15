@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 136500931446298716}
   - component: {fileID: 114597539126688104}
   - component: {fileID: 114957264655941272}
+  - component: {fileID: 114354370586208410}
   m_Layer: 10
   m_Name: RoomShrimp (1)
   m_TagString: Enemy
@@ -589,6 +590,7 @@ GameObject:
   - component: {fileID: 136641355998378104}
   - component: {fileID: 114604831129612946}
   - component: {fileID: 114476983187152710}
+  - component: {fileID: 114566157884537736}
   m_Layer: 10
   m_Name: RoomShrimp (2)
   m_TagString: Enemy
@@ -3690,6 +3692,19 @@ MonoBehaviour:
   distance: 35
   baseDistance: 12
   rotationSpeed: 20
+--- !u!114 &114354370586208410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065848784701090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fbd3f68108405940916a52c2e292825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myIndicator: {fileID: 1318876504951942, guid: e7de1e0cee23b0e4cb92edfdd539efd3,
+    type: 2}
 --- !u!114 &114440066992948452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3732,6 +3747,19 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094025027223176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fbd3f68108405940916a52c2e292825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myIndicator: {fileID: 1318876504951942, guid: e7de1e0cee23b0e4cb92edfdd539efd3,
+    type: 2}
+--- !u!114 &114566157884537736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281729990319060}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fbd3f68108405940916a52c2e292825, type: 3}

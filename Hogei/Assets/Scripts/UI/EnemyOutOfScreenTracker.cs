@@ -78,18 +78,10 @@ public class EnemyOutOfScreenTracker : MonoBehaviour {
             Vector2 screenMin = new Vector2(0, 0);
             Vector2 screenMax = new Vector2(Screen.width, Screen.height);
 
-            print("ScreenMin: " + screenMin);
-            print("ScreenMax: " + screenMax);
-
-            //print("Player world pos: " + player.transform.position);
-            //print("Target world pos: " + target.transform.position);
-
             //get the screen pos of player and target
             Vector2 playerScreenPos = mainCamera.WorldToScreenPoint(player.transform.position);
             Vector2 targetScreenPos = mainCamera.WorldToScreenPoint(target.transform.position);
 
-            //print("Player screen pos: " + playerScreenPos);
-            //print("Target screen pos: " + targetScreenPos);
 
             //convert the screen pos to gui pos
             Vector2 playerGUIPos = GUIUtility.ScreenToGUIPoint(playerScreenPos);
@@ -99,21 +91,17 @@ public class EnemyOutOfScreenTracker : MonoBehaviour {
             Vector2 screenBoundsMin = new Vector2(screenMin.x + imageOffsetDistance, screenMin.y + imageOffsetDistance);
             Vector2 screenBoundsMax = new Vector2(screenMax.x - imageOffsetDistance, screenMax.y - imageOffsetDistance);
 
-            ////position the indicator in the world where the target is
-            //transform.position = target.transform.position;
-
             //clamp the x and z pos by screen bounds
             float newX = Mathf.Clamp(targetScreenPos.x, screenBoundsMin.x, screenBoundsMax.x);
             float newZ = Mathf.Clamp(targetScreenPos.y, screenBoundsMin.y, screenBoundsMax.y);
-
-            print(newX);
-            print(newZ);
 
             //set new position
             //Vector2 inScreenPos = new Vector2(newX, newZ);
             Vector3 inWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(newX, newZ, yPlane));
             transform.position = inWorldPos;
 
+            //face the target from players perspective
+            transform.rotation = Quaternion.LookRotation(direction);
         }
     }
 
