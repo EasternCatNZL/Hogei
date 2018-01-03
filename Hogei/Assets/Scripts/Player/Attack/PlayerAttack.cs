@@ -77,7 +77,7 @@ public class PlayerAttack : MonoBehaviour {
     private void UseWeapon()
     {
         //check if input 
-        if (CheckKeyboardInputWeapon())
+        if (CheckMouseInputWeapon())
         {
             Anim.SetBool("IsShooting", true);
             //try to use current weapon
@@ -136,7 +136,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     //keyboard input check for firing weapon <- to avoid clunkiness in code
-    private bool CheckKeyboardInputWeapon()
+    private bool CheckMouseInputWeapon()
     {
         bool valid = false;
         if (Input.GetMouseButton(mouseInputKey))
