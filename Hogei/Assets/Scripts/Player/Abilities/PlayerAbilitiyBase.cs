@@ -6,7 +6,9 @@ public class PlayerAbilitiyBase : MonoBehaviour {
 
     enum Ability
     {
-        CLEARER
+        CLEARER,
+        DEFLECTOR,
+        REVERSAL
     }
 
     [Header("Inputs")]
@@ -24,6 +26,8 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     //script refs
     private WhatCanIDO canDo;
     private BulletClearer bulletClear;
+    private DeflectShield deflect;
+    private ReversalShot reverse;
     
 
     // Use this for initialization
@@ -31,12 +35,16 @@ public class PlayerAbilitiyBase : MonoBehaviour {
         if (GetComponent<WhatCanIDO>())
         {
             canDo = GetComponent<WhatCanIDO>();
+            //testing
+            ability = Ability.REVERSAL;
         }
         else
         {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
         bulletClear = abilityHolder.GetComponent<BulletClearer>();
+        deflect = abilityHolder.GetComponent<DeflectShield>();
+        reverse = abilityHolder.GetComponent<ReversalShot>();
 	}
 	
 	// Update is called once per frame
@@ -59,7 +67,23 @@ public class PlayerAbilitiyBase : MonoBehaviour {
                 case Ability.CLEARER:
                     bulletClear.UseAbility();
                     break;
+                case Ability.DEFLECTOR:
+                    deflect.UseAbility();
+                    break;
+                case Ability.REVERSAL:
+                    reverse.UseAbility();
+                    break;
             }
+        }
+    }
+
+    //change ability logic <- testing only
+    private void ChangeAbility()
+    {
+        //check if input
+        if (Input.GetKeyDown(abilityTwoKey))
+        {
+
         }
     }
 }

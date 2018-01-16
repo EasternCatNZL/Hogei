@@ -11,8 +11,8 @@ public class BulletClearerBehaviour : MonoBehaviour {
     [Header("Lifetime")]
     [Tooltip("The amount of time in secs object should exist")]
     public float lifeTime;
-    [Tooltip("The start time of the object")]
-    public float startTime;
+    //[Tooltip("The start time of the object")]
+    private float startTime;
 
 	// Use this for initialization
 	void Start () {
