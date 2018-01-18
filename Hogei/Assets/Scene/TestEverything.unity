@@ -1241,6 +1241,7 @@ GameObject:
   - component: {fileID: 1475646658}
   - component: {fileID: 1475646664}
   - component: {fileID: 1475646665}
+  - component: {fileID: 1475646666}
   m_Layer: 0
   m_Name: EnemyDummy
   m_TagString: Untagged
@@ -1385,7 +1386,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1475646657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f83d4b2f274286647864c45e5fff1bb4, type: 3}
   m_Name: 
@@ -1400,6 +1401,26 @@ MonoBehaviour:
   startingAngle: 0
   angleChangePerShot: 4
   bulletBankTag: Bullet Bank
+--- !u!114 &1475646666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475646657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13e328251ae52f4db2cbf9f4f024231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenSprays: 3
+  bulletObject: {fileID: 1328475908393668, guid: 99f290578a67b8e458baab855dfdc01f,
+    type: 2}
+  numBulletsPerSpray: 12
+  bulletBaseSetupDistance: 5
+  bulletSetupTime: 0.5
+  bulletStartMoveTimeDelay: 0.2
+  bulletTravelSpeed: 5
+  targetTag: Player
 --- !u!1 &1563681692
 GameObject:
   m_ObjectHideFlags: 0
