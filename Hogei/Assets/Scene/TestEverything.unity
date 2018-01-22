@@ -1242,6 +1242,7 @@ GameObject:
   - component: {fileID: 1475646664}
   - component: {fileID: 1475646665}
   - component: {fileID: 1475646666}
+  - component: {fileID: 1475646667}
   m_Layer: 0
   m_Name: EnemyDummy
   m_TagString: Untagged
@@ -1407,7 +1408,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1475646657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d13e328251ae52f4db2cbf9f4f024231, type: 3}
   m_Name: 
@@ -1421,6 +1422,23 @@ MonoBehaviour:
   bulletStartMoveTimeDelay: 0.2
   bulletTravelSpeed: 5
   targetTag: Player
+--- !u!114 &1475646667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475646657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5148964bf65c39c4ab8a98fb27a25b6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenSprays: 0.3
+  maxDistanceFromSelf: 3
+  bulletObject: {fileID: 1258841481705456, guid: 7a100f276fd1a36479737516d510d774,
+    type: 2}
+  numBulletsPerSpray: 12
+  bulletTravelSpeed: 5
 --- !u!1 &1563681692
 GameObject:
   m_ObjectHideFlags: 0
