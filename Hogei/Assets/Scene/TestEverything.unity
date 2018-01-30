@@ -255,7 +255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &448462786
 Transform:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &500453023
 Transform:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &530005803
 Transform:
   m_ObjectHideFlags: 0
@@ -588,7 +588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &974795995
 Transform:
   m_ObjectHideFlags: 0
@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &977637326
 Transform:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1116757799
 Transform:
   m_ObjectHideFlags: 0
@@ -947,7 +947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1213410171
 Transform:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1468552589
 Transform:
   m_ObjectHideFlags: 0
@@ -1243,6 +1243,7 @@ GameObject:
   - component: {fileID: 1475646665}
   - component: {fileID: 1475646666}
   - component: {fileID: 1475646667}
+  - component: {fileID: 1475646668}
   m_Layer: 0
   m_Name: EnemyDummy
   m_TagString: Untagged
@@ -1428,7 +1429,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1475646657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5148964bf65c39c4ab8a98fb27a25b6d, type: 3}
   m_Name: 
@@ -1439,6 +1440,31 @@ MonoBehaviour:
     type: 2}
   numBulletsPerSpray: 12
   bulletTravelSpeed: 5
+--- !u!114 &1475646668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475646657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d6dbd369997f244b406b05375cb090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenShots: 0.2
+  bulletObject: {fileID: 1708320394041830, guid: 5c6e81c558e25ef42a332dddbfc17d43,
+    type: 2}
+  bulletSetUpDistanceArray:
+  - 5
+  - 2
+  bulletAngleChangeArray:
+  - 90
+  - 160
+  bulletSetupTime: 0.5
+  bulletTravelSpeed: 3
+  steps: 2
+  angleChangePerShot: 4
+  angleChangePerSpray: 60
 --- !u!1 &1563681692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,7 +1567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1566716874
 Transform:
   m_ObjectHideFlags: 0
@@ -1700,6 +1726,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4562787159057632, guid: 4462cc1d44bedfd47af35b0ec6841078, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602521763031314, guid: 4462cc1d44bedfd47af35b0ec6841078, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2043,7 +2073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2001480628
 Transform:
   m_ObjectHideFlags: 0
@@ -2205,7 +2235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2083616332
 Transform:
   m_ObjectHideFlags: 0
