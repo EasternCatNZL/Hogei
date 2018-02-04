@@ -86,11 +86,11 @@ public class AimedProngedShot : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !enemyState.isPaused)
         {
             if (Time.time > timeLastSprayFired + scaledTimeBetweenSprays)
             {
-                StartCoroutine(BulletSprayRoutine());
+                BulletSpray();
             }
         }
     }
@@ -140,7 +140,7 @@ public class AimedProngedShot : MonoBehaviour {
     }
 
     //bullet firing coroutine
-    private IEnumerator BulletSprayRoutine()
+    private void BulletSpray()
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
@@ -201,7 +201,5 @@ public class AimedProngedShot : MonoBehaviour {
             //increment the speed between layers
             speed += layerSpeedIncrementValue;
         }
-        //wait for next spray
-        yield return new WaitForSecondsRealtime(scaledTimeBetweenSprays);
     }
 }

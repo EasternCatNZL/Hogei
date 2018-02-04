@@ -7,6 +7,7 @@ public class EnemyState : MonoBehaviour {
     [Header("Active")]
     [Tooltip("Check if enemy is active")]
     public bool isActive = false;
+    public bool isPaused = false;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,20 @@ public class EnemyState : MonoBehaviour {
 		
 	}
 
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        print("Unsubscribed to event");
+    }
+
     //get set methods
     public bool GetIsActive()
     {
@@ -27,5 +42,16 @@ public class EnemyState : MonoBehaviour {
     public void SetIsActive(bool active)
     {
         isActive = active;
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isPaused = true;
+    }
+
+    private void OnUnpause()
+    {
+        isPaused = false;
     }
 }

@@ -58,11 +58,11 @@ public class AllRoundSpray : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !enemyState.isPaused)
         {
             if (Time.time > timeLastSprayFired + scaledTimeBetweenSprays)
             {
-                BulletSprayRoutine();
+                BulletSpray();
             }
         }
     }
@@ -96,7 +96,7 @@ public class AllRoundSpray : MonoBehaviour {
     }
 
     //bullet firing coroutine
-    private void BulletSprayRoutine()
+    private void BulletSpray()
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;

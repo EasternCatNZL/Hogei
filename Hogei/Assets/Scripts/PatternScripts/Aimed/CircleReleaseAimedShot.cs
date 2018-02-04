@@ -45,7 +45,7 @@ public class CircleReleaseAimedShot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !enemyState.isPaused)
         {
             if (Time.time > timeLastSprayFired + timeBetweenSprays)
             {

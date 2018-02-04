@@ -35,8 +35,8 @@ public class EnemyPivotPointMovement : MonoBehaviour {
 	void Update () {
 		if (Time.time > lastMoveTime + timeBetweenSteps)
         {
-            Vector3 destinaiton = FindMovablePos();
-            navAgent.SetDestination(destinaiton);
+            Vector3 destination = FindMovablePos();
+            navAgent.SetDestination(destination);
         }
 	}
 

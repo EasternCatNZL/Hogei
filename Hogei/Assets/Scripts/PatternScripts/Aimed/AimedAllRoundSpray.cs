@@ -16,11 +16,10 @@ public class AimedAllRoundSpray : MonoBehaviour {
 
     [Header("Angle Control")]
     [Tooltip("Angle change per shot in spray")]
-    public float angleChangePerShot = 1.0f;
-    [Tooltip("Positive or negative (1 or -1)")]
+    public float angleChangePerShot = 20.0f;
 
     [Header("Tags")]
-    public string bulletBankTag = "Bullet Bank";
+    //public string bulletBankTag = "Bullet Bank";
     [Tooltip("Target Tag")]
     public string targetTag = "Player";
 
@@ -46,17 +45,17 @@ public class AimedAllRoundSpray : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !enemyState.isPaused)
         {
             if (Time.time > timeLastSprayFired + timeBetweenSprays)
             {
-                StartCoroutine(BulletSprayRoutine());
+               BulletSpray();
             }
         }
     }
 
     //bullet firing coroutine
-    private IEnumerator BulletSprayRoutine()
+    private void BulletSpray()
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
@@ -98,8 +97,5 @@ public class AimedAllRoundSpray : MonoBehaviour {
             //add the amount angle changed to current angle total
             currentAngleTotal += angleChangePerShot;
         }
-
-        //wait for next spray
-        yield return new WaitForSecondsRealtime(timeBetweenSprays);
     }
 }

@@ -80,11 +80,11 @@ public class AdjustableCircularSpray : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !enemyState.isPaused)
         {
             if (Time.time > timeLastSprayFired + scaledTimeBetweenSprays)
             {
-                BulletSprayRoutine();
+                BulletSpray();
             }
         }
     }
@@ -148,7 +148,7 @@ public class AdjustableCircularSpray : MonoBehaviour {
     }
 
     //coroutine version of bullet spray
-    private void BulletSprayRoutine()
+    private void BulletSpray()
     {
         GetAngleBetweenSprays();
 
