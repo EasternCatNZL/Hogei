@@ -65,6 +65,9 @@ public class Demarcation : MonoBehaviour {
     //control vars
     private float timeLastSprayFired = 0.0f; //the time last spray began
     private float currentAngleTotal = 0.0f; //the current angle the bullet is angled at in regards to owner
+    private float pauseStartTime = 0.0f; //the time when pause starts
+    private float pauseEndTime = 0.0f; //the time when pause ends
+    private bool isPaused = false; //check if paused
 
     // Use this for initialization
     void Start () {
@@ -74,13 +77,27 @@ public class Demarcation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !isPaused)
         {
-            if (Time.time > timeLastSprayFired + timeBetweenSprays)
+            if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
             {
-               BulletSprayRoutine();
+               BulletSpray();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        print("Unsubscribed to event");
     }
 
     //scales the values based on how deep the player is
@@ -112,15 +129,18 @@ public class Demarcation : MonoBehaviour {
     }
 
     //bullet firing coroutine
-    private void BulletSprayRoutine()
+    private void BulletSpray()
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
 
+        //if pause was enacted before this shot, reset the vars
+        pauseStartTime = 0.0f;
+        pauseEndTime = 0.0f;
 
-            //get a random starting angle
-            //float angle = Random.Range(0.0f, 360.0f);
-            float angle = 0.0f;
+        //get a random starting angle
+        //float angle = Random.Range(0.0f, 360.0f);
+        float angle = 0.0f;
             //for each wave
             for (int j = 0; j < scaledNumBulletLayers; j++)
             {
@@ -187,4 +207,16 @@ public class Demarcation : MonoBehaviour {
             }
     }
 
+    //Pause events
+    void OnPause()
+    {
+        pauseStartTime = Time.time;
+        isPaused = true;
+    }
+
+    void OnUnpause()
+    {
+        pauseEndTime = Time.time;
+        isPaused = false;
+    }
 }

@@ -68,6 +68,9 @@ public class AimedProngedShot : MonoBehaviour {
 
     private float timeLastSprayFired = 0.0f; //the time last spray began
     private float currentAngle = 0.0f; //the current angle the bullet is angled at in regards to owner
+    private float pauseStartTime = 0.0f; //the time when pause starts
+    private float pauseEndTime = 0.0f; //the time when pause ends
+    private bool isPaused = false; //check if paused
 
     // Use this for initialization
     void Start()
@@ -86,13 +89,27 @@ public class AimedProngedShot : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (enemyState.GetIsActive() && !enemyState.isPaused)
+        if (enemyState.GetIsActive() && !isPaused)
         {
-            if (Time.time > timeLastSprayFired + scaledTimeBetweenSprays)
+            if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
             {
                 BulletSpray();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        print("Unsubscribed to event");
     }
 
     //scales the values based on how deep player is
@@ -144,6 +161,10 @@ public class AimedProngedShot : MonoBehaviour {
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
+
+        //if pause was enacted before this shot, reset the vars
+        pauseStartTime = 0.0f;
+        pauseEndTime = 0.0f;
 
         //speed var
         float speed = scaledBulletSpeed;
@@ -201,5 +222,18 @@ public class AimedProngedShot : MonoBehaviour {
             //increment the speed between layers
             speed += layerSpeedIncrementValue;
         }
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        pauseStartTime = Time.time;
+        isPaused = true;
+    }
+
+    void OnUnpause()
+    {
+        pauseEndTime = Time.time;
+        isPaused = false;
     }
 }

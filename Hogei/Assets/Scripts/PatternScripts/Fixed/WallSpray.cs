@@ -55,6 +55,9 @@ public class WallSpray : MonoBehaviour {
 
     //control vars
     private float timeLastSprayFired = 0.0f; //the time last spray began
+    private float pauseStartTime = 0.0f; //the time when pause starts
+    private float pauseEndTime = 0.0f; //the time when pause ends
+    private bool isPaused = false; //check if paused
 
     // Use this for initialization
     void Start () {
@@ -64,13 +67,27 @@ public class WallSpray : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !isPaused)
         {
-            if (Time.time > timeLastSprayFired + scaledTimeBetweenSprays)
+            if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
             {
-                BulletSprayRoutine();
+                BulletSpray();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        print("Unsubscribed to event");
     }
 
     //scales values based on how deep player is
@@ -101,10 +118,14 @@ public class WallSpray : MonoBehaviour {
     }
 
     //bullet firing coroutine
-    private void BulletSprayRoutine()
+    private void BulletSpray()
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
+
+        //if pause was enacted before this shot, reset the vars
+        pauseStartTime = 0.0f;
+        pauseEndTime = 0.0f;
 
         //for each wave
         for (int i = 0; i < scaledNumBulletWaves; i++)
@@ -141,7 +162,18 @@ public class WallSpray : MonoBehaviour {
             //setup the bullet
             bullet2.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, 90.0f, scaledBulletSpeed);
         }
+    }
 
-        //yield return new WaitForSecondsRealtime(scaledTimeBetweenSprays);
+    //Pause events
+    void OnPause()
+    {
+        pauseStartTime = Time.time;
+        isPaused = true;
+    }
+
+    void OnUnpause()
+    {
+        pauseEndTime = Time.time;
+        isPaused = false;
     }
 }

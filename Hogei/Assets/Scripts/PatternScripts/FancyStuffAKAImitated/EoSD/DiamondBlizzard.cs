@@ -28,6 +28,9 @@ public class DiamondBlizzard : MonoBehaviour {
     //control vars
     private float timeLastSprayFired = 0.0f; //the time last spray began
     private float angleChangePerShot = 0.0f; //the angle change between each shot
+    private float pauseStartTime = 0.0f; //the time when pause starts
+    private float pauseEndTime = 0.0f; //the time when pause ends
+    private bool isPaused = false; //check if paused
 
     // Use this for initialization
     void Start () {
@@ -38,13 +41,27 @@ public class DiamondBlizzard : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (enemyState.GetIsActive())
+        if (enemyState.GetIsActive() && !isPaused)
         {
-            if (Time.time > timeLastSprayFired + timeBetweenSprays)
+            if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
             {
                 BulletSpray();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        print("Unsubscribed to event");
     }
 
     //bullet spray function
@@ -52,6 +69,10 @@ public class DiamondBlizzard : MonoBehaviour {
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
+
+        //if pause was enacted before this shot, reset the vars
+        pauseStartTime = 0.0f;
+        pauseEndTime = 0.0f;
 
         //get a random x and z around self
         float randomX = Random.Range(-maxDistanceFromSelf, maxDistanceFromSelf);
@@ -83,6 +104,18 @@ public class DiamondBlizzard : MonoBehaviour {
             //increment angle change
             angleChange += angleChangePerShot;
         }
+    }
 
+    //Pause events
+    void OnPause()
+    {
+        pauseStartTime = Time.time;
+        isPaused = true;
+    }
+
+    void OnUnpause()
+    {
+        pauseEndTime = Time.time;
+        isPaused = false;
     }
 }

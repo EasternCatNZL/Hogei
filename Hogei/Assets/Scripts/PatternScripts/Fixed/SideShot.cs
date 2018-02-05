@@ -17,6 +17,9 @@ public class SideShot : MonoBehaviour {
 
     //control vars
     private float timeLastSprayFired = 0.0f; //the time last spray began
+    private float pauseStartTime = 0.0f; //the time when pause starts
+    private float pauseEndTime = 0.0f; //the time when pause ends
+    private bool isPaused = false; //check if paused
 
     // Use this for initialization
     void Start () {
@@ -25,17 +28,38 @@ public class SideShot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time > timeLastSprayFired + timeBetweenSprays)
+        if (!isPaused)
         {
-            ShootBullets();
+            if (Time.time > timeLastSprayFired + timeBetweenSprays)
+            {
+                ShootBullets();
+            }
         }
 	}
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        print("Unsubscribed to event");
+    }
 
     //bullet firing logic
     private void ShootBullets()
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
+
+        //if pause was enacted before this shot, reset the vars
+        pauseStartTime = 0.0f;
+        pauseEndTime = 0.0f;
 
         //create a bullet object
         GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
@@ -57,5 +81,18 @@ public class SideShot : MonoBehaviour {
         bullet2.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
         //DEBUG: name enemy for management
         bullet2.name = "Left bullet";
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        pauseStartTime = Time.time;
+        isPaused = true;
+    }
+
+    void OnUnpause()
+    {
+        pauseEndTime = Time.time;
+        isPaused = false;
     }
 }
