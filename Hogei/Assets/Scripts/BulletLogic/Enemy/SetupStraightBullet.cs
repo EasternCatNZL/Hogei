@@ -68,6 +68,7 @@ public class SetupStraightBullet : MonoBehaviour {
         startDelay = delay;
         angleChange = angle;
         travelSpeed = speed;
+        setupDestination = transform.position + (transform.forward * setupDestinationDistance);
         isStarting = true;
     }
 

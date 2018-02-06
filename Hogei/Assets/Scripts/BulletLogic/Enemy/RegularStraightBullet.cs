@@ -35,6 +35,20 @@ public class RegularStraightBullet : MonoBehaviour {
         }
 	}
 
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
+
     //set up func
     public void SetupVars(float speed)
     {
@@ -42,25 +56,6 @@ public class RegularStraightBullet : MonoBehaviour {
         travelSpeed = speed;
         //bulletFireSound.Play();
     }
-
-    ////ref func
-    //public void SetBulletBank(BulletBank bank)
-    //{
-    //    bulletBank = bank;
-    //}
-
-    ////deactivate func
-    //private void Deactivate()
-    //{
-    //    //set active to false
-    //    isActive = false;
-    //    //reset values
-    //    myRigid.velocity = Vector3.zero;
-    //    travelSpeed = 0;
-    //    //return to queue
-    //    bulletBank.ReturnRegularStraightBullet(gameObject);
-    //    transform.position = bulletBank.transform.position;
-    //}
 
     //collision = deactivate
     private void OnCollisionEnter(Collision collision)
@@ -71,7 +66,17 @@ public class RegularStraightBullet : MonoBehaviour {
             collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
             
         }
-        //Deactivate();
         Destroy(gameObject);
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isActive = false;
+    }
+
+    void OnUnpause()
+    {
+        isActive = true;
     }
 }

@@ -41,14 +41,14 @@ public class WhatCanIDO : MonoBehaviour {
     {
         PauseHandler.PauseEvent += OnPause;
         PauseHandler.UnpauseEvent += OnUnpause;
-        print("Subscribed to event");
+        //print("Subscribed to event");
     }
 
     private void OnDisable()
     {
         PauseHandler.PauseEvent -= OnPause;
         PauseHandler.UnpauseEvent -= OnUnpause;
-        print("Unsubscribed to event");
+        //print("Unsubscribed to event");
     }
 
     //Pause events

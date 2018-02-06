@@ -52,6 +52,20 @@ public class PlayerHomingBullet : MonoBehaviour {
         }
     }
 
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
+
     //set up func
     public void SetupVars(float speed, float hominTime, float hominStartDelay)
     {
@@ -63,12 +77,6 @@ public class PlayerHomingBullet : MonoBehaviour {
         //lastAdjustTime = 0.0f;
         GetTargets();
     }
-
-    //ref func
-    //public void SetBulletBank(BulletBank bank)
-    //{
-    //    bulletBank = bank;
-    //}
 
     //find all possible targets active in scene
     private void GetTargets()
@@ -149,10 +157,10 @@ public class PlayerHomingBullet : MonoBehaviour {
     private void Deactivate()
     {
         //set active to false
-        isActive = false;
+        //isActive = false;
         //reset values
-        myRigid.velocity = Vector3.zero;
-        travelSpeed = 0;
+        //myRigid.velocity = Vector3.zero;
+        //travelSpeed = 0;
         //maxHomingTime = 0;
         //return to queue
         //bulletBank.ReturnPlayerHomingBullet(gameObject);
@@ -171,5 +179,16 @@ public class PlayerHomingBullet : MonoBehaviour {
         }
         GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
         Deactivate();        
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isActive = false;
+    }
+
+    void OnUnpause()
+    {
+        isActive = true;
     }
 }

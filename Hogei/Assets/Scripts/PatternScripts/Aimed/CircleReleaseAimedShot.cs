@@ -77,6 +77,10 @@ public class CircleReleaseAimedShot : MonoBehaviour {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
 
+        //if pause was enacted before this shot, reset the vars
+        pauseStartTime = 0.0f;
+        pauseEndTime = 0.0f;
+
         //float to track angle change
         float angleChange = 0;
         //until angle change >= 360

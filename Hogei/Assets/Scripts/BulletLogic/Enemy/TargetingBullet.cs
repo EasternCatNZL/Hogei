@@ -27,8 +27,15 @@ public class TargetingBullet : MonoBehaviour {
 
     //control vars
     private float startTime = 0.0f;
+    private float setupStartTime = 0.0f;
+    private float pauseStartTime = 0.0f;
+
     public bool isStarting = false;
     private bool isActive = false;
+    private bool isSettingUp = false;
+    private bool isReady = false;
+    private bool isMoving = false;
+    private bool isPaused = false;
 
     private Rigidbody myRigid;
 
@@ -40,10 +47,37 @@ public class TargetingBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isStarting)
+        //check if not paused first
+        if (!isPaused)
         {
-            SetUp();
+            if (isStarting)
+            {
+                SetUp();
+            }
+            else if (isSettingUp && transform.position == setupDestination)
+            {
+                Aim();
+            }
+            else if (isReady && Time.time > startTime + startDelay)
+            {
+                Move();
+            }
         }
+        
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
     }
 
     //sets up vars for bullet behaviour
@@ -55,39 +89,103 @@ public class TargetingBullet : MonoBehaviour {
         travelSpeed = speed;
         isStarting = true;
         targetTag = tag;
+        //get destination
+        setupDestination = transform.position + (transform.forward * setupDestinationDistance);
 
-        print("Variables set");
+        //print("Variables set");
     }
 
     //func called when setup ready
     private void SetUp()
     {
+        //change check vars
         isStarting = false;
-        setupDestination = transform.position + (transform.forward * setupDestinationDistance);
+        isSettingUp = true;
+        //set timing
+        setupStartTime = Time.time;
+
+        //move
         transform.DOMove(setupDestination, setupTime, false);
+
         //play audio
         //bulletFireSound.Play();
-        //transform.DOMove(new Vector3(2, 1, 3), 2, false);
-        StartCoroutine(BeginMove());
-
-        print("Set up");
     }
 
-    private IEnumerator BeginMove()
+    //private IEnumerator BeginMove()
+    //{
+    //    print("Beggining move");
+
+    //    //waits for setup to finish
+    //    yield return new WaitForSecondsRealtime(startDelay);
+    //    //gets a new rotation
+    //    //Quaternion newRotation = new Quaternion();
+
+    //    //set facing target
+    //    transform.LookAt(GameObject.FindGameObjectWithTag(targetTag).transform.position);
+
+    //    //start moving
+    //    myRigid.velocity = transform.forward * travelSpeed;
+    //    //play audio
+    //    //bulletChangeDirectionSound.Play();
+    //}
+
+    private void Aim()
     {
-        print("Beggining move");
-
-        //waits for setup to finish
-        yield return new WaitForSecondsRealtime(startDelay);
-        //gets a new rotation
-        Quaternion newRotation = new Quaternion();
-
+        //change check vars
+        isSettingUp = false;
+        isReady = true;
         //set facing target
         transform.LookAt(GameObject.FindGameObjectWithTag(targetTag).transform.position);
+        //set timing
+        startTime = Time.time;
+    }
 
+    private void Move()
+    {
+        //change check vars
+        isReady = false;
+        isMoving = true;
         //start moving
         myRigid.velocity = transform.forward * travelSpeed;
-        //play audio
-        //bulletChangeDirectionSound.Play();
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isPaused = true;
+        //suspend current action and prepare required vars to resume
+        if (isSettingUp)
+        {
+            //overwrite the dotween func
+            transform.DOMove(transform.position, 0.0f, false);
+            //alter setup time 
+            setupTime = (setupStartTime + setupTime) - Time.time;
+        }
+        else if (isReady){
+            //set pause start time, needed to adjust the delay
+            pauseStartTime = Time.time;
+        }
+        else if (isMoving)
+        {
+            myRigid.velocity = Vector3.zero;
+        }
+    }
+
+    private void OnUnpause()
+    {
+        isPaused = false;
+        //continue suspended action
+        if (isSettingUp)
+        {
+            SetUp();
+        }
+        else if (isReady)
+        {
+            startDelay += Time.time - pauseStartTime;
+        }
+        else if (isMoving)
+        {
+            myRigid.velocity = transform.forward * travelSpeed;
+        }
     }
 }

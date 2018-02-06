@@ -34,6 +34,9 @@ public class AimedAllRoundSpray : MonoBehaviour {
     private float pauseEndTime = 0.0f; //the time when pause ends
     private bool isPaused = false; //check if paused
 
+    //debug
+    private bool wasPaused = false;
+
     //target ref
     private GameObject target;
 
@@ -52,7 +55,14 @@ public class AimedAllRoundSpray : MonoBehaviour {
         {
             if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
             {
-               BulletSpray();
+                print("Time between shots:" + (Time.time - timeLastSprayFired + timeBetweenSprays));
+                if (wasPaused)
+                {
+                    print("Pause time:" + (pauseEndTime - pauseStartTime));
+                    print("Time between shots + pause time calc: " + (Time.time - timeLastSprayFired + timeBetweenSprays) + (pauseEndTime - pauseStartTime));
+                    wasPaused = false;
+                }
+                BulletSpray();
             }
         }
     }
@@ -61,14 +71,14 @@ public class AimedAllRoundSpray : MonoBehaviour {
     {
         PauseHandler.PauseEvent += OnPause;
         PauseHandler.UnpauseEvent += OnUnpause;
-        print("Subscribed to event");
+        //print("Subscribed to event");
     }
 
     private void OnDisable()
     {
         PauseHandler.PauseEvent -= OnPause;
         PauseHandler.UnpauseEvent -= OnUnpause;
-        print("Unsubscribed to event");
+        //print("Unsubscribed to event");
     }
 
     //bullet firing coroutine
@@ -125,6 +135,7 @@ public class AimedAllRoundSpray : MonoBehaviour {
     {
         pauseStartTime = Time.time;
         isPaused = true;
+        wasPaused = true;
     }
 
     void OnUnpause()

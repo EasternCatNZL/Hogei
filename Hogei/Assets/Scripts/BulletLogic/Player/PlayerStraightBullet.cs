@@ -42,6 +42,20 @@ public class PlayerStraightBullet : MonoBehaviour {
         }
     }
 
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
+
     //set up func
     public void SetupVars(float speed, float travelDist, bool expire)
     {
@@ -73,17 +87,20 @@ public class PlayerStraightBullet : MonoBehaviour {
     //deactivate func
     private void Deactivate()
     {
-        ////set active to false
-        //isActive = false;
-        ////reset values
-        //myRigid.velocity = Vector3.zero;
-        //travelSpeed = 0;
-        //maxTravelDistance = 0;
-        //doExpire = false;
-        //startPos = Vector3.zero;
-        ////return to queue
-        //bulletBank.ReturnPlayerStraightBullet(gameObject);
-        //transform.position = bulletBank.transform.position;
+        /*
+        //set active to false
+        isActive = false;
+        //reset values
+        myRigid.velocity = Vector3.zero;
+        travelSpeed = 0;
+        maxTravelDistance = 0;
+        doExpire = false;
+        startPos = Vector3.zero;
+        //return to queue
+        bulletBank.ReturnPlayerStraightBullet(gameObject);
+        transform.position = bulletBank.transform.position;
+        */
+
         Destroy(gameObject);
     }
 
@@ -98,5 +115,16 @@ public class PlayerStraightBullet : MonoBehaviour {
         //Deactivate();
         GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isActive = false;
+    }
+
+    void OnUnpause()
+    {
+        isActive = true;
     }
 }
