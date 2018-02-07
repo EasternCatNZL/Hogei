@@ -17,6 +17,9 @@ public class RoomRotatingMovement : MonoBehaviour {
     [Tooltip("Speed that enemies rotate at")]
     public float rotationSpeed = 20.0f;
 
+    //control vars
+    private bool isPaused = false;
+
     //enemies ref
     List<GameObject> enemiesList = new List<GameObject>();
 
@@ -28,9 +31,27 @@ public class RoomRotatingMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-        EnemiesLookCenter();
+        if (!isPaused)
+        {
+            transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+            EnemiesLookCenter();
+        }
+        
 	}
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
 
     //spread out enemies
     private void SpreadEnemies()
@@ -63,5 +84,18 @@ public class RoomRotatingMovement : MonoBehaviour {
         {
             enemiesList[i].transform.LookAt(transform.position);
         }
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isPaused = true;
+
+    }
+
+    private void OnUnpause()
+    {
+        isPaused = false;
+
     }
 }

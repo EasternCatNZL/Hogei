@@ -16,6 +16,9 @@ public class RoomPerimeterEnemyMovement : MonoBehaviour {
     [HideInInspector]
     public int currentWaypointIndex = 0; //current index in waypoint
     private Vector3 currentDestination; //where the enemy is currently moving
+    private float travelStartTime = 0.0f; //time travelling to next point began, needed for pause timing
+    private float tempTravelTime = 0.0f; //used when leaving pause
+    private bool isPaused = false; //check if game paused
 
     // Use this for initialization
     void Start () {
@@ -25,21 +28,30 @@ public class RoomPerimeterEnemyMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        CheckArrivedAtWaypoint();
+        if (!isPaused)
+        {
+            CheckArrivedAtWaypoint();
+        }
+        
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
     }
 
     //movement logic between waypoints
     private void MoveToNextWaypoints()
     {
-        ////get previous waypoint num, if at 0, get last in count
-        //int prevWaypoint = 0;
-        //if (currentWaypointIndex == 0)
-        //{
-        //    prevWaypoint = roomMovement.waypoints.Count - 1;
-        //}
-        ////get time variable that is somewhat consistent over distance
-        //float timeToTravel = (Vector3.Distance(roomMovement.waypoints[currentWaypointIndex], roomMovement.waypoints[prevWaypoint])) / travelSpeed;
-        //tween to next destination over this amount of time
         transform.DOMove(currentDestination, travelTime, false);
         //look at the next waypoint
         transform.rotation = Quaternion.LookRotation(currentDestination - transform.position);
@@ -64,6 +76,7 @@ public class RoomPerimeterEnemyMovement : MonoBehaviour {
             currentDestination = roomMovement.waypoints[currentWaypointIndex];
             //begin moving towards new destination
             MoveToNextWaypoints();
+            travelStartTime = Time.time;
         }
     }
 
@@ -71,5 +84,24 @@ public class RoomPerimeterEnemyMovement : MonoBehaviour {
     public void SetRoomPeriMoveRef(RoomPerimeterMovement script)
     {
         roomMovement = script;
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isPaused = true;
+        //kill tween
+        DOTween.Kill(transform);
+        //get temp travel time
+        tempTravelTime = (travelStartTime + travelTime) - Time.time;
+    }
+
+    private void OnUnpause()
+    {
+        isPaused = false;
+        //resume movement
+        transform.DOMove(currentDestination, tempTravelTime, false);
+        //reset travel start time
+        travelStartTime = Time.time;
     }
 }

@@ -12,6 +12,10 @@ public class MultiStepBullet : MonoBehaviour {
     [Header("Steps")]
     public int numSteps = 0;
 
+    [Header("Particle effect")]
+    [Tooltip("Particle emitted by bullet on impact")]
+    public GameObject particleObject;
+
     //set up vars
     [HideInInspector]
     public float travelSpeed = 2.0f;
@@ -27,9 +31,13 @@ public class MultiStepBullet : MonoBehaviour {
     //control vars
     private int currentStep = 0;
     private float startTime = 0.0f;
+    private float tempSetupTime = 0.0f;
+    private float setupStartTime = 0.0f;
+
     public bool isStarting = false;
     private bool isMoving = false;
     private bool stepsFinished = false;
+    private bool isPaused = false;
     private Vector3 currentDestination = Vector3.zero;
 
     private Rigidbody myRigid;
@@ -47,6 +55,20 @@ public class MultiStepBullet : MonoBehaviour {
         {
             Step();
         }
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
     }
 
     //sets up vars for bullet behaviour
@@ -70,6 +92,7 @@ public class MultiStepBullet : MonoBehaviour {
             newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.eulerAngles.y + angleChanges[currentStep - 1], 0.0f);
             transform.rotation = newRotation;
         }
+
         //manage movement
         //if finished steps, move straight
         if (currentStep == numSteps)
@@ -84,6 +107,8 @@ public class MultiStepBullet : MonoBehaviour {
             currentDestination = transform.position + (transform.forward * setupDistances[currentStep]);
             //begin the movement
             transform.DOMove(currentDestination, setupTime, false);
+            //get timing
+            setupStartTime = Time.time;
             //increment step
             currentStep++;
         }
@@ -97,5 +122,54 @@ public class MultiStepBullet : MonoBehaviour {
             hasArrived = true;
         }
         return hasArrived;
+    }
+
+    //Pause events
+    void OnPause()
+    {
+        isPaused = true;
+        //if steps finished, stop movement
+        if (stepsFinished)
+        {
+            myRigid.velocity = Vector3.zero;
+        }
+        //still setting up
+        else
+        {
+            //kill tween
+            DOTween.Kill(transform);
+            //transform.DOMove(transform.position, 0.0f, false);
+            //get tempoary setup time
+            tempSetupTime = (setupStartTime + setupTime) - Time.time;
+        }
+    }
+
+    void OnUnpause()
+    {
+        isPaused = false;
+        //if steps finished, resume straight movement
+        if (stepsFinished)
+        {
+            myRigid.velocity = transform.forward * travelSpeed;
+        }
+        //still setting up
+        else
+        {
+            //resume tween using temp setup time
+            transform.DOMove(currentDestination, tempSetupTime, false);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //any collision
+        if (collision.gameObject.GetComponent<EntityHealth>())
+        {
+            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+            //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+        }
+        //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+        //Deactivate();
+        Destroy(gameObject);
     }
 }

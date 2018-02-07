@@ -16,6 +16,7 @@ public class PassageEnemySteeringMove : MonoBehaviour {
     public int currentWaypointIndex = 0; //current index in waypoint
     private Transform currentDestination; //where the enemy is currently moving
     private Rigidbody myRigid;
+    private bool isPaused = false;
 
     // Use this for initialization
     void Start () {
@@ -25,11 +26,29 @@ public class PassageEnemySteeringMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        CheckArrivedAtWaypoint();
-        if (currentDestination)
+        if (!isPaused)
         {
-            SteerToDestination();
+            CheckArrivedAtWaypoint();
+            if (currentDestination)
+            {
+                SteerToDestination();
+            }
         }
+        
+    }
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
     }
 
     ////movement logic between waypoints
@@ -44,6 +63,7 @@ public class PassageEnemySteeringMove : MonoBehaviour {
     //}
 
     //steer to destination
+
     private void SteerToDestination()
     {
         //get vector towards target
@@ -78,5 +98,16 @@ public class PassageEnemySteeringMove : MonoBehaviour {
         currentWaypointIndex++;
         //set the current destination to new index
         currentDestination = waypointManager.waypointList[currentWaypointIndex];
+    }
+
+    private void OnPause()
+    {
+        isPaused = false;
+        myRigid.velocity = Vector3.zero;
+    }
+
+    private void OnUnpause()
+    {
+        isPaused = false;
     }
 }

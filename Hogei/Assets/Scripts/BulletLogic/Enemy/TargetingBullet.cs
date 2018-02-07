@@ -13,6 +13,10 @@ public class TargetingBullet : MonoBehaviour {
     [Tooltip("Travel speed of bullet")]
     public float travelSpeed = 2.0f;
 
+    [Header("Particle effect")]
+    [Tooltip("Particle emitted by bullet on impact")]
+    public GameObject particleObject;
+
     //set up vars
     [HideInInspector]
     public Vector3 setupDestination = new Vector3(0, 0, 0);
@@ -156,8 +160,9 @@ public class TargetingBullet : MonoBehaviour {
         //suspend current action and prepare required vars to resume
         if (isSettingUp)
         {
-            //overwrite the dotween func
-            transform.DOMove(transform.position, 0.0f, false);
+            //kill tween
+            DOTween.Kill(transform);
+            //transform.DOMove(transform.position, 0.0f, false);
             //alter setup time 
             setupTime = (setupStartTime + setupTime) - Time.time;
         }
@@ -187,5 +192,18 @@ public class TargetingBullet : MonoBehaviour {
         {
             myRigid.velocity = transform.forward * travelSpeed;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //any collision
+        if (collision.gameObject.GetComponent<EntityHealth>())
+        {
+            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+            //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+        }
+        //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+        //Deactivate();
+        Destroy(gameObject);
     }
 }
