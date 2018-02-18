@@ -83,7 +83,7 @@ public class PassageEnemyConstantMove : MonoBehaviour {
         tempTravelTime = (travelStartTime + timeToTravel) - Time.time;
     }
 
-    void Unpause()
+    void OnUnpause()
     {
         isPaused = false;
         //resume movement

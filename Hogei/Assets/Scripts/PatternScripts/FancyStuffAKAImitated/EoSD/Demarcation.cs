@@ -142,7 +142,7 @@ public class Demarcation : MonoBehaviour {
         //float angle = Random.Range(0.0f, 360.0f);
         float angle = 0.0f;
             //for each wave
-            for (int j = 0; j < scaledNumBulletLayers; j++)
+            for (int j = 0; j < numBulletLayers; j++)
             {
                 
                 //reset current angle total between bullet rings
@@ -173,7 +173,7 @@ public class Demarcation : MonoBehaviour {
                     float setupRotationChange = transform.eulerAngles.y + bulletAngleChange;
 
                     //set up first bullet variables
-                    bulletClone.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, setupRotationChange, scaledBulletSpeed);
+                    bulletClone.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, setupRotationChange, patternBulletSpeed);
 
                     //create second shot
                     //get the current angle as a quaternion
@@ -197,12 +197,12 @@ public class Demarcation : MonoBehaviour {
                     setupRotationChange = transform.eulerAngles.y - bulletAngleChange;
 
                     //set up second bullet variables <- angle change negative of first
-                    bulletClone2.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, setupRotationChange, scaledBulletSpeed);
+                    bulletClone2.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, setupRotationChange, patternBulletSpeed);
 
                     //change the angle between shots
-                    angle += scaledAngleChangePerShot;
+                    angle += angleChangePerShot;
                     //add the amount angle changed to current angle total
-                    currentAngleTotal += scaledAngleChangePerShot;
+                    currentAngleTotal += angleChangePerShot;
                 }
             }
     }

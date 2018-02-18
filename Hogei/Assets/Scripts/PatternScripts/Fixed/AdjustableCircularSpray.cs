@@ -90,20 +90,21 @@ public class AdjustableCircularSpray : MonoBehaviour {
                 BulletSpray();
             }
         }
+        //print("bruh");
     }
 
     private void OnEnable()
     {
         PauseHandler.PauseEvent += OnPause;
         PauseHandler.UnpauseEvent += OnUnpause;
-        print("Subscribed to event");
+        //print("Subscribed to event");
     }
 
     private void OnDisable()
     {
         PauseHandler.PauseEvent -= OnPause;
         PauseHandler.UnpauseEvent -= OnUnpause;
-        print("Unsubscribed to event");
+        //print("Unsubscribed to event");
     }
 
     //get the angle change between sprays based on number of specified sprays
@@ -167,6 +168,7 @@ public class AdjustableCircularSpray : MonoBehaviour {
     //coroutine version of bullet spray
     private void BulletSpray()
     {
+       // print("Starting");
         GetAngleBetweenSprays();
 
         //set time of last spray to now
@@ -177,10 +179,10 @@ public class AdjustableCircularSpray : MonoBehaviour {
         pauseEndTime = 0.0f;
 
         //for the number of shots in a spray
-        for (int i = 0; i < scaledNumBulletsPerSpray; i++)
+        for (int i = 0; i < numBulletsPerSpray; i++)
         {
             //for the number of sprays per call
-            for (int j = 0; j < scaledNumSprays; j++)
+            for (int j = 0; j < numSprays; j++)
             {
                 //get an altered angle based on which spray
                 float alteredAngle = currentAngle + (angleChangeBetweenSprays * j);
@@ -194,16 +196,16 @@ public class AdjustableCircularSpray : MonoBehaviour {
                 //set the bullet's rotation to current rotation
                 bullet.transform.rotation = alteredRotation;
                 //setup the bullet and fire
-                bullet.GetComponent<RegularStraightBullet>().SetupVars(scaledBulletSpeed);
+                bullet.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
             }
             //change the angle between shots
-            currentAngle += scaledAngleChangePerShot * rotationDirection;
+            currentAngle += angleChangePerShot * rotationDirection;
         }
         //wait for the next spray
         //yield return new WaitForSecondsRealtime(scaledTimeBetweenSprays);
 
         //increase angle in prep of next spray
-        currentAngle += scaledAngleChangePerSpray * rotationDirection;
+        currentAngle += angleChangePerSpray * rotationDirection;
     }
 
     //Pause events
