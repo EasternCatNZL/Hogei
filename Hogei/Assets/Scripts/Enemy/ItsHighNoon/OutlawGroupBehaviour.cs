@@ -17,7 +17,7 @@ public class OutlawGroupBehaviour : MonoBehaviour {
     public GameObject[] enemyGroupArray = new GameObject[0];
 
     [Header("Tags")]
-    public string targetTag = "PLayer";
+    public string targetTag = "Player";
 
     //control vars
     private bool hasSetup = false;
@@ -42,6 +42,8 @@ public class OutlawGroupBehaviour : MonoBehaviour {
             float myDistance = startDistance + (stepDistance * i);
             //setup the vars for the enemy
             enemyGroupArray[i].GetComponent<OutlawBehaviour>().SetupVars(myDistance, setupTime);
+            enemyGroupArray[i].GetComponent<OutlawBehaviour>().MoveToSetupLocation();
+
         }
     }
 
@@ -49,9 +51,11 @@ public class OutlawGroupBehaviour : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //check other
-        if (other.gameObject.CompareTag(targetTag))
+        if (other.gameObject.CompareTag(targetTag) && !hasSetup)
         {
             Setup();
+            //change has setup to true
+            hasSetup = true;
         }
     }
 }
