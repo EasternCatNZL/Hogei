@@ -1318,7 +1318,7 @@ MonoBehaviour:
   timeBetweenSprays: 3
   minTimeBetweenSprays: 0.2
   scaledTimeBetweenSprays: 0
-  bulletObject: {fileID: 1324714931859808, guid: dbed68e095856564aa98102c59597ea6,
+  bulletObject: {fileID: 1258841481705456, guid: 7a100f276fd1a36479737516d510d774,
     type: 2}
   numBulletLayers: 1
   maxNumBulletLayers: 5
@@ -1359,6 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isPaused: 0
 --- !u!114 &114927215775766294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1372,7 +1373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 0
   MaxHealth: 10
-  deathSound: {fileID: 82709289931040794}
 --- !u!136 &136168950880094810
 CapsuleCollider:
   m_ObjectHideFlags: 1
