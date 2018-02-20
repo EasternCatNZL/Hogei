@@ -16,6 +16,10 @@ public class MultiStepBullet : MonoBehaviour {
     [Tooltip("Particle emitted by bullet on impact")]
     public GameObject particleObject;
 
+    [Header("Lifetime")]
+    [Tooltip("Lifetime of the bullet")]
+    public float lifeTime = 5.0f;
+
     //set up vars
     [HideInInspector]
     public float travelSpeed = 2.0f;
@@ -33,6 +37,8 @@ public class MultiStepBullet : MonoBehaviour {
     private float startTime = 0.0f;
     private float tempSetupTime = 0.0f;
     private float setupStartTime = 0.0f;
+    private float pauseStartTime = 0.0f;
+    private float pauseEndTime = 0.0f;
 
     public bool isStarting = false;
     private bool isMoving = false;
@@ -51,9 +57,16 @@ public class MultiStepBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (CheckArrived() && !stepsFinished)
+        if (!isPaused)
         {
-            Step();
+            if (CheckArrived() && !stepsFinished)
+            {
+                Step();
+            }
+            if (Time.time > startTime + lifeTime + (pauseEndTime - pauseStartTime))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -128,6 +141,7 @@ public class MultiStepBullet : MonoBehaviour {
     void OnPause()
     {
         isPaused = true;
+        pauseStartTime += Time.time;
         //if steps finished, stop movement
         if (stepsFinished)
         {
@@ -146,7 +160,9 @@ public class MultiStepBullet : MonoBehaviour {
 
     void OnUnpause()
     {
+        pauseEndTime += Time.time;
         isPaused = false;
+
         //if steps finished, resume straight movement
         if (stepsFinished)
         {

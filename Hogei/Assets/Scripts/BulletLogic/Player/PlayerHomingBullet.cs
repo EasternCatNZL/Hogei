@@ -125,21 +125,6 @@ public class PlayerHomingBullet : MonoBehaviour {
     //find a target and steer
     private void SteerToTarget()
     {
-        //lastAdjustTime = Time.time;
-
-        ////set a large compare value
-        //float closestDist = 5000.0f;
-
-        ////for all in target array
-        //for(int i = 0; i < targetArray.Length; i++)
-        //{
-        //    //compare the distance, and if closer, make that object the target
-        //    if (closestDist > Vector3.Distance(transform.position, targetArray[i].transform.position))
-        //    {
-        //        target = targetArray[i];
-        //    }
-        //}
-
         //steer towards target
         //get vector towards target
         Vector3 desireVelocity = target.transform.position - transform.position;
@@ -156,16 +141,6 @@ public class PlayerHomingBullet : MonoBehaviour {
     //deactivate func
     private void Deactivate()
     {
-        //set active to false
-        //isActive = false;
-        //reset values
-        //myRigid.velocity = Vector3.zero;
-        //travelSpeed = 0;
-        //maxHomingTime = 0;
-        //return to queue
-        //bulletBank.ReturnPlayerHomingBullet(gameObject);
-        //transform.position = bulletBank.transform.position;
-        //destroy the object
         Destroy(gameObject);
     }
 

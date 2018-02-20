@@ -17,6 +17,10 @@ public class SetupStraightBullet : MonoBehaviour {
     [Tooltip("Particle emitted by bullet on impact")]
     public GameObject particleObject;
 
+    [Header("Lifetime")]
+    [Tooltip("Lifetime of the bullet")]
+    public float lifeTime = 5.0f;
+
     //set up vars
     [HideInInspector]
     public Vector3 setupDestination = new Vector3(0, 0, 0);
@@ -33,6 +37,7 @@ public class SetupStraightBullet : MonoBehaviour {
     private float startTime = 0.0f;
     private float setupStartTime = 0.0f;
     private float pauseStartTime = 0.0f;
+    private float pauseEndTime = 0.0f;
 
     public bool isStarting = false;
     private bool isActive = false;
@@ -70,6 +75,10 @@ public class SetupStraightBullet : MonoBehaviour {
             else if (isSettingUp && transform.position == setupDestination)
             {
                 Move();
+            }
+            if (Time.time > startTime + lifeTime + (pauseEndTime - pauseStartTime))
+            {
+                Destroy(gameObject);
             }
         }
 	}
@@ -153,6 +162,7 @@ public class SetupStraightBullet : MonoBehaviour {
     void OnPause()
     {
         isPaused = true;
+        pauseStartTime += Time.time;
         //suspend current action and prepare required vars to resume
         if (isSettingUp)
         {
@@ -171,6 +181,7 @@ public class SetupStraightBullet : MonoBehaviour {
     private void OnUnpause()
     {
         isPaused = false;
+        pauseEndTime += Time.time;
         //continue suspended action
         if (isSettingUp)
         {
@@ -181,31 +192,6 @@ public class SetupStraightBullet : MonoBehaviour {
             myRigid.velocity = transform.forward * travelSpeed;
         }
     }
-
-    ////ref func
-    //public void SetBulletBank(BulletBank bank)
-    //{
-    //    bulletBank = bank;
-    //}
-
-    ////deactivate func
-    //private void Deactivate()
-    //{
-    //    //set active to false
-    //    isActive = false;
-    //    //reset values
-    //    setupDestination = new Vector3(0, 0, 0);
-    //    setupDestinationDistance = 0.0f;
-    //    setupTime = 0.0f;
-    //    startDelay = 0.0f;
-    //    angleChange = 0.0f;
-    //    travelSpeed = 0;
-    //    myRigid.velocity = Vector3.zero;
-    //    //return to queue
-    //    bulletBank.ReturnSetupStraightBullet(gameObject);
-    //    transform.position = bulletBank.transform.position;
-    //    transform.rotation = Quaternion.identity;
-    //}
 
     //collision = deactivate
     private void OnCollisionEnter(Collision collision)

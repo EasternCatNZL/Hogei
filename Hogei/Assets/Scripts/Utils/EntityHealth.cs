@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityHealth : MonoBehaviour {
+    
+    public delegate void DeathEvent();
+    public static event DeathEvent OnDeath;
 
     bool InvincibilityFrame = false; 
 
@@ -29,6 +32,7 @@ public class EntityHealth : MonoBehaviour {
 	void Update () {
         if(CurrentHealth <= 0.0f)
         {
+            if (gameObject.tag == "Enemy") OnDeath();
             Destroy(gameObject);
             //for room enemies
             if (transform.parent.GetComponent<RoomEnemyManager>())

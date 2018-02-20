@@ -17,6 +17,10 @@ public class TargetingBullet : MonoBehaviour {
     [Tooltip("Particle emitted by bullet on impact")]
     public GameObject particleObject;
 
+    [Header("Lifetime")]
+    [Tooltip("Lifetime of the bullet")]
+    public float lifeTime = 5.0f;
+
     //set up vars
     [HideInInspector]
     public Vector3 setupDestination = new Vector3(0, 0, 0);
@@ -33,6 +37,7 @@ public class TargetingBullet : MonoBehaviour {
     private float startTime = 0.0f;
     private float setupStartTime = 0.0f;
     private float pauseStartTime = 0.0f;
+    private float pauseEndTime = 0.0f;
 
     public bool isStarting = false;
     private bool isActive = false;
@@ -65,6 +70,10 @@ public class TargetingBullet : MonoBehaviour {
             else if (isReady && Time.time > startTime + startDelay)
             {
                 Move();
+            }
+            if (Time.time > startTime + lifeTime + (pauseEndTime - pauseStartTime))
+            {
+                Destroy(gameObject);
             }
         }
         
@@ -157,6 +166,7 @@ public class TargetingBullet : MonoBehaviour {
     void OnPause()
     {
         isPaused = true;
+        pauseStartTime += Time.time;
         //suspend current action and prepare required vars to resume
         if (isSettingUp)
         {
@@ -179,6 +189,7 @@ public class TargetingBullet : MonoBehaviour {
     private void OnUnpause()
     {
         isPaused = false;
+        pauseEndTime += Time.time;
         //continue suspended action
         if (isSettingUp)
         {
