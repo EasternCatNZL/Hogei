@@ -18,6 +18,8 @@ public class CactusSurprise : MonoBehaviour {
     //control vars
     private bool isActivated = false;
 
+    private GameObject[] cactusArray = new GameObject[0];
+
 	// Use this for initialization
 	void Start () {
 		
@@ -36,6 +38,18 @@ public class CactusSurprise : MonoBehaviour {
         {
             //spawn in a cactus object
             GameObject cactusClone = Instantiate(cactusObject, spawnLocationArray[i].position, spawnLocationArray[i].rotation);
+            cactusArray[i] = cactusClone;
+            //cactusClone.GetComponent<CactusRandomSpray>().isActive = true;
+        }
+    }
+
+    //Activate cactus
+    private void ActivateCactus()
+    {
+        //for all cactus
+        for (int i = 0; i < cactusArray.Length; i++)
+        {
+            cactusArray[i].GetComponent<CactusRandomSpray>().isActive = true;
         }
     }
 

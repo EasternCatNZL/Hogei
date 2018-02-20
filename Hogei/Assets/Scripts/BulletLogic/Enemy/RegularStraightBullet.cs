@@ -28,6 +28,7 @@ public class RegularStraightBullet : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        startTime = Time.time;
         myRigid = GetComponent<Rigidbody>();
     }
 	
