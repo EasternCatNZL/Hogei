@@ -19,6 +19,7 @@ public class CactusRandomSpray : MonoBehaviour {
     public float timeBetweenShots = 0.1f;
 
     //control vars
+    [HideInInspector]
     public bool isActive = false; // check if cactus active
     private float timeLastShot = 0.0f; //the time the last shot was fired
 
