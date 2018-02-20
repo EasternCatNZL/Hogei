@@ -14,16 +14,22 @@ public class PlayerStraightBullet : MonoBehaviour {
     [Header("Explosion vfx")]
     public GameObject explosionVFX;
 
+    [Header("Lifetime")]
+    [Tooltip("Lifetime of the bullet")]
+    public float lifeTime = 5.0f;
+
     //control vars
     private Rigidbody myRigid;
     private bool isActive = false;
-    private bool doExpire = false;
     private float travelSpeed = 3.0f;
-    private float maxTravelDistance = 0;
+    private float startTime = 0.0f;
+    private float pauseStartTime = 0.0f;
+    private float pauseEndTime = 0.0f;
     private Vector3 startPos = Vector3.zero;
 
     // Use this for initialization
     void Start () {
+        startTime = Time.time;
         myRigid = GetComponent<Rigidbody>();
     }
 	
@@ -32,9 +38,10 @@ public class PlayerStraightBullet : MonoBehaviour {
         if (isActive)
         {
             myRigid.velocity = transform.forward * travelSpeed;
-
-            CheckExpire();
-            
+            if (Time.time > startTime + lifeTime + (pauseEndTime - pauseStartTime))
+            {
+                Destroy(gameObject);
+            }
         }
         else
         {
@@ -60,47 +67,13 @@ public class PlayerStraightBullet : MonoBehaviour {
     public void SetupVars(float speed, float travelDist, bool expire)
     {
         isActive = true;
-        maxTravelDistance = travelDist;
-        doExpire = expire;
         travelSpeed = speed;
         startPos = transform.position;
-    }
-
-    ////ref func
-    //public void SetBulletBank(BulletBank bank)
-    //{
-    //    bulletBank = bank;
-    //}
-
-    //check if bullet has reached it's max distance
-    public void CheckExpire()
-    {
-        if (doExpire)
-        {
-            if (Vector3.Distance(transform.position, startPos) > maxTravelDistance)
-            {
-                Deactivate();
-            }
-        }
     }
 
     //deactivate func
     private void Deactivate()
     {
-        /*
-        //set active to false
-        isActive = false;
-        //reset values
-        myRigid.velocity = Vector3.zero;
-        travelSpeed = 0;
-        maxTravelDistance = 0;
-        doExpire = false;
-        startPos = Vector3.zero;
-        //return to queue
-        bulletBank.ReturnPlayerStraightBullet(gameObject);
-        transform.position = bulletBank.transform.position;
-        */
-
         Destroy(gameObject);
     }
 
@@ -121,10 +94,12 @@ public class PlayerStraightBullet : MonoBehaviour {
     void OnPause()
     {
         isActive = false;
+        pauseStartTime += Time.time;
     }
 
     void OnUnpause()
     {
         isActive = true;
+        pauseEndTime += Time.time;
     }
 }

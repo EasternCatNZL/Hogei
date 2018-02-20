@@ -12,14 +12,22 @@ public class RegularStraightBullet : MonoBehaviour {
     [Tooltip("Damage dealt by bullet")]
     public float bulletDamage = 1.0f;
 
+    [Header("Lifetime")]
+    [Tooltip("Lifetime of the bullet")]
+    public float lifeTime = 5.0f;
+
     //script ref
     //private BulletBank bulletBank;
 
+    //control vars
+    private float startTime = 0.0f;
     private Rigidbody myRigid;
     private bool isActive = false;
+    private float pauseStartTime = 0.0f;
+    private float pauseEndTime = 0.0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         myRigid = GetComponent<Rigidbody>();
     }
 	
@@ -28,12 +36,17 @@ public class RegularStraightBullet : MonoBehaviour {
         if (isActive)
         {
             myRigid.velocity = transform.forward * travelSpeed;
+            if (Time.time > startTime + lifeTime + (pauseEndTime - pauseStartTime))
+            {
+                Destroy(gameObject);
+            }
         }
         else
         {
             myRigid.velocity = Vector3.zero;
         }
-	}
+        
+    }
 
     private void OnEnable()
     {
@@ -72,11 +85,14 @@ public class RegularStraightBullet : MonoBehaviour {
     //Pause events
     void OnPause()
     {
+        pauseStartTime += Time.time;
         isActive = false;
+
     }
 
     void OnUnpause()
     {
         isActive = true;
+        pauseEndTime += Time.time;
     }
 }
