@@ -20,8 +20,11 @@ public class SheepBehaviour : MonoBehaviour {
     //control vars
     [HideInInspector]
     public bool isTriggered = false; //checks to see if trigger has been triggered
+    private bool isPaused = false; //checks if pause has been called
     [HideInInspector]
     public float timeChargeBegan = 0.0f; //time charge up began
+    private float pauseStartTime = 0.0f; //time pause started
+    private float pauseEndTime = 0.0f; //time pause ended
 
     private Rigidbody myRigid; //the rigidbody attached to this object
     [HideInInspector]
@@ -34,9 +37,9 @@ public class SheepBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isTriggered)
+        if (isTriggered && !isPaused)
         {
-            if (Time.time > timeChargeBegan + chargeTime)
+            if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
             {
                 Move();
             }
@@ -47,11 +50,29 @@ public class SheepBehaviour : MonoBehaviour {
         }
 	}
 
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
+
     //behaviour during charge up
     private void ChargeUp()
     {
         //look at the target
         transform.LookAt(target.transform.position);
+        //remove any x and z change
+        Quaternion newRotation = new Quaternion();
+        newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
+        transform.rotation = newRotation;
     }
 
     //move
@@ -71,5 +92,17 @@ public class SheepBehaviour : MonoBehaviour {
         //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
         //Deactivate();
         Destroy(gameObject);
+    }
+
+    void OnPause()
+    {
+        isPaused = true;
+        pauseStartTime += Time.time;
+    }
+
+    void OnUnpause()
+    {
+        isPaused = false;
+        pauseEndTime += Time.time;
     }
 }

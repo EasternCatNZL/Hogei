@@ -34,7 +34,14 @@ public class OutlawBehaviour : MonoBehaviour {
     private int currentShotInRound = 0; //the current shot in a round
     private float timeTillNextShot = 0.0f; //the time till the next shot should be fired
     private float timeLastShot = 0.0f; //the time the last shot was fired
+    private float pauseStartTime = 0.0f; //the time pause was called
+    private float pauseEndTime = 0.0f; //the time end pause was called
+    private float tempSetupTime = 0.0f; //setup time recalculated when coming out of pause
+    private float setupStartTime = 0.0f; //time setup began
     private bool isSetup = false; //check if setup has been completed
+    [HideInInspector]
+    public bool isMoving = false; //check if object is currently moving
+    private bool isPaused = false; //checks if pause has been called
 
     private Vector3 locationToSetup = Vector3.zero;
     private GameObject target; //the target this object is attacking
@@ -46,12 +53,35 @@ public class OutlawBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//check if setup has finished
-        if(transform.position == locationToSetup)
+        if (!isPaused)
         {
-            AttackBehaviour();
+            //check if setup has finished
+            if (isSetup)
+            {
+                AttackBehaviour();
+            }
+            else if (transform.position == locationToSetup)
+            {
+                isSetup = true;
+                isMoving = false;
+            }
         }
+
 	}
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
 
     //setup vars
     public void SetupVars(float setupDist, float time)
@@ -68,6 +98,8 @@ public class OutlawBehaviour : MonoBehaviour {
         locationToSetup = transform.position + (transform.forward * setupDistance);
         //tween to location
         transform.DOMove(locationToSetup, setupTime);
+        //set setup start time to now
+        setupStartTime = Time.time;
     }
 
     //Behaviour when setup has completed
@@ -83,7 +115,7 @@ public class OutlawBehaviour : MonoBehaviour {
     public void Attack()
     {
         //check timing
-        if(Time.time > timeLastShot + timeTillNextShot)
+        if(Time.time > timeLastShot + timeTillNextShot + (pauseEndTime - pauseStartTime))
         {
             //create a shot
             GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
@@ -103,6 +135,36 @@ public class OutlawBehaviour : MonoBehaviour {
             }
             //set time last shot to now
             timeLastShot = Time.time;
+            //reset pause time
+            pauseStartTime = 0.0f;
+            pauseEndTime = 0.0f;
+        }
+    }
+
+    //pause funcs
+    void OnPause()
+    {
+        isPaused = true;
+        pauseStartTime = Time.time;
+        //if currently moving
+        if (isMoving)
+        {
+            //kill tween
+            DOTween.Kill(transform);
+            //get tempoary setup time
+            tempSetupTime = (setupStartTime + setupTime) - Time.time;
+        }
+    }
+
+    void OnUnpause()
+    {
+        isPaused = false;
+        pauseEndTime = Time.time;
+        //if currently moving
+        if (isMoving)
+        {
+            //resume the tween using temp setup time
+            transform.DOMove(locationToSetup, tempSetupTime);
         }
     }
 }
