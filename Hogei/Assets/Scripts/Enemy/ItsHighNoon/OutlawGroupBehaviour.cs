@@ -43,7 +43,7 @@ public class OutlawGroupBehaviour : MonoBehaviour {
             //setup the vars for the enemy
             enemyGroupArray[i].GetComponent<OutlawBehaviour>().SetupVars(myDistance, setupTime);
             enemyGroupArray[i].GetComponent<OutlawBehaviour>().MoveToSetupLocation();
-
+            enemyGroupArray[i].GetComponent<OutlawBehaviour>().isMoving = true;
         }
     }
 

@@ -21,23 +21,41 @@ public class CactusRandomSpray : MonoBehaviour {
     //control vars
     [HideInInspector]
     public bool isActive = false; // check if cactus active
+    private bool isPaused = false; //check if pause has been called
     private float timeLastShot = 0.0f; //the time the last shot was fired
+    private float pauseStartTime = 0.0f; //time pause started
+    private float pauseEndTime = 0.0f; //time pause ended
 
     // Use this for initialization
     void Start () {
-		
+        isActive = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (isActive)
+        if (isActive && !isPaused)
         {
-            if(Time.time > timeLastShot + timeBetweenShots)
+            if(Time.time > timeLastShot + timeBetweenShots + (pauseEndTime - pauseStartTime))
             {
+                //print(isActive);
                 Attack();
             }
         }
 	}
+
+    private void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    private void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
 
     //Attack logic
     private void Attack()
@@ -45,6 +63,9 @@ public class CactusRandomSpray : MonoBehaviour {
         //print("Doin stuff");
         //set time of last shot to now
         timeLastShot = Time.time;
+        //reset pause times
+        pauseStartTime = 0.0f;
+        pauseEndTime = 0.0f;
 
         //for the number of shots per spray
         for (int i = 0; i < numShotsPerSpray; i++)
@@ -60,5 +81,18 @@ public class CactusRandomSpray : MonoBehaviour {
             //assign speed
             bulletClone.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed + (bulletSpeedStep * i));
         }
+    }
+
+    //pause funcs
+    void OnPause()
+    {
+        isPaused = true;
+        pauseStartTime = Time.time;
+    }
+    
+    void OnUnpause()
+    {
+        isPaused = false;
+        pauseEndTime = Time.time;
     }
 }
