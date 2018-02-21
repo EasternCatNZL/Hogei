@@ -55,7 +55,7 @@ public class RamBehaviour : MonoBehaviour {
             if (isCharging)
             {
                 //look at the target
-                transform.LookAt(target.transform.position);
+                Look();
                 if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
                 {
                     Move();
@@ -68,6 +68,7 @@ public class RamBehaviour : MonoBehaviour {
                     ChargeUp();
                 }
             }
+            print(myRigid.velocity);
         }
     }
 
@@ -94,16 +95,22 @@ public class RamBehaviour : MonoBehaviour {
 
         timeChargeBegan = Time.time;
 
-        //look at the target
-        transform.LookAt(target.transform.position);
-        //remove any x and z change
-        Quaternion newRotation = new Quaternion();
-        newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
-        transform.rotation = newRotation;
+
 
         //reset pause timers
         pauseStartTime = 0.0f;
         pauseEndTime = 0.0f;
+    }
+
+    //look at
+    private void Look()
+    {
+        //look at the target
+        transform.LookAt(target.transform.position);
+        //remove any x and z change
+        //Quaternion newRotation = new Quaternion();
+        //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
+        //transform.rotation = newRotation;
     }
 
     //move
