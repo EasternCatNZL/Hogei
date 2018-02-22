@@ -13,6 +13,8 @@ public class DebugTools : MonoBehaviour {
     public KeyCode debugToolToggleKey = KeyCode.F1;
     [Tooltip("Key to toggle player invincibility")]
     public KeyCode invincibilityToggleKey = KeyCode.F2;
+    [Tooltip("Key to refill health")]
+    public KeyCode healthRefillKey = KeyCode.F3;
 
     //Object refs
     private GameObject player; //ref to player
@@ -22,7 +24,7 @@ public class DebugTools : MonoBehaviour {
 
     //control vars
     public bool debugToolsOn = false; //checks if debug tools are being used
-    public bool invincibilityOn = false;
+    public bool invincibilityOn = false; //check if currently invincible
 
     // Use this for initialization
     void Start () {
@@ -34,7 +36,7 @@ public class DebugTools : MonoBehaviour {
         ToggleDebug();
         if (debugToolsOn)
         {
-            ToggleDebugTools();
+            DebugFuncs();
         }
 	}
 
@@ -81,8 +83,9 @@ public class DebugTools : MonoBehaviour {
         }
     }
 
-    private void ToggleDebugTools()
+    private void DebugFuncs()
     {
+        //Invincibility
         if (Input.GetKeyDown(invincibilityToggleKey))
         {
             if (invincibilityOn)
@@ -97,7 +100,9 @@ public class DebugTools : MonoBehaviour {
             }
         }
 
+
     }
+
 
     //Toggle for invincibility
     private void ToggleInvincibility()
@@ -117,5 +122,11 @@ public class DebugTools : MonoBehaviour {
                 playerEntityHealth.enabled = false;
             }
         }
+    }
+
+    //Refill health
+    private void RefillHealth()
+    {
+        playerEntityHealth.IncreaseHealth(playerEntityHealth.MaxHealth);
     }
 }
