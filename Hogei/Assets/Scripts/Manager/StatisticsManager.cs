@@ -9,7 +9,6 @@ public class StatisticsManager : MonoBehaviour {
 
     bool StatisticsVisible = false;
     public int EnemyDeathCount = 0;
-    public int BulletShotCount = 0;
     
     public static StatisticsManager GetStatsManager()
     {
@@ -40,13 +39,11 @@ public class StatisticsManager : MonoBehaviour {
     void OnEnable()
     {
         EntityHealth.OnDeath += IncreaseDeathCount;
-        PlayerAttack.OnShoot += IncreaseShotCount;
     }
 
     void OnDisable()
     {
         EntityHealth.OnDeath -= IncreaseDeathCount;
-        PlayerAttack.OnShoot -= IncreaseShotCount;
     }
 	
 	// Update is called once per frame
@@ -57,11 +54,6 @@ public class StatisticsManager : MonoBehaviour {
     void IncreaseDeathCount()
     {
         EnemyDeathCount += 1;
-    }
-
-    void IncreaseShotCount()
-    {
-        BulletShotCount += 1;
     }
 
     public int GetEnemyDeathCount()
