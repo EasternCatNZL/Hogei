@@ -14,8 +14,20 @@ public class SheepBehaviour : MonoBehaviour {
     [Tooltip("The damage sheep does on collision")]
     public float damage = 3.0f;
 
+    [Header("Bullet vars")]
+    [Tooltip("Bullet object")]
+    public GameObject bulletObject;
+    [Tooltip("Speed of bullet")]
+    public float bulletSpeed = 2.0f;
+
+    [Header("Angle Control")]
+    [Tooltip("Angle change per shot in spray")]
+    public float angleChangePerShot = 60.0f;
+
     [Header("Tags")]
     public string targetTag = "Player";
+    public string bulletTag = "Bullet";
+    public string floorTag = "Dungeon";
 
     //control vars
     [HideInInspector]
@@ -70,9 +82,9 @@ public class SheepBehaviour : MonoBehaviour {
         //look at the target
         transform.LookAt(target.transform.position);
         //remove any x and z change
-        Quaternion newRotation = new Quaternion();
-        newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
-        transform.rotation = newRotation;
+        //Quaternion newRotation = new Quaternion();
+        //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
+        //transform.rotation = newRotation;
     }
 
     //move
@@ -81,17 +93,52 @@ public class SheepBehaviour : MonoBehaviour {
         myRigid.velocity = transform.forward * chargeSpeed;
     }
 
+    //Bullet explosion
+    private void BulletExplosion()
+    {
+        //get a random starting angle
+        float angle = Random.Range(0.0f, 360.0f);
+        //reset the angle total
+        float currentAngleTotal = 0.0f;
+
+
+        //while current angle total not reached 360, keep spawning bullets
+        while (currentAngleTotal < 360.0f)
+        {
+            //create a shot
+            //get the current angle as a quaternion
+            Quaternion currentRotation = new Quaternion();
+            currentRotation.eulerAngles = new Vector3(0.0f, angle, 0.0f);
+            //get a bullet from the bank
+            GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
+            //set the bullets position to this pos
+            bullet.transform.position = transform.position;
+            //set the bullet's rotation to current rotation
+            bullet.transform.rotation = currentRotation;
+            //setup the bullet and fire
+            bullet.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
+
+            //change the angle between shots
+            angle += angleChangePerShot;
+            //add the amount angle changed to current angle total
+            currentAngleTotal += angleChangePerShot;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        //any collision
-        if (collision.gameObject.GetComponent<EntityHealth>())
-        {
-            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(damage);
+        //check collision not with bullet or floor
+        if (!collision.gameObject.CompareTag(bulletTag) && !collision.gameObject.CompareTag(floorTag)){
+            //any collision that is not with a bullet
+            if (collision.gameObject.GetComponent<EntityHealth>())
+            {
+                collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(damage);
+                //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+            }
             //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+            BulletExplosion();
+            Destroy(gameObject);
         }
-        //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
-        //Deactivate();
-        Destroy(gameObject);
     }
 
     void OnPause()

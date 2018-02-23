@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DebugTools : MonoBehaviour {
 
     [Header("Tags")]
     [Tooltip("Player tag")]
     public string playerTag = "Player";
+    [Tooltip("Scene handler tag")]
+    public string sceneTag = "Scene";
 
     [Header("Key codes")]
     [Tooltip("Key to toggle debug tools")]
@@ -15,6 +18,8 @@ public class DebugTools : MonoBehaviour {
     public KeyCode invincibilityToggleKey = KeyCode.F2;
     [Tooltip("Key to refill health")]
     public KeyCode healthRefillKey = KeyCode.F3;
+    [Tooltip("Key to reload scene")]
+    public KeyCode sceneReloadKey = KeyCode.F4;
 
     //Object refs
     private GameObject player; //ref to player
@@ -100,7 +105,17 @@ public class DebugTools : MonoBehaviour {
             }
         }
 
+        //Health refill
+        if (Input.GetKeyDown(healthRefillKey))
+        {
+            RefillHealth();
+        }
 
+        //scene reload
+        if (Input.GetKeyDown(sceneReloadKey))
+        {
+            ReloadScene();
+        }
     }
 
 
@@ -128,5 +143,14 @@ public class DebugTools : MonoBehaviour {
     private void RefillHealth()
     {
         playerEntityHealth.IncreaseHealth(playerEntityHealth.MaxHealth);
+    }
+
+    //Scene reload
+    private void ReloadScene()
+    {
+        //find the current scene manager and get current scene number
+        int thisScene = GameObject.FindGameObjectWithTag(sceneTag).GetComponent<SceneHandler>().sceneNumber;
+        //load this scene again
+        SceneManager.LoadScene(thisScene);
     }
 }
