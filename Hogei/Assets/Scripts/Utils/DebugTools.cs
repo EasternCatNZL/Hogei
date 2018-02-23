@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DebugTools : MonoBehaviour {
 
     [Header("Tags")]
     [Tooltip("Player tag")]
     public string playerTag = "Player";
+    [Tooltip("Scene handler tag")]
+    public string sceneTag = "Scene";
+    [Tooltip("Enemy tag")]
+    public string enemyTag = "Enemy";
 
     [Header("Key codes")]
     [Tooltip("Key to toggle debug tools")]
@@ -15,12 +20,15 @@ public class DebugTools : MonoBehaviour {
     public KeyCode invincibilityToggleKey = KeyCode.F2;
     [Tooltip("Key to refill health")]
     public KeyCode healthRefillKey = KeyCode.F3;
+    [Tooltip("Key to reload scene")]
+    public KeyCode sceneReloadKey = KeyCode.F4;
 
     //Object refs
     private GameObject player; //ref to player
 
     //script refs
     private EntityHealth playerEntityHealth; //the entity health attached to the player object
+    private SceneHandler sceneHandler; //scene hanlder of the current scene
 
     //control vars
     public bool debugToolsOn = false; //checks if debug tools are being used
@@ -63,6 +71,8 @@ public class DebugTools : MonoBehaviour {
                 }
             }
         }
+
+        sceneHandler = GameObject.FindGameObjectWithTag(sceneTag).GetComponent<SceneHandler>();
     }
 
     //Toggle for debug
@@ -100,7 +110,17 @@ public class DebugTools : MonoBehaviour {
             }
         }
 
+        //Health refill
+        if (Input.GetKeyDown(healthRefillKey))
+        {
+            RefillHealth();
+        }
 
+        //scene reload
+        if (Input.GetKeyDown(sceneReloadKey))
+        {
+            ReloadScene();
+        }
     }
 
 
@@ -128,5 +148,30 @@ public class DebugTools : MonoBehaviour {
     private void RefillHealth()
     {
         playerEntityHealth.IncreaseHealth(playerEntityHealth.MaxHealth);
+    }
+
+    //Scene reload
+    private void ReloadScene()
+    {
+        //find the current scene manager and get current scene number
+        int thisScene = sceneHandler.sceneNumber;
+        //load this scene again
+        SceneManager.LoadScene(thisScene);
+    }
+
+    //respawn the enemies
+    private void RespwanEnemies()
+    {
+        //destroy all enemies currently in the scene
+        GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag(enemyTag);
+        for(int i = 0; i < enemiesInScene.Length; i++)
+        {
+            Destroy(enemiesInScene[i]);
+        }
+        //Re-Instantiate all enemies into the scene using scene handlers list of enemies
+        for (int j = 0; j < sceneHandler.enemiesInSceneList.Count; j++)
+        {
+            Instantiate(sceneHandler.enemiesInSceneList[j]);
+        }
     }
 }
