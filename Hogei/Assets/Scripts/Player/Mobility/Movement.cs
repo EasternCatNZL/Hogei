@@ -62,19 +62,19 @@ public class Movement : MonoBehaviour {
 
         if (Input.GetAxisRaw("Horizontal") > 0f)
         {
-            newPos.x += 1;
+            newPos.z += 1;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0f)
         {
-            newPos.x -= 1;
+            newPos.z -= 1;
         }
         if (Input.GetAxisRaw("Vertical") > 0f)
         {
-            newPos.z += 1;
+            newPos.x -= 1;
         }
         else if (Input.GetAxisRaw("Vertical") < 0f)
         {
-            newPos.z -= 1;
+            newPos.x += 1;
         }
 
         if(newPos != Vector3.zero)
