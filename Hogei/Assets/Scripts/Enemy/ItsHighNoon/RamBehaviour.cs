@@ -61,6 +61,10 @@ public class RamBehaviour : MonoBehaviour {
                     Move();
                 }
             }
+            else if (isMoving)
+            {
+                Move();
+            }
             else if (isRecovering)
             {
                 if (Time.time > timeRecoverBegan + recoverTime + (pauseEndTime - pauseStartTime))
