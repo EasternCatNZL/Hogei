@@ -18,6 +18,9 @@ public class PlayerStraightBullet : MonoBehaviour {
     [Tooltip("Lifetime of the bullet")]
     public float lifeTime = 5.0f;
 
+    [Header("Tags")]
+    public string debugTag = "Debugger";
+
     //control vars
     private Rigidbody myRigid;
     private bool isActive = false;
@@ -83,7 +86,11 @@ public class PlayerStraightBullet : MonoBehaviour {
         //any collision
         if (collision.gameObject.GetComponent<EntityHealth>())
         {
-            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+            //check if debugger has instakill toggled
+            if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
+            {
+                collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+            }
         }
         //Deactivate();
         GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);

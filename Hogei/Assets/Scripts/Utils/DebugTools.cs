@@ -22,6 +22,10 @@ public class DebugTools : MonoBehaviour {
     public KeyCode healthRefillKey = KeyCode.F3;
     [Tooltip("Key to reload scene")]
     public KeyCode sceneReloadKey = KeyCode.F4;
+    [Tooltip("Key to respawn enemies")]
+    public KeyCode enemyRespawnKey = KeyCode.F5;
+    [Tooltip("Key to change player attacks to instakill")]
+    public KeyCode instakillToggleKey = KeyCode.F6;
 
     //Object refs
     private GameObject player; //ref to player
@@ -33,6 +37,7 @@ public class DebugTools : MonoBehaviour {
     //control vars
     public bool debugToolsOn = false; //checks if debug tools are being used
     public bool invincibilityOn = false; //check if currently invincible
+    public bool instakillOn = false; //check if player attacks should instakill
 
     // Use this for initialization
     void Start () {
@@ -83,6 +88,12 @@ public class DebugTools : MonoBehaviour {
             if (debugToolsOn)
             {
                 debugToolsOn = false;
+
+                invincibilityOn = false;
+                //activate players entity health script
+                playerEntityHealth.enabled = true;
+
+                instakillOn = false;
             }
             else
             {
@@ -98,16 +109,7 @@ public class DebugTools : MonoBehaviour {
         //Invincibility
         if (Input.GetKeyDown(invincibilityToggleKey))
         {
-            if (invincibilityOn)
-            {
-                invincibilityOn = false;
-                playerEntityHealth.enabled = true;
-            }
-            else
-            {
-                invincibilityOn = true;
-                playerEntityHealth.enabled = false;
-            }
+            ToggleInvincibility();
         }
 
         //Health refill
@@ -121,14 +123,24 @@ public class DebugTools : MonoBehaviour {
         {
             ReloadScene();
         }
+
+        //enemy respawn
+        if (Input.GetKeyDown(enemyRespawnKey))
+        {
+            RespwanEnemies();
+        }
+
+        //toggle instakill
+        if (Input.GetKeyDown(instakillToggleKey))
+        {
+            ToggleInstakill();
+        }
     }
 
 
     //Toggle for invincibility
     private void ToggleInvincibility()
     {
-        if (Input.GetKeyDown(invincibilityToggleKey))
-        {
             if (invincibilityOn)
             {
                 invincibilityOn = false;
@@ -141,7 +153,6 @@ public class DebugTools : MonoBehaviour {
                 //deactivate players entity health script
                 playerEntityHealth.enabled = false;
             }
-        }
     }
 
     //Refill health
@@ -172,6 +183,19 @@ public class DebugTools : MonoBehaviour {
         for (int j = 0; j < sceneHandler.enemiesInSceneList.Count; j++)
         {
             Instantiate(sceneHandler.enemiesInSceneList[j]);
+        }
+    }
+
+    //Toggle instakill
+    private void ToggleInstakill()
+    {
+        if (instakillOn)
+        {
+            instakillOn = false;
+        }
+        else
+        {
+            instakillOn = true;
         }
     }
 }
