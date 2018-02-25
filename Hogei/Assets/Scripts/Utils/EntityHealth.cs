@@ -32,12 +32,19 @@ public class EntityHealth : MonoBehaviour {
 	void Update () {
         if(CurrentHealth <= 0.0f)
         {
-            if (gameObject.tag == "Enemy") OnDeath();
-            Destroy(gameObject);
-            //for room enemies
-            if (transform.parent.GetComponent<RoomEnemyManager>())
+            if (gameObject.tag == "Enemy")
             {
-                transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
+                if (OnDeath != null) OnDeath();
+                Destroy(gameObject);
+                //for room enemies
+                if (transform.parent.GetComponent<RoomEnemyManager>())
+                {
+                    transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
+                }
+            }
+            else
+            {
+                Destroy(gameObject);
             }
         }
 		if(DOTActive)
