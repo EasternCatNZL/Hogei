@@ -87,7 +87,14 @@ public class PlayerStraightBullet : MonoBehaviour {
         if (collision.gameObject.GetComponent<EntityHealth>())
         {
             //check if debugger has instakill toggled
-            if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
+            if (GameObject.FindGameObjectWithTag(debugTag))
+            {
+                if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
+                {
+                    collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+                }
+            }
+            else
             {
                 collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
             }
