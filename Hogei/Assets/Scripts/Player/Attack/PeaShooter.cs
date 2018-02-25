@@ -47,7 +47,7 @@ public class PeaShooter : MonoBehaviour {
 	}
 
     //attack use logic
-    public IEnumerator UseWeapon(bool empowered)
+    public void UseWeapon(bool empowered)
     {
         //check if input 
         if (Time.time > lastShotTime + timeBetweenShots)
@@ -67,7 +67,7 @@ public class PeaShooter : MonoBehaviour {
                 for (int i = 0; i < numBulletWaves; i++)
                 {
                     bullet.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeedFast, bulletMaxTravelDist, false);
-                    yield return new WaitForSecondsRealtime(timeBetweenWaves);
+                    //yield return new WaitForSecondsRealtime(timeBetweenWaves);
                 }
                 
             }

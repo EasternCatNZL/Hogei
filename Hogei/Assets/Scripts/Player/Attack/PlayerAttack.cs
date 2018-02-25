@@ -86,7 +86,7 @@ public class PlayerAttack : MonoBehaviour {
             switch (currentWeaponIndex)
             {
                 case 0:
-                    StartCoroutine(peaShooter.UseWeapon(peaShootStrengthened));
+                    peaShooter.UseWeapon(peaShootStrengthened);
                     //streamShot.UseWeapon();
                     //homingShot.UseWeapon();
                     break;
