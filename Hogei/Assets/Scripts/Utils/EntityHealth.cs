@@ -6,7 +6,7 @@ public class EntityHealth : MonoBehaviour {
     
     public delegate void DeathEvent();
     public static event DeathEvent OnDeath;
-
+    
     bool InvincibilityFrame = false; 
 
     public float CurrentHealth;

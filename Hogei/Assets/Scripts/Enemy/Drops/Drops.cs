@@ -18,8 +18,11 @@ public class Drops : MonoBehaviour {
         if(GetComponent<EntityHealth>().CurrentHealth <= 0.0f)
         {
             Vector3 currentPosition = transform.position;
-
-            Instantiate(itemDrop[0], currentPosition, Quaternion.identity);
+            foreach(GameObject item in itemDrop)
+            {
+                Instantiate(item, currentPosition + new Vector3(Random.Range(0.0f, 5.0f), 0.0f, Random.Range(0.0f, 5.0f)), Quaternion.identity);
+            }
+            Destroy(gameObject);
         }
 		
 	}

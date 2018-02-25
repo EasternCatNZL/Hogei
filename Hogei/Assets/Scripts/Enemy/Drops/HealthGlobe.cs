@@ -17,9 +17,12 @@ public class HealthGlobe : MonoBehaviour {
 		
 	}
 
-   void OnCollisionEnter()
+   void OnCollisionEnter(Collision col)
     {
-        Player.GetComponent<EntityHealth>().IncreaseHealth(HealthIncrease);
-        Destroy(gameObject);
+        if(col.gameObject.tag == "Player")
+        {
+            Player.GetComponent<EntityHealth>().IncreaseHealth(HealthIncrease);
+            Destroy(gameObject);
+        }
     }
 }
