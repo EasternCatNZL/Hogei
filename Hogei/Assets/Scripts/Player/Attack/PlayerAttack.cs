@@ -82,7 +82,7 @@ public class PlayerAttack : MonoBehaviour {
         if (CheckMouseInputWeapon())
         {
             Anim.SetBool("IsShooting", true);
-            GetComponent<EntityHealth>().DecreaseHealth(HealthDecrease);
+            //GetComponent<EntityHealth>().DecreaseHealth(HealthDecrease);
             //try to use current weapon
             switch (currentWeaponIndex)
             {
