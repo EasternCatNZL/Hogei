@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour {
         //for budget camera
         //yOffset = followCamera.transform.position.y - transform.position.y;
         //zOffset = followCamera.transform.position.z - transform.position.z;
-        cameraOffset = followCamera.transform.position - transform.position;
+        //cameraOffset = followCamera.transform.position - transform.position;
     }
 	
 	// Update is called once per frame
@@ -89,12 +89,12 @@ public class Movement : MonoBehaviour {
         //Rigid.MovePosition(transform.position + newPos * Speed * Time.deltaTime);
         transform.position = transform.position + newPos * Speed * Time.deltaTime;
 
-        if (followCamera && newPos != Vector3.zero)
-        {
-            //move the camera the same x and z
-            //followCamera.transform.position = followCamera.transform.position + newPos * Speed * Time.deltaTime;
-            followCamera.transform.position = transform.position + cameraOffset;
-        }
+        //if (followCamera && newPos != Vector3.zero)
+        //{
+        //    //move the camera the same x and z
+        //    //followCamera.transform.position = followCamera.transform.position + newPos * Speed * Time.deltaTime;
+        //    followCamera.transform.position = transform.position + cameraOffset;
+        //}
 
     }
 }
