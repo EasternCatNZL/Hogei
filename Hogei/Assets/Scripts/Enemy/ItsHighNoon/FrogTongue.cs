@@ -27,6 +27,9 @@ public class FrogTongue : MonoBehaviour {
     [Header("The tongue")]
     public List<GameObject> bulletList = new List<GameObject>();
 
+    [Header("Tags")]
+    public string playerTag = "Player";
+
 	// Use this for initialization
 	void Start () {
 		
@@ -58,7 +61,7 @@ public class FrogTongue : MonoBehaviour {
 	}
 
     //Extend tongue
-    private void ExtendTongue()
+    public void ExtendTongue()
     {
         //set extend to true
         isExtending = true;
@@ -67,6 +70,27 @@ public class FrogTongue : MonoBehaviour {
 
         //for all bullets
         for(int i = 0; i < bulletList.Count; i++)
+        {
+            //get the destination of this bullet
+            Vector3 destination = transform.position + (transform.forward * (baseDistance + (stepDistance * i)));
+            //tween to this location
+            bulletList[i].transform.DOMove(destination, tongueTravelTime, false);
+        }
+    }
+
+    //Extend tongue aimed
+    public void ExtendTongueAimed()
+    {
+        //set extend to true
+        isExtending = true;
+        //set start time to now
+        extendStartTime = Time.time;
+
+        //get direction to player
+        Vector3 direction = GameObject.FindGameObjectWithTag(playerTag).transform.position - transform.position;
+
+        //for all bullets
+        for (int i = 0; i < bulletList.Count; i++)
         {
             //get the destination of this bullet
             Vector3 destination = transform.position + (transform.forward * (baseDistance + (stepDistance * i)));

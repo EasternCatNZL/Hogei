@@ -7,10 +7,6 @@ public class NightBird : MonoBehaviour {
     [Header("Timing Vars")]
     [Tooltip("Time Between Sprays")]
     public float timeBetweenSprays = 5.0f;
-    [Tooltip("Minimum time between sprays")]
-    public float minTimeBetweenSprays = 1.0f;
-    //scaled time between sprays
-    private float scaledTimeBetweenSprays = 0.0f;
 
     [Tooltip("Time between layers")]
     public float timeBetweenLayers = 0.5f;
@@ -21,32 +17,15 @@ public class NightBird : MonoBehaviour {
 
     [Tooltip("Number of sprays")]
     public int numSpray = 2;
-    [Tooltip("Max num of sprays")]
-    public int maxNumSprays = 6;
-    //scaled num of sprays
-    private int scaledNumSprays = 0;
 
     [Tooltip("Number of bullet layers")]
     public int numBulletLayers = 1;
-    [Tooltip("Max num of bullet layers")]
-    public int maxNumBulletLayers = 3;
-    //scaled num bullet layers
-    private int scaledNumBulletLayers = 0;
 
     [Tooltip("Number of bullets per layer")]
     public int numBulletsPerLayer = 16;
-    [Tooltip("Max num of bullets per layer")]
-    public int maxNumBulletsPerLayer = 8;
-    //scaled num of bullets per layer
-    private int scaledNumBulletsPerLayer = 0;
-
 
     [Tooltip("First layer speed")]
     public float firstLayerBulletSpeed = 1.0f;
-    [Tooltip("Max speed of bullet")]
-    public float maxBulletSpeed = 10.0f;
-    //scaled speed of bullet
-    private float scaledBulletSpeed = 0.0f;
     [Tooltip("Layer speed increment value")]
     public float layerSpeedIncrementValue = 0.5f;
 
@@ -66,7 +45,7 @@ public class NightBird : MonoBehaviour {
 
     //script refs
     //private BulletBank bank;
-    private EnemyState enemyState;
+    //private EnemyState enemyState;
 
     //control vars
     private int currentRotationDireciton = 1; //current rotation of spray
@@ -79,18 +58,18 @@ public class NightBird : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //bank = GameObject.FindGameObjectWithTag(bulletBankTag).GetComponent<BulletBank>();
-        enemyState = GetComponent<EnemyState>();
+        //enemyState = GetComponent<EnemyState>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (enemyState.GetIsActive() && !isPaused)
-        {
-            if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
-            {
-                BulletSpray();
-            }
-        }
+        //if (enemyState.GetIsActive() && !isPaused)
+        //{
+        //    if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
+        //    {
+        //        BulletSpray();
+        //    }
+        //}
     }
 
     private void OnEnable()
@@ -107,51 +86,8 @@ public class NightBird : MonoBehaviour {
         print("Unsubscribed to event");
     }
 
-    //scales the values based on how deep the player is
-    public void ScaleShotVars(int level)
-    {
-        //num of layers
-        scaledNumBulletLayers = numBulletLayers + (level / 2);
-        //check not above max
-        if(scaledNumBulletLayers > maxNumBulletLayers)
-        {
-            scaledNumBulletLayers = maxNumBulletLayers;
-        }
-
-        //time between sprays
-        scaledTimeBetweenSprays = timeBetweenSprays - level + (scaledNumBulletLayers * timeBetweenLayers) + 0.5f;
-        //check not below min
-        if (scaledTimeBetweenSprays < minTimeBetweenSprays)
-        {
-            scaledTimeBetweenSprays = minTimeBetweenSprays + (scaledNumBulletLayers * timeBetweenLayers) + 0.5f;
-        }
-
-        //num of sprays
-        scaledNumSprays = numSpray + level;
-        //check not above max
-        if(scaledNumSprays > maxNumSprays){
-            scaledNumSprays = maxNumSprays;
-        }
-
-        //bullet speed
-        scaledBulletSpeed = firstLayerBulletSpeed + level;
-        //check not above max
-        if (scaledBulletSpeed > maxBulletSpeed)
-        {
-            scaledBulletSpeed = maxBulletSpeed;
-        }
-
-        //bullets per layer
-        scaledNumBulletsPerLayer = numBulletsPerLayer + (level * 2);
-        //check not above max
-        if (scaledNumBulletsPerLayer > maxNumBulletsPerLayer)
-        {
-            scaledNumBulletsPerLayer = maxNumBulletsPerLayer;
-        }
-    }
-
     //bullet firing coroutine
-    private void BulletSpray()
+    public void BulletSpray()
     {
         //set time of last spray to now
         timeLastSprayFired = Time.time;
@@ -161,18 +97,18 @@ public class NightBird : MonoBehaviour {
         pauseEndTime = 0.0f;
 
         //for the total num of sprays
-        for (int i = 0; i < scaledNumSprays; i++)
+        for (int i = 0; i < numSpray; i++)
         {
             //speed var for layers
-            float speed = scaledBulletSpeed;
+            float speed = firstLayerBulletSpeed;
             //for all layers
-            for (int j = 0; j < scaledNumBulletLayers; j++)
+            for (int j = 0; j < numBulletLayers; j++)
             {
                 //make a storage angle
                 float angle = (startingAngle * currentRotationDireciton) + (slightAngleAlteration * currentRotationDireciton * j);
 
                 //for all bullets in the layer
-                for (int k = 0; k < scaledNumBulletsPerLayer; k++)
+                for (int k = 0; k < numBulletsPerLayer; k++)
                 {
                     //create a shot
                     //get the current angle as a quaternion
