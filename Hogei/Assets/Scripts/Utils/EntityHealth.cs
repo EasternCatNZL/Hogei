@@ -10,7 +10,9 @@ public class EntityHealth : MonoBehaviour {
     public delegate void PlayerHealthEvent();
     public static event PlayerHealthEvent OnPlayerHealthUpdate;
     
-    bool InvincibilityFrame = false; 
+    bool InvincibilityFrame = false;
+    bool FlashBack = false;
+    float LastTime = 0f;
 
     public float CurrentHealth;
     [Tooltip("Maximum health the entity can have")]
@@ -25,8 +27,9 @@ public class EntityHealth : MonoBehaviour {
     float DOTStart;
 
 	// Use this for initialization
-	void Start () {
+	void Start () {    
         CurrentHealth = MaxHealth;
+        if(GetComponent<MeshRenderer>()) GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
         //deathSound.playOnAwake = false;
 
     }
@@ -58,13 +61,26 @@ public class EntityHealth : MonoBehaviour {
                 DOTActive = false;
             }
         }
-	}
+        if (FlashBack & Time.time - LastTime > 0.05f)
+        {
+            GetComponent<MeshRenderer>().materials[0].SetColor("_EmissionColor", Color.black);
+            FlashBack = false;
+            LastTime = 0f;
+        }
+
+    }
+
+    private void LateUpdate()
+    {
+
+    }
 
     public void DecreaseHealth(float _value)
     {
+        DamageFlash();
         CurrentHealth -= _value;
         if (CurrentHealth < 0) CurrentHealth = 0;
-        if (transform.tag.Equals("Player"))
+        if (gameObject.tag.Equals("Player"))
         {
             OnPlayerHealthUpdate();
         }
@@ -74,7 +90,7 @@ public class EntityHealth : MonoBehaviour {
     {
         CurrentHealth += _value;
         if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
-        if (transform.tag.Equals("Player"))
+        if (gameObject.tag.Equals("Player"))
         {
             OnPlayerHealthUpdate();
         }
@@ -86,5 +102,15 @@ public class EntityHealth : MonoBehaviour {
         DOTActive = true;
         DOTDamage = _totalDamage / _time;
         DOTDuration = _time;
+    }
+
+    void DamageFlash()
+    {
+        if (GetComponent<MeshRenderer>())
+        {
+            GetComponent<MeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
+            FlashBack = true;
+            LastTime = Time.time;
+        }
     }
 }

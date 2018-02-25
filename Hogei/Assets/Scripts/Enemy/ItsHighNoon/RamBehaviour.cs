@@ -79,7 +79,7 @@ public class RamBehaviour : MonoBehaviour {
                     ChargeUp();
                 }
             }
-            print(myRigid.velocity);
+            //print(myRigid.velocity);
         }
     }
 
@@ -127,9 +127,9 @@ public class RamBehaviour : MonoBehaviour {
     //move
     private void Move()
     {
-        Quaternion fix = new Quaternion();
-        fix.eulerAngles = new Vector3(0.0f, transform.localEulerAngles.y, 0.0f);
-        transform.rotation = fix;
+        ////Quaternion fix = new Quaternion();
+        //fix.eulerAngles = new Vector3(0.0f, transform.localEulerAngles.y, 0.0f);
+        //transform.rotation = fix;
 
         //change conditions
         isCharging = false;
@@ -175,6 +175,7 @@ public class RamBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.name);
         //make sure collision isnt with floor
         //check that is moving
         if (isMoving && !collision.gameObject.CompareTag(dungeonTag))
