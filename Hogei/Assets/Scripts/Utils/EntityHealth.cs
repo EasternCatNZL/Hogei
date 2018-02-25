@@ -6,6 +6,9 @@ public class EntityHealth : MonoBehaviour {
     
     public delegate void DeathEvent();
     public static event DeathEvent OnDeath;
+
+    public delegate void PlayerHealthEvent();
+    public static event PlayerHealthEvent OnPlayerHealthUpdate;
     
     bool InvincibilityFrame = false; 
 
@@ -61,12 +64,20 @@ public class EntityHealth : MonoBehaviour {
     {
         CurrentHealth -= _value;
         if (CurrentHealth < 0) CurrentHealth = 0;
+        if (transform.tag.Equals("Player"))
+        {
+            OnPlayerHealthUpdate();
+        }
     }
     
     public void IncreaseHealth(float _value)
     {
         CurrentHealth += _value;
         if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
+        if (transform.tag.Equals("Player"))
+        {
+            OnPlayerHealthUpdate();
+        }
     }
 
     //Deals the given damage spread over the time given
