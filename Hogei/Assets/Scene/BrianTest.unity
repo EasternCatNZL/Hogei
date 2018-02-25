@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -166,8 +166,82 @@ Prefab:
       propertyPath: m_Name
       value: GunslingerBullet (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &80062567
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230682711986316, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550969972127936, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126317693096624, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790775344696812, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116432836402180, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579548467805496, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230682711986316, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4b4930ae26831eb47af6645ddf3746db, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &92762062
 Prefab:
@@ -257,6 +331,10 @@ Prefab:
     - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
       propertyPath: m_Name
       value: GunslingerBullet (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
@@ -383,6 +461,10 @@ Prefab:
     - target: {fileID: 4681073728936784, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
@@ -549,6 +631,11 @@ MonoBehaviour:
   debugToolsOn: 0
   invincibilityOn: 0
   instakillOn: 0
+--- !u!4 &446378022 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4794508363515190, guid: 4b4930ae26831eb47af6645ddf3746db,
+    type: 2}
+  m_PrefabInternal: {fileID: 80062567}
 --- !u!1 &448462785
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 454313210}
   - component: {fileID: 454313209}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TongueTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,10 +763,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895ba763b66748844a2616d77ec58062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tongueTravelTime: 2
+  tongueTravelTime: 0.5
   extendHoldTime: 1
-  baseDistance: 5
-  stepDistance: 2
+  baseDistance: 2
+  stepDistance: 1.5
   bulletList:
   - {fileID: 26411430}
   - {fileID: 250180135}
@@ -693,8 +780,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 454313208}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 26411436}
@@ -703,8 +790,8 @@ Transform:
   - {fileID: 1513118687}
   - {fileID: 1426808801}
   - {fileID: 1501992714}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 446378022}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &500453022
 GameObject:
@@ -949,8 +1036,54 @@ Prefab:
       propertyPath: m_Name
       value: GunslingerBullet (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &682995673
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227257317535688, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &685491138
 Prefab:
@@ -1073,6 +1206,10 @@ Prefab:
     - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
       propertyPath: m_Name
       value: GunslingerBullet (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
@@ -1725,6 +1862,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1397749350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1397749352}
+  - component: {fileID: 1397749351}
+  m_Layer: 0
+  m_Name: SceneHandler
+  m_TagString: Scene
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1397749351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1397749350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c0737248ed87d4bbf67149a89b40e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNumber: 1
+  enemyTag: Enemy
+  enemiesInSceneList: []
+--- !u!4 &1397749352
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1397749350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426808795 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55,
@@ -2142,6 +2322,11 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114336312225425068, guid: 4462cc1d44bedfd47af35b0ec6841078,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4462cc1d44bedfd47af35b0ec6841078, type: 2}
   m_IsPrefabParent: 0
@@ -2347,6 +2532,10 @@ Prefab:
     - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
       propertyPath: m_Name
       value: GunslingerBullet (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 223c3cc5e1a870049957e1954db71c55, type: 2}

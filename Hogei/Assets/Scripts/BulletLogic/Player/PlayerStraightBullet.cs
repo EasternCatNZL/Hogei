@@ -91,7 +91,7 @@ public class PlayerStraightBullet : MonoBehaviour {
             {
                 if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
                 {
-                    collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+                    collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(collision.gameObject.GetComponent<EntityHealth>().MaxHealth);
                 }
             }
             else

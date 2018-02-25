@@ -10,6 +10,8 @@ public class RamBehaviour : MonoBehaviour {
     public float chargeTime = 2.0f;
     [Tooltip("Recover time")]
     public float recoverTime = 1.0f;
+    [Tooltip("Time between bullets")]
+    public float timeBetweenBullets = 0.2f;
 
     [Header("Recoil values")]
     [Tooltip("Distance to jump back")]
@@ -18,6 +20,8 @@ public class RamBehaviour : MonoBehaviour {
     public float jumpPower = 1.0f;
 
     [Header("Attack vars")]
+    [Tooltip("Bullet object")]
+    public GameObject bulletObject;
     [Tooltip("The speed at which sheep charges")]
     public float chargeSpeed = 10.0f;
     [Tooltip("The damage sheep does on collision")]
@@ -25,6 +29,7 @@ public class RamBehaviour : MonoBehaviour {
 
     [Header("Tags")]
     public string targetTag = "Player";
+    public string dungeonTag = "Dungeon";
 
     //control vars
     [HideInInspector]
@@ -35,6 +40,7 @@ public class RamBehaviour : MonoBehaviour {
     private bool isPaused = false; //checks if pause has been called
     [HideInInspector]
     public float timeChargeBegan = 0.0f; //time charge up began
+    private float timeLastShot = 0.0f; //time of last shot
     private float timeRecoverBegan = 0.0f; //time recover began
     private float pauseStartTime = 0.0f; //time pause started
     private float pauseEndTime = 0.0f; //time pause ended
@@ -64,6 +70,7 @@ public class RamBehaviour : MonoBehaviour {
             else if (isMoving)
             {
                 Move();
+                Poop();
             }
             else if (isRecovering)
             {
@@ -120,15 +127,34 @@ public class RamBehaviour : MonoBehaviour {
     //move
     private void Move()
     {
+        Quaternion fix = new Quaternion();
+        fix.eulerAngles = new Vector3(0.0f, transform.localEulerAngles.y, 0.0f);
+        transform.rotation = fix;
+
         //change conditions
         isCharging = false;
         isMoving = true;
         //move
-        myRigid.velocity = transform.forward * chargeSpeed;
+        myRigid.velocity = (transform.forward * chargeSpeed) /** Time.deltaTime*/;
 
         //reset pause timers
         pauseStartTime = 0.0f;
         pauseEndTime = 0.0f;
+    }
+
+    //bullets
+    private void Poop()
+    {
+        //check timing
+        if(Time.time > timeLastShot + timeBetweenBullets)
+        {
+            //set last shot time to now
+            timeLastShot = Time.time;
+            //spawn a bullet
+            GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
+            //setup vars
+            bulletClone.GetComponent<RegularStraightBullet>().SetupVars(0.0f);
+        }
     }
 
     //recovery
@@ -143,13 +169,15 @@ public class RamBehaviour : MonoBehaviour {
         //reset pause timers
         pauseStartTime = 0.0f;
         pauseEndTime = 0.0f;
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //make sure collision isnt with floor
         //check that is moving
-        if (isMoving)
+        if (isMoving && !collision.gameObject.CompareTag(dungeonTag))
         {
             //any collision
             if (collision.gameObject.GetComponent<EntityHealth>())
