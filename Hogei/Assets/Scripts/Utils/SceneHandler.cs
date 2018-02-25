@@ -11,7 +11,8 @@ public class SceneHandler : MonoBehaviour {
     public string enemyTag = "Enemy";
 
     //all enemies in scene
-    private List<GameObject> enemiesInSceneList = new List<GameObject>();
+    [HideInInspector]
+    public List<GameObject> enemiesInSceneList = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +32,8 @@ public class SceneHandler : MonoBehaviour {
         //Create a copy of all objects and place into list
         for (int i = 0; i < enemiesInScene.Length; i++)
         {
-
+            GameObject objectClone = enemiesInScene[i];
+            enemiesInSceneList.Add(objectClone);
         }
     }
 }

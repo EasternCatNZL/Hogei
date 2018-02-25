@@ -82,12 +82,11 @@ public class PlayerAttack : MonoBehaviour {
         if (CheckMouseInputWeapon())
         {
             Anim.SetBool("IsShooting", true);
-            GetComponent<EntityHealth>().DecreaseHealth(HealthDecrease);
             //try to use current weapon
             switch (currentWeaponIndex)
             {
                 case 0:
-                    StartCoroutine(peaShooter.UseWeapon(peaShootStrengthened));
+                    peaShooter.UseWeapon(peaShootStrengthened);
                     //streamShot.UseWeapon();
                     //homingShot.UseWeapon();
                     break;

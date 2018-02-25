@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23987567991690692}
   - component: {fileID: 95252767527611990}
   - component: {fileID: 65728825287985756}
+  - component: {fileID: 208337519631154048}
   m_Layer: 0
   m_Name: Fence_Small
   m_TagString: Untagged
@@ -113,3 +114,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!208 &208337519631154048
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1691203464498556}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 80.492004, y: 61.553, z: 12.622001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

@@ -118,7 +118,7 @@ public class OutlawBehaviour : MonoBehaviour {
         if(Time.time > timeLastShot + timeTillNextShot + (pauseEndTime - pauseStartTime))
         {
             //create a shot
-            GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
+            GameObject bulletClone = Instantiate(bulletObject, transform.position + transform.up, transform.rotation);
             //setup the bullet vars
             bulletClone.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
             //increment the current bullet count

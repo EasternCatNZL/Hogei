@@ -10,6 +10,8 @@ public class DebugTools : MonoBehaviour {
     public string playerTag = "Player";
     [Tooltip("Scene handler tag")]
     public string sceneTag = "Scene";
+    [Tooltip("Enemy tag")]
+    public string enemyTag = "Enemy";
 
     [Header("Key codes")]
     [Tooltip("Key to toggle debug tools")]
@@ -20,16 +22,22 @@ public class DebugTools : MonoBehaviour {
     public KeyCode healthRefillKey = KeyCode.F3;
     [Tooltip("Key to reload scene")]
     public KeyCode sceneReloadKey = KeyCode.F4;
+    [Tooltip("Key to respawn enemies")]
+    public KeyCode enemyRespawnKey = KeyCode.F5;
+    [Tooltip("Key to change player attacks to instakill")]
+    public KeyCode instakillToggleKey = KeyCode.F6;
 
     //Object refs
     private GameObject player; //ref to player
 
     //script refs
     private EntityHealth playerEntityHealth; //the entity health attached to the player object
+    private SceneHandler sceneHandler; //scene hanlder of the current scene
 
     //control vars
     public bool debugToolsOn = false; //checks if debug tools are being used
     public bool invincibilityOn = false; //check if currently invincible
+    public bool instakillOn = false; //check if player attacks should instakill
 
     // Use this for initialization
     void Start () {
@@ -68,6 +76,8 @@ public class DebugTools : MonoBehaviour {
                 }
             }
         }
+
+        sceneHandler = GameObject.FindGameObjectWithTag(sceneTag).GetComponent<SceneHandler>();
     }
 
     //Toggle for debug
@@ -78,6 +88,12 @@ public class DebugTools : MonoBehaviour {
             if (debugToolsOn)
             {
                 debugToolsOn = false;
+
+                invincibilityOn = false;
+                //activate players entity health script
+                playerEntityHealth.enabled = true;
+
+                instakillOn = false;
             }
             else
             {
@@ -93,16 +109,7 @@ public class DebugTools : MonoBehaviour {
         //Invincibility
         if (Input.GetKeyDown(invincibilityToggleKey))
         {
-            if (invincibilityOn)
-            {
-                invincibilityOn = false;
-                playerEntityHealth.enabled = true;
-            }
-            else
-            {
-                invincibilityOn = true;
-                playerEntityHealth.enabled = false;
-            }
+            ToggleInvincibility();
         }
 
         //Health refill
@@ -116,14 +123,24 @@ public class DebugTools : MonoBehaviour {
         {
             ReloadScene();
         }
+
+        //enemy respawn
+        if (Input.GetKeyDown(enemyRespawnKey))
+        {
+            RespwanEnemies();
+        }
+
+        //toggle instakill
+        if (Input.GetKeyDown(instakillToggleKey))
+        {
+            ToggleInstakill();
+        }
     }
 
 
     //Toggle for invincibility
     private void ToggleInvincibility()
     {
-        if (Input.GetKeyDown(invincibilityToggleKey))
-        {
             if (invincibilityOn)
             {
                 invincibilityOn = false;
@@ -136,7 +153,6 @@ public class DebugTools : MonoBehaviour {
                 //deactivate players entity health script
                 playerEntityHealth.enabled = false;
             }
-        }
     }
 
     //Refill health
@@ -149,8 +165,37 @@ public class DebugTools : MonoBehaviour {
     private void ReloadScene()
     {
         //find the current scene manager and get current scene number
-        int thisScene = GameObject.FindGameObjectWithTag(sceneTag).GetComponent<SceneHandler>().sceneNumber;
+        int thisScene = sceneHandler.sceneNumber;
         //load this scene again
         SceneManager.LoadScene(thisScene);
+    }
+
+    //respawn the enemies
+    private void RespwanEnemies()
+    {
+        //destroy all enemies currently in the scene
+        GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag(enemyTag);
+        for(int i = 0; i < enemiesInScene.Length; i++)
+        {
+            Destroy(enemiesInScene[i]);
+        }
+        //Re-Instantiate all enemies into the scene using scene handlers list of enemies
+        for (int j = 0; j < sceneHandler.enemiesInSceneList.Count; j++)
+        {
+            Instantiate(sceneHandler.enemiesInSceneList[j]);
+        }
+    }
+
+    //Toggle instakill
+    private void ToggleInstakill()
+    {
+        if (instakillOn)
+        {
+            instakillOn = false;
+        }
+        else
+        {
+            instakillOn = true;
+        }
     }
 }
