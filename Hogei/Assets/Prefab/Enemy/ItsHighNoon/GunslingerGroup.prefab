@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 20
+  MaxHealth: 8
 --- !u!114 &114116872282184020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,6 +366,7 @@ MonoBehaviour:
   targetTag: Player
   setupDistance: 0
   setupTime: 0
+  isSetup: 0
   isMoving: 0
 --- !u!114 &114119662604237584
 MonoBehaviour:
@@ -398,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 20
+  MaxHealth: 8
 --- !u!114 &114477214488095206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 20
+  MaxHealth: 8
 --- !u!114 &114687158960040214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,6 +434,7 @@ MonoBehaviour:
   targetTag: Player
   setupDistance: 0
   setupTime: 0
+  isSetup: 0
   isMoving: 0
 --- !u!114 &114923987454385504
 MonoBehaviour:
@@ -455,6 +457,7 @@ MonoBehaviour:
   targetTag: Player
   setupDistance: 0
   setupTime: 0
+  isSetup: 0
   isMoving: 0
 --- !u!135 &135170629248056250
 SphereCollider:

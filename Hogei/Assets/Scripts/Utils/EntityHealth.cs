@@ -63,9 +63,18 @@ public class EntityHealth : MonoBehaviour {
         }
         if (FlashBack & Time.time - LastTime > 0.05f)
         {
-            GetComponent<MeshRenderer>().materials[0].SetColor("_EmissionColor", Color.black);
-            FlashBack = false;
-            LastTime = 0f;
+            if (GetComponent<MeshRenderer>())
+            {
+                GetComponent<MeshRenderer>().materials[0].SetColor("_EmissionColor", Color.black);
+                FlashBack = false;
+                LastTime = 0f;
+            }
+            else if (gameObject.tag.Equals("Player"))
+            {
+                GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
+                FlashBack = true;
+                LastTime = Time.time;
+            }
         }
 
     }
@@ -109,6 +118,12 @@ public class EntityHealth : MonoBehaviour {
         if (GetComponent<MeshRenderer>())
         {
             GetComponent<MeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
+            FlashBack = true;
+            LastTime = Time.time;
+        }
+        else if(gameObject.tag.Equals("Player"))
+        {
+            GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
             FlashBack = true;
             LastTime = Time.time;
         }
