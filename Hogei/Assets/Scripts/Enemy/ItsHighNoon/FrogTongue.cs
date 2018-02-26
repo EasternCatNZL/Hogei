@@ -87,13 +87,13 @@ public class FrogTongue : MonoBehaviour {
         extendStartTime = Time.time;
 
         //get direction to player
-        Vector3 direction = GameObject.FindGameObjectWithTag(playerTag).transform.position - transform.position;
+        Vector3 direction = (GameObject.FindGameObjectWithTag(playerTag).transform.position - transform.position).normalized;
 
         //for all bullets
         for (int i = 0; i < bulletList.Count; i++)
         {
             //get the destination of this bullet
-            Vector3 destination = transform.position + (transform.forward * (baseDistance + (stepDistance * i)));
+            Vector3 destination = transform.position + (direction * (baseDistance + (stepDistance * i)));
             //tween to this location
             bulletList[i].transform.DOMove(destination, tongueTravelTime, false);
         }

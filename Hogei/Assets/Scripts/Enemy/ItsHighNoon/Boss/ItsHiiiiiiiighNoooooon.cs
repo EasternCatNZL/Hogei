@@ -7,8 +7,12 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
     [Header("Timing vars")]
     [Tooltip("Time between attacks")]
     public float timeBetweenAttacks = 15.0f;
+    [Tooltip("Delay to spray")]
+    public float sprayDelay = 1.0f;
     [Tooltip("Prep time between phases")]
     public float prepTime = 3.0f;
+    [Tooltip("Num bullet waves phase 1")]
+    public int numWavesPhaseOne = 1;
 
     //control vars
     private bool inPhaseOne = false; //boss phase 1
@@ -22,25 +26,28 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
     private int phaseTwoStartHealth = 0; //health threshold where phase 2 begins
     private int phaseThreeStartHealth = 0; //health threshold where phase 3 begins
 
+    private int currentShot = 0; //the current shot number
+
     private float timePhaseOneStart = 0.0f; //the time phase one started
     private float timePhaseTwoStart = 0.0f; //the time phase two started
     private float timePhaseThreeStart = 0.0f; //the time phase three started
 
     private float timeLastAttack = 0.0f; //time last attack began
     private float tongueShotTime = 0.0f; //time tongue was shot
+    private float lastSprayTime = 0.0f; //time of last spray
 
     //script refs
-    FrogTongue tongue;
-    NightBird nightBird;
+    public FrogTongue tongue;
+    public NightBird nightBird;
 
 	// Use this for initialization
 	void Start () {
-        SetUpHealthValues();
+        //SetUpHealthValues();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        PhaseOne();
 	}
 
     //Setup for health values
@@ -57,13 +64,40 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
         //check if in middle of attack
         if (isTongueShot)
         {
+            if (currentShot == 0)
+            {
+                //check timing
+                if (Time.time > tongueShotTime + sprayDelay)
+                {
+                    nightBird.BulletSpray();
+                    lastSprayTime = Time.time;
+                    currentShot++;
+                }
+            }
+            else if(0 < currentShot)
+            {
+                //check timing
+                if (Time.time > lastSprayTime + sprayDelay)
+                {
+                    nightBird.BulletSpray();
+                    currentShot++;
+                    lastSprayTime = Time.time;
+                }
+            }
 
+            //check if reached max shots
+            if(currentShot >= numWavesPhaseOne)
+            {
+                isTongueShot = false;
+                currentShot = 0;
+            }
         }
         else
         {
             //check timing
             if (Time.time > timeLastAttack + timeBetweenAttacks)
             {
+                print("Fella");
                 tongue.ExtendTongueAimed();
                 //set time to now
                 timeLastAttack = Time.time;
