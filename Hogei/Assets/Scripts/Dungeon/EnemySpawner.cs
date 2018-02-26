@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour {
             }
             else if (enemyClone.GetComponent<NightBird>())
             {
-                enemyClone.GetComponent<NightBird>().ScaleShotVars(manager.currentFloor);
+                //enemyClone.GetComponent<NightBird>().ScaleShotVars(manager.currentFloor);
             }
             else if (enemyClone.GetComponent<AimedProngedShot>()){
                 enemyClone.GetComponent<AimedProngedShot>().ScaleShotVars(manager.currentFloor);

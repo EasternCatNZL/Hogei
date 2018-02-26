@@ -38,7 +38,8 @@ public class OutlawBehaviour : MonoBehaviour {
     private float pauseEndTime = 0.0f; //the time end pause was called
     private float tempSetupTime = 0.0f; //setup time recalculated when coming out of pause
     private float setupStartTime = 0.0f; //time setup began
-    private bool isSetup = false; //check if setup has been completed
+    [HideInInspector]
+    public bool isSetup = false; //check if setup has been completed
     [HideInInspector]
     public bool isMoving = false; //check if object is currently moving
     private bool isPaused = false; //checks if pause has been called
