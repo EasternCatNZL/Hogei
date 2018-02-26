@@ -18,8 +18,10 @@ public class FrogTongue : MonoBehaviour {
     public float stepDistance = 1.5f;
 
     //control vars
-    private bool isExtending = false; //check if tongue is extending
-    private bool isRetracting = false; //check if tongue is retracting
+    [HideInInspector]
+    public bool isExtending = false; //check if tongue is extending
+    [HideInInspector]
+    public bool isRetracting = false; //check if tongue is retracting
 
     private float extendStartTime = 0.0f; //Time tongue extend began
     private float retractStartTime = 0.0f; //Time tongue retract began

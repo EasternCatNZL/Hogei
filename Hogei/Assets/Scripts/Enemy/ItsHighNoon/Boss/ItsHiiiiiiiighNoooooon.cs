@@ -11,8 +11,27 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
     public float sprayDelay = 1.0f;
     [Tooltip("Prep time between phases")]
     public float prepTime = 3.0f;
+
+    [Header("Phase 1 vars")]
     [Tooltip("Num bullet waves phase 1")]
     public int numWavesPhaseOne = 1;
+
+    [Header("Phase 2 vars")]
+    [Tooltip("Time tongue holds")]
+    public float tongueTimeTwo = 2.0f;
+    [Tooltip("Num of waves")]
+    public int numWavesPhaseTwo = 2;
+    [Tooltip("Bullet speed")]
+    public float bulletSpeedPhaseTwo = 10.0f;
+
+    [Header("Phase 3 vars")]
+    [Tooltip("Time tongue holds")]
+    public float tongueTimeThree = 4.0f;
+    [Tooltip("Num of waves")]
+    public int numWavesPhaseThree = 3;
+    [Tooltip("Num layers")]
+    public int numLayersPhaseThree = 2;
+
 
     //control vars
     private bool inPhaseOne = false; //boss phase 1
@@ -22,11 +41,12 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
     private bool isTongueShot = false; //Check if tongue has been launched
 
     private int bossTotalHealth = 0; //the total amount of health boss has
-    private int bossCurrentHealth = 0; //the total amount of health the boss currently has
+    //private int bossCurrentHealth = 0; //the total amount of health the boss currently has
     private int phaseTwoStartHealth = 0; //health threshold where phase 2 begins
     private int phaseThreeStartHealth = 0; //health threshold where phase 3 begins
 
     private int currentShot = 0; //the current shot number
+    private int numShotsThisWave = 0; //number of shots in this wave
 
     private float timePhaseOneStart = 0.0f; //the time phase one started
     private float timePhaseTwoStart = 0.0f; //the time phase two started
@@ -43,25 +63,15 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //SetUpHealthValues();
+        SetUpHealthValues();
         //health = GetComponent<EntityHealth>();
+        numShotsThisWave = numWavesPhaseOne;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         ChangePhase();
-        if (inPhaseOne)
-        {
-            PhaseOne();
-        }
-        else if (inPhaseTwo)
-        {
-            
-        }
-        else if (inPhaseThree)
-        {
-
-        }
+        PhaseLogic();
         
 	}
 
@@ -73,8 +83,166 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
         phaseTwoStartHealth = phaseThreeStartHealth * 2;
     }
 
-    //Attack sequence based on current phase
-    private void PhaseOne()
+    ////Attack sequence based on current phase
+    //private void PhaseOne()
+    //{
+    //    //check if in middle of attack
+    //    if (isTongueShot)
+    //    {
+    //        if (currentShot == 0)
+    //        {
+    //            //check timing
+    //            if (Time.time > tongueShotTime + sprayDelay)
+    //            {
+    //                nightBird.BulletSpray();
+    //                lastSprayTime = Time.time;
+    //                currentShot++;
+    //            }
+    //        }
+    //        //else if(!tongue.isExtending && !tongue.isRetracting)
+    //        //{
+                
+    //        //}
+    //        //else if (0 < currentShot)
+    //        //{
+    //        //    //check timing
+    //        //    if (Time.time > lastSprayTime + sprayDelay)
+    //        //    {
+    //        //        nightBird.BulletSpray();
+    //        //        currentShot++;
+    //        //        lastSprayTime = Time.time;
+    //        //    }
+    //        //}
+
+    //        //check if reached max shots
+    //        if (currentShot >= numWavesPhaseOne)
+    //        {
+    //            isTongueShot = false;
+    //            currentShot = 0;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //check timing
+    //        if (Time.time > timeLastAttack + timeBetweenAttacks)
+    //        {
+    //            tongue.ExtendTongueAimed();
+    //            //set time to now
+    //            timeLastAttack = Time.time;
+    //            tongueShotTime = Time.time;
+    //            //set tongue shot to true
+    //            isTongueShot = true;
+    //        }
+    //    }
+    //}
+
+    //private void PhaseTwo()
+    //{
+    //    //check if in middle of attack
+    //    if (isTongueShot)
+    //    {
+    //        if (currentShot == 0)
+    //        {
+    //            //check timing
+    //            if (Time.time > tongueShotTime + sprayDelay)
+    //            {
+    //                nightBird.BulletSpray();
+    //                lastSprayTime = Time.time;
+    //                //currentShot++;
+    //            }
+    //        }
+    //        //else if (!tongue.isExtending && !tongue.isRetracting)
+    //        //{
+
+    //        //}
+    //        else if (0 < currentShot)
+    //        {
+    //            //check timing
+    //            if (Time.time > lastSprayTime + sprayDelay)
+    //            {
+    //                nightBird.BulletSpray();
+    //                currentShot++;
+    //                lastSprayTime = Time.time;
+    //            }
+    //        }
+
+    //        //check if reached max shots
+    //        if (currentShot >= numWavesPhaseOne)
+    //        {
+    //            isTongueShot = false;
+    //            currentShot = 0;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //check timing
+    //        if (Time.time > timeLastAttack + timeBetweenAttacks)
+    //        {
+    //            tongue.ExtendTongueAimed();
+    //            //set time to now
+    //            timeLastAttack = Time.time;
+    //            tongueShotTime = Time.time;
+    //            //set tongue shot to true
+    //            isTongueShot = true;
+    //        }
+    //    }
+    //}
+
+    //private void PhaseThree()
+    //{
+    //    //check if in middle of attack
+    //    if (isTongueShot)
+    //    {
+    //        if (currentShot == 0)
+    //        {
+    //            //check timing
+    //            if (Time.time > tongueShotTime + sprayDelay)
+    //            {
+    //                nightBird.BulletSpray();
+    //                lastSprayTime = Time.time;
+    //                //currentShot++;
+    //            }
+    //        }
+    //        //else if (!tongue.isExtending && !tongue.isRetracting)
+    //        //{
+
+    //        //}
+    //        else if (0 < currentShot)
+    //        {
+    //            //check timing
+    //            if (Time.time > lastSprayTime + sprayDelay)
+    //            {
+    //                nightBird.BulletSpray();
+    //                currentShot++;
+    //                lastSprayTime = Time.time;
+    //            }
+    //        }
+
+    //        //check if reached max shots
+    //        if (currentShot >= numWavesPhaseOne)
+    //        {
+    //            isTongueShot = false;
+    //            currentShot = 0;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //check timing
+    //        if (Time.time > timeLastAttack + timeBetweenAttacks)
+    //        {
+    //            tongue.ExtendTongueAimed();
+    //            //set time to now
+    //            timeLastAttack = Time.time;
+    //            tongueShotTime = Time.time;
+    //            //set tongue shot to true
+    //            isTongueShot = true;
+    //        }
+    //    }
+    //}
+
+    //phase logic
+
+    private void PhaseLogic()
     {
         //check if in middle of attack
         if (isTongueShot)
@@ -89,6 +257,10 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
                     currentShot++;
                 }
             }
+            //else if (!tongue.isExtending && !tongue.isRetracting)
+            //{
+
+            //}
             else if (0 < currentShot)
             {
                 //check timing
@@ -112,7 +284,6 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
             //check timing
             if (Time.time > timeLastAttack + timeBetweenAttacks)
             {
-                print("Fella");
                 tongue.ExtendTongueAimed();
                 //set time to now
                 timeLastAttack = Time.time;
@@ -137,17 +308,47 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
                 inPhaseTwo = true;
                 //set timing
                 timePhaseTwoStart = Time.time;
+
+                numShotsThisWave = numWavesPhaseTwo;
+
+                //change attack values
+                tongue.extendHoldTime = tongueTimeTwo;
             }
         }
         if (inPhaseTwo)
         {
             if(health.CurrentHealth <= phaseThreeStartHealth)
             {
+                //change phase
                 inPhaseTwo = false;
                 inPhaseThree = true;
-
+                //set timing
                 timePhaseThreeStart = Time.time;
+
+                numShotsThisWave = numWavesPhaseThree;
+
+                //change attack values
+                tongue.extendHoldTime = tongueTimeThree;
+                nightBird.numBulletLayers = numLayersPhaseThree;
+                nightBird.firstLayerBulletSpeed = bulletSpeedPhaseTwo;
             }
         }
     }
+
+    ////phase logic
+    //private void PhaseLogic()
+    //{
+    //    if (inPhaseOne)
+    //    {
+    //        PhaseOne();
+    //    }
+    //    else if (inPhaseTwo)
+    //    {
+
+    //    }
+    //    else if (inPhaseThree)
+    //    {
+
+    //    }
+    //}
 }
