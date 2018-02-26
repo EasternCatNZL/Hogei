@@ -37,17 +37,32 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
     private float lastSprayTime = 0.0f; //time of last spray
 
     //script refs
+    private EntityHealth health;
     public FrogTongue tongue;
     public NightBird nightBird;
 
 	// Use this for initialization
 	void Start () {
         //SetUpHealthValues();
+        //health = GetComponent<EntityHealth>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        PhaseOne();
+        ChangePhase();
+        if (inPhaseOne)
+        {
+            PhaseOne();
+        }
+        else if (inPhaseTwo)
+        {
+            
+        }
+        else if (inPhaseThree)
+        {
+
+        }
+        
 	}
 
     //Setup for health values
@@ -74,7 +89,7 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
                     currentShot++;
                 }
             }
-            else if(0 < currentShot)
+            else if (0 < currentShot)
             {
                 //check timing
                 if (Time.time > lastSprayTime + sprayDelay)
@@ -86,7 +101,7 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
             }
 
             //check if reached max shots
-            if(currentShot >= numWavesPhaseOne)
+            if (currentShot >= numWavesPhaseOne)
             {
                 isTongueShot = false;
                 currentShot = 0;
@@ -104,6 +119,34 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
                 tongueShotTime = Time.time;
                 //set tongue shot to true
                 isTongueShot = true;
+            }
+        }
+    }
+
+    //Change phase
+    private void ChangePhase()
+    {
+        //check current phase to current health
+        if (inPhaseOne)
+        {
+            //if health condition reached, change
+            if(health.CurrentHealth <= phaseTwoStartHealth)
+            {
+                //change phase
+                inPhaseOne = false;
+                inPhaseTwo = true;
+                //set timing
+                timePhaseTwoStart = Time.time;
+            }
+        }
+        if (inPhaseTwo)
+        {
+            if(health.CurrentHealth <= phaseThreeStartHealth)
+            {
+                inPhaseTwo = false;
+                inPhaseThree = true;
+
+                timePhaseThreeStart = Time.time;
             }
         }
     }
