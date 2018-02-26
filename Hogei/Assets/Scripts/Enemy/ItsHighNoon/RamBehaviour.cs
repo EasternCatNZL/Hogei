@@ -116,12 +116,15 @@ public class RamBehaviour : MonoBehaviour {
     //look at
     private void Look()
     {
-        //look at the target
-        transform.LookAt(target.transform.position);
-        //remove any x and z change
-        //Quaternion newRotation = new Quaternion();
-        //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
-        //transform.rotation = newRotation;
+        if (target != null)
+        {
+            //look at the target
+            transform.LookAt(target.transform.position);
+            //remove any x and z change
+            //Quaternion newRotation = new Quaternion();
+            //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
+            //transform.rotation = newRotation;
+        }
     }
 
     //move
@@ -190,8 +193,13 @@ public class RamBehaviour : MonoBehaviour {
             //remove velocity
             myRigid.velocity = Vector3.zero;
             //get a location behind self
-            Vector3 jumpBackLocation = transform.position + (-transform.forward * recoilDistance);
-            transform.DOJump(jumpBackLocation, jumpPower, 1, recoverTime / 2, false);
+            Vector3 Dir = transform.position - collision.gameObject.transform.position;
+            Dir.y = 1f;
+            Dir.Normalize();
+            Dir *= jumpPower;
+            GetComponent<Rigidbody>().AddForce(Dir, ForceMode.Impulse);
+            //Vector3 jumpBackLocation = transform.position + ((Dir.normalized) * recoilDistance);
+            //transform.DOJump(jumpBackLocation, jumpPower, 1, recoverTime / 2, false);
             Recover();
         }
         

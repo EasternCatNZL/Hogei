@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour {
     public float Hori = 0;
     public float Vert = 0;
 
+    private Vector3 Direction = Vector3.zero;
+
     [Header("Camera")]
     [Tooltip("Budget camera that follows the player and nothing else")]
     public GameObject followCamera;
@@ -59,22 +61,26 @@ public class Movement : MonoBehaviour {
     private void MovePlayer()
     {
         Vector3 newPos = Vector3.zero;
-
+        Direction = Vector3.zero;
         if (Input.GetAxisRaw("Horizontal") > 0f)
         {
             newPos.z += 1;
+            Direction += new Vector3(0f, 0f, 1f);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0f)
         {
             newPos.z -= 1;
+            Direction += new Vector3(0f, 0f, -1f);
         }
         if (Input.GetAxisRaw("Vertical") > 0f)
         {
             newPos.x -= 1;
+            Direction += new Vector3(-1f, 0f, 0f);
         }
         else if (Input.GetAxisRaw("Vertical") < 0f)
         {
             newPos.x += 1;
+            Direction += new Vector3(1f, 0f, 0f);
         }
 
         if(newPos != Vector3.zero)
@@ -96,5 +102,10 @@ public class Movement : MonoBehaviour {
         //    followCamera.transform.position = transform.position + cameraOffset;
         //}
 
+    }
+
+    public Vector3 GetDirection()
+    {
+        return Direction.normalized;
     }
 }

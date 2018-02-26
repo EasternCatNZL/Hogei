@@ -15,7 +15,10 @@ public class Follow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-        transform.position = Target.position;
-        transform.position += Vector3.Scale(CameraDirection, FollowOffset);
+        if (Target != null)
+        {
+            transform.position = Target.position;
+            transform.position += Vector3.Scale(CameraDirection, FollowOffset);
+        }
 	}
 }
