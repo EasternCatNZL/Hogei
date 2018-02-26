@@ -18,6 +18,9 @@ public class EntityHealth : MonoBehaviour {
     [Tooltip("Maximum health the entity can have")]
     public float MaxHealth = 10;
 
+    public GameObject DeathVFX;
+    public GameObject HitVFX;
+
     //[Header("Audio")]
     //public AudioSource deathSound;
 
@@ -37,21 +40,22 @@ public class EntityHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(CurrentHealth <= 0.0f)
-        {
+        {          
             if (gameObject.tag == "Enemy")
             {
                 if (OnDeath != null) OnDeath();
-                Destroy(gameObject);
+                
                 //for room enemies
                 if (transform.parent.GetComponent<RoomEnemyManager>())
                 {
                     transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
                 }
             }
-            else
+            if (DeathVFX)
             {
-                Destroy(gameObject);
+                Instantiate(DeathVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
             }
+            Destroy(gameObject);
         }
 		if(DOTActive)
         {
@@ -92,6 +96,10 @@ public class EntityHealth : MonoBehaviour {
         if (gameObject.tag.Equals("Player"))
         {
             OnPlayerHealthUpdate();
+        }
+        if(HitVFX)
+        {
+            Instantiate(HitVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         }
     }
     

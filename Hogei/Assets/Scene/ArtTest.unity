@@ -2110,6 +2110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 0
   MaxHealth: 20
+  DeathVFX: {fileID: 0}
+  HitVFX: {fileID: 0}
 --- !u!1001 &212120626
 Prefab:
   m_ObjectHideFlags: 0
@@ -9078,6 +9080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 0
   MaxHealth: 20
+  DeathVFX: {fileID: 0}
+  HitVFX: {fileID: 0}
 --- !u!1001 &839745576
 Prefab:
   m_ObjectHideFlags: 0
@@ -16165,6 +16169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 0
   MaxHealth: 20
+  DeathVFX: {fileID: 0}
+  HitVFX: {fileID: 0}
 --- !u!1001 &1373121990
 Prefab:
   m_ObjectHideFlags: 0
@@ -17163,6 +17169,18 @@ Prefab:
       propertyPath: m_Radius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114601514295501956, guid: 39739d4bbc48f0c48a1d6e102fe92d9c,
+        type: 2}
+      propertyPath: DeathVFX
+      value: 
+      objectReference: {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073,
+        type: 2}
+    - target: {fileID: 114601514295501956, guid: 39739d4bbc48f0c48a1d6e102fe92d9c,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
   m_IsPrefabParent: 0
@@ -20910,8 +20928,20 @@ Prefab:
     - target: {fileID: 114563102181642108, guid: 0110234c2d8e90a49acfaef91e183788,
         type: 2}
       propertyPath: timeBetweenShots
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114542143912079248, guid: 0110234c2d8e90a49acfaef91e183788,
+        type: 2}
+      propertyPath: DeathVFX
+      value: 
+      objectReference: {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2,
+        type: 2}
+    - target: {fileID: 114542143912079248, guid: 0110234c2d8e90a49acfaef91e183788,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0110234c2d8e90a49acfaef91e183788, type: 2}
   m_IsPrefabParent: 0
@@ -21829,6 +21859,18 @@ Prefab:
       propertyPath: jumpPower
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114601514295501956, guid: 39739d4bbc48f0c48a1d6e102fe92d9c,
+        type: 2}
+      propertyPath: DeathVFX
+      value: 
+      objectReference: {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073,
+        type: 2}
+    - target: {fileID: 114601514295501956, guid: 39739d4bbc48f0c48a1d6e102fe92d9c,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39739d4bbc48f0c48a1d6e102fe92d9c, type: 2}
   m_IsPrefabParent: 0
@@ -24548,7 +24590,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4183656781475878, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.27
+      value: 27.75
       objectReference: {fileID: 0}
     - target: {fileID: 4183656781475878, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -24556,7 +24598,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4183656781475878, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -25.89
+      value: -27.77
       objectReference: {fileID: 0}
     - target: {fileID: 4183656781475878, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
       propertyPath: m_LocalRotation.x
