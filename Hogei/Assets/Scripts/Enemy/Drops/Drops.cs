@@ -20,7 +20,7 @@ public class Drops : MonoBehaviour {
             Vector3 currentPosition = transform.position;
             foreach(GameObject item in itemDrop)
             {
-                Instantiate(item, currentPosition + new Vector3(Random.Range(0.0f, 5.0f), 0.0f, Random.Range(0.0f, 5.0f)), Quaternion.identity);
+                Instantiate(item, currentPosition, Quaternion.identity);
             }
             Destroy(gameObject);
         }

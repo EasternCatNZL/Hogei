@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23710528026602070}
   - component: {fileID: 95502988794602194}
   - component: {fileID: 114596002958290544}
+  - component: {fileID: 114199474688271972}
+  - component: {fileID: 114941309615639048}
   - component: {fileID: 136568596419718152}
   - component: {fileID: 54133470841727336}
   m_Layer: 10
@@ -152,6 +154,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114199474688271972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671706037053772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+  MaxHealth: 1
 --- !u!114 &114586474736194874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,6 +203,19 @@ MonoBehaviour:
   isTriggered: 0
   timeChargeBegan: 0
   target: {fileID: 0}
+--- !u!114 &114941309615639048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671706037053772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
 --- !u!135 &135893823691797116
 SphereCollider:
   m_ObjectHideFlags: 1

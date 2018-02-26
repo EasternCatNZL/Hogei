@@ -137,7 +137,7 @@ public class SheepBehaviour : MonoBehaviour {
             }
             //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
             BulletExplosion();
-            Destroy(gameObject);
+            GetComponent<EntityHealth>().DecreaseHealth(1);
         }
     }
 
