@@ -63,9 +63,11 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        health = GetComponent<EntityHealth>();
         SetUpHealthValues();
-        //health = GetComponent<EntityHealth>();
+        
         numShotsThisWave = numWavesPhaseOne;
+        inPhaseOne = true;
 	}
 	
 	// Update is called once per frame
@@ -269,11 +271,12 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
                     nightBird.BulletSpray();
                     currentShot++;
                     lastSprayTime = Time.time;
+                    print("Other waves");
                 }
             }
 
             //check if reached max shots
-            if (currentShot >= numWavesPhaseOne)
+            if (currentShot >= numShotsThisWave)
             {
                 isTongueShot = false;
                 currentShot = 0;
@@ -313,6 +316,8 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
 
                 //change attack values
                 tongue.extendHoldTime = tongueTimeTwo;
+
+                print("Phase two start");
             }
         }
         if (inPhaseTwo)
@@ -331,6 +336,8 @@ public class ItsHiiiiiiiighNoooooon : MonoBehaviour {
                 tongue.extendHoldTime = tongueTimeThree;
                 nightBird.numBulletLayers = numLayersPhaseThree;
                 nightBird.firstLayerBulletSpeed = bulletSpeedPhaseTwo;
+
+                print("Phase three start");
             }
         }
     }

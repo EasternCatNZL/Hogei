@@ -8,7 +8,8 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     {
         CLEARER,
         DEFLECTOR,
-        REVERSAL
+        REVERSAL,
+        DASH
     }
 
     [Header("Inputs")]
@@ -28,6 +29,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private BulletClearer bulletClear;
     private DeflectShield deflect;
     private ReversalShot reverse;
+    private PlayerDash dash;
     
 
     // Use this for initialization
@@ -36,15 +38,16 @@ public class PlayerAbilitiyBase : MonoBehaviour {
         {
             canDo = GetComponent<WhatCanIDO>();
             //testing
-            ability = Ability.REVERSAL;
+            ability = Ability.DASH;
         }
         else
         {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
-        bulletClear = abilityHolder.GetComponent<BulletClearer>();
-        deflect = abilityHolder.GetComponent<DeflectShield>();
-        reverse = abilityHolder.GetComponent<ReversalShot>();
+        //bulletClear = abilityHolder.GetComponent<BulletClearer>();
+        //deflect = abilityHolder.GetComponent<DeflectShield>();
+        //reverse = abilityHolder.GetComponent<ReversalShot>();
+        dash = abilityHolder.GetComponent<PlayerDash>();
 	}
 	
 	// Update is called once per frame
@@ -64,14 +67,17 @@ public class PlayerAbilitiyBase : MonoBehaviour {
             //try to use current ability
             switch (ability)
             {
-                case Ability.CLEARER:
-                    bulletClear.UseAbility();
-                    break;
-                case Ability.DEFLECTOR:
-                    deflect.UseAbility();
-                    break;
-                case Ability.REVERSAL:
-                    reverse.UseAbility();
+                //case Ability.CLEARER:
+                //    bulletClear.UseAbility();
+                //    break;
+                //case Ability.DEFLECTOR:
+                //    deflect.UseAbility();
+                //    break;
+                //case Ability.REVERSAL:
+                //    reverse.UseAbility();
+                //    break;
+                case Ability.DASH:
+                    dash.Use();
                     break;
             }
         }
