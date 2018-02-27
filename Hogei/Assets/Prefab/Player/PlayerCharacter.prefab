@@ -478,6 +478,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1573077336164902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4926774625900488}
+  - component: {fileID: 114525198324206222}
+  m_Layer: 12
+  m_Name: AbilityHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1590753793142342
 GameObject:
   m_ObjectHideFlags: 1
@@ -813,10 +829,10 @@ GameObject:
   - component: {fileID: 114959843512822864}
   - component: {fileID: 114622602382384936}
   - component: {fileID: 114918247126332766}
-  - component: {fileID: 114671011049264820}
   - component: {fileID: 114355521905720846}
   - component: {fileID: 114989592970560960}
   - component: {fileID: 82349610948467968}
+  - component: {fileID: 114627180115490170}
   m_Layer: 12
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -1116,7 +1132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892330597440044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -27.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4065033415907994}
@@ -1128,6 +1144,7 @@ Transform:
   - {fileID: 4653642510435222}
   - {fileID: 4613700057909436}
   - {fileID: 4980728654015562}
+  - {fileID: 4926774625900488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1759,6 +1776,19 @@ Transform:
   m_Father: {fileID: 4546304903294236}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4926774625900488
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573077336164902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4183656781475878}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4942996539519376
 Transform:
   m_ObjectHideFlags: 1
@@ -2190,21 +2220,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbfba9e7a2be5949bb03be82747a23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114525198324206222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573077336164902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da43652e5d93e1a4b9c9c1c2a72ef7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1892330597440044}
+  dashDistance: 3
+  speed: 5
+  dashTime: 0.5
+  canDo: {fileID: 114959843512822864}
+  movement: {fileID: 114989592970560960}
 --- !u!114 &114622602382384936
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892330597440044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
   MaxHealth: 10
-  deathSound: {fileID: 82349610948467968}
---- !u!114 &114671011049264820
+--- !u!114 &114627180115490170
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2212,19 +2258,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1892330597440044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04a9a9be831d354795a67372f15b7c9, type: 3}
+  m_Script: {fileID: 11500000, guid: c2a845f73b978fe4f996f4e873233d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeScale: 0.5
-  slowAbilityKey: 102
-  shieldAbilityKey: 103
-  shieldTag: Shield
-  SlowTimerReset: 1
-  SlowTimeCooldownReset: 0
-  ShieldDistance: 1
-  Shield: {fileID: 0}
-  ShieldResetTime: 4
-  ShieldCooldownReset: 4
+  abilityOneKey: 102
+  abilityTwoKey: 103
+  abilityHolder: {fileID: 1573077336164902}
 --- !u!114 &114714097514588042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2278,6 +2317,7 @@ MonoBehaviour:
   mouseInputKey: 0
   prevWeaponInput: 113
   nextWeaponInput: 101
+  HealthDecrease: 1
   numWeapons: 0
   peaShootStrengthened: 1
 --- !u!114 &114924075356286588
@@ -2311,6 +2351,7 @@ MonoBehaviour:
   canMove: 1
   canShoot: 1
   canAbility: 1
+  canTalk: 0
 --- !u!114 &114989592970560960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2325,6 +2366,7 @@ MonoBehaviour:
   Speed: 5
   Hori: 0
   Vert: 0
+  followCamera: {fileID: 0}
 --- !u!136 &136843207582558892
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -29,6 +29,8 @@ public class EntityHealth : MonoBehaviour {
     float DOTDuration;
     float DOTStart;
 
+
+
 	// Use this for initialization
 	void Start () {    
         CurrentHealth = MaxHealth;
