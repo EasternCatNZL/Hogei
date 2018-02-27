@@ -57,10 +57,10 @@ public class PlayerDash : MonoBehaviour {
     public void Use()
     {
         //Get position in direction
-        destination = player.transform.position + (movement.GetDirection() * dashDistance);
+        //destination = player.transform.position + (movement.GetDirection() * dashDistance);
         //set up control vars
         isDashing = true;
-        dashStartLocation = player.transform.position;
+        //dashStartLocation = player.transform.position;
         dashStartTime = Time.time;
         canDo.canMove = false;
     }
@@ -68,8 +68,9 @@ public class PlayerDash : MonoBehaviour {
     //Dash logic
     private void Dash()
     {
-        float distCovered = (Time.time - dashStartTime) * speed;
-        float fracJourney = distCovered / dashDistance;
-        player.transform.position = Vector3.Lerp(dashStartLocation, destination, fracJourney);
+        //float distCovered = (Time.time - dashStartTime) * speed;
+        //float fracJourney = distCovered / dashDistance;
+        //player.transform.position = Vector3.Lerp(dashStartLocation, destination, fracJourney);
+        player.GetComponent<Rigidbody>().AddForce(movement.GetDirection() * dashDistance, ForceMode.Impulse);
     }
 }
