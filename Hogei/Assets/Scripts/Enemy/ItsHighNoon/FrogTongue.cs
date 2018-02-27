@@ -5,6 +5,12 @@ using DG.Tweening;
 
 public class FrogTongue : MonoBehaviour {
 
+    [Header("Tougue vars")]
+    [Tooltip("Length of tongue in bullets")]
+    public int tongueLength = 10;
+    [Tooltip("Tongue object base")]
+    public GameObject tongueBaseObject;
+
     [Header("Timing vars")]
     [Tooltip("Travel time for tongue")]
     public float tongueTravelTime = 3.0f;
@@ -61,6 +67,17 @@ public class FrogTongue : MonoBehaviour {
             }
         }
 	}
+
+    //Make tongue
+    private void MakeTongue()
+    {
+        //For given length of tongue
+        for(int i = 0; i < tongueLength; i++)
+        {
+            GameObject tonguePart = Instantiate(tongueBaseObject, transform.position, transform.rotation);
+            bulletList.Add(tonguePart);
+        }
+    }
 
     //Extend tongue
     public void ExtendTongue()
