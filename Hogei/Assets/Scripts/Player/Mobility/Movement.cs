@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour {
 
     [Header("Remember to set the floor to the floor layor")]
     public float Speed = 0;
+    private float currentSpeed = 0;
+    private float SpeedModifier = 1;
 
     public float Hori = 0;
     public float Vert = 0;
@@ -93,7 +95,7 @@ public class Movement : MonoBehaviour {
         }
         newPos.Normalize();
         //Rigid.MovePosition(transform.position + newPos * Speed * Time.deltaTime);
-        transform.position = transform.position + newPos * Speed * Time.deltaTime;
+        transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
 
         //if (followCamera && newPos != Vector3.zero)
         //{
@@ -102,6 +104,11 @@ public class Movement : MonoBehaviour {
         //    followCamera.transform.position = transform.position + cameraOffset;
         //}
 
+    }
+
+    public void SetSpeedModifier(float _Percentage)
+    {
+        SpeedModifier = _Percentage;
     }
 
     public Vector3 GetDirection()
