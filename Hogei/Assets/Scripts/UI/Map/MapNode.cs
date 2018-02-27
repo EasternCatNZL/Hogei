@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapNode : MonoBehaviour {
 
-    [HideInInspector]
+    [System.Serializable]
     public enum Connections
     {
         UP,
@@ -13,7 +13,7 @@ public class MapNode : MonoBehaviour {
         LEFT
     }
 
-    [HideInInspector]
+    [System.Serializable]
     public struct Neighbour
     {
         public MapNode neighbour;
