@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33120037150481888}
   - component: {fileID: 23331274835776990}
   - component: {fileID: 95888435634753992}
+  - component: {fileID: 114062510339273880}
+  - component: {fileID: 135895998944882610}
   m_Layer: 0
   m_Name: Corn_3
   m_TagString: Untagged
@@ -100,3 +102,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114062510339273880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822698429227908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c948ba426f6c69143ada72dc0a641c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeLength: 1
+  ShakeIntensity: 10
+--- !u!135 &135895998944882610
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822698429227908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 41.22651
+  m_Center: {x: 0, y: 0, z: 0}

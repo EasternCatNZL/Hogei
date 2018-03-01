@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33141434246831336}
   - component: {fileID: 23732346888454366}
   - component: {fileID: 95814027191204870}
+  - component: {fileID: 114571970765158876}
+  - component: {fileID: 135268206698076232}
   m_Layer: 0
   m_Name: Corn_2
   m_TagString: Untagged
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333143099563464}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,3 +102,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114571970765158876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333143099563464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c948ba426f6c69143ada72dc0a641c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeLength: 1
+  ShakeIntensity: 10
+--- !u!135 &135268206698076232
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333143099563464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 49.293697
+  m_Center: {x: 0, y: 0, z: 0}
