@@ -20,6 +20,11 @@ public class MapNode : MonoBehaviour {
         public Connections connection;
     }
 
+    [Header("Scene")]
+    [Tooltip("The scene this node directs to")]
+    public int sceneNumber = 0;
+
+    [Header("Connections")]
     public Neighbour[] myNeighbours = new Neighbour[0];
 
 	// Use this for initialization
