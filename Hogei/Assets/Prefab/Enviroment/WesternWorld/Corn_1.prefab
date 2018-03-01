@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23225418394889164}
   - component: {fileID: 95585717981341084}
   - component: {fileID: 114608290348233532}
-  - component: {fileID: 135969078536044282}
+  - component: {fileID: 135986193550756084}
   m_Layer: 0
   m_Name: Corn_1
   m_TagString: Untagged
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1572222863928226}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572222863928226}
-  m_Mesh: {fileID: 4300000, guid: a13e5073be03b534e81fd71c1d4955f7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: b2116afd0e348f749afde81f42e68b64, type: 3}
 --- !u!95 &95585717981341084
 Animator:
   serializedVersion: 3
@@ -115,15 +115,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShakeLength: 1
   ShakeIntensity: 10
---- !u!135 &135969078536044282
+--- !u!135 &135986193550756084
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572222863928226}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4482132
-  m_Center: {x: -0.000000014901161, y: 0, z: 0}
+  m_Radius: 44.82132
+  m_Center: {x: 4.4415493, y: 36.93691, z: 12.752859}
