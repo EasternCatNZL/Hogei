@@ -46,7 +46,7 @@ public class EntityHealth : MonoBehaviour {
             if (gameObject.tag == "Enemy")
             {
                 if (OnDeath != null) OnDeath();
-                
+                GetComponent<Drops>().OnDeathDrop();
                 //for room enemies
                 if (transform.parent.GetComponent<RoomEnemyManager>())
                 {
