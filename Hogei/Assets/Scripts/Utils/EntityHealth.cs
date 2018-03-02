@@ -34,7 +34,8 @@ public class EntityHealth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {    
         CurrentHealth = MaxHealth;
-        if(GetComponent<MeshRenderer>()) GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+        if (GetComponent<MeshRenderer>()) GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+        else if (GetComponentInChildren<SkinnedMeshRenderer>()) GetComponentInChildren<SkinnedMeshRenderer>().material.EnableKeyword("_EMISSION");
         //deathSound.playOnAwake = false;
 
     }
@@ -46,7 +47,7 @@ public class EntityHealth : MonoBehaviour {
             if (gameObject.tag == "Enemy")
             {
                 if (OnDeath != null) OnDeath();
-                GetComponent<Drops>().OnDeathDrop();
+                if(GetComponent<Drops>())GetComponent<Drops>().OnDeathDrop();
                 //for room enemies
                 if (transform.parent.GetComponent<RoomEnemyManager>())
                 {
@@ -75,9 +76,9 @@ public class EntityHealth : MonoBehaviour {
                 FlashBack = false;
                 LastTime = 0f;
             }
-            else if (gameObject.tag.Equals("Player"))
+            else if (GetComponentInChildren<SkinnedMeshRenderer>())
             {
-                GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
+                GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.black);
                 FlashBack = true;
                 LastTime = Time.time;
             }
@@ -102,6 +103,10 @@ public class EntityHealth : MonoBehaviour {
         if(HitVFX)
         {
             Instantiate(HitVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+        }
+        if(GetComponent<Animator>())
+        {
+            GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));
         }
     }
     
@@ -131,9 +136,10 @@ public class EntityHealth : MonoBehaviour {
             FlashBack = true;
             LastTime = Time.time;
         }
-        else if(gameObject.tag.Equals("Player"))
+        else if(GetComponentInChildren<SkinnedMeshRenderer>())
         {
             GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
+            print(GetComponentInChildren<SkinnedMeshRenderer>().gameObject.name);
             FlashBack = true;
             LastTime = Time.time;
         }
