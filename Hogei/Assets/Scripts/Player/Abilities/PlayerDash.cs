@@ -41,12 +41,9 @@ public class PlayerDash : MonoBehaviour {
 	void Update () {
         if (isDashing)
         {
-            if(Time.time < dashStartTime + dashTime)
+            if(Time.time > dashStartTime + dashTime)
             {
-                Dash();
-            }
-            else
-            {
+                //Dash();
                 canDo.canMove = true;
                 isDashing = false;
             }
@@ -63,6 +60,7 @@ public class PlayerDash : MonoBehaviour {
         //dashStartLocation = player.transform.position;
         dashStartTime = Time.time;
         canDo.canMove = false;
+        Dash();
     }
 
     //Dash logic
