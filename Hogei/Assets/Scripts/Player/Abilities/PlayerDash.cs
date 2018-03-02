@@ -46,6 +46,7 @@ public class PlayerDash : MonoBehaviour {
                 //Dash();
                 canDo.canMove = true;
                 isDashing = false;
+                player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
 	}
@@ -66,9 +67,10 @@ public class PlayerDash : MonoBehaviour {
     //Dash logic
     private void Dash()
     {
-        //float distCovered = (Time.time - dashStartTime) * speed;
-        //float fracJourney = distCovered / dashDistance;
-        //player.transform.position = Vector3.Lerp(dashStartLocation, destination, fracJourney);
-        player.GetComponent<Rigidbody>().AddForce(movement.GetDirection() * dashDistance, ForceMode.Impulse);
+        //get the direction vector
+        Vector3 dashDirection = movement.GetDirection();
+        //remove y change
+        dashDirection.y = 0.0f;
+        player.GetComponent<Rigidbody>().AddForce(dashDirection * dashDistance, ForceMode.Impulse);
     }
 }
