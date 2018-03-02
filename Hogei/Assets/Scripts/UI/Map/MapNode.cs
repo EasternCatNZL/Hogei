@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapNode : MonoBehaviour {
 
@@ -37,6 +38,7 @@ public class MapNode : MonoBehaviour {
 		
 	}
 
+    //checks through known connections to find requested match
     public MapNode CheckDirectionForNeighbour(Connections connect)
     {
         MapNode thisNeighbour = null;
@@ -50,5 +52,11 @@ public class MapNode : MonoBehaviour {
         }
 
         return thisNeighbour;
+    }
+
+    //loads the scene this node points to
+    public void LoadMyScene()
+    {
+        SceneManager.LoadScene(sceneNumber);
     }
 }
