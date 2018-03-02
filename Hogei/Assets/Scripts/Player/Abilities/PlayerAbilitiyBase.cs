@@ -38,7 +38,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
         {
             canDo = GetComponent<WhatCanIDO>();
             //testing
-            ability = Ability.CLEARER;
+            ability = Ability.DASH;
         }
         else
         {
