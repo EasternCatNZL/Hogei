@@ -38,13 +38,13 @@ public class PlayerAbilitiyBase : MonoBehaviour {
         {
             canDo = GetComponent<WhatCanIDO>();
             //testing
-            ability = Ability.DASH;
+            ability = Ability.CLEARER;
         }
         else
         {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
-        //bulletClear = abilityHolder.GetComponent<BulletClearer>();
+        bulletClear = abilityHolder.GetComponent<BulletClearer>();
         //deflect = abilityHolder.GetComponent<DeflectShield>();
         //reverse = abilityHolder.GetComponent<ReversalShot>();
         dash = abilityHolder.GetComponent<PlayerDash>();
@@ -67,9 +67,9 @@ public class PlayerAbilitiyBase : MonoBehaviour {
             //try to use current ability
             switch (ability)
             {
-                //case Ability.CLEARER:
-                //    bulletClear.UseAbility();
-                //    break;
+                case Ability.CLEARER:
+                    bulletClear.UseAbility();
+                    break;
                 //case Ability.DEFLECTOR:
                 //    deflect.UseAbility();
                 //    break;
