@@ -45,7 +45,8 @@ public class OutlawBehaviour : MonoBehaviour {
     private bool isPaused = false; //checks if pause has been called
 
     private Vector3 locationToSetup = Vector3.zero;
-    private GameObject target; //the target this object is attacking
+    [HideInInspector]
+    public GameObject target; //the target this object is attacking
 
     // Use this for initialization
     void Start () {

@@ -7,13 +7,9 @@ public class PlayerDash : MonoBehaviour {
     [Header("Player object")]
     public GameObject player;
 
-    [Header("Distance vars")]
-    [Tooltip("The distance to move in a dash")]
-    public float dashDistance = 3.0f;
-
-    [Header("Speed vars")]
-    [Tooltip("Speed of dash")]
-    public float speed = 5.0f;
+    [Header("Force vars")]
+    [Tooltip("The dash force")]
+    public float dashForce = 15.0f;
 
     [Header("Timing vars")]
     [Tooltip("Length of dash(Time)")]
@@ -71,6 +67,6 @@ public class PlayerDash : MonoBehaviour {
         Vector3 dashDirection = movement.GetDirection();
         //remove y change
         dashDirection.y = 0.0f;
-        player.GetComponent<Rigidbody>().AddForce(dashDirection * dashDistance, ForceMode.Impulse);
+        player.GetComponent<Rigidbody>().AddForce(dashDirection * dashForce, ForceMode.Impulse);
     }
 }

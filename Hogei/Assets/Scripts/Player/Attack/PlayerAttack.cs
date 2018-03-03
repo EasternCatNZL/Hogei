@@ -86,8 +86,8 @@ public class PlayerAttack : MonoBehaviour {
             switch (currentWeaponIndex)
             {
                 case 0:
-                    peaShooter.UseWeapon(peaShootStrengthened);
-                    //streamShot.UseWeapon();
+                    //peaShooter.UseWeapon(peaShootStrengthened);
+                    streamShot.UseWeapon();
                     //homingShot.UseWeapon();
                     break;
                 case 1:

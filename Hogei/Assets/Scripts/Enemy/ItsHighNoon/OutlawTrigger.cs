@@ -30,6 +30,7 @@ public class OutlawTrigger : MonoBehaviour {
             //Setup();
             //change has setup to true
             isTriggered = true;
+            outlaw.target = other.gameObject;
             outlaw.isSetup = true;
         }
     }
