@@ -30,7 +30,7 @@ public class MapSelectionBehavior : MonoBehaviour {
     private void MoveInput()
     {
         MoveNode();
-        MouseClickMove();
+        MouseClickMap();
         
     }
 
@@ -76,27 +76,49 @@ public class MapSelectionBehavior : MonoBehaviour {
         }
     }
 
-    //Move via mouse click logic
-    private void MouseClickMove()
+    //Mouse click logic
+    private void MouseClickMap()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            print("Clicked");
+            MapNode clickedNode = null;
             RaycastHit hit;
             //ray cast from mouse
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //if ray hits
-            if(Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit))
             {
-                print("Ray out");
-                if(hit.collider.gameObject.GetComponent<MapNode>())
+                if (hit.collider.gameObject.GetComponent<MapNode>())
                 {
-                    print("Found");
-                    mapCamera.SetupMovement(hit.collider.gameObject.transform.position);
-                    currentNode = hit.collider.gameObject.GetComponent<MapNode>();
+                    clickedNode = hit.collider.gameObject.GetComponent<MapNode>();
+                }
+            }
+
+            if (clickedNode != null)
+            {
+                if (currentNode == clickedNode)
+                {
+                    MouseClickSelect();
+                }
+                else
+                {
+                    MouseClickMove(clickedNode);
                 }
             }
         }
+    }
+
+    //Move via mouse click logic
+    private void MouseClickMove(MapNode node)
+    {
+        mapCamera.SetupMovement(node.gameObject.transform.position);
+        currentNode = node.gameObject.GetComponent<MapNode>();
+    }
+
+    //Select via mouse click
+    private void MouseClickSelect()
+    {
+        currentNode.LoadMyScene();
     }
 
     //select node logic
