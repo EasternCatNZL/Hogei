@@ -41,15 +41,19 @@ public class SheepTriggerer : MonoBehaviour {
         //check other
         if (other.gameObject.CompareTag(targetTag) && !isTriggered)
         {
-            Warning();
-            //Setup();
-            //change has setup to true
-            isTriggered = true;
-            sheep.isTriggered = true;
-            //set time charge begins to now
-            sheep.timeChargeBegan = Time.time;
-            //set target object
-            sheep.target = other.gameObject;
+            //Check object hasnt been killed before triggered
+            if (sheep)
+            {
+                Warning();
+                //Setup();
+                //change has setup to true
+                isTriggered = true;
+                sheep.isTriggered = true;
+                //set time charge begins to now
+                sheep.timeChargeBegan = Time.time;
+                //set target object
+                sheep.target = other.gameObject;
+            }
         }
     }
 
