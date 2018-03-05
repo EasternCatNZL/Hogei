@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAbilitiyBase : MonoBehaviour {
 
-    enum Ability
+    public enum Ability
     {
         CLEARER,
         DEFLECTOR,
@@ -22,7 +22,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     public GameObject abilityHolder;
 
     //enum
-    private Ability ability;
+    public Ability ability;
 
     //script refs
     private WhatCanIDO canDo;
@@ -38,15 +38,15 @@ public class PlayerAbilitiyBase : MonoBehaviour {
         {
             canDo = GetComponent<WhatCanIDO>();
             //testing
-            ability = Ability.DASH;
+            //ability = Ability.DASH;
         }
         else
         {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
         bulletClear = abilityHolder.GetComponent<BulletClearer>();
-        //deflect = abilityHolder.GetComponent<DeflectShield>();
-        //reverse = abilityHolder.GetComponent<ReversalShot>();
+        deflect = abilityHolder.GetComponent<DeflectShield>();
+        reverse = abilityHolder.GetComponent<ReversalShot>();
         dash = abilityHolder.GetComponent<PlayerDash>();
 	}
 	
@@ -70,12 +70,12 @@ public class PlayerAbilitiyBase : MonoBehaviour {
                 case Ability.CLEARER:
                     bulletClear.UseAbility();
                     break;
-                //case Ability.DEFLECTOR:
-                //    deflect.UseAbility();
-                //    break;
-                //case Ability.REVERSAL:
-                //    reverse.UseAbility();
-                //    break;
+                case Ability.DEFLECTOR:
+                    deflect.UseAbility();
+                    break;
+                case Ability.REVERSAL:
+                    reverse.UseAbility();
+                    break;
                 case Ability.DASH:
                     dash.Use();
                     break;
