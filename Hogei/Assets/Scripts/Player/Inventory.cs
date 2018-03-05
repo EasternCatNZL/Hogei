@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
     public int Money = 0;
+   
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +22,20 @@ public class Inventory : MonoBehaviour {
         Money += _value;
     }
 
-    public void DecreaseMoney(int _value)
+    void DecreaseMoney(int _value)
     {
         Money -= _value;
         if(Money < 0)
         {
             Money = 0;
+        }
+    }
+
+    public void Purchase(int _value)
+    {
+        if(Money > _value)
+        {
+            DecreaseMoney(_value);
         }
     }
 
