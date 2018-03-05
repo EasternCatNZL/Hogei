@@ -28,10 +28,15 @@ public class CactusTrigger : MonoBehaviour {
         //check other
         if (other.gameObject.CompareTag(targetTag) && !isTriggered)
         {
+            //check object hasnt been destroyed before being triggered
+            if (cactus)
+            {
+                isTriggered = true;
+                cactus.isActive = true;
+            }
             //Setup();
             //change has setup to true
-            isTriggered = true;
-            cactus.isActive = true;
+            
         }
     }
 }

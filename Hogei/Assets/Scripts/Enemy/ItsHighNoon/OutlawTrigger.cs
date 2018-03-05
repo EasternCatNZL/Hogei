@@ -27,11 +27,14 @@ public class OutlawTrigger : MonoBehaviour {
         //check other
         if (other.gameObject.CompareTag(targetTag) && !isTriggered)
         {
-            //Setup();
-            //change has setup to true
-            isTriggered = true;
-            outlaw.target = other.gameObject;
-            outlaw.isSetup = true;
+            //check object hasnt been destroyed before being triggered
+            if (outlaw)
+            {
+                isTriggered = true;
+                outlaw.target = other.gameObject;
+                outlaw.isSetup = true;
+            }
+            
         }
     }
 }
