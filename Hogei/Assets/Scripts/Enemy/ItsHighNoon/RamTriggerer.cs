@@ -30,13 +30,17 @@ public class RamTriggerer : MonoBehaviour {
         //check other
         if (other.gameObject.CompareTag(targetTag) && !isTriggered)
         {
-            //Setup();
-            //change has setup to true
-            isTriggered = true;
-            ram.isTriggered = true;
-            //set target object
-            ram.target = other.gameObject;
-            ram.ChargeUp();
+            //check object to trigger still exists
+            if (ram)
+            {
+                //change has setup to true
+                isTriggered = true;
+                ram.isTriggered = true;
+                //set target object
+                ram.target = other.gameObject;
+                ram.ChargeUp();
+            }
+            
         }
     }
 }
