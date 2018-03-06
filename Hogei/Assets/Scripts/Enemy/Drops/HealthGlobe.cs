@@ -7,20 +7,18 @@ public class HealthGlobe : MonoBehaviour {
 
     GameObject Player;
     public float HealthIncrease = 1.0f;
-    public float rotationSpeed;
+    public float rotationSpeed = 100.0f;
 
 	// Use this for initialization
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
         transform.DOJump(transform.position, 0.8f, 1, 0.5f);
-        rotationSpeed = 1.0f * Time.deltaTime;
-
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        transform.Rotate(Vector3.up * rotationSpeed);
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
 		
 	}
 
