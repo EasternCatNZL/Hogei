@@ -149,7 +149,7 @@ public class EntityHealth : MonoBehaviour {
         }
     }
 
-    bool GetStatusEffect(StatusEffects _Effect)
+    public bool GetStatusEffect(StatusEffects _Effect)
     {
         switch(_Effect)
         {
@@ -162,7 +162,7 @@ public class EntityHealth : MonoBehaviour {
         }
     }
 
-    void SetStatusEffect(StatusEffects _Effect, bool _NewValue)
+    public void SetStatusEffect(StatusEffects _Effect, bool _NewValue)
     {
         switch (_Effect)
         {
