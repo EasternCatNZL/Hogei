@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyState : MonoBehaviour {
 
+    [Header("States")]
+    public bool isSlowed = false;
+
     [Header("Active")]
     [Tooltip("Check if enemy is active")]
     public bool isActive = false;

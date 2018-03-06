@@ -139,7 +139,7 @@ public class EntityHealth : MonoBehaviour {
         else if(GetComponentInChildren<SkinnedMeshRenderer>())
         {
             GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
-            print(GetComponentInChildren<SkinnedMeshRenderer>().gameObject.name);
+            //print(GetComponentInChildren<SkinnedMeshRenderer>().gameObject.name);
             FlashBack = true;
             LastTime = Time.time;
         }

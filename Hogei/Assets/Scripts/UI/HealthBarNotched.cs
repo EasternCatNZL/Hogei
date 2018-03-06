@@ -58,7 +58,7 @@ public class HealthBarNotched : MonoBehaviour {
             CreateNotches();
         }
         int CurrentHealth = (int)TargetHealth.CurrentHealth;
-        print(CurrentHealth);
+        //print(CurrentHealth);
         for (int i = 0; i < NumNotches; ++i)
         {
             if(i < CurrentHealth)

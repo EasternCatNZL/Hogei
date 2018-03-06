@@ -32,12 +32,19 @@ public class ChickenBehavior : MonoBehaviour {
     //Move towards target, disregards terrain restrictions
     private void MoveAtTarget()
     {
-        //Look at target
-        transform.LookAt(target.transform.position);
-        //remove rotations on x and z
-        transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y, 0.0f);
-        //move in that direction
-        myRigid.velocity = transform.forward * moveSpeed;
-        //transform.position += (transform.forward * moveSpeed) * Time.deltaTime;
+        if (target)
+        {
+            //Look at target
+            transform.LookAt(target.transform.position);
+            //remove rotations on x and z
+            transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y, 0.0f);
+            //move in that direction
+            myRigid.velocity = transform.forward * moveSpeed;
+            //transform.position += (transform.forward * moveSpeed) * Time.deltaTime;
+        }
+        else
+        {
+            myRigid.velocity = Vector3.zero;
+        }
     }
 }

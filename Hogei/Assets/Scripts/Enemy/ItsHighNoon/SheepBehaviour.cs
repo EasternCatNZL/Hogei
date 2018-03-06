@@ -34,6 +34,7 @@ public class SheepBehaviour : MonoBehaviour {
     public bool isTriggered = false; //checks to see if trigger has been triggered
     private bool isPaused = false; //checks if pause has been called
     [HideInInspector]
+    public float currentSpeed = 0.0f; //the current speed of the object
     public float timeChargeBegan = 0.0f; //time charge up began
     private float pauseStartTime = 0.0f; //time pause started
     private float pauseEndTime = 0.0f; //time pause ended
@@ -42,9 +43,18 @@ public class SheepBehaviour : MonoBehaviour {
     [HideInInspector]
     public GameObject target; //the target this object is attacking
 
+    //script refs
+    private EnemyState state;
+
     // Use this for initialization
     void Start () {
         myRigid = GetComponent<Rigidbody>();
+        currentSpeed = chargeSpeed;
+        if (GetComponent<EnemyState>())
+        {
+            state = GetComponent<EnemyState>();
+        }
+        
 	}
 	
 	// Update is called once per frame
@@ -91,6 +101,19 @@ public class SheepBehaviour : MonoBehaviour {
     private void Move()
     {
         myRigid.velocity = transform.forward * chargeSpeed;
+    }
+
+    //Adjust state
+    public void AdjustStates()
+    {
+        if (state.isSlowed)
+        {
+            currentSpeed = chargeSpeed / 2;
+        }
+        else
+        {
+            currentSpeed = chargeSpeed;
+        }
     }
 
     //Bullet explosion
