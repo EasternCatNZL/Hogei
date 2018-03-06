@@ -15,6 +15,8 @@ public class PlayerAttack : MonoBehaviour {
 
     public float HealthDecrease = 1.0f;
 
+    
+
     //control vars
     private int currentWeaponIndex = 0;
     public int numWeapons = 0;
