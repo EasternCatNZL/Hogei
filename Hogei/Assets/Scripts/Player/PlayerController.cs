@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -83,10 +84,8 @@ public class PlayerController : MonoBehaviour
         AngleDiff = Vector3.Angle(LowerBodyAim, MovementDirection);
         AngleDiff = Mathf.Abs(AngleDiff);
         float AngleDot = Vector3.Dot(LowerBody.right, MovementDirection);
-        print("Dot: " + AngleDot + " Diff: " + AngleDiff);
         if (AngleDot == 0f)//Idle Animation
         {
-            Debug.Log("Idle Animation");
             if (DebuggerAnimSphere)
             {
                 DebuggerAnimSphere.position = LowerBody.position;
@@ -94,7 +93,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (AngleDiff < 45f)//Run Forward Animation
         {
-            Debug.Log("Forward Animation");
             if (DebuggerAnimSphere)
             {
                 DebuggerAnimSphere.position = LowerBody.position + LowerBody.forward * 2f;
@@ -104,7 +102,6 @@ public class PlayerController : MonoBehaviour
         {
             if (AngleDot > 0.5f)//Run Right Animation
             {
-                Debug.Log("Right Animation");
                 if (DebuggerAnimSphere)
                 {
                     DebuggerAnimSphere.position = LowerBody.position + LowerBody.right * 2f;
@@ -112,7 +109,6 @@ public class PlayerController : MonoBehaviour
             }
             else if (AngleDot < -0.5f)//Run Left Animation
             {
-                Debug.Log("Left Animation");
                 if (DebuggerAnimSphere)
                 {
                     DebuggerAnimSphere.position = LowerBody.position + -LowerBody.right * 2f;
@@ -122,7 +118,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (AngleDiff > 135f)//Run Backwards Animation
         {
-            Debug.Log("Backward Animation");
             if (DebuggerAnimSphere)
             {
                 DebuggerAnimSphere.position = LowerBody.position + -LowerBody.forward * 2f;

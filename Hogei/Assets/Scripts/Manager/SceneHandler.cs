@@ -11,9 +11,9 @@ public class SceneHandler : MonoBehaviour {
     public string enemyTag = "Enemy";
 
     //all enemies in scene
-    [HideInInspector]
+    //[HideInInspector]
     public List<GameObject> enemiesInSceneCopyList = new List<GameObject>();
-    [HideInInspector]
+    //[HideInInspector]
     public List<GameObject> enemiesInSceneList = new List<GameObject>();
 
     private static SceneHandler singleton;
@@ -21,6 +21,7 @@ public class SceneHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         singleton = this;
+        RefEnemies();
 	}
 	
 	// Update is called once per frame

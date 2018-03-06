@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosiveBarrelTrap : MonoBehaviour {
 
-    List<GameObject> ObjectsInRange;
+    public List<GameObject> ObjectsInRange;
 
 	// Use this for initialization
 	void Start () {
@@ -13,12 +13,18 @@ public class ExplosiveBarrelTrap : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        ObjectsInRange.Add(other.gameObject);
+        if (other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Player"))
+        {
+            ObjectsInRange.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ObjectsInRange.Remove(other.gameObject);
+        if (other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Player"))
+        {
+            ObjectsInRange.Remove(other.gameObject);
+        }
     }
 
     private void OnDestroy()
@@ -27,7 +33,7 @@ public class ExplosiveBarrelTrap : MonoBehaviour {
         {
             if (obj.GetComponent<EntityHealth>())
             {
-                obj.GetComponent<EntityHealth>().DecreaseHealth(1);
+                obj.GetComponent<EntityHealth>().DecreaseHealth(2);
             }
         }
     }
