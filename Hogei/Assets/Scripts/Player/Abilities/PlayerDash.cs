@@ -14,6 +14,8 @@ public class PlayerDash : MonoBehaviour {
     [Header("Timing vars")]
     [Tooltip("Length of dash(Time)")]
     public float dashTime = 1.0f;
+    [Tooltip("Time between uses")]
+    public float timeBetweenUses = 5.0f
 
     //control vars
     private bool isDashing = false; //check if player is in dash
