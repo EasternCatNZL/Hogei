@@ -65,7 +65,7 @@ public class PlayerChainLighting : MonoBehaviour
 
     void FireChainLighting()
     {
-        int Enemylayer = 10 << 8;
+        int Enemylayer = 1 << EnemyLayerNum;
         Vector3 Direction = MouseTarget.GetWorldMousePos() - transform.position;
         Direction.y = 0f;
         Ray InitalRay = new Ray(transform.position, Direction);

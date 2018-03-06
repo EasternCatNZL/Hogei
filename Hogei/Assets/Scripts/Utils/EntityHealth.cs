@@ -51,7 +51,7 @@ public class EntityHealth : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if(gameObject.tag == "Enemy") OnDeath();
+        if(gameObject.tag == "Enemy") if(OnDeath != null) OnDeath();
     }
 
     // Update is called once per frame
