@@ -9,6 +9,15 @@ public class EntityHealth : MonoBehaviour {
 
     public delegate void PlayerHealthEvent();
     public static event PlayerHealthEvent OnPlayerHealthUpdate;
+
+    public enum StatusEffects
+    {
+        CHAINLIGHTING,
+        STUNNED,
+    }
+
+    private bool ChainLighting = false;
+    private bool Stunned = false;
     
     bool InvincibilityFrame = false;
     bool FlashBack = false;
@@ -86,11 +95,6 @@ public class EntityHealth : MonoBehaviour {
 
     }
 
-    private void LateUpdate()
-    {
-
-    }
-
     public void DecreaseHealth(float _value)
     {
         DamageFlash();
@@ -142,6 +146,34 @@ public class EntityHealth : MonoBehaviour {
             print(GetComponentInChildren<SkinnedMeshRenderer>().gameObject.name);
             FlashBack = true;
             LastTime = Time.time;
+        }
+    }
+
+    bool GetStatusEffect(StatusEffects _Effect)
+    {
+        switch(_Effect)
+        {
+            case StatusEffects.CHAINLIGHTING:
+                return ChainLighting;
+            case StatusEffects.STUNNED:
+                return Stunned;
+            default:
+                return false;
+        }
+    }
+
+    void SetStatusEffect(StatusEffects _Effect, bool _NewValue)
+    {
+        switch (_Effect)
+        {
+            case StatusEffects.CHAINLIGHTING:
+                ChainLighting = _NewValue;
+                break;
+            case StatusEffects.STUNNED:
+                Stunned = _NewValue;
+                break;
+            default:
+                break;
         }
     }
 }
