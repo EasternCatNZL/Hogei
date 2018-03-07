@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 54453781349602450}
   - component: {fileID: 114601514295501956}
   - component: {fileID: 114046741654174850}
+  - component: {fileID: 114341096052051790}
   m_Layer: 10
   m_Name: RamEnemy
   m_TagString: Enemy
@@ -168,8 +169,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDrop:
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
-  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
-  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
+--- !u!114 &114341096052051790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017102769027742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f5581e11a255f48ac8207220a9a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSlowed: 0
+  isActive: 0
+  isPaused: 0
+  slowModifier: 1
 --- !u!114 &114576333862320564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,11 +203,12 @@ MonoBehaviour:
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
   chargeSpeed: 15
-  damage: 3
+  damage: 2
   targetTag: Player
   dungeonTag: Dungeon
   isTriggered: 0
   timeChargeBegan: 0
+  currentSpeed: 0
   target: {fileID: 0}
 --- !u!114 &114601514295501956
 MonoBehaviour:

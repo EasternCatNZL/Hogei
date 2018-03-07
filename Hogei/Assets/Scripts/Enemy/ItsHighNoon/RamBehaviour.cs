@@ -57,6 +57,14 @@ public class RamBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         myRigid = GetComponent<Rigidbody>();
+        if(GetComponent<EnemyState>())
+        {
+            state = GetComponent<EnemyState>();
+        }
+        else
+        {
+            Debug.Log("No EnemyState script attached to " + gameObject.name);
+        }
     }
 	
 	// Update is called once per frame
