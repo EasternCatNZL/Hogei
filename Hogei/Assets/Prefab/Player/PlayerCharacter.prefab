@@ -518,11 +518,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4980728654015562}
   - component: {fileID: 114747392568785226}
-  - component: {fileID: 114714097514588042}
-  - component: {fileID: 114924075356286588}
   - component: {fileID: 82763615860141780}
   - component: {fileID: 82343292048352278}
   - component: {fileID: 82615188393331670}
+  - component: {fileID: 114961968145540346}
   m_Layer: 12
   m_Name: PlayerAttacks
   m_TagString: Untagged
@@ -1131,8 +1130,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892330597440044}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -27.22}
+  m_LocalRotation: {x: -0, y: -0.11541124, z: -0, w: 0.99331784}
+  m_LocalPosition: {x: 27.5, y: 15.501, z: -27.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4065033415907994}
@@ -1147,7 +1146,7 @@ Transform:
   - {fileID: 4926774625900488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -13.255001, z: 0}
 --- !u!4 &4192389554394742
 Transform:
   m_ObjectHideFlags: 1
@@ -2220,6 +2219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbfba9e7a2be5949bb03be82747a23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightStickX: RightStickX
+  rightStickY: RightStickY
+  change: 1
+  deadZone: 0.1
 --- !u!114 &114525198324206222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2232,9 +2235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1892330597440044}
-  dashDistance: 3
-  speed: 5
+  dashForce: 15
   dashTime: 0.5
+  timeBetweenUses: 5
   canDo: {fileID: 114959843512822864}
   movement: {fileID: 114989592970560960}
 --- !u!114 &114622602382384936
@@ -2243,13 +2246,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892330597440044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
   MaxHealth: 10
+  DeathVFX: {fileID: 0}
+  HitVFX: {fileID: 0}
 --- !u!114 &114627180115490170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2261,28 +2266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a845f73b978fe4f996f4e873233d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityOneKey: 102
+  abilityOneKey: 304
   abilityTwoKey: 103
   abilityHolder: {fileID: 1573077336164902}
---- !u!114 &114714097514588042
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593428263322504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf685d8e5914814bab3ec4e22857c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletObject: {fileID: 1383993044565024, guid: 9f34489d8bf419c4dbf297903a5be2ff,
-    type: 2}
-  bulletTravelSpeed: 5
-  timeBetweenShots: 0.2
-  maxHomingTime: 4
-  homingStartDelay: 1
-  distanceToStart: 0.1
-  bulletFireSound: {fileID: 82615188393331670}
+  ability: 0
 --- !u!114 &114747392568785226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2294,13 +2281,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c58b06704a313a4b9f9ce941e85a7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObject: {fileID: 1626456016074720, guid: f0f969a35ba04ae489601c7585c48e25,
+  bulletObject: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
     type: 2}
   numBulletWaves: 3
   bulletTravelSpeedFast: 10
-  bulletTravelSpeedSlow: 5
+  bulletTravelSpeedSlow: 10
   bulletMaxTravelDist: 8
-  timeBetweenShots: 2
+  timeBetweenShots: 0.2
   timeBetweenWaves: 0.1
   bulletFireSound: {fileID: 82763615860141780}
 --- !u!114 &114918247126332766
@@ -2320,23 +2307,6 @@ MonoBehaviour:
   HealthDecrease: 1
   numWeapons: 0
   peaShootStrengthened: 1
---- !u!114 &114924075356286588
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593428263322504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9507ed94ce395d41a763dec02cab295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletObject: {fileID: 1626456016074720, guid: f0f969a35ba04ae489601c7585c48e25,
-    type: 2}
-  bulletTravelSpeed: 10
-  timeBetweenShots: 0.1
-  distanceToStart: 0.1
-  bulletFireSound: {fileID: 82343292048352278}
 --- !u!114 &114959843512822864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2352,6 +2322,23 @@ MonoBehaviour:
   canShoot: 1
   canAbility: 1
   canTalk: 0
+--- !u!114 &114961968145540346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1593428263322504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9507ed94ce395d41a763dec02cab295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
+    type: 2}
+  bulletTravelSpeed: 10
+  timeBetweenShots: 0.1
+  distanceToStart: 0.1
+  bulletFireSound: {fileID: 82615188393331670}
 --- !u!114 &114989592970560960
 MonoBehaviour:
   m_ObjectHideFlags: 1
