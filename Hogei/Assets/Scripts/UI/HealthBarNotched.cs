@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class HealthBarNotched : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class HealthBarNotched : MonoBehaviour {
 
     public GameObject[] Notches;
     private int NumNotches;
+    private int LastHealth = 0;
    
 
     // Use this for initialization
@@ -30,6 +32,7 @@ public class HealthBarNotched : MonoBehaviour {
     private void CreateNotches()
     {      
         NumNotches = (int)TargetHealth.MaxHealth;
+        LastHealth = NumNotches;
         Notches = new GameObject[NumNotches];
         float xPos = 0f;
         Color NotchColor = Color.red;
@@ -53,16 +56,26 @@ public class HealthBarNotched : MonoBehaviour {
 
     private void UpdateNotches()
     {
+        bool Shake = false;
         if ((int)TargetHealth.MaxHealth > NumNotches)
         {
             CreateNotches();
         }
         int CurrentHealth = (int)TargetHealth.CurrentHealth;
+        if(CurrentHealth < LastHealth)
+        {
+            Shake = true;
+            LastHealth = CurrentHealth;
+        }
         //print(CurrentHealth);
         for (int i = 0; i < NumNotches; ++i)
         {
             if(i < CurrentHealth)
             {
+                if(Shake)
+                {
+                    Notches[i].transform.DOShakePosition(0.1f);
+                }
                 Notches[i].SetActive(true);
             }
             else
