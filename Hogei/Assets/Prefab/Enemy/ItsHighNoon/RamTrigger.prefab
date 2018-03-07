@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 136792047516468290}
   - component: {fileID: 54453781349602450}
   - component: {fileID: 114601514295501956}
+  - component: {fileID: 114046741654174850}
   m_Layer: 10
   m_Name: RamEnemy
   m_TagString: Enemy
@@ -154,6 +155,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114046741654174850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017102769027742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
 --- !u!114 &114576333862320564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 5
+  MaxHealth: 25
   DeathVFX: {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073, type: 2}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
 --- !u!114 &114809514374338188

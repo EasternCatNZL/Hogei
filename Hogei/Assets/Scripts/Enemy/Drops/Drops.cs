@@ -39,10 +39,16 @@ public class Drops : MonoBehaviour {
     {
         if (GetComponent<EntityHealth>().CurrentHealth <= 0.0f)
         {
-            Vector3 currentPosition = transform.position;
+            
+            Vector3 DropPosition = Vector3.zero;
+            int Count = 0;
             foreach (GameObject item in itemDrop)
             {
-                Instantiate(item, currentPosition, Quaternion.identity);
+                Count++;
+                DropPosition = new Vector3(Mathf.Sin((360 / itemDrop.Length) * Mathf.Deg2Rad * Count), 0f, Mathf.Cos((360 / itemDrop.Length) * Mathf.Deg2Rad * Count));
+                DropPosition += transform.position;
+                Instantiate(item, DropPosition, Quaternion.identity);
+
             }
             Destroy(gameObject);
         }
