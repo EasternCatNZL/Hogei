@@ -12,6 +12,10 @@ public class EnemyState : MonoBehaviour {
     public bool isActive = false;
     public bool isPaused = false;
 
+    [Header("Modifiers")]
+    [Tooltip("Slow modifier")]
+    public float slowModifier = 1.0f;
+
 	// Use this for initialization
 	void Start () {
 		

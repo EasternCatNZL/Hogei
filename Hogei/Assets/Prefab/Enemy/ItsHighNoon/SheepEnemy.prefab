@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95383314686114792}
   - component: {fileID: 114323248391405494}
   - component: {fileID: 136255011683785226}
+  - component: {fileID: 114539211879670522}
   m_Layer: 0
   m_Name: SheepEnemy
   m_TagString: Untagged
@@ -127,8 +128,24 @@ MonoBehaviour:
   bulletTag: Bullet
   floorTag: Dungeon
   isTriggered: 0
+  currentSpeed: 0
   timeChargeBegan: 0
   target: {fileID: 0}
+--- !u!114 &114539211879670522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1657573820649478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f5581e11a255f48ac8207220a9a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSlowed: 0
+  isActive: 0
+  isPaused: 0
+  slowModifier: 1
 --- !u!136 &136255011683785226
 CapsuleCollider:
   m_ObjectHideFlags: 1

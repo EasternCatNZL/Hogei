@@ -61,6 +61,7 @@ public class SheepBehaviour : MonoBehaviour {
 	void Update () {
         if (isTriggered && !isPaused)
         {
+            AdjustStates();
             if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
             {
                 Move();
@@ -100,7 +101,7 @@ public class SheepBehaviour : MonoBehaviour {
     //move
     private void Move()
     {
-        myRigid.velocity = transform.forward * chargeSpeed;
+        myRigid.velocity = transform.forward * currentSpeed;
     }
 
     //Adjust state
@@ -108,7 +109,7 @@ public class SheepBehaviour : MonoBehaviour {
     {
         if (state.isSlowed)
         {
-            currentSpeed = chargeSpeed / 2;
+            currentSpeed = chargeSpeed * state.slowModifier;
         }
         else
         {

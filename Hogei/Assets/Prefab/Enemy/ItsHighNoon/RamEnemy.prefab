@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95038897881218982}
   - component: {fileID: 114577444744974048}
   - component: {fileID: 136671416758909382}
+  - component: {fileID: 114760702564779244}
   m_Layer: 0
   m_Name: RamEnemy
   m_TagString: Untagged
@@ -119,14 +120,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeTime: 2
   recoverTime: 1
+  timeBetweenBullets: 0.2
   recoilDistance: 2
   jumpPower: 1
+  bulletObject: {fileID: 0}
   chargeSpeed: 10
   damage: 3
   targetTag: Player
+  dungeonTag: Dungeon
   isTriggered: 0
   timeChargeBegan: 0
   target: {fileID: 0}
+--- !u!114 &114760702564779244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290827399261438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f5581e11a255f48ac8207220a9a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSlowed: 0
+  isActive: 0
+  isPaused: 0
+  slowModifier: 1
 --- !u!136 &136671416758909382
 CapsuleCollider:
   m_ObjectHideFlags: 1
