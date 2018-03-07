@@ -15237,6 +15237,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 52
       objectReference: {fileID: 0}
+    - target: {fileID: 1395889242469354, guid: 53596dcadf9f29b4ab210e2026e9dd3f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53596dcadf9f29b4ab210e2026e9dd3f, type: 2}
   m_IsPrefabParent: 0
@@ -25781,74 +25785,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 4183656781475878, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -13.255001
-      objectReference: {fileID: 0}
-    - target: {fileID: 114959843512822864, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: canMove
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114747392568785226, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: bulletObject
-      value: 
-      objectReference: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
-        type: 2}
-    - target: {fileID: 114747392568785226, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: timeBetweenShots
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114747392568785226, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: bulletTravelSpeedSlow
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114714097514588042, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114924075356286588, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114747392568785226, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114622602382384936, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114525198324206222, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: speed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114627180115490170, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: abilityOneKey
-      value: 304
-      objectReference: {fileID: 0}
-    - target: {fileID: 114525198324206222, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: dashDistance
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114918247126332766, guid: 981f717f161a45044abd3dbac9443b0d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114714097514588042, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
-    - {fileID: 114924075356286588, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 981f717f161a45044abd3dbac9443b0d, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1966623469 stripped
@@ -26490,6 +26427,10 @@ Prefab:
         type: 2}
       propertyPath: m_Center.y
       value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395889242469354, guid: 53596dcadf9f29b4ab210e2026e9dd3f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53596dcadf9f29b4ab210e2026e9dd3f, type: 2}
@@ -27699,33 +27640,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4690445903982628, guid: edbdf923a15e9794097f4434b771b67a,
     type: 2}
   m_PrefabInternal: {fileID: 2119862851}
---- !u!1 &2120104639 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1593428263322504, guid: 981f717f161a45044abd3dbac9443b0d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1958735586}
---- !u!114 &2120104641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2120104639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9507ed94ce395d41a763dec02cab295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletObject: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
-    type: 2}
-  bulletTravelSpeed: 10
-  timeBetweenShots: 0.1
-  distanceToStart: 0.1
-  bulletFireSound: {fileID: 2120104642}
---- !u!82 &2120104642 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82615188393331670, guid: 981f717f161a45044abd3dbac9443b0d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1958735586}
 --- !u!1001 &2124875582
 Prefab:
   m_ObjectHideFlags: 0
