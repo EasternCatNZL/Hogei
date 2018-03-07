@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 51858ca0ff46ae24cb57cf320cc2eebb, type: 2}
+  - {fileID: 2100000, guid: 4e0b5be591053f546aa2126f8f357c14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +135,9 @@ MonoBehaviour:
   bulletSpeedStep: 1
   numShotsPerSpray: 3
   timeBetweenShots: 0.1
+  rampAmount: 0.05
+  rampPercentTrigger: 0.5
+  bulletOffsetY: 1
   isActive: 0
 --- !u!136 &136641544129684520
 CapsuleCollider:
