@@ -40,6 +40,8 @@ public class RamBehaviour : MonoBehaviour {
     private bool isPaused = false; //checks if pause has been called
     [HideInInspector]
     public float timeChargeBegan = 0.0f; //time charge up began
+    [HideInInspector]
+    public float currentSpeed = 0.0f; //the current speed of the object
     private float timeLastShot = 0.0f; //time of last shot
     private float timeRecoverBegan = 0.0f; //time recover began
     private float pauseStartTime = 0.0f; //time pause started
@@ -48,6 +50,9 @@ public class RamBehaviour : MonoBehaviour {
     private Rigidbody myRigid; //the rigidbody attached to this object
     [HideInInspector]
     public GameObject target; //the target this object is attacking
+
+    //script refs
+    private EnemyState state;
 
     // Use this for initialization
     void Start () {
@@ -58,6 +63,7 @@ public class RamBehaviour : MonoBehaviour {
 	void Update () {
         if (isTriggered && !isPaused)
         {
+            AdjustStates();
             if (isCharging)
             {
                 //look at the target
@@ -80,6 +86,19 @@ public class RamBehaviour : MonoBehaviour {
                 }
             }
             //print(myRigid.velocity);
+        }
+    }
+
+    //Adjust state
+    public void AdjustStates()
+    {
+        if (state.isSlowed)
+        {
+            currentSpeed = chargeSpeed * state.slowModifier;
+        }
+        else
+        {
+            currentSpeed = chargeSpeed;
         }
     }
 
@@ -121,9 +140,9 @@ public class RamBehaviour : MonoBehaviour {
             //look at the target
             transform.LookAt(target.transform.position);
             //remove any x and z change
-            //Quaternion newRotation = new Quaternion();
-            //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
-            //transform.rotation = newRotation;
+            Quaternion newRotation = new Quaternion();
+            newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.eulerAngles.y, 0.0f);
+            transform.rotation = newRotation;
         }
     }
 
@@ -138,7 +157,7 @@ public class RamBehaviour : MonoBehaviour {
         isCharging = false;
         isMoving = true;
         //move
-        myRigid.velocity = (transform.forward * chargeSpeed) /** Time.deltaTime*/;
+        myRigid.velocity = (transform.forward * currentSpeed) /** Time.deltaTime*/;
 
         //reset pause timers
         pauseStartTime = 0.0f;
