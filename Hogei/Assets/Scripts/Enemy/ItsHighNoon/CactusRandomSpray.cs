@@ -17,6 +17,14 @@ public class CactusRandomSpray : MonoBehaviour {
     [Header("Timing vars")]
     [Tooltip("The time between shots")]
     public float timeBetweenShots = 0.1f;
+    [Tooltip("How much the time between shots increases")]
+    public float rampAmount = 0.05f;
+    [Tooltip("Percentage of health loss to trigger a ramp up")]
+    public float rampPercentTrigger = 0.5f;
+
+    [Header("Bullet vars")]
+    [Tooltip("The y offset added to shots")]
+    public float bulletOffsetY = 1f;
 
     //control vars
     [HideInInspector]
@@ -25,10 +33,14 @@ public class CactusRandomSpray : MonoBehaviour {
     private float timeLastShot = 0.0f; //the time the last shot was fired
     private float pauseStartTime = 0.0f; //time pause started
     private float pauseEndTime = 0.0f; //time pause ended
+    private Vector3 bulletOffset = Vector3.zero;
+    private float NextRampTrigger = 1f;
 
     // Use this for initialization
     void Start () {
         isActive = false;
+        NextRampTrigger -= rampPercentTrigger;
+        bulletOffset = new Vector3(0f, bulletOffsetY, 0f);
 	}
 	
 	// Update is called once per frame
@@ -69,9 +81,9 @@ public class CactusRandomSpray : MonoBehaviour {
 
         //for the number of shots per spray
         for (int i = 0; i < numShotsPerSpray; i++)
-        {
+        {         
             //create a bullet
-            GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
+            GameObject bulletClone = Instantiate(bulletObject, transform.position + bulletOffset, transform.rotation);
             //get a new rotation
             Quaternion newRotation = new Quaternion();
             float random = Random.Range(0, 360.0f);
@@ -80,6 +92,18 @@ public class CactusRandomSpray : MonoBehaviour {
             bulletClone.transform.rotation = newRotation;
             //assign speed
             bulletClone.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed + (bulletSpeedStep * i));
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        EntityHealth myHealth = GetComponent<EntityHealth>();
+        float percentLoss = myHealth.CurrentHealth / myHealth.MaxHealth;
+        print(percentLoss);
+        if(percentLoss < NextRampTrigger)
+        {
+            timeBetweenShots -= rampAmount;
+            NextRampTrigger -= rampPercentTrigger;
         }
     }
 

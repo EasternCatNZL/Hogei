@@ -48,17 +48,21 @@ public class EntityHealth : MonoBehaviour {
         //deathSound.playOnAwake = false;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnDestroy()
+    {
+        if(gameObject.tag == "Enemy") if(OnDeath != null) OnDeath();
+    }
+
+    // Update is called once per frame
+    void Update () {
         if(CurrentHealth <= 0.0f)
         {          
             if (gameObject.tag == "Enemy")
             {
-                if (OnDeath != null) OnDeath();
                 if(GetComponent<Drops>())GetComponent<Drops>().OnDeathDrop();
                 //for room enemies
-                if (transform.parent.GetComponent<RoomEnemyManager>())
+                if (transform.parent && transform.parent.GetComponent<RoomEnemyManager>())
                 {
                     transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
                 }

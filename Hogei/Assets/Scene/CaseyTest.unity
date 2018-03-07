@@ -1752,7 +1752,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 0
     generateLightingData: 0
   m_UseWorldSpace: 1
@@ -1770,9 +1770,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitalRange: 10
   NumberChains: 3
-  ChainRange: 5
+  ChainRange: 20
   EnemyLayerNum: 10
+  TickTime: 0.1
+  Damage: 1
   ChainPositions: []
+  ChainedEnemies: []
 --- !u!1 &1845828611
 GameObject:
   m_ObjectHideFlags: 0

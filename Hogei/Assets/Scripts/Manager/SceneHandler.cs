@@ -23,9 +23,19 @@ public class SceneHandler : MonoBehaviour {
         singleton = this;
         RefEnemies();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        EntityHealth.OnDeath += RefEnemies;
+    }
+
+    private void OnDisable()
+    {
+        EntityHealth.OnDeath -= RefEnemies;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -45,6 +55,7 @@ public class SceneHandler : MonoBehaviour {
     //Ref all enemies in scene
     void RefEnemies()
     {
+        enemiesInSceneList.Clear();
         //find all enemies in the scene
         GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag(enemyTag);
         //Create a copy of all objects and place into list

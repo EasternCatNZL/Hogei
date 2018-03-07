@@ -9,16 +9,22 @@ public class PlayerChainLighting : MonoBehaviour
     public int NumberChains = 3;
     public float ChainRange = 5f;
     public int EnemyLayerNum = 10;
+    [Tooltip("Time between ticks")]
+    public float TickTime = 0.5f;
+    [Tooltip("Damage done per tick")]
+    public int Damage = 1;
 
     private RaycastHit InitalHitInfo;
     public Vector3[] ChainPositions;
     private LineRenderer LineRend;
-    private List<GameObject> ChainedEnemies;
+    public List<GameObject> ChainedEnemies;
     private Vector3 LastChainPos;
+    private float LastTick;
 
     // Use this for initialization
     void Start()
     {
+        LastTick = Time.time;
         ChainPositions = new Vector3[NumberChains + 2];
         ChainedEnemies = new List<GameObject>();
         if (GetComponent<LineRenderer>())
@@ -39,11 +45,16 @@ public class PlayerChainLighting : MonoBehaviour
         {
             foreach(GameObject Enemy in ChainedEnemies)
             {
-                Enemy.GetComponent<EntityHealth>().SetStatusEffect(EntityHealth.StatusEffects.CHAINLIGHTING, false);
+                if (Enemy)
+                {
+                    Enemy.GetComponent<EntityHealth>().SetStatusEffect(EntityHealth.StatusEffects.CHAINLIGHTING, false);
+                }
             }
+            LineRend.enabled = true;
             ChainedEnemies.Clear();
             FireChainLighting();
             DrawLighting();
+            DamageEnemies();
         }
         else
         {
@@ -54,14 +65,15 @@ public class PlayerChainLighting : MonoBehaviour
 
     void FireChainLighting()
     {
+        int Enemylayer = 1 << EnemyLayerNum;
         Vector3 Direction = MouseTarget.GetWorldMousePos() - transform.position;
         Direction.y = 0f;
         Ray InitalRay = new Ray(transform.position, Direction);
         Debug.DrawRay(InitalRay.origin, InitalRay.direction, Color.cyan);
-        if (Physics.Raycast(InitalRay, out InitalHitInfo, InitalRange))
+        if (Physics.Raycast(InitalRay, out InitalHitInfo, InitalRange, Enemylayer))
         {
-            LineRend.enabled = true;
             GameObject objectHit = InitalHitInfo.collider.gameObject;
+            LineRend.positionCount = 2 + NumberChains;
             ChainPositions[0] = transform.position;
             ChainPositions[1] = objectHit.transform.position;
             ChainedEnemies.Add(objectHit);
@@ -69,7 +81,10 @@ public class PlayerChainLighting : MonoBehaviour
         }
         else
         {
-            LineRend.enabled = false;
+            LastChainPos = InitalRay.origin + InitalRay.direction * InitalRange;
+            LineRend.positionCount = 2;
+            ChainPositions[0] = transform.position;
+            ChainPositions[1] = LastChainPos;
         }
     }
 
@@ -98,11 +113,12 @@ public class PlayerChainLighting : MonoBehaviour
             //Add enemy position to ChainPositions
             ChainPositions[NumberChains - _ChainsLeft + 2] = ClosestEnemy.transform.position;
             ChainedEnemies.Add(ClosestEnemy);
+            //Chain again
             ChainToEnemy(ClosestEnemy.transform.position, _ChainsLeft - 1);
         }
         else
         {
-            print("No Enemies to chain too");
+            print("No more Enemies to chain too");
             LastChainPos = _ChainOrigin;
             for (int i = NumberChains - _ChainsLeft + 2; i < NumberChains + 2; ++i)
             {
@@ -114,5 +130,18 @@ public class PlayerChainLighting : MonoBehaviour
     void DrawLighting()
     {
         LineRend.SetPositions(ChainPositions);
+    }
+
+    void DamageEnemies()
+    {
+        if (Time.time - LastTick > TickTime)
+        {
+            foreach (GameObject Enemy in ChainedEnemies)
+            {
+                Enemy.GetComponent<EntityHealth>().DecreaseHealth(Damage);
+            }
+            LastTick = Time.time;
+        }
+
     }
 }

@@ -98,8 +98,9 @@ GameObject:
   - component: {fileID: 95660386722365132}
   - component: {fileID: 114498884800913292}
   - component: {fileID: 114722889593381400}
+  - component: {fileID: 114176268066501742}
   m_Layer: 10
-  m_Name: CactusHitPoses
+  m_Name: CactusEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,6 +773,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+--- !u!114 &114176268066501742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180522303191844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
 --- !u!114 &114498884800913292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 10
+  MaxHealth: 100
   DeathVFX: {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2, type: 2}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
 --- !u!114 &114722889593381400
@@ -804,6 +820,9 @@ MonoBehaviour:
   bulletSpeedStep: 1
   numShotsPerSpray: 3
   timeBetweenShots: 0.2
+  rampAmount: 0.05
+  rampPercentTrigger: 0.5
+  bulletOffsetY: 0.5
   isActive: 0
 --- !u!135 &135053653223701776
 SphereCollider:
