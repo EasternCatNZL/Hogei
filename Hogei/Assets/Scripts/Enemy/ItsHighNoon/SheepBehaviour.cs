@@ -136,7 +136,7 @@ public class SheepBehaviour : MonoBehaviour {
             //get a bullet from the bank
             GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
             //set the bullets position to this pos
-            bullet.transform.position = transform.position;
+            bullet.transform.position = transform.position + transform.up * 0.4f;
             //set the bullet's rotation to current rotation
             bullet.transform.rotation = currentRotation;
             //setup the bullet and fire
@@ -163,6 +163,11 @@ public class SheepBehaviour : MonoBehaviour {
             BulletExplosion();
             GetComponent<EntityHealth>().DecreaseHealth(1);
         }
+    }
+
+    private void OnDestroy()
+    {
+        
     }
 
     void OnPause()
