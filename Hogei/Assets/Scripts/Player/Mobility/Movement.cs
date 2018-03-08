@@ -18,6 +18,10 @@ public class Movement : MonoBehaviour {
     [Tooltip("Budget camera that follows the player and nothing else")]
     public GameObject followCamera;
 
+    [Header("Input axis")]
+    public string leftStickX = "LeftStickX";
+    public string leftStickY = "LeftStickY";
+
     //component refs
     Rigidbody Rigid;
     Animator Anim;
@@ -44,18 +48,20 @@ public class Movement : MonoBehaviour {
 
         Rigid = GetComponent<Rigidbody>();
         Anim = GetComponent<Animator>();
-
-        //for budget camera
-        //yOffset = followCamera.transform.position.y - transform.position.y;
-        //zOffset = followCamera.transform.position.z - transform.position.z;
-        //cameraOffset = followCamera.transform.position - transform.position;
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (canDo.canMove)
         {
-            MovePlayer();
+            if (canDo.useKeyboard)
+            {
+                MovePlayer();
+            }
+            else if (canDo.useController)
+            {
+                MovePlayerController();
+            }
         }
     }
 
@@ -97,12 +103,45 @@ public class Movement : MonoBehaviour {
         //Rigid.MovePosition(transform.position + newPos * Speed * Time.deltaTime);
         transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
 
-        //if (followCamera && newPos != Vector3.zero)
-        //{
-        //    //move the camera the same x and z
-        //    //followCamera.transform.position = followCamera.transform.position + newPos * Speed * Time.deltaTime;
-        //    followCamera.transform.position = transform.position + cameraOffset;
-        //}
+    }
+
+    //move player pos
+    private void MovePlayerController()
+    {
+        Vector3 newPos = Vector3.zero;
+        Direction = Vector3.zero;
+        if (Input.GetAxisRaw(leftStickX) > 0f)
+        {
+            newPos.z += 1;
+            Direction += new Vector3(0f, 0f, 1f);
+        }
+        else if (Input.GetAxisRaw(leftStickX) < 0f)
+        {
+            newPos.z -= 1;
+            Direction += new Vector3(0f, 0f, -1f);
+        }
+        if (Input.GetAxisRaw(leftStickY) > 0f)
+        {
+            newPos.x -= 1;
+            Direction += new Vector3(-1f, 0f, 0f);
+        }
+        else if (Input.GetAxisRaw(leftStickY) < 0f)
+        {
+            newPos.x += 1;
+            Direction += new Vector3(1f, 0f, 0f);
+        }
+
+        if (newPos != Vector3.zero)
+        {
+            Anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            Anim.SetBool("IsMoving", false);
+        }
+        newPos.Normalize();
+        //Rigid.MovePosition(transform.position + newPos * Speed * Time.deltaTime);
+        transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
 
     }
 

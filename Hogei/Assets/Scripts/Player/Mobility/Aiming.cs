@@ -12,24 +12,35 @@ public class Aiming : MonoBehaviour {
     [Tooltip("Amount mouse has to have moved to have been considered moved")]
     public float change = 1.0f;
 
+    [Header("Controller check handling")]
+    [Tooltip("Delay to check for controllers")]
+    public float controllerDelayCheck = 2.0f;
+
     [Header("Dead zone var")]
     public float deadZone = 0.5f;
 
     //control vars
+    private bool controllerConnected = false;
+
+    private float controllerCheck = 0.0f;
+
     Vector3 mouseLastPos = Vector3.zero;
+
+    //script refs
+    private WhatCanIDO canDo;
 
 	// Use this for initialization
 	void Start () {
-		
+        canDo = GetComponent<WhatCanIDO>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(CheckMouseChange())
+        if (canDo.useKeyboard)
         {
             MouseInput();
         }
-        else
+        else if (canDo.useController)
         {
             ControllerInput();
         }
@@ -60,12 +71,21 @@ public class Aiming : MonoBehaviour {
         //only work if meaningful
         if(direction.sqrMagnitude < deadZone)
         {
+            //check controller checker timing
+            controllerCheck -= Time.deltaTime;
+            //if no meaningful input has been recieved, set to false;
+            if(controllerCheck <= 0)
+            {
+                controllerConnected = false;
+            }
             return;
         }
         //apply rotation
         float angle = Mathf.Atan2(Input.GetAxis(rightStickX), Input.GetAxis(rightStickY)) * Mathf.Rad2Deg;
         print(angle);
         transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+        //set controller check timing
+        controllerCheck = controllerDelayCheck;
     }
 
     //check if mouse has moved enough to warrent change

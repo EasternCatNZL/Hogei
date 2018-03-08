@@ -18,11 +18,17 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     [Tooltip("Shield ablity key")]
     public KeyCode abilityTwoKey = KeyCode.G;
     [Tooltip("Ability 1 axis")]
-    public string abitlityOneAxis = "Skill1";
+    public string abilityOneAxis = "Skill1";
     [Tooltip("Ability 2 axis")]
     public string abilityTwoAxis = "Skill2";
     [Tooltip("Ability 3 axis")]
-    public string abitlityThreeAxis = "Skill3";
+    public string abilityThreeAxis = "Skill3";
+    [Tooltip("Controller ability 1 axis")]
+    public string controllerOneAxis = "ControllerSkill1";
+    [Tooltip("Controller ability 2 axis")]
+    public string controllerTwoAxis = "ControllerSkill2";
+    [Tooltip("Controller ability 3 axis")]
+    public string controllerThreeAxis = "ControllerSkill3";
 
     [Header("Ability holder")]
     public GameObject abilityHolder;
@@ -78,7 +84,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private void UseAbilityOne()
     {
         //check if input
-        if (Input.GetAxisRaw(abitlityOneAxis) != 0)
+        if ((canDo.useKeyboard && Input.GetAxisRaw(abilityOneAxis) != 0) || (canDo.useController && Input.GetAxisRaw(controllerOneAxis) != 0))
         {
             //try to use current ability
             switch (abilityOne)
@@ -102,7 +108,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private void UseAbilityTwo()
     {
         //check if input
-        if (Input.GetAxisRaw(abilityTwoAxis) != 0)
+        if ((canDo.useKeyboard && Input.GetAxisRaw(abilityTwoAxis) != 0) || (canDo.useController && Input.GetAxisRaw(controllerTwoAxis) != 0))
         {
             //try to use current ability
             switch (abilityTwo)
@@ -126,7 +132,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private void UseAbilityThree()
     {
         //check if input
-        if (Input.GetAxisRaw(abitlityThreeAxis) != 0)
+        if ((canDo.useKeyboard && Input.GetAxisRaw(abilityThreeAxis) != 0) || (canDo.useController && Input.GetAxisRaw(controllerThreeAxis) != 0))
         {
             //try to use current ability
             switch (abilityThree)
