@@ -77,7 +77,7 @@ public class SlowTrap : MonoBehaviour {
             if (other.gameObject.GetComponent<EnemyState>())
             {
                 other.gameObject.GetComponent<EnemyState>().isSlowed = true;
-                other.gameObject.GetComponent<EnemyState>().slowModifier = SlowPercentage;
+                other.gameObject.GetComponent<EnemyState>().slowModifier = (1f - SlowPercentage);
                 entitiesInTrapList.Add(other.gameObject);
             }
         }

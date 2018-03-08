@@ -99,7 +99,6 @@ public class CactusRandomSpray : MonoBehaviour {
     {
         EntityHealth myHealth = GetComponent<EntityHealth>();
         float percentLoss = myHealth.CurrentHealth / myHealth.MaxHealth;
-        print(percentLoss);
         if(percentLoss < NextRampTrigger)
         {
             timeBetweenShots -= rampAmount;
