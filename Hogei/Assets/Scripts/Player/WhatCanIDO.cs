@@ -9,6 +9,8 @@ public class WhatCanIDO : MonoBehaviour {
     public bool canShoot = false;
     public bool canAbility = false;
     public bool canTalk = false;
+    public bool useKeyboard = true;
+    public bool useController = false;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +37,19 @@ public class WhatCanIDO : MonoBehaviour {
         canMove = false;
         canShoot = false;
         canAbility = false;
+    }
+
+    //switch between keyboard and controller
+    public void SwitchKeyboardToController()
+    {
+        useKeyboard = false;
+        useController = true;
+    }
+
+    public void SwitchControllerToKeyboard()
+    {
+        useKeyboard = true;
+        useController = false;
     }
 
     private void OnEnable()

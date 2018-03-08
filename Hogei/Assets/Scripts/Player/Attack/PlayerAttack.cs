@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour {
     public KeyCode nextWeaponInput = KeyCode.E;
     [Tooltip("Input axis")]
     public string attackInputAxis = "Attack";
+    public string attackInputAxisController = "ControllerAttack";
 
     public float HealthDecrease = 1.0f;
 
@@ -83,7 +84,7 @@ public class PlayerAttack : MonoBehaviour {
     private void UseWeapon()
     {
         //check if input 
-        if (CheckMouseInputWeapon())
+        if (CheckInput())
         {
             Anim.SetBool("IsShooting", true);
             //try to use current weapon
@@ -142,14 +143,25 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     //keyboard input check for firing weapon <- to avoid clunkiness in code
-    private bool CheckMouseInputWeapon()
+    private bool CheckInput()
     {
         bool valid = false;
-        //if (Input.GetMouseButton(mouseInputKey))
-        if(Input.GetAxisRaw(attackInputAxis) != 0)
+        //check what player is using
+        if (canDo.useKeyboard)
         {
-            valid = true;
+            if (Input.GetAxisRaw(attackInputAxis) != 0)
+            {
+                valid = true;
+            }
         }
+        else if (canDo.useController)
+        {
+            if(Input.GetAxisRaw(attackInputAxisController) != 0)
+            {
+                valid = true;
+            }
+        }
+
         return valid;
     }
 }
