@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour {
     public KeyCode prevWeaponInput = KeyCode.Q;
     [Tooltip("Switch weapon ->")]
     public KeyCode nextWeaponInput = KeyCode.E;
+    [Tooltip("Input axis")]
+    public string attackInputAxis = "Attack";
 
     public float HealthDecrease = 1.0f;
 
@@ -143,7 +145,8 @@ public class PlayerAttack : MonoBehaviour {
     private bool CheckMouseInputWeapon()
     {
         bool valid = false;
-        if (Input.GetMouseButton(mouseInputKey))
+        //if (Input.GetMouseButton(mouseInputKey))
+        if(Input.GetAxisRaw(attackInputAxis) != 0)
         {
             valid = true;
         }

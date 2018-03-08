@@ -11,6 +11,10 @@ public class PlayerDash : MonoBehaviour {
     [Tooltip("The dash force")]
     public float dashForce = 15.0f;
 
+    [Header("Speed")]
+    [Tooltip("Top starting speed")]
+    public float topSpeed = 30.0f;
+
     [Header("Timing vars")]
     [Tooltip("Length of dash(Time)")]
     public float dashTime = 1.0f;
@@ -21,9 +25,12 @@ public class PlayerDash : MonoBehaviour {
     private bool isDashing = false; //check if player is in dash
 
     private float dashStartTime = 0.0f; //time dash started
+    private float decayRate = 0.0f; //rate speed dacays
+    private float lastUseTime = 0.0f; //time dash was last used
 
     private Vector3 dashStartLocation = Vector3.zero; //the location dash began
     private Vector3 destination = Vector3.zero; //the location to aim at
+    private Vector3 dashDirection = Vector3.zero; //direction of dash
 
     //script refs
     [Header("Script refs")]
@@ -32,7 +39,7 @@ public class PlayerDash : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        decayRate = topSpeed / dashTime;
 	}
 	
 	// Update is called once per frame
@@ -46,29 +53,46 @@ public class PlayerDash : MonoBehaviour {
                 isDashing = false;
                 player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
+            else
+            {
+                player.GetComponent<Rigidbody>().velocity -= dashDirection * (decayRate * Time.deltaTime);
+            }
         }
 	}
 
     //Use func
     public void Use()
     {
-        //Get position in direction
-        //destination = player.transform.position + (movement.GetDirection() * dashDistance);
-        //set up control vars
-        isDashing = true;
-        //dashStartLocation = player.transform.position;
-        dashStartTime = Time.time;
-        canDo.canMove = false;
-        Dash();
+        //check timing
+        if(Time.time > lastUseTime + timeBetweenUses)
+        {
+            //set up control vars
+            isDashing = true;
+            //dashStartLocation = player.transform.position;
+            dashStartTime = Time.time;
+            canDo.canMove = false;
+            //get direction
+            GetDashDirection();
+            //start dash
+            Dash();
+            //set timing
+            lastUseTime = Time.time;
+        }
+    }
+
+    //get direction
+    private void GetDashDirection()
+    {
+        //get the direction vector
+        dashDirection = movement.GetDirection();
+        //remove y change
+        dashDirection.y = 0.0f;
     }
 
     //Dash logic
     private void Dash()
     {
-        //get the direction vector
-        Vector3 dashDirection = movement.GetDirection();
-        //remove y change
-        dashDirection.y = 0.0f;
-        player.GetComponent<Rigidbody>().AddForce(dashDirection * dashForce, ForceMode.Impulse);
+        //player.GetComponent<Rigidbody>().AddForce(dashDirection * dashForce, ForceMode.Impulse);
+        player.GetComponent<Rigidbody>().velocity = dashDirection * topSpeed;
     }
 }
