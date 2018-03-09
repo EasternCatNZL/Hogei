@@ -7,25 +7,26 @@ public class Follow : MonoBehaviour
 {
 
     public Transform Target;
-    public Vector3 FollowOffset;
+    [Header("Camera Settings")]
+    public float CameraDistance;
+    public float CameraAngle;
     public Vector3 CameraDirection;
-    public float Speed = 1f;
     public float AheadDistance;
+    public float LerpDuration;
+    [Header("Camera Shake Settings")]
+    public float ShakeDuration = 1f;
+    public float ShakeStrength = 1f;
+    public int ShakeVibrate = 10;
+    public float ShakeRandomness = 90f;
+    [Header("Debuging")]
+    public Transform DebugObject;
     private Transform CameraTransform;
     private Vector3 CameraOffset;
     // Use this for initialization
     void Start()
     {
-        GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        if(Player)
-        {
-            transform.parent = Player.transform;
-        }
-        else
-        {
-            Debug.Log(System.DateTime.Now + ": Can not find the player object " + gameObject.name);
-        }
         CameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        transform.position = Target.position;
     }
 
     // Update is called once per frame
@@ -34,16 +35,35 @@ public class Follow : MonoBehaviour
         if (Target != null)
         {
             Vector3 MousePos = MouseTarget.GetWorldMousePos();
-            Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, 0.2f);
-            Vector3 Dir = DesiredPos - transform.position;          
-            Vector3 Velocity = Dir.normalized * Speed * Time.deltaTime;
-            
-            print(Velocity.ToString());
-            transform.position = transform.position + Velocity;
-
-
-
-            //transform.position += Vector3.Scale(CameraDirection, FollowOffset);
+            Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, AheadDistance);
+            Vector3 Dir = DesiredPos - transform.position;
+            //Move the camera towards the desired position
+            transform.DOMove(DesiredPos, 1f);
+            if(DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
+            //Adjust the camera
+            AdjustCamera();
         }
+    }
+
+    void AdjustCamera()
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(CameraAngle, -90f, 0f));
+        CameraTransform.localPosition = new Vector3(0f, 0f, -CameraDistance);
+        
+    }
+
+    void CameraShake()
+    {
+        transform.DOShakePosition(1f, 1f, 10, 0f);
+    }
+
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+       
     }
 }
