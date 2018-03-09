@@ -38,7 +38,7 @@ public class Follow : MonoBehaviour
             Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             Vector3 Dir = DesiredPos - transform.position;
             //Move the camera towards the desired position
-            transform.DOMove(DesiredPos, 1f);
+            transform.DOMove(DesiredPos, LerpDuration);
             if(DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             //Adjust the camera
             AdjustCamera();
