@@ -15,6 +15,7 @@ public class ChickenBehavior : MonoBehaviour {
     private GameObject target;
 
     //control refs
+    private bool isActive = false;
     Rigidbody myRigid;
 
 	// Use this for initialization
@@ -26,8 +27,18 @@ public class ChickenBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        MoveAtTarget();
+        if (isActive)
+        {
+            MoveAtTarget();
+        }
+        
 	}
+
+    public void SetUp(GameObject thing)
+    {
+        isActive = true;
+        target = thing;
+    }
 
     //Move towards target, disregards terrain restrictions
     private void MoveAtTarget()
