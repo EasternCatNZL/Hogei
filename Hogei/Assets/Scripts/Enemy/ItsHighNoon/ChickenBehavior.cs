@@ -10,6 +10,7 @@ public class ChickenBehavior : MonoBehaviour {
 
     [Header("Tags")]
     public string targetTag = "Player";
+    public string bulletTag = "Bullet";
 
     //object refs
     private GameObject target;
@@ -21,7 +22,7 @@ public class ChickenBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //debug
-        target = GameObject.FindGameObjectWithTag(targetTag);
+        //target = GameObject.FindGameObjectWithTag(targetTag);
         myRigid = GetComponent<Rigidbody>();
 	}
 	
@@ -56,6 +57,22 @@ public class ChickenBehavior : MonoBehaviour {
         else
         {
             myRigid.velocity = Vector3.zero;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if not active
+        if (!isActive)
+        {
+            //check is bullet
+            if (collision.gameObject.CompareTag(bulletTag))
+            {
+                //activate
+                isActive = true;
+                //set target
+                target = GameObject.FindGameObjectWithTag(targetTag);
+            }
         }
     }
 }
