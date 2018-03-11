@@ -120,6 +120,12 @@ public class CactusRandomSpray : MonoBehaviour {
         }
     }
 
+    //On death logic
+    public void AmDead()
+    {
+
+    }
+
     //pause funcs
     void OnPause()
     {

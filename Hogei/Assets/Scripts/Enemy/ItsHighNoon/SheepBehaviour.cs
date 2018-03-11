@@ -149,6 +149,12 @@ public class SheepBehaviour : MonoBehaviour {
         }
     }
 
+    //On death logic
+    public void AmDead()
+    {
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         //check collision not with bullet or floor

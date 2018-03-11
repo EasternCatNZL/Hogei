@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChickenBehavior : MonoBehaviour {
+public class ChickenBehavior : EnemyBehavior {
 
     [Header("Speed vars")]
     [Tooltip("Speed object travels at")]
@@ -58,6 +58,12 @@ public class ChickenBehavior : MonoBehaviour {
         {
             myRigid.velocity = Vector3.zero;
         }
+    }
+
+    //On death logic
+    public void AmDead()
+    {
+
     }
 
     private void OnCollisionEnter(Collision collision)

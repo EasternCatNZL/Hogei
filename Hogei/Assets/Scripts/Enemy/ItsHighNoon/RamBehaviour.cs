@@ -204,6 +204,12 @@ public class RamBehaviour : MonoBehaviour {
 
     }
 
+    //On death logic
+    public void AmDead()
+    {
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         //if not active
