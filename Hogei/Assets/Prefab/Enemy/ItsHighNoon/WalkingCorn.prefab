@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33478153601142232}
   - component: {fileID: 23119620040458222}
   - component: {fileID: 95174765814015926}
-  - component: {fileID: 135253564613591800}
   - component: {fileID: 114205650831392522}
   - component: {fileID: 114230798821703380}
+  - component: {fileID: 136218198670931396}
   m_Layer: 10
   m_Name: WalkingCorn
   m_TagString: Untagged
@@ -131,8 +131,8 @@ MonoBehaviour:
   isActive: 0
   isPaused: 0
   slowModifier: 1
---- !u!135 &135253564613591800
-SphereCollider:
+--- !u!136 &136218198670931396
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -140,6 +140,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 41.22651
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 33.170074
+  m_Height: 227.6
+  m_Direction: 1
+  m_Center: {x: 2.180478, y: 119.4, z: 4.6689982}

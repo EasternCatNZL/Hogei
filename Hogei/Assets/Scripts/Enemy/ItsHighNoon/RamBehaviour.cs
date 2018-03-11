@@ -30,6 +30,7 @@ public class RamBehaviour : MonoBehaviour {
     [Header("Tags")]
     public string targetTag = "Player";
     public string dungeonTag = "Dungeon";
+    public string bulletTag = "Bullet";
 
     //control vars
     [HideInInspector]
@@ -203,9 +204,28 @@ public class RamBehaviour : MonoBehaviour {
 
     }
 
+    //On death logic
+    public void AmDead()
+    {
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
+        //if not active
+        if (!isTriggered)
+        {
+            //check is bullet
+            if (collision.gameObject.CompareTag(bulletTag))
+            {
+                //activate
+                isTriggered = true;
+                //set target
+                target = GameObject.FindGameObjectWithTag(targetTag);
+            }
+        }
+
+        //print(collision.gameObject.name);
         //make sure collision isnt with floor
         //check that is moving
         if (isMoving && !collision.gameObject.CompareTag(dungeonTag))

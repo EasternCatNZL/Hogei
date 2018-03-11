@@ -23,6 +23,7 @@ public class OutlawBehaviour : MonoBehaviour {
 
     [Header("Tags")]
     public string targetTag = "Player";
+    public string bulletTag = "Bullet";
 
     //set up vars
     [HideInInspector]
@@ -143,8 +144,28 @@ public class OutlawBehaviour : MonoBehaviour {
         }
     }
 
-    //pause funcs
-    void OnPause()
+    //On death logic
+    public void AmDead()
+    {
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if not active
+        if (!isSetup)
+        {
+            //check is bullet
+            if (collision.gameObject.CompareTag(bulletTag))
+            {
+                //activate
+                isSetup = true;
+            }
+        }
+    }
+
+        //pause funcs
+        void OnPause()
     {
         isPaused = true;
         pauseStartTime = Time.time;
