@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: 10cee7a42972dec4eb0c7bd835d36ab5
-timeCreated: 1519863806
+guid: 02fc2ec1cb52ce74b9427f490723af33
+timeCreated: 1520802362
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
+    2100000: lambert4
+    2100002: lambert5
     2300000: //RootNode
     3300000: //RootNode
     4300000: ThunderRam1
@@ -15,18 +17,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Back_Planes
-    second: {fileID: 2100000, guid: 1c1a8e22d43d4dc468cccab090406390, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 93744d53d0a9c844a98704466b929148, type: 2}
+      name: lambert4
+    second: {fileID: 2100000, guid: c09868fc725027540b6284b1780bd097, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -64,6 +61,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
