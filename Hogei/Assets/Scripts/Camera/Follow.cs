@@ -42,7 +42,7 @@ public class Follow : MonoBehaviour
             Vector3 DesiredPos = Target.position + (MousePos - Target.position).normalized * AheadDistance;
             Vector3 Dir = DesiredPos - transform.position;
             //Move the camera towards the desired position
-
+            transform.DOMove(DesiredPos, LerpDuration);
             if(Player.GetComponent<PlayerAttack>().isShooting == true)
             {
                 transform.DOShakePosition(1, 0.1f);            
