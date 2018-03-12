@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour {
 
     public float HealthDecrease = 1.0f;
 
+    public bool isShooting = false;
+
     
 
     //control vars
@@ -87,6 +89,7 @@ public class PlayerAttack : MonoBehaviour {
         if (CheckInput())
         {
             Anim.SetBool("IsShooting", true);
+            isShooting = true;
             //try to use current weapon
             switch (currentWeaponIndex)
             {
@@ -106,6 +109,7 @@ public class PlayerAttack : MonoBehaviour {
         else
         {
             Anim.SetBool("IsShooting", false);
+            isShooting = false;
         }
     }
 
