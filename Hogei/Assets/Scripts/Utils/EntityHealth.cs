@@ -10,6 +10,8 @@ public class EntityHealth : MonoBehaviour {
     public delegate void PlayerHealthEvent();
     public static event PlayerHealthEvent OnPlayerHealthUpdate;
 
+    public bool isHit = false;
+
     public enum StatusEffects
     {
         CHAINLIGHTING,
@@ -101,6 +103,7 @@ public class EntityHealth : MonoBehaviour {
 
     public void DecreaseHealth(float _value)
     {
+        isHit = true;
         DamageFlash();
         CurrentHealth -= _value;
         if (CurrentHealth < 0) CurrentHealth = 0;
@@ -115,6 +118,7 @@ public class EntityHealth : MonoBehaviour {
         if(GetComponent<Animator>())
         {
             GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));
+            
         }
     }
     

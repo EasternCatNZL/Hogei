@@ -18,6 +18,8 @@ public class PlayerStreamShot : MonoBehaviour {
     [Tooltip("How far out to position bullet start from center")]
     public float distanceToStart = 0.1f;
 
+    public bool isFiring = false;
+
     //[Header("Tags")]
     //[Tooltip("Bullet bank tag")]
     //public string bankTag = "Bullet Bank";
@@ -53,6 +55,7 @@ public class PlayerStreamShot : MonoBehaviour {
 
             //get a bullet
             GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
+            isFiring = true;
             //set the bullets position to this pos
             bullet.transform.position = transform.position + (transform.right * distanceToStart);
             //set the bullet's rotation to current rotation
@@ -71,6 +74,8 @@ public class PlayerStreamShot : MonoBehaviour {
 
             //play audio
             bulletFireSound.Play();
+
+
         }
     }
 }
