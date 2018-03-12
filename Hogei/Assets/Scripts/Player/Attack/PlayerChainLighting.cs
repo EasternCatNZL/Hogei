@@ -108,7 +108,6 @@ public class PlayerChainLighting : MonoBehaviour
         }
         if (ClosestEnemy)
         {
-            print("Enemy Chained - " + ClosestEnemy.name);
             ClosestEnemy.GetComponent<EntityHealth>().SetStatusEffect(EntityHealth.StatusEffects.CHAINLIGHTING, true);
             //Add enemy position to ChainPositions
             ChainPositions[NumberChains - _ChainsLeft + 2] = ClosestEnemy.transform.position;

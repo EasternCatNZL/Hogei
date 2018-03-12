@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChickenBehavior : MonoBehaviour {
+public class ChickenBehavior : EnemyBehavior {
 
     [Header("Speed vars")]
     [Tooltip("Speed object travels at")]
@@ -10,6 +10,7 @@ public class ChickenBehavior : MonoBehaviour {
 
     [Header("Tags")]
     public string targetTag = "Player";
+    public string bulletTag = "Bullet";
 
     //object refs
     private GameObject target;
@@ -21,7 +22,7 @@ public class ChickenBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //debug
-        target = GameObject.FindGameObjectWithTag(targetTag);
+        //target = GameObject.FindGameObjectWithTag(targetTag);
         myRigid = GetComponent<Rigidbody>();
 	}
 	
@@ -56,6 +57,28 @@ public class ChickenBehavior : MonoBehaviour {
         else
         {
             myRigid.velocity = Vector3.zero;
+        }
+    }
+
+    //On death logic
+    public void AmDead()
+    {
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if not active
+        if (!isActive)
+        {
+            //check is bullet
+            if (collision.gameObject.CompareTag(bulletTag))
+            {
+                //activate
+                isActive = true;
+                //set target
+                target = GameObject.FindGameObjectWithTag(targetTag);
+            }
         }
     }
 }

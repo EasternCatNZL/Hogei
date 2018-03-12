@@ -30,6 +30,7 @@ public class BulletClearerBehaviour : MonoBehaviour {
     //should only collide with enemy bullet layer
     private void OnCollisionEnter(Collision collision)
     {
+        print("Entered: " + collision.gameObject.name);
         //check if other object is a bullet
         if (collision.gameObject.CompareTag(bulletTag))
         {
@@ -39,8 +40,33 @@ public class BulletClearerBehaviour : MonoBehaviour {
     }
 
     //do even if clearer spawned ontop of bullets
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
+        print("Exited: " + collision.gameObject.name);
+        //check if other object is a bullet
+        if (collision.gameObject.CompareTag(bulletTag))
+        {
+            //remove it
+            Destroy(collision.gameObject);
+        }
+    }
+
+    //should only collide with enemy bullet layer
+    private void OnTriggerEnter(Collider collision)
+    {
+        print("Entered: " + collision.gameObject.name);
+        //check if other object is a bullet
+        if (collision.gameObject.CompareTag(bulletTag))
+        {
+            //remove it
+            Destroy(collision.gameObject);
+        }
+    }
+
+    //do even if clearer spawned ontop of bullets
+    private void OnTriggerExit(Collider collision)
+    {
+        print("Exited: " + collision.gameObject.name);
         //check if other object is a bullet
         if (collision.gameObject.CompareTag(bulletTag))
         {

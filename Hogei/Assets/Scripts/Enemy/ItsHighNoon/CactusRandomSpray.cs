@@ -26,6 +26,9 @@ public class CactusRandomSpray : MonoBehaviour {
     [Tooltip("The y offset added to shots")]
     public float bulletOffsetY = 1f;
 
+    [Header("Tags")]
+    public string bulletTag = "Bullet";
+
     //control vars
     [HideInInspector]
     public bool isActive = false; // check if cactus active
@@ -97,6 +100,17 @@ public class CactusRandomSpray : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        //if not active
+        if (!isActive)
+        {
+            //check is bullet
+            if (collision.gameObject.CompareTag(bulletTag))
+            {
+                //activate
+                isActive = true;
+            }
+        }
+
         EntityHealth myHealth = GetComponent<EntityHealth>();
         float percentLoss = myHealth.CurrentHealth / myHealth.MaxHealth;
         if(percentLoss < NextRampTrigger)
@@ -104,6 +118,12 @@ public class CactusRandomSpray : MonoBehaviour {
             timeBetweenShots -= rampAmount;
             NextRampTrigger -= rampPercentTrigger;
         }
+    }
+
+    //On death logic
+    public void AmDead()
+    {
+
     }
 
     //pause funcs
