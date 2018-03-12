@@ -13,7 +13,7 @@ public class Follow : MonoBehaviour
     public float CameraAngle;
     public Vector3 CameraDirection;
     public float AheadDistance = 1f;
-    public float LerpDuration;
+    public float LerpDuration = 1f;
     [Header("Camera Shake Settings")]
     public float ShakeDuration = 1f;
     public float ShakeStrength = 1f;
@@ -23,12 +23,15 @@ public class Follow : MonoBehaviour
     public Transform DebugObject;
     private Transform CameraTransform;
     private Vector3 CameraOffset;
+
+    private PlayerStreamShot StreamShot;
     // Use this for initialization
     void Start()
     {
         CameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         transform.position = Target.position;
         Player = GameObject.FindGameObjectWithTag("Player");
+        StreamShot = Target.GetComponentInChildren<PlayerStreamShot>();
     }
 
     // Update is called once per frame
@@ -43,11 +46,17 @@ public class Follow : MonoBehaviour
             Vector3 Dir = DesiredPos - transform.position;
             //Move the camera towards the desired position
             transform.DOMove(DesiredPos, LerpDuration);
-            if(Player.GetComponent<PlayerAttack>().isShooting == true)
+            if(StreamShot.isFiring == true)
             {
-                transform.DOShakePosition(1, 0.1f);            
+                transform.DOShakePosition(1, 0.1f);
+                StreamShot.isFiring = false;
+            }          
+            if (Player.GetComponent<EntityHealth>().isHit == true)
+            {
+                transform.DOShakePosition(1, 0.5f);
+                Player.GetComponent<EntityHealth>().isHit = false;
             }
-            if(DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
+            if (DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             //Adjust the camera
             AdjustCamera();
         }
