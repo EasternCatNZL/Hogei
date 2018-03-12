@@ -154,6 +154,7 @@ public class SheepBehaviour : MonoBehaviour {
         //check collision not with bullet or floor
         if (!collision.gameObject.CompareTag(bulletTag) && !collision.gameObject.CompareTag(floorTag)){
             //any collision that is not with a bullet
+
             if (collision.gameObject.GetComponent<EntityHealth>())
             {
                 collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(damage);
@@ -163,11 +164,6 @@ public class SheepBehaviour : MonoBehaviour {
             BulletExplosion();
             GetComponent<EntityHealth>().DecreaseHealth(1);
         }
-    }
-
-    private void OnDestroy()
-    {
-        
     }
 
     void OnPause()

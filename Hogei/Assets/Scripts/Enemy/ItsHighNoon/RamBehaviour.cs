@@ -205,7 +205,6 @@ public class RamBehaviour : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
         //make sure collision isnt with floor
         //check that is moving
         if (isMoving && !collision.gameObject.CompareTag(dungeonTag))
