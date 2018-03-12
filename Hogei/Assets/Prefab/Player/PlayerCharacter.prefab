@@ -116,6 +116,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1124987524752702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4004462524870450}
+  - component: {fileID: 114766507877560950}
+  - component: {fileID: 65038155127815370}
+  m_Layer: 0
+  m_Name: BulletProximityEraser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1155602214317910
 GameObject:
   m_ObjectHideFlags: 1
@@ -975,6 +992,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4004462524870450
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124987524752702}
+  m_LocalRotation: {x: -0, y: 0.11541124, z: -0, w: 0.99331784}
+  m_LocalPosition: {x: -20.432405, y: -15.501, z: 33.199154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4183656781475878}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4009227049149534
 Transform:
   m_ObjectHideFlags: 1
@@ -1144,6 +1174,7 @@ Transform:
   - {fileID: 4613700057909436}
   - {fileID: 4980728654015562}
   - {fileID: 4926774625900488}
+  - {fileID: 4004462524870450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -13.255001, z: 0}
@@ -1871,6 +1902,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &65038155127815370
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124987524752702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82343292048352278
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2222,6 +2265,7 @@ MonoBehaviour:
   rightStickX: RightStickX
   rightStickY: RightStickY
   change: 1
+  controllerDelayCheck: 2
   deadZone: 0.1
 --- !u!114 &114525198324206222
 MonoBehaviour:
@@ -2236,6 +2280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1892330597440044}
   dashForce: 15
+  topSpeed: 30
   dashTime: 0.5
   timeBetweenUses: 5
   canDo: {fileID: 114959843512822864}
@@ -2268,8 +2313,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityOneKey: 304
   abilityTwoKey: 103
+  abilityOneAxis: Skill1
+  abilityTwoAxis: Skill2
+  abilityThreeAxis: Skill3
+  controllerOneAxis: ControllerSkill1
+  controllerTwoAxis: ControllerSkill2
+  controllerThreeAxis: ControllerSkill3
   abilityHolder: {fileID: 1573077336164902}
-  ability: 0
+  ability: 3
+  abilityOne: 3
+  abilityTwo: 3
+  abilityThree: 3
 --- !u!114 &114747392568785226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2290,6 +2344,18 @@ MonoBehaviour:
   timeBetweenShots: 0.2
   timeBetweenWaves: 0.1
   bulletFireSound: {fileID: 82763615860141780}
+--- !u!114 &114766507877560950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124987524752702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db634694ca12fa9439d1358083c2a3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTag: Bullet
 --- !u!114 &114918247126332766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2304,6 +2370,8 @@ MonoBehaviour:
   mouseInputKey: 0
   prevWeaponInput: 113
   nextWeaponInput: 101
+  attackInputAxis: Attack
+  attackInputAxisController: ControllerAttack
   HealthDecrease: 1
   numWeapons: 0
   peaShootStrengthened: 1
@@ -2322,6 +2390,8 @@ MonoBehaviour:
   canShoot: 1
   canAbility: 1
   canTalk: 0
+  useKeyboard: 1
+  useController: 0
 --- !u!114 &114961968145540346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2354,6 +2424,8 @@ MonoBehaviour:
   Hori: 0
   Vert: 0
   followCamera: {fileID: 0}
+  leftStickX: LeftStickX
+  leftStickY: LeftStickY
 --- !u!136 &136843207582558892
 CapsuleCollider:
   m_ObjectHideFlags: 1
