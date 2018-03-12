@@ -74,6 +74,7 @@ public class HealthBarNotched : MonoBehaviour {
             {
                 if(Shake)
                 {
+                    Notches[i].transform.DOComplete();
                     Notches[i].transform.DOShakePosition(0.1f);
                 }
                 Notches[i].SetActive(true);

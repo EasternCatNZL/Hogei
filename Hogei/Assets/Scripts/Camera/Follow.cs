@@ -43,10 +43,10 @@ public class Follow : MonoBehaviour
             Vector3 Dir = DesiredPos - transform.position;
             //Move the camera towards the desired position
             transform.DOMove(DesiredPos, LerpDuration);
-            if(Player.GetComponent<WhatCanIDO>().canShoot == true)
-            {
-                transform.DOShakePosition(1, 2.0f);            
-            }
+            //if(Player.GetComponent<WhatCanIDO>().canShoot == true)
+            //{
+            //    transform.DOShakePosition(1, 2.0f);            
+            //}
             if(DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             //Adjust the camera
             AdjustCamera();
