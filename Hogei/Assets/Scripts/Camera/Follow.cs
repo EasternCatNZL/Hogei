@@ -7,6 +7,7 @@ public class Follow : MonoBehaviour
 {
 
     public Transform Target;
+    private GameObject Player;
     [Header("Camera Settings")]
     public float CameraDistance;
     public float CameraAngle;
@@ -27,6 +28,7 @@ public class Follow : MonoBehaviour
     {
         CameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         transform.position = Target.position;
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -41,6 +43,10 @@ public class Follow : MonoBehaviour
             Vector3 Dir = DesiredPos - transform.position;
             //Move the camera towards the desired position
             transform.DOMove(DesiredPos, LerpDuration);
+            if(Player.GetComponent<WhatCanIDO>().canShoot == true)
+            {
+                transform.DOShakePosition(1, 2.0f);            
+            }
             if(DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             //Adjust the camera
             AdjustCamera();
