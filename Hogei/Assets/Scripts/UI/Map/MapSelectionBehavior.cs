@@ -12,6 +12,8 @@ public class MapSelectionBehavior : MonoBehaviour {
     [Header("Current node")]
     public MapNode currentNode;
 
+    private LineRenderer line;
+
     //script refs
     public MapCameraBehavior mapCamera;
 
@@ -127,6 +129,17 @@ public class MapSelectionBehavior : MonoBehaviour {
         //check for input
         if (Input.GetAxis("Submit") != 0){
             currentNode.LoadMyScene();
+        }
+    }
+
+    //draw line to represent connections
+    private void DrawLineBetweenNodes(MapNode thisNode, MapNode prevNode)
+    {
+        MapNode nextNode = null;
+        //check for next node from current
+        for(int i = 0; i < thisNode.myNeighbours.Length; i++)
+        {
+
         }
     }
 }
