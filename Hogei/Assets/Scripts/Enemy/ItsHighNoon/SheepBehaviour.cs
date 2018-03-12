@@ -45,6 +45,7 @@ public class SheepBehaviour : MonoBehaviour {
 
     //script refs
     private EnemyState state;
+    private bool isGameQuit = false;
 
     // Use this for initialization
     void Start () {
@@ -72,6 +73,11 @@ public class SheepBehaviour : MonoBehaviour {
             }
         }
 	}
+
+    private void OnApplicationQuit()
+    {
+        isGameQuit = true;
+    }
 
     private void OnEnable()
     {
@@ -169,6 +175,14 @@ public class SheepBehaviour : MonoBehaviour {
             //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
             BulletExplosion();
             GetComponent<EntityHealth>().DecreaseHealth(1);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(!isGameQuit)
+        {
+            BulletExplosion();
         }
     }
 
