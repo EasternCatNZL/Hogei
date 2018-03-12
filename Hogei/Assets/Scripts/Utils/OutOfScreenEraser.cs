@@ -44,7 +44,6 @@ public class OutOfScreenEraser : MonoBehaviour {
     //should only collide with enemy bullet layer
     private void OnTriggerEnter(Collider collision)
     {
-        print("Entered: " + collision.gameObject.name);
         //check if other object is a bullet
         if (collision.gameObject.CompareTag(bulletTag))
         {
@@ -56,7 +55,6 @@ public class OutOfScreenEraser : MonoBehaviour {
     //do even if clearer spawned ontop of bullets
     private void OnTriggerExit(Collider collision)
     {
-        print("Exited: " + collision.gameObject.name);
         //check if other object is a bullet
         if (collision.gameObject.CompareTag(bulletTag))
         {
