@@ -108,10 +108,13 @@ public class OutlawBehaviour : MonoBehaviour {
     //Behaviour when setup has completed
     public void AttackBehaviour()
     {
-        //face the target
-        transform.LookAt(target.transform.position);
-        //try to attack
-        Attack();
+        if (target)
+        {
+            //face the target
+            transform.LookAt(target.transform.position);
+            //try to attack
+            Attack();
+        }
     }
 
     //Attack behaviour <- runs on timer

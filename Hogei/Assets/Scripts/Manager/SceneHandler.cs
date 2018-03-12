@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour {
 
@@ -18,8 +19,10 @@ public class SceneHandler : MonoBehaviour {
 
     private static SceneHandler singleton;
 
-	// Use this for initialization
-	void Start () {
+    private int MapSceneIndex = 0;
+
+    // Use this for initialization
+    void Start () {
         singleton = this;
         RefEnemies();
 	}
@@ -69,6 +72,24 @@ public class SceneHandler : MonoBehaviour {
     public List<GameObject> GetActiveList()
     {
         return enemiesInSceneList;
+    }
+
+    //Reload this scene
+    public void Reload()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        SceneManager.LoadScene(sceneNumber);
+    }
+
+    //Load the map scene
+    public void LoadMapScene()
+    {
+        SceneManager.LoadScene(MapSceneIndex);
+    }
+
+    public void LoadScene(int _SceneIndex)
+    {
+        SceneManager.LoadScene(_SceneIndex);
     }
 
     static public SceneHandler GetSceneHandler()
