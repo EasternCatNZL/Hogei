@@ -33,6 +33,7 @@ public class SheepBehaviour : MonoBehaviour {
     [HideInInspector]
     public bool isTriggered = false; //checks to see if trigger has been triggered
     private bool isPaused = false; //checks if pause has been called
+    private bool isQuiting = false; //checks if the application is quiting
     [HideInInspector]
     public float currentSpeed = 0.0f; //the current speed of the object
     public float timeChargeBegan = 0.0f; //time charge up began
@@ -170,6 +171,19 @@ public class SheepBehaviour : MonoBehaviour {
             BulletExplosion();
             GetComponent<EntityHealth>().DecreaseHealth(1);
         }
+    }
+
+
+
+    void OnApplicationQuit()
+    {
+        isQuiting = true;
+    }
+
+    void OnDestroy()
+    {
+        if(!isQuiting)
+        BulletExplosion();
     }
 
     void OnPause()
