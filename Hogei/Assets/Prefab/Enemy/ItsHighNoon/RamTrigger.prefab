@@ -1136,7 +1136,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!95 &95874884841786588
 Animator:
   serializedVersion: 3
@@ -1169,12 +1169,16 @@ MonoBehaviour:
   recoverTime: 1
   timeBetweenBullets: 0.2
   timeBetweenSteps: 0.5
+  timeCheckFloor: 2
   recoilDistance: 2
   jumpPower: 2
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
   chargeSpeed: 10
+  accel: 5
+  maxChargeSpeed: 20
   damage: 2
+  rayLength: 10
   targetTag: Player
   dungeonTag: Dungeon
   bulletTag: Bullet

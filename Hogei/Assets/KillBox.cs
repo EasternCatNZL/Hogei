@@ -17,9 +17,14 @@ public class KillBox : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         GameObject other = collision.gameObject;
-        if(other.GetComponent<EntityHealth>())
+        if (other.GetComponent<EntityHealth>())
         {
             other.GetComponent<EntityHealth>().DecreaseHealth(1000);
         }
+        else if (!other.CompareTag("Dungeon"))
+        {
+            Destroy(collision.gameObject);
+        }
+
     }
 }

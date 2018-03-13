@@ -14,6 +14,8 @@ public class RamBehaviour : MonoBehaviour {
     public float timeBetweenBullets = 0.2f;
     [Tooltip("Time between steps")]
     public float timeBetweenSteps = 0.5f;
+    [Tooltip("Time check floor existed")]
+    public float timeCheckFloor = 2.0f;
 
     [Header("Recoil values")]
     [Tooltip("Distance to jump back")]
@@ -26,8 +28,15 @@ public class RamBehaviour : MonoBehaviour {
     public GameObject bulletObject;
     [Tooltip("The speed at which sheep charges")]
     public float chargeSpeed = 10.0f;
+    [Tooltip("Acceleration")]
+    public float accel = 5.0f;
+    [Tooltip("Max charge speed")]
+    public float maxChargeSpeed = 20.0f;
     [Tooltip("The damage sheep does on collision")]
     public float damage = 3.0f;
+
+    [Header("Physics rays")]
+    public float rayLength = 3.0f;
 
     [Header("Tags")]
     public string targetTag = "Player";
@@ -41,12 +50,14 @@ public class RamBehaviour : MonoBehaviour {
     private bool isMoving = false; //checks if ram is currently moving
     private bool isRecovering = false; //checks if ram is recovering from a collision
     private bool isPaused = false; //checks if pause has been called
+    private bool onFloor = true; //checks if ram is colliding with the floor
     [HideInInspector]
     public float timeChargeBegan = 0.0f; //time charge up began
     [HideInInspector]
     public float currentSpeed = 0.0f; //the current speed of the object
     private float timeLastShot = 0.0f; //time of last shot
     private float timeLastStep = 0.0f; //time between speed ups
+    private float timeLastFloorCheck = 0.0f; //time floor was last checked for
     private float timeRecoverBegan = 0.0f; //time recover began
     private float pauseStartTime = 0.0f; //time pause started
     private float pauseEndTime = 0.0f; //time pause ended
@@ -177,8 +188,23 @@ public class RamBehaviour : MonoBehaviour {
         //change conditions
         isCharging = false;
         isMoving = true;
-        //move
-        myRigid.velocity = (transform.forward * currentSpeed) /** Time.deltaTime*/;
+
+        //check floor exists
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, -transform.up, out hit, rayLength))
+        {
+            //check if ray hit floor
+            if (hit.collider.CompareTag(dungeonTag))
+            {
+                //move
+                myRigid.velocity = (transform.forward * currentSpeed) /** Time.deltaTime*/;
+            }
+            else
+            {
+               // myRigid.velocity = Vector3.zero;
+                isMoving = false;
+            }
+        }
 
         //reset pause timers
         pauseStartTime = 0.0f;
@@ -238,7 +264,6 @@ public class RamBehaviour : MonoBehaviour {
             }
         }
 
-        //print(collision.gameObject.name);
         //make sure collision isnt with floor
         //check that is moving
         if (isMoving && !collision.gameObject.CompareTag(dungeonTag))
@@ -262,7 +287,6 @@ public class RamBehaviour : MonoBehaviour {
             //transform.DOJump(jumpBackLocation, jumpPower, 1, recoverTime / 2, false);
             Recover();
         }
-        
     }
 
     void OnPause()
