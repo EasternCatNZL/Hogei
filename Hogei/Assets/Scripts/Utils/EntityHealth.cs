@@ -10,6 +10,8 @@ public class EntityHealth : MonoBehaviour {
     public delegate void PlayerHealthEvent();
     public static event PlayerHealthEvent OnPlayerHealthUpdate;
 
+    public bool isHit = false;
+
     public enum StatusEffects
     {
         CHAINLIGHTING,
@@ -91,7 +93,7 @@ public class EntityHealth : MonoBehaviour {
             }
             else if (GetComponentInChildren<SkinnedMeshRenderer>())
             {
-                GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.black);
+                GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetFloat("_Emission", 0f);
                 FlashBack = true;
                 LastTime = Time.time;
             }
@@ -101,6 +103,7 @@ public class EntityHealth : MonoBehaviour {
 
     public void DecreaseHealth(float _value)
     {
+        isHit = true;
         DamageFlash();
         CurrentHealth -= _value;
         if (CurrentHealth < 0) CurrentHealth = 0;
@@ -115,6 +118,7 @@ public class EntityHealth : MonoBehaviour {
         if(GetComponent<Animator>())
         {
             GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));
+            
         }
     }
     
@@ -146,7 +150,8 @@ public class EntityHealth : MonoBehaviour {
         }
         else if(GetComponentInChildren<SkinnedMeshRenderer>())
         {
-            GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
+            GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetFloat("_Emission", 1f);
+            //GetComponentInChildren<SkinnedMeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
             //print(GetComponentInChildren<SkinnedMeshRenderer>().gameObject.name);
             FlashBack = true;
             LastTime = Time.time;

@@ -46,6 +46,7 @@ public class SheepBehaviour : MonoBehaviour {
 
     //script refs
     private EnemyState state;
+    private bool isGameQuit = false;
 
     // Use this for initialization
     void Start () {
@@ -73,6 +74,11 @@ public class SheepBehaviour : MonoBehaviour {
             }
         }
 	}
+
+    private void OnApplicationQuit()
+    {
+        isGameQuit = true;
+    }
 
     private void OnEnable()
     {
@@ -173,6 +179,7 @@ public class SheepBehaviour : MonoBehaviour {
         }
     }
 
+<<<<<<< HEAD
 
 
     void OnApplicationQuit()
@@ -184,6 +191,14 @@ public class SheepBehaviour : MonoBehaviour {
     {
         if(!isQuiting)
         BulletExplosion();
+=======
+    private void OnDestroy()
+    {
+        if(!isGameQuit)
+        {
+            BulletExplosion();
+        }
+>>>>>>> 4307827ad4c97987d484fd567903a99b7ee3c9f9
     }
 
     void OnPause()

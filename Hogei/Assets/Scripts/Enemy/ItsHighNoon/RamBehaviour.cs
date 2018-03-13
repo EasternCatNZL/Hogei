@@ -54,11 +54,13 @@ public class RamBehaviour : MonoBehaviour {
 
     //script refs
     private EnemyState state;
+    private Animator Anim;
 
     // Use this for initialization
     void Start () {
         myRigid = GetComponent<Rigidbody>();
-        if(GetComponent<EnemyState>())
+        Anim = GetComponent<Animator>();
+        if (GetComponent<EnemyState>())
         {
             state = GetComponent<EnemyState>();
         }
@@ -72,6 +74,7 @@ public class RamBehaviour : MonoBehaviour {
 	void Update () {
         if (isTriggered && !isPaused)
         {
+            Anim.SetBool("Alert", true);
             AdjustStates();
             if (isCharging)
             {
@@ -128,6 +131,7 @@ public class RamBehaviour : MonoBehaviour {
     //behaviour during charge up
     public void ChargeUp()
     {
+        Anim.SetTrigger("Rear");
         //change conditions
         isRecovering = false;
         isCharging = true;
@@ -161,7 +165,7 @@ public class RamBehaviour : MonoBehaviour {
         ////Quaternion fix = new Quaternion();
         //fix.eulerAngles = new Vector3(0.0f, transform.localEulerAngles.y, 0.0f);
         //transform.rotation = fix;
-
+        Anim.SetTrigger("Charge");
         //change conditions
         isCharging = false;
         isMoving = true;
@@ -218,6 +222,7 @@ public class RamBehaviour : MonoBehaviour {
             //check is bullet
             if (collision.gameObject.CompareTag(bulletTag))
             {
+                Anim.SetBool("Alert", true);
                 //activate
                 isTriggered = true;
                 //set target
@@ -236,7 +241,7 @@ public class RamBehaviour : MonoBehaviour {
                 collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(damage);
                 //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
             }
-
+            Anim.SetTrigger("Land");
             //remove velocity
             myRigid.velocity = Vector3.zero;
             //get a location behind self
