@@ -12,6 +12,8 @@ public class RamBehaviour : MonoBehaviour {
     public float recoverTime = 1.0f;
     [Tooltip("Time between bullets")]
     public float timeBetweenBullets = 0.2f;
+    [Tooltip("Time between steps")]
+    public float timeBetweenSteps = 0.5f;
 
     [Header("Recoil values")]
     [Tooltip("Distance to jump back")]
@@ -44,6 +46,7 @@ public class RamBehaviour : MonoBehaviour {
     [HideInInspector]
     public float currentSpeed = 0.0f; //the current speed of the object
     private float timeLastShot = 0.0f; //time of last shot
+    private float timeLastStep = 0.0f; //time between speed ups
     private float timeRecoverBegan = 0.0f; //time recover began
     private float pauseStartTime = 0.0f; //time pause started
     private float pauseEndTime = 0.0f; //time pause ended
@@ -83,11 +86,16 @@ public class RamBehaviour : MonoBehaviour {
                 if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
                 {
                     Move();
+                    timeLastStep = Time.time;
                 }
             }
             else if (isMoving)
             {
-                Move();
+                //Move();
+                if(Time.time > timeLastStep + timeBetweenSteps)
+                {
+                    Move();
+                }
                 Poop();
             }
             else if (isRecovering)
