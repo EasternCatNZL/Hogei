@@ -75,11 +75,6 @@ public class SheepBehaviour : MonoBehaviour {
         }
 	}
 
-    private void OnApplicationQuit()
-    {
-        isGameQuit = true;
-    }
-
     private void OnEnable()
     {
         PauseHandler.PauseEvent += OnPause;
@@ -179,9 +174,6 @@ public class SheepBehaviour : MonoBehaviour {
         }
     }
 
-<<<<<<< HEAD
-
-
     void OnApplicationQuit()
     {
         isQuiting = true;
@@ -189,17 +181,10 @@ public class SheepBehaviour : MonoBehaviour {
 
     void OnDestroy()
     {
-        if(!isQuiting)
-        BulletExplosion();
-=======
-    private void OnDestroy()
-    {
-        if(!isGameQuit)
-        {
+        if (!isQuiting)
             BulletExplosion();
-        }
->>>>>>> 4307827ad4c97987d484fd567903a99b7ee3c9f9
     }
+
 
     void OnPause()
     {
