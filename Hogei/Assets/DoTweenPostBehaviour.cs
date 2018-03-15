@@ -47,8 +47,6 @@ public class DoTweenPostBehaviour : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Space))
 			TweenTheThing ();
 
-		Debug.Log (" MyFloat: " + MyFloat);
-
 //		var vignette = m_Profile.vignette.settings;
 //		vignette.smoothness = Mathf.Abs(Mathf.Sin(Time.realtimeSinceStartup) * 0.99f) + 0.01f;
 //		m_Profile.vignette.settings = vignette;

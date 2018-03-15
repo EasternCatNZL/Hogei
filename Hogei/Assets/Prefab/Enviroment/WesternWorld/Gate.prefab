@@ -91,15 +91,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013714990954224}
-  m_LocalRotation: {x: -0, y: 0.671107, z: -0, w: 0.74136055}
-  m_LocalPosition: {x: -22.66, y: 19.007, z: -22.67}
+  m_LocalRotation: {x: -0, y: 0.76764053, z: -0, w: 0.6408807}
+  m_LocalPosition: {x: 23.503, y: 18.983, z: 10.638}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4485604314677050}
   - {fileID: 4419870275052144}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 84.305, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 100.285, z: 0}
 --- !u!4 &4485604314677050
 Transform:
   m_ObjectHideFlags: 1
@@ -249,7 +249,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!54 &54854692646104054
 Rigidbody:
@@ -264,7 +264,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!59 &59017205357039444
 HingeJoint:
@@ -276,12 +276,12 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1.33, z: 0.2}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -23.576479, y: 17.337, z: -19.223934}
-  m_UseSpring: 0
+  m_ConnectedAnchor: {x: 23.570633, y: 17.313, z: 14.203211}
+  m_UseSpring: 1
   m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
+    spring: 1
+    damper: 1
+    targetPosition: 90
   m_UseMotor: 0
   m_Motor:
     targetVelocity: 0
@@ -310,12 +310,12 @@ HingeJoint:
   m_Anchor: {x: 0.36, y: 1.69, z: 0.21}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -22.891758, y: 17.697, z: -25.989382}
-  m_UseSpring: 0
+  m_ConnectedAnchor: {x: 22.366375, y: 17.673, z: 7.510687}
+  m_UseSpring: 1
   m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
+    spring: 1
+    damper: 1
+    targetPosition: -90
   m_UseMotor: 0
   m_Motor:
     targetVelocity: 0
@@ -420,3 +420,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1b1c77849c9e4b82706629cd9484d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftGate: {fileID: 1502394116284942}
+  RightGate: {fileID: 1702639662880172}

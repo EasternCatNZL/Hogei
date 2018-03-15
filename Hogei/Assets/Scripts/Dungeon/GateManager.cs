@@ -51,12 +51,14 @@ public class GateManager : MonoBehaviour
             {
                 if (EnemyArray[i] != null && EnemyArray[i].activeSelf == true)
                 {
+                    Debug.Log("Enemies are not cleared");
                     EnemiesCleared = false;
                     break;
                 }
             }
             if (EnemiesCleared)
             {
+                Debug.Log("Enemies cleared");
                 RoomCleared();
             }
         }
@@ -74,12 +76,13 @@ public class GateManager : MonoBehaviour
     //close the doors
     private void CloseDoors()
     {
+        Debug.Log("Closing doors");
         //Set doors to block path
         //For all doors
         for (int i = 0; i < gateArray.Length; i++)
         {
             //set door to active
-            gateArray[i].SetActive(true);
+            gateArray[i].GetComponent<GateController>().LockGate();
         }
 
         //TODO: Animation for doors that would close off path
@@ -88,12 +91,13 @@ public class GateManager : MonoBehaviour
     //open the doors
     private void OpenDoors()
     {
+        Debug.Log("Opening doors");
         //Set doors to block path
         //For all doors
         for (int i = 0; i < gateArray.Length; i++)
         {
             //set door to active
-            gateArray[i].SetActive(false);
+            gateArray[i].GetComponent<GateController>().UnlockGate();
         }
 
         //TODO: Animation for doors that would open path
