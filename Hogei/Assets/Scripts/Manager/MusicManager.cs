@@ -135,13 +135,6 @@ public class MusicManager : MonoBehaviour {
         return vol;
     }
 
-    //Set the sfx volume
-    public void SetSfxVol(AudioSource source)
-    {
-        //set the vol of source
-        source.volume = GetSfxVol();
-    }
-
     //to receive values from music menu
     public void UpdateBgmValue(float value)
     {
