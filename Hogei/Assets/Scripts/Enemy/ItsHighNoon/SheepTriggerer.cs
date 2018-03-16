@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SheepTriggerer : MonoBehaviour {
 
@@ -62,7 +63,8 @@ public class SheepTriggerer : MonoBehaviour {
         WarningActive = true;
         Vector3 currentPos = transform.position;
         Vector3 extraHeight = new Vector3(0.0f, 2.0f, 0.0f);
-        Instantiate(WarningObject, currentPos + extraHeight, Quaternion.identity);
+        GameObject Object = Instantiate(WarningObject, currentPos + extraHeight, Quaternion.identity);
+        Object.transform.DOScaleY(0.5f, 0.5f).SetEase(Ease.OutBack, 5f);
     }
 
 

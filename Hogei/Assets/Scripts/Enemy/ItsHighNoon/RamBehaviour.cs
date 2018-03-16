@@ -66,6 +66,9 @@ public class RamBehaviour : MonoBehaviour {
     [HideInInspector]
     public GameObject target; //the target this object is attacking
 
+    //Booleans
+    private bool DoJumped = false;
+
     //script refs
     private EnemyState state;
     private Animator Anim;

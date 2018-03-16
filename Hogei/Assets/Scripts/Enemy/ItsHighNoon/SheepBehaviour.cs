@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SheepBehaviour : MonoBehaviour {
 
@@ -44,9 +45,12 @@ public class SheepBehaviour : MonoBehaviour {
     [HideInInspector]
     public GameObject target; //the target this object is attacking
 
+    //Booleans
+    private bool isGameQuit = false;
+    private bool DoJumped = false;
     //script refs
     private EnemyState state;
-    private bool isGameQuit = false;
+
 
     // Use this for initialization
     void Start () {
@@ -70,6 +74,7 @@ public class SheepBehaviour : MonoBehaviour {
             }
             else
             {
+  
                 ChargeUp();
             }
         }
@@ -93,7 +98,12 @@ public class SheepBehaviour : MonoBehaviour {
     private void ChargeUp()
     {
         //look at the target
-        transform.LookAt(target.transform.position);
+        if (!DoJumped)
+        {
+            transform.DOJump(transform.position, 1f, 1, 0.5f);
+            DoJumped = true;
+        }
+        transform.DOLookAt(target.transform.position, 0.5f);
         //remove any x and z change
         //Quaternion newRotation = new Quaternion();
         //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
@@ -103,7 +113,7 @@ public class SheepBehaviour : MonoBehaviour {
     //move
     private void Move()
     {
-        myRigid.velocity = transform.forward * currentSpeed;
+        myRigid.velocity = (myRigid.velocity + transform.forward).normalized * currentSpeed;
     }
 
     //Adjust state
