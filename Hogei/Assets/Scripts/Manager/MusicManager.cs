@@ -27,7 +27,17 @@ public class MusicManager : MonoBehaviour {
     [Tooltip("Master volume")]
     public float masterVol = 1.0f;
 
+    //event stuff
+    public delegate void MusicDelegate();
+    public static event MusicDelegate sfxVolChangeEvent;
+    public static event MusicDelegate sfxMuteEvent;
+    public static event MusicDelegate sfxUnmuteEvent;
+
     //control vars
+    private bool isMuted = false; //checks if all is muted
+    private bool isBgmMuted = false; //checks if bgm is muted
+    private bool isSfxMuted = false; //checks if sfx is muted
+
     private AudioSource bgm; //audiosource used for background music
 
 	// Use this for initialization
@@ -40,11 +50,119 @@ public class MusicManager : MonoBehaviour {
 		
 	}
 
+    //Set vol of bgm
+    public void SetMasterVol(float value)
+    {
+        //change the val of master vol
+        masterVol = value;
+        //change corresponding values
+        bgmVol = GetBgmVol();
+        sfxVol = GetSfxVol();
+
+        //change volume of all audio sources
+        AdjustVolume();
+    }
+
+    //Adjust volume of various components
+    private void AdjustVolume()
+    {
+        SetBgmVol();
+        sfxVolChangeEvent();
+    }
+
+    //adjust mute state of audio sources
+    private void AdjustMuteState()
+    {
+        //if master muted, mute everything
+        if (isMuted)
+        {
+            //mute the bgm
+            bgm.mute = true;
+            //send out mute event
+            sfxMuteEvent();
+        }
+        //else master is not muted
+        else
+        {
+            //if bgm is muted
+            if (isBgmMuted)
+            {
+                bgm.mute = true;
+            }
+            else
+            {
+                bgm.mute = false;
+            }
+
+            SfxEvents();
+        }
+    }
+
+    //mute events for sfx
+    private void SfxEvents()
+    {
+        //Send out corresponding sfx events based on mute state
+        if (isSfxMuted)
+        {
+            sfxMuteEvent();
+        }
+        else
+        {
+            sfxUnmuteEvent();
+        }
+    }
+
+    //returns volume of bgm
+    private float GetBgmVol()
+    {
+        float vol = 1.0f;
+        vol = masterVol - (1.0f - bgmVol);
+        return vol;
+    }
+
+    //set the volume of bgm
+    private void SetBgmVol()
+    {
+        //set the vol
+        bgm.volume = GetBgmVol();
+    }
+
     //returns volume of sfx to required components
     public float GetSfxVol()
     {
         float vol = 1.0f;
         vol = masterVol - (1.0f - sfxVol);
         return vol;
+    }
+
+    //to receive values from music menu
+    public void UpdateBgmValue(float value)
+    {
+        bgmVol = value;
+        SetBgmVol();
+    }
+
+    public void UpdateSfxValue(float value)
+    {
+        sfxVol = value;
+        sfxVolChangeEvent();
+    }
+
+    public void UpdateMasterMute(bool choice)
+    {
+        isMuted = choice;
+        AdjustMuteState();
+    }
+
+    public void UpdateBgmMute(bool choice)
+    {
+        isBgmMuted = choice;
+        bgm.mute = isBgmMuted;
+    }
+
+    public void UpdateSfxMute(bool choice)
+    {
+        isSfxMuted = choice;
+        SfxEvents();
     }
 }
