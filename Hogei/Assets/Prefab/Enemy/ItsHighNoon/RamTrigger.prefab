@@ -1136,7 +1136,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!95 &95874884841786588
 Animator:
   serializedVersion: 3
@@ -1146,7 +1146,7 @@ Animator:
   m_GameObject: {fileID: 1339421840707758}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 802f0678b0e3da4428208cef8c68672a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2aaa8b69f6023ea4d9bf3d5d969da598, type: 2}
+  m_Controller: {fileID: 9100000, guid: a34eb4c2976f4e24589e30cb229e9b79, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1168,12 +1168,17 @@ MonoBehaviour:
   chargeTime: 0.8
   recoverTime: 1
   timeBetweenBullets: 0.2
+  timeBetweenSteps: 0.5
+  timeCheckFloor: 2
   recoilDistance: 2
   jumpPower: 2
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
   chargeSpeed: 10
+  accel: 5
+  maxChargeSpeed: 20
   damage: 2
+  rayLength: 10
   targetTag: Player
   dungeonTag: Dungeon
   bulletTag: Bullet
@@ -1232,6 +1237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHit: 0
   CurrentHealth: 0
   MaxHealth: 6
   DeathVFX: {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073, type: 2}

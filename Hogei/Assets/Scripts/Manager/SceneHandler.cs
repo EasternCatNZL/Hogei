@@ -92,6 +92,11 @@ public class SceneHandler : MonoBehaviour {
         SceneManager.LoadScene(_SceneIndex);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     static public SceneHandler GetSceneHandler()
     {
         if (!singleton)

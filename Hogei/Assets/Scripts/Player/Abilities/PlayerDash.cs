@@ -53,10 +53,10 @@ public class PlayerDash : MonoBehaviour {
                 isDashing = false;
                 player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
-            else
-            {
-                player.GetComponent<Rigidbody>().velocity -= dashDirection * (decayRate * Time.deltaTime);
-            }
+            //else
+            //{
+            //    player.GetComponent<Rigidbody>().velocity -= dashDirection * (decayRate * Time.deltaTime);
+            //}
         }
 	}
 
@@ -64,7 +64,7 @@ public class PlayerDash : MonoBehaviour {
     public void Use()
     {
         //check timing
-        if(Time.time > lastUseTime + timeBetweenUses)
+        if(Time.time > lastUseTime + timeBetweenUses && movement.GetDirection() != Vector3.zero)
         {
             //set up control vars
             isDashing = true;
@@ -92,7 +92,7 @@ public class PlayerDash : MonoBehaviour {
     //Dash logic
     private void Dash()
     {
-        //player.GetComponent<Rigidbody>().AddForce(dashDirection * dashForce, ForceMode.Impulse);
-        player.GetComponent<Rigidbody>().velocity = dashDirection * topSpeed;
+        player.GetComponent<Rigidbody>().AddForce(dashDirection * dashForce, ForceMode.Impulse);
+        //player.GetComponent<Rigidbody>().velocity = dashDirection * topSpeed;
     }
 }

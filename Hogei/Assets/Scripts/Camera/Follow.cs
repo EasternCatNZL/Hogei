@@ -48,7 +48,7 @@ public class Follow : MonoBehaviour
             transform.DOMove(DesiredPos, LerpDuration);
             if(StreamShot.isFiring == true)
             {
-                transform.DOShakePosition(1, 0.1f);
+                transform.DOShakePosition(1, 0.05f);
                 StreamShot.isFiring = false;
             }          
             if (Player.GetComponent<EntityHealth>().isHit == true)

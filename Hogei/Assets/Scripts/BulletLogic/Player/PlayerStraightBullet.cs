@@ -83,7 +83,6 @@ public class PlayerStraightBullet : MonoBehaviour {
     //collision = deactivate
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
         //any collision
         if (collision.gameObject.GetComponent<EntityHealth>())
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CactusTrigger : MonoBehaviour {
 
@@ -33,6 +34,7 @@ public class CactusTrigger : MonoBehaviour {
             {
                 isTriggered = true;
                 cactus.isActive = true;
+                cactus.transform.DOJump(cactus.transform.position, 1f, 1, 0.5f);
             }
             //Setup();
             //change has setup to true

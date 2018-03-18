@@ -11,10 +11,8 @@ public class CornShake : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!Used)
-        {
-            this.transform.DOShakeRotation(ShakeLength, ShakeIntensity);
-        }
+        transform.DOComplete();
+        transform.DOShakeRotation(ShakeLength, ShakeIntensity);
         //Add item drop
     }
 }

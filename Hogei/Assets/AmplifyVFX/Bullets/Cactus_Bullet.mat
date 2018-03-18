@@ -9,7 +9,7 @@ Material:
   m_Name: Cactus_Bullet
   m_Shader: {fileID: 4800000, guid: c6976db4266e5a94aa70ba37024716db, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -63,11 +63,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ASEOutlineWidth: 0.1
+    - _ASEOutlineWidth: 0.22
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Emission_Intensity: 0
+    - _Float0: 0.007
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -80,8 +82,8 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - __dirty: 1
+    - __dirty: 0
     m_Colors:
-    - _ASEOutlineColor: {r: 0.025951583, g: 0.88235295, b: 0.03185775, a: 0}
+    - _ASEOutlineColor: {r: 0, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
