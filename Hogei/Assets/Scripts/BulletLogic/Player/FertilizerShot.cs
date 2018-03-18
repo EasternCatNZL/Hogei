@@ -50,7 +50,7 @@ public class FertilizerShot : MonoBehaviour {
 
     void GetTarget()
     {
-        MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        MousePosition = MouseTarget.GetWorldMousePos();
         Bullseye = MousePosition;
     }
 

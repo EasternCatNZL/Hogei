@@ -37,7 +37,7 @@ public class CornExplosion : MonoBehaviour {
             if(rb != null)
             {
                 rb.AddExplosionForce(power, explosionPos, radius, upwardsForce);
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
     }
