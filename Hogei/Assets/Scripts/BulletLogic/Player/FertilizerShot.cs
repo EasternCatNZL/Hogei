@@ -8,8 +8,8 @@ public class FertilizerShot : MonoBehaviour {
     private Vector3 Target;
     public GameObject bulletObject;
     Vector3 MousePosition;
-    public float JumpPower = 1.0f;
-    public float Duration = 1.0f;
+    //public float JumpPower = 1.0f;
+    //public float Duration = 1.0f;
     public float Angle = 45.0f;
 
     // Use this for initialization

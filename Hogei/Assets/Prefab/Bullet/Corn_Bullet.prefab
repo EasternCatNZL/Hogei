@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4338055981754276}
   - component: {fileID: 33883348744100826}
   - component: {fileID: 23984920272628286}
-  - component: {fileID: 54046733713976852}
   - component: {fileID: 114929639101795844}
-  - component: {fileID: 136808621662425014}
+  - component: {fileID: 135794710076608194}
+  - component: {fileID: 54700755210064404}
   m_Layer: 0
   m_Name: Corn_Bullet
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065517728721512}
   m_Mesh: {fileID: 4300000, guid: 2581d490a8302c84fa3dfed824310bfa, type: 3}
---- !u!54 &54046733713976852
+--- !u!54 &54700755210064404
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -115,18 +115,19 @@ MonoBehaviour:
   power: 10
   upwardsForce: 10
   scaleSize: 0.1
-  scaleDuration: 5
-  timer: 2
---- !u!136 &136808621662425014
-CapsuleCollider:
+  scaleDuration: 0.3
+  Damage: 100
+  timer: 0.3
+  ObjectsInRange: []
+--- !u!135 &135794710076608194
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065517728721512}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 33.17007
-  m_Height: 82.45302
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 41.22651
   m_Center: {x: 2.180478, y: 39.289955, z: 4.668998}
