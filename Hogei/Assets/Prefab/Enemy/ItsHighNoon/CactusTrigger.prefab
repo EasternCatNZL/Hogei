@@ -799,6 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHit: 0
   CurrentHealth: 0
   MaxHealth: 100
   DeathVFX: {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2, type: 2}
@@ -821,8 +822,9 @@ MonoBehaviour:
   numShotsPerSpray: 3
   timeBetweenShots: 0.2
   rampAmount: 0.05
-  rampPercentTrigger: 0.5
+  rampPercentTrigger: 0.25
   bulletOffsetY: 0.5
+  bulletTag: Bullet
   isActive: 0
 --- !u!135 &135053653223701776
 SphereCollider:

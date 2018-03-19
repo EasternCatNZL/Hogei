@@ -8,6 +8,7 @@ public class HealthGlobe : MonoBehaviour {
     GameObject Player;
     public float HealthIncrease = 1.0f;
     public float rotationSpeed = 100.0f;
+    public GameObject pickupVFX;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,7 @@ public class HealthGlobe : MonoBehaviour {
         if(col.gameObject.tag == "Player")
         {
             Player.GetComponent<EntityHealth>().IncreaseHealth(HealthIncrease);
+            Instantiate(pickupVFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

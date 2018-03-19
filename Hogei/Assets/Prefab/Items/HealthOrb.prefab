@@ -98,7 +98,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &114620677991769764
 MonoBehaviour:
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthIncrease: 1
   rotationSpeed: 200
+  pickupVFX: {fileID: 1701901214611186, guid: 4703df06a49121a44bad9f40b52a42f5, type: 2}
 --- !u!135 &135823140955632752
 SphereCollider:
   m_ObjectHideFlags: 1

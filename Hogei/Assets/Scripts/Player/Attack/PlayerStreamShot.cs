@@ -17,7 +17,8 @@ public class PlayerStreamShot : MonoBehaviour {
     [Header("Positioning vars")]
     [Tooltip("How far out to position bullet start from center")]
     public float distanceToStart = 0.1f;
-
+    [Tooltip("Where the gun barrel is located")]
+    public Transform barrelLocation;
     public bool isFiring = false;
 
     //[Header("Tags")]
@@ -29,6 +30,9 @@ public class PlayerStreamShot : MonoBehaviour {
 
     [Header("Audio")]
     public AudioSource bulletFireSound;
+
+    [Header("VFX")]
+    public GameObject muzzleFireVFX;
 
     //control vars
     private float lastShotTime = 0.0f; //time last bullet was fired
@@ -74,6 +78,7 @@ public class PlayerStreamShot : MonoBehaviour {
 
             //play audio
             bulletFireSound.Play();
+            Instantiate(muzzleFireVFX, transform.position, Quaternion.identity);
 
 
         }
