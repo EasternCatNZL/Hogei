@@ -29,7 +29,7 @@ public class EntityHealth : MonoBehaviour {
     [Tooltip("Maximum health the entity can have")]
     public float MaxHealth = 10;
 
-    public GameObject DeathVFX;
+    public GameObject[] DeathVFX;
     public GameObject HitVFX;
 
     //[Header("Audio")]
@@ -69,9 +69,12 @@ public class EntityHealth : MonoBehaviour {
                     transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
                 }
             }
-            if (DeathVFX)
+            if (DeathVFX.Length > 0)
             {
-                Instantiate(DeathVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+                foreach (GameObject vfx in DeathVFX)
+                {
+                    Instantiate(vfx, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+                }
             }
             Destroy(gameObject);
         }

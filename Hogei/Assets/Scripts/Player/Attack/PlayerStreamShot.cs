@@ -78,7 +78,7 @@ public class PlayerStreamShot : MonoBehaviour {
 
             //play audio
             bulletFireSound.Play();
-            Instantiate(muzzleFireVFX, transform.position, transform.rotation);
+            if(muzzleFireVFX) Instantiate(muzzleFireVFX, transform.position, transform.rotation);
 
 
         }
