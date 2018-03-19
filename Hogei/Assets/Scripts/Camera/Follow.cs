@@ -42,6 +42,7 @@ public class Follow : MonoBehaviour
             Vector3 MousePos = MouseTarget.GetWorldMousePos();
             Debug.DrawLine(Target.position, Target.position + (MousePos - Target.position).normalized * AheadDistance, Color.green);
             //Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, AheadDistance);
+            float MouseDistance = Vector3.Distance(Target.position, MousePos);
             Vector3 DesiredPos = Target.position + (MousePos - Target.position).normalized * AheadDistance;
             Vector3 Dir = DesiredPos - transform.position;
             //Move the camera towards the desired position

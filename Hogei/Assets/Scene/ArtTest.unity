@@ -1105,10 +1105,9 @@ GameObject:
   m_Component:
   - component: {fileID: 63137814}
   - component: {fileID: 63137813}
-  - component: {fileID: 63137812}
   - component: {fileID: 63137811}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Fog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,20 +1147,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &63137812
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 63137810}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &63137813
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1177,7 +1162,7 @@ Transform:
   m_GameObject: {fileID: 63137810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.5, y: 12.1, z: -8.87}
-  m_LocalScale: {x: 74.73533, y: 74.7353, z: 74.7353}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 28
@@ -12061,7 +12046,7 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX: []
   HitVFX: {fileID: 0}
 --- !u!1001 &823975570
 Prefab:
@@ -16408,7 +16393,7 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX: []
   HitVFX: {fileID: 0}
 --- !u!1001 &1084013974
 Prefab:
@@ -20352,7 +20337,7 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX: []
   HitVFX: {fileID: 0}
 --- !u!1001 &1300731557
 Prefab:
@@ -27673,7 +27658,7 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX: []
   HitVFX: {fileID: 0}
 --- !u!1001 &1694582176
 Prefab:
@@ -28018,7 +28003,7 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX: []
   HitVFX: {fileID: 0}
 --- !u!1 &1718510361 stripped
 GameObject:
@@ -28039,7 +28024,7 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX: []
   HitVFX: {fileID: 0}
 --- !u!1001 &1719692996
 Prefab:
