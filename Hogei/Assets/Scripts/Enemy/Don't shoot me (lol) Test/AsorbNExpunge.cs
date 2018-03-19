@@ -20,6 +20,10 @@ public class AsorbNExpunge : MonoBehaviour {
     [Range(0.0f, 100.0f)]
     public float bulletSpeedMax = 15.0f;
 
+    [Header("Periodic release?")]
+    [Tooltip("When true, releases bullets on timer")]
+    public bool doPeriodicRelease = false;
+
     [Header("Tags")]
     public string bulletTag = "Bullet";
 
@@ -39,28 +43,30 @@ public class AsorbNExpunge : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isAsorbing)
+        if (doPeriodicRelease)
         {
-            if (Time.time > asorbStartTime + asorbTime)
+            if (isAsorbing)
             {
-                ReleaseBullets();
+                if (Time.time > asorbStartTime + asorbTime)
+                {
+                    ReleaseBullets();
+                }
+            }
+            else
+            {
+                if (Time.time > sprayStartTime + timeTillNextAsorb)
+                {
+                    isAsorbing = true;
+                    asorbStartTime = Time.time;
+                }
             }
         }
-        else
-        {
-            if(Time.time > sprayStartTime + timeTillNextAsorb)
-            {
-                isAsorbing = true;
-                asorbStartTime = Time.time;
-            }
-        }
-
 	}
 
     //Bullet release 
     private void ReleaseBullets()
     {
-        print("Firing " + numStockpiledBullets + " Bullets.");
+        //print("Firing " + numStockpiledBullets + " Bullets.");
         //set is asorbing to false
         isAsorbing = false;
         //set timings
@@ -79,6 +85,11 @@ public class AsorbNExpunge : MonoBehaviour {
             bulletClone.GetComponent<RegularStraightBullet>().SetupVars(Random.Range(bulletSpeedMin, bulletSpeedMax));
         }
         numStockpiledBullets = 0;
+    }
+
+    private void OnDestroy()
+    {
+        ReleaseBullets();
     }
 
     //collision logic
