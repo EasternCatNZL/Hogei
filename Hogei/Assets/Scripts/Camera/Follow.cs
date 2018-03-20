@@ -13,6 +13,7 @@ public class Follow : MonoBehaviour
     public float CameraAngle;
     public Vector3 CameraDirection;
     public float AheadDistance = 1f;
+    public float MooseDistance = 0f;
     public float LerpDuration = 1f;
     [Header("Camera Shake Settings")]
     public float ShakeDuration = 1f;
@@ -43,7 +44,16 @@ public class Follow : MonoBehaviour
             Debug.DrawLine(Target.position, Target.position + (MousePos - Target.position).normalized * AheadDistance, Color.green);
             //Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             float MouseDistance = Vector3.Distance(Target.position, MousePos);
-            Vector3 DesiredPos = Target.position + (MousePos - Target.position).normalized * AheadDistance;
+            MooseDistance = MouseDistance;
+            Vector3 DesiredPos = Vector3.zero;
+            if (MouseDistance < AheadDistance)
+            {
+                DesiredPos = Target.position;
+            }
+            else
+            {
+                DesiredPos = Target.position + (MousePos - Target.position).normalized * AheadDistance;
+            }
             Vector3 Dir = DesiredPos - transform.position;
             //Move the camera towards the desired position
             transform.DOMove(DesiredPos, LerpDuration);
