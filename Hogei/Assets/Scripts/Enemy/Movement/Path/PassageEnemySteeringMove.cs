@@ -51,19 +51,8 @@ public class PassageEnemySteeringMove : MonoBehaviour {
         //print("Unsubscribed to event");
     }
 
-    ////movement logic between waypoints
-    //private void MoveToNextWaypoints()
-    //{
-    //    //get time variable that is somewhat consistent over distance
-    //    float timeToTravel = (Vector3.Distance(waypointManager.waypointList[currentWaypointIndex].position, waypointManager.waypointList[currentWaypointIndex - 1].position)) / travelSpeed;
-    //    //tween to next destination over this amount of time
-    //    transform.DOMove(currentDestination.position, timeToTravel, false);
-    //    //look at the next waypoint
-    //    transform.rotation = Quaternion.LookRotation(currentDestination.position - transform.position);
-    //}
 
     //steer to destination
-
     private void SteerToDestination()
     {
         //get vector towards target
@@ -102,7 +91,7 @@ public class PassageEnemySteeringMove : MonoBehaviour {
 
     private void OnPause()
     {
-        isPaused = false;
+        isPaused = true;
         myRigid.velocity = Vector3.zero;
     }
 
