@@ -45,16 +45,18 @@ public class Follow : MonoBehaviour
             //Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             float MouseDistance = Vector3.Distance(Target.position, MousePos);
             MooseDistance = MouseDistance;
+            Vector3 Dir = (MousePos - Target.position).normalized ;
             Vector3 DesiredPos = Vector3.zero;
-            if (MouseDistance < AheadDistance)
-            {
-                DesiredPos = Target.position;
-            }
-            else
-            {
-                DesiredPos = Target.position + (MousePos - Target.position).normalized * AheadDistance;
-            }
-            Vector3 Dir = DesiredPos - transform.position;
+            DesiredPos = Target.position + Vector3.ClampMagnitude(Dir * MouseDistance, AheadDistance);
+            //if (MouseDistance < AheadDistance)
+            //{
+            //    DesiredPos = Target.position;
+            //}
+            //else
+            //{
+            //    DesiredPos = Target.position + (MousePos - Target.position).normalized * AheadDistance;
+            //}
+
             //Move the camera towards the desired position
             transform.DOMove(DesiredPos, LerpDuration);
             if(StreamShot.isFiring == true)
