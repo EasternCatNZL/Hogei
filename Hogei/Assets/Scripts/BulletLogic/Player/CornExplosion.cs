@@ -15,7 +15,7 @@ public class CornExplosion : MonoBehaviour {
     public float Damage = 1.0f;
     public float timer = 0.3f;
 
-    public List<GameObject> ObjectsInRange;
+    private List<GameObject> ObjectsInRange;
 
     //private bool hasExploded = false;
     //private Vector3 ExplosionPos;

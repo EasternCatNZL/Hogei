@@ -2913,7 +2913,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!65 &169738941
 BoxCollider:
@@ -3162,7 +3163,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!114 &211906218
 MonoBehaviour:
@@ -5797,7 +5799,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!65 &376434083
 BoxCollider:
@@ -18835,7 +18838,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!65 &1084620011
 BoxCollider:
@@ -26102,7 +26106,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!65 &1584864384
 BoxCollider:
@@ -26586,6 +26591,11 @@ Prefab:
     - target: {fileID: 4342127443587668, guid: 41474c897828aba45af4f03f814cbbab, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.814
+      objectReference: {fileID: 0}
+    - target: {fileID: 114596002958290544, guid: 41474c897828aba45af4f03f814cbbab,
+        type: 2}
+      propertyPath: angleChangePerShot
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41474c897828aba45af4f03f814cbbab, type: 2}
@@ -28711,7 +28721,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!54 &1798521098
 Rigidbody:
