@@ -16,14 +16,18 @@ public class HermitMoveBehavior : MonoBehaviour {
 
     //control vars
     private bool isActive = false; //check if object active
+    private bool isMoving = false; //check if object is moving
 
     private int currentIndex = 0; //the current index of the array
 
     private Vector3 currentDestination = Vector3.zero;
     private Vector3 travelDirection = Vector3.zero;
 
+    private Rigidbody myRigid;
+
 	// Use this for initialization
 	void Start () {
+        myRigid = GetComponent<Rigidbody>();
         SetupPointRefs();
         //debug
         currentDestination = travelPoints[0].transform.position;
@@ -31,8 +35,14 @@ public class HermitMoveBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (isActive)
+        {
+            if (isMoving)
+            {
+                MoveBetweenPoints();
+            }
+        }
         
-        MoveBetweenPoints();
 	}
 
     //Set up refs for all points
@@ -48,13 +58,14 @@ public class HermitMoveBehavior : MonoBehaviour {
     //Move between points
     private void MoveBetweenPoints()
     {
-        //if current direction does not exist <- zero, set
-        if(travelDirection == Vector3.zero)
-        {
-            travelDirection = currentDestination - transform.position;
-        }
-        //move towards current destination
-        transform.position += (travelDirection * moveSpeed) * Time.deltaTime;
+        //get vector towards target
+        Vector3 desireVelocity = currentDestination - transform.position;
+        float distance = desireVelocity.magnitude;
+        desireVelocity = Vector3.Normalize(desireVelocity) * moveSpeed;
+        //get steering force
+        Vector3 steeringForce = desireVelocity - myRigid.velocity;
+        //adjust velocity
+        myRigid.velocity = Vector3.ClampMagnitude(myRigid.velocity + (steeringForce * Time.deltaTime), moveSpeed);
     }
 
     //change destination
