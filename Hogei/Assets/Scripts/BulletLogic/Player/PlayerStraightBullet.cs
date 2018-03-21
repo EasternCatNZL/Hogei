@@ -81,27 +81,31 @@ public class PlayerStraightBullet : MonoBehaviour {
     }
 
     //collision = deactivate
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        //any collision
-        if (collision.gameObject.GetComponent<EntityHealth>())
+        Debug.Log(collision.name);
+        if (!collision.isTrigger)
         {
-            //check if debugger has instakill toggled
-            if (GameObject.FindGameObjectWithTag(debugTag))
+            //any collision
+            if (collision.gameObject.GetComponent<EntityHealth>())
             {
-                if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
+                //check if debugger has instakill toggled
+                if (GameObject.FindGameObjectWithTag(debugTag))
                 {
-                    collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(collision.gameObject.GetComponent<EntityHealth>().MaxHealth);
+                    if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
+                    {
+                        collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(collision.gameObject.GetComponent<EntityHealth>().MaxHealth);
+                    }
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
                 }
             }
-            else
-            {
-                collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
-            }
+            //Deactivate();
+            GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
-        //Deactivate();
-        GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
-        Destroy(gameObject);
     }
 
     //Pause events

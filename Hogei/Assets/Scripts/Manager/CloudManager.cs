@@ -67,6 +67,6 @@ public class CloudManager : MonoBehaviour {
     private void OnTriggerExit(Collider collision)
     {
         GameObject Cloud = collision.gameObject;
-        Cloud.transform.position -= CloudDirection * CloudAreaSize;
+        Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.25f;
     }
 }
