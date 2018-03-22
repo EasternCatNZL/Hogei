@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CloudManager : MonoBehaviour {
 
+    [Header("Cloud Options")]
     public float CloudHeightCenter = 0f;
     public Vector2 CloudHeightRange = Vector2.zero;
     public float CloudAmount = 10;

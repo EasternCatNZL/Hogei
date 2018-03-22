@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 168055983}
   - component: {fileID: 168055982}
   - component: {fileID: 168055981}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &195789717
 GameObject:
@@ -288,7 +288,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &195789722
 MonoBehaviour:
@@ -304,7 +304,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!1 &482367417
 GameObject:
@@ -389,7 +390,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &482367422
 MonoBehaviour:
@@ -405,7 +406,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!1 &496374630
 GameObject:
@@ -490,7 +492,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &496374635
 MonoBehaviour:
@@ -506,7 +508,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!1 &728631923
 GameObject:
@@ -655,7 +658,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &789208607
 GameObject:
@@ -767,7 +770,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4480343900283024, guid: 2dac16bdfad7ad348ba5253d788103e7, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4480343900283024, guid: 2dac16bdfad7ad348ba5253d788103e7, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -983,7 +986,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &945228130
 GameObject:
@@ -1012,7 +1015,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &945228132
 MonoBehaviour:
@@ -1098,7 +1101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &972330586
 GameObject:
@@ -1212,7 +1215,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1100306258
 GameObject:
@@ -1274,7 +1277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146007043
 GameObject:
@@ -1469,7 +1472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1260443812
 MonoBehaviour:
@@ -1485,8 +1488,67 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
+--- !u!1001 &1301860976
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5086603
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.182
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.187536
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 65bc219e87d7e7249bf903331e39afce, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &1390208696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,7 +1639,7 @@ RectTransform:
   - {fileID: 1146007044}
   - {fileID: 1550198247}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1788,7 +1850,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1719726014
 GameObject:
@@ -1873,7 +1935,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1719726019
 MonoBehaviour:
@@ -1889,7 +1951,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!1 &1741918690
 GameObject:
@@ -2020,7 +2083,7 @@ Transform:
   - {fileID: 728631924}
   - {fileID: 1741918691}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1821951865
 Rigidbody:
@@ -2244,7 +2307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1845828616
 MonoBehaviour:
@@ -2260,7 +2323,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!1 &1894178873
 GameObject:
@@ -2345,7 +2409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1894178878
 MonoBehaviour:
@@ -2361,7 +2425,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!1 &1973375857 stripped
 GameObject:
@@ -2451,7 +2516,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2020463529
 MonoBehaviour:
@@ -2467,7 +2532,8 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
 --- !u!1 &2026897853
 GameObject:

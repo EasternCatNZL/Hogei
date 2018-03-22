@@ -73,7 +73,10 @@ public class EntityHealth : MonoBehaviour {
             {
                 foreach (GameObject vfx in DeathVFX)
                 {
-                    Instantiate(vfx, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+                    if (vfx)
+                    {
+                        Instantiate(vfx, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+                    }
                 }
             }
             Destroy(gameObject);
