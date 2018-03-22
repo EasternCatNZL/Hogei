@@ -83,7 +83,6 @@ public class PlayerStraightBullet : MonoBehaviour {
     //collision = deactivate
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.name);
         if (!collision.isTrigger)
         {
             //any collision
