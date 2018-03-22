@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EntityHealth : MonoBehaviour {
     
@@ -31,6 +32,8 @@ public class EntityHealth : MonoBehaviour {
 
     public GameObject[] DeathVFX;
     public GameObject HitVFX;
+
+    public UnityEvent DeathFunction;
 
     //[Header("Audio")]
     //public AudioSource deathSound;
@@ -79,6 +82,7 @@ public class EntityHealth : MonoBehaviour {
                     }
                 }
             }
+            DeathFunction.Invoke();
             Destroy(gameObject);
         }
 		if(DOTActive)
