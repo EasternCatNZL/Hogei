@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &51872419
 Transform:
   m_ObjectHideFlags: 0
@@ -901,11 +901,12 @@ GameObject:
   - component: {fileID: 465459321}
   - component: {fileID: 465459320}
   - component: {fileID: 465459319}
-  - component: {fileID: 465459318}
   - component: {fileID: 465459322}
-  m_Layer: 0
+  - component: {fileID: 465459318}
+  - component: {fileID: 465459323}
+  m_Layer: 10
   m_Name: CrabDummy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -938,7 +939,8 @@ MonoBehaviour:
   travelPoints:
   - {fileID: 979615050}
   - {fileID: 1915255978}
-  timeBetweenAttacks: 3
+  isActive: 1
+  isMoving: 1
 --- !u!23 &465459319
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1007,6 +1009,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!114 &465459323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 465459316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1633467a028b08448fd8db80542bc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1615489871055646, guid: 67d8c626c1c721b4bbf880f98fa6aad0,
+    type: 2}
+  bulletSpeed: 10
+  numberOfBullets: 3
+  timeBetweenAttacks: 2
+  timeTillReady: 1
+  angleOut: 30
+  hermit: {fileID: 465459318}
+  isAttacking: 0
+  isReadying: 1
 --- !u!1 &500453022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,7 +3700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1989897394
 MonoBehaviour:
   m_ObjectHideFlags: 0

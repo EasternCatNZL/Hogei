@@ -10,13 +10,14 @@ public class HermitMoveBehavior : MonoBehaviour {
     [Tooltip("Travel points")]
     public HermitCheckPointHandler[] travelPoints = new HermitCheckPointHandler[0];
 
-    [Header("Timing vars")]
-    [Tooltip("Time between attacks")]
-    public float timeBetweenAttacks = 3.0f;
+    //[Header("Timing vars")]
+    //[Tooltip("Time between attacks")]
+    //public float timeBetweenAttacks = 3.0f;
 
     //control vars
-    private bool isActive = false; //check if object active
-    private bool isMoving = false; //check if object is moving
+    public bool isActive = false; //check if object active
+    //[HideInInspector]
+    public bool isMoving = false; //check if object is moving
 
     private int currentIndex = 0; //the current index of the array
 
@@ -31,6 +32,9 @@ public class HermitMoveBehavior : MonoBehaviour {
         SetupPointRefs();
         //debug
         currentDestination = travelPoints[0].transform.position;
+
+        isMoving = true;
+        isActive = true;
 	}
 	
 	// Update is called once per frame
@@ -40,6 +44,10 @@ public class HermitMoveBehavior : MonoBehaviour {
             if (isMoving)
             {
                 MoveBetweenPoints();
+            }
+            else
+            {
+                myRigid.velocity = Vector3.zero;
             }
         }
         
