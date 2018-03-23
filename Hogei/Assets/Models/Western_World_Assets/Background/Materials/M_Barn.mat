@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: M_ChickenCoop
-  m_Shader: {fileID: 4800000, guid: 6efb6a1a8360b434dbadb37d6a7caf51, type: 3}
+  m_Name: M_Barn
+  m_Shader: {fileID: 4800000, guid: c17b43089a116a94682f0990d13590f4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,40 +18,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Barn_D:
+        m_Texture: {fileID: 2800000, guid: d051a78aa631d2e45880a51393c92b49, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Barn_ambient_occlusion:
+        m_Texture: {fileID: 2800000, guid: 8a17039e2f41c704ca53c99e7b4a7840, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CC_D:
-        m_Texture: {fileID: 2800000, guid: 1d97cb43aad12214caf3e5353a05cf29, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CC_D1:
-        m_Texture: {fileID: 2800000, guid: 5e375db1c72bbb54c98eb754658f4b32, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CC_D2:
-        m_Texture: {fileID: 2800000, guid: 8a594e6a6046eb64e90b7685913f2637, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CC_D_1:
-        m_Texture: {fileID: 2800000, guid: eb44c70fab5533e4db389c1030759da9, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ChickenCoop_D:
-        m_Texture: {fileID: 2800000, guid: d88c899505cbe6e4891fc84a0f2ce478, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ChickenCoop_D1:
-        m_Texture: {fileID: 2800000, guid: 20b61afd7a0f2e348bdb742b5e992371, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ChickenCoop_D2:
-        m_Texture: {fileID: 2800000, guid: f076aacd311ed6b43901560aed2c5147, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Chicken_Coop_ambient_occlusion:
-        m_Texture: {fileID: 2800000, guid: dbe98fe3a558d7b4bab5e23ef2c2db2f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
