@@ -130,7 +130,7 @@ public class SheepBehaviour : MonoBehaviour {
     }
 
     //Bullet explosion
-    private void BulletExplosion()
+    public void BulletExplosion()
     {
         //get a random starting angle
         float angle = Random.Range(0.0f, 360.0f);
@@ -190,8 +190,6 @@ public class SheepBehaviour : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (!isQuiting)
-            BulletExplosion();
     }
 
 
