@@ -17,6 +17,8 @@ public class HermitAttackBehavior : MonoBehaviour {
     public float timeBetweenAttacks = 1.0f;
     [Tooltip("Time last ready")]
     public float timeTillReady = 1.0f;
+    [Tooltip("Time between bubbles")]
+    public float timeBetweenBubbles = 0.1f;
 
     [Header("Angle control")]
     [Tooltip("Angle shot can be fired out at")]
@@ -28,8 +30,12 @@ public class HermitAttackBehavior : MonoBehaviour {
     //control vars
     public bool isAttacking = false; //checks if attacked
     public bool isReadying = false; //checks if currently getting ready
+    private bool canShoot = false;
+
+    private int currentShot = 0; //the current index of shots
 
     private float lastAttackTime = 0.0f; //the time last attack occured
+    private float lastShotTime = 0.0f; //the time last bubble was shot
     private float lastReadyUpTime = 0.0f; //the time last ready for attack
 
 	// Use this for initialization
@@ -48,6 +54,13 @@ public class HermitAttackBehavior : MonoBehaviour {
         }
         else if (isAttacking)
         {
+            if (canShoot)
+            {
+                if(Time.time > lastShotTime + timeBetweenBubbles)
+                {
+                    FireBubble();
+                }
+            }
             if(Time.time > lastAttackTime + timeBetweenAttacks)
             {
                 ContinueMovement();
@@ -58,20 +71,32 @@ public class HermitAttackBehavior : MonoBehaviour {
     //Shoot out bubble
     private void FireBubble()
     {
-        //for number of bullets
-        for(int i = 0; i < numberOfBullets; i++)
-        {
-            //get a random angle
-            float randomAngle = Random.Range(-angleOut, angleOut);
-            //create a bullet
-            GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
-            //set the rotation
-            Quaternion newRotation = Quaternion.Euler(0.0f, randomAngle, 0.0f);
-            bulletClone.transform.rotation = newRotation;
-            bulletClone.GetComponent<Rigidbody>().velocity = bulletClone.transform.forward * bulletSpeed;
+        //get a random angle
+        float randomAngle = Random.Range(-angleOut, angleOut);
+        //create a bullet
+        GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
+        //set the rotation
+        Quaternion newRotation = Quaternion.Euler(0.0f, randomAngle, 0.0f);
+        bulletClone.transform.rotation = newRotation;
+        bulletClone.GetComponent<Rigidbody>().velocity = bulletClone.transform.forward * bulletSpeed;
 
-            //debug
-            print("Shot " + (i + 1));
+        //increase the index of current shot
+        currentShot++;
+        print("Shot: " + currentShot);
+
+        //if current shot = num of bullets
+        if(currentShot >= numberOfBullets)
+        {
+            //reset currentshot to 0
+            currentShot = 0;
+            //set can shoot to false
+            canShoot = false;
+        }
+        //otherwise set last shot time to now
+        else
+        {
+            lastShotTime = Time.time;
+            
         }
     }
 
@@ -82,11 +107,12 @@ public class HermitAttackBehavior : MonoBehaviour {
         lastAttackTime = Time.time;
         //turn movement off
         hermit.isMoving = false;
-        //attack
-        FireBubble();
+        ////attack
+        //FireBubble();
         //set attacking to true
         isAttacking = true;
         isReadying = false;
+        canShoot = true;
     }
 
     //Continue movement
