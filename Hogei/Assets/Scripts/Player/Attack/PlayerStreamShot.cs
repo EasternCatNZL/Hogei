@@ -14,6 +14,10 @@ public class PlayerStreamShot : MonoBehaviour {
     [Tooltip("The amount of time between shots")]
     public float timeBetweenShots = 2.0f;
 
+    [Header("Angle variance")]
+    [Tooltip("Angle variance in shot")]
+    public float angleVariance = 2.0f;
+
     [Header("Positioning vars")]
     [Tooltip("How far out to position bullet start from center")]
     public float distanceToStart = 0.1f;
@@ -63,13 +67,16 @@ public class PlayerStreamShot : MonoBehaviour {
             //set last shot time to now
             lastShotTime = Time.time;
 
+            //get random variance
+            float random = Random.Range(-angleVariance, angleVariance);
+
             //get a bullet
             GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
             isFiring = true;
             //set the bullets position to this pos
             bullet.transform.position = barrelLocation.position + (transform.right * distanceToStart);
-            //set the bullet's rotation to current rotation
-            bullet.transform.rotation = transform.rotation;
+            //set the bullet's rotation with some variance
+            bullet.transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y + -random, 0.0f);
             //set up bullet
             bullet.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeed, 0, false);
 
@@ -78,7 +85,7 @@ public class PlayerStreamShot : MonoBehaviour {
             //set the bullets position to this pos
             bullet2.transform.position = barrelLocation.position + (-transform.right * distanceToStart);
             //set the bullet's rotation to current rotation
-            bullet2.transform.rotation = transform.rotation;
+            bullet2.transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y + random, 0.0f);
             //set up bullet
             bullet2.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeed, 0, false);
 
