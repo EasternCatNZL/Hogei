@@ -44,9 +44,11 @@ public class EntityHealth : MonoBehaviour {
     float DOTStart;
 
 
-
 	// Use this for initialization
-	void Start () {    
+	void Start () { 
+
+
+
         CurrentHealth = MaxHealth;
         if (GetComponent<MeshRenderer>()) GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
         else if (GetComponentInChildren<SkinnedMeshRenderer>()) GetComponentInChildren<SkinnedMeshRenderer>().material.EnableKeyword("_EMISSION");
@@ -81,6 +83,8 @@ public class EntityHealth : MonoBehaviour {
                         Instantiate(vfx, transform.position, Quaternion.Euler(-90f, 0f, 0f));
                     }
                 }
+
+
             }
             DeathFunction.Invoke();
             Destroy(gameObject);
@@ -120,6 +124,7 @@ public class EntityHealth : MonoBehaviour {
         if (gameObject.tag.Equals("Player"))
         {
             OnPlayerHealthUpdate();
+			Camera.main.GetComponent<Animator> ().SetTrigger ("ChromaBurst");
         }
         if(HitVFX)
         {
