@@ -5,10 +5,9 @@ using UnityEngine;
 public class CloudManager : MonoBehaviour {
 
     [Header("Cloud Options")]
-    public float CloudHeightCenter = 0f;
+    [Tooltip("Heights the cloud can vary between for height")]
     public Vector2 CloudHeightRange = Vector2.zero;
     public float CloudAmount = 10;
-    public Vector3 CloudCenter = Vector3.zero;
     public float CloudAreaSize = 10f;
     public Vector3 CloudDirection = Vector3.forward;
     public Vector2 CloudSpeedRange = Vector2.zero;
@@ -33,15 +32,15 @@ public class CloudManager : MonoBehaviour {
 
     public void Init()
     {
-        transform.position = new Vector3(0f, CloudHeightCenter, 0f);
+        //transform.position = new Vector3(0f, CloudHeightCenter, 0f);
         SphereCollider SphereC = GetComponent<SphereCollider>();
         SphereC.radius = CloudAreaSize;
         ClearClouds();
         for(int i = 0; i < CloudAmount; ++i)
         {
-            Vector3 CloudPosition = Random.insideUnitSphere * CloudAreaSize;
+            Vector3 CloudPosition = Random.insideUnitSphere * CloudAreaSize + transform.position;
             Debug.Log(CloudPosition.ToString());
-            CloudPosition.y = CloudHeightCenter + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
+            CloudPosition.y = transform.position.y + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud
             GameObject newCloud = Instantiate(CloudVariations[Random.Range(0, CloudVariations.Length)],CloudPosition, Quaternion.identity);
             //Rotate to point in the cloud direction
