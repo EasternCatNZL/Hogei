@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33820015330072628}
   - component: {fileID: 23543749837650972}
   - component: {fileID: 95648401529724742}
+  - component: {fileID: 65100083779524558}
   m_Layer: 0
   m_Name: ChickenCoop
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1078973276148838}
   m_Mesh: {fileID: 4300000, guid: 43e456dba4eafff4b8f041d3673c4665, type: 3}
+--- !u!65 &65100083779524558
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1078973276148838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.587257, y: 2.0235345, z: 1.7925787}
+  m_Center: {x: 0.32711977, y: 0.9789582, z: -0.087911636}
 --- !u!95 &95648401529724742
 Animator:
   serializedVersion: 3
