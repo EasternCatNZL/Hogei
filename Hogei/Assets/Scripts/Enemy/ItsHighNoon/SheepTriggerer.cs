@@ -7,6 +7,7 @@ public class SheepTriggerer : MonoBehaviour {
 
     [Header("Tags")]
     public string targetTag = "Player";
+    public string bulletTag = "Bullet";
 
     public GameObject WarningObject;
     private float WarningBegan = 0.0f;

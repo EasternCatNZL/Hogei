@@ -38,13 +38,14 @@ public class GateManager : MonoBehaviour
     //on room activation logic
     private void ActivateRoom()
     {
+        isActivated = true;
         //close doors
         CloseDoors();
     }
 
     void CheckRoomCleared()
     {
-        if (isActivated)
+        if (isActivated && !isCleared)
         {
             bool EnemiesCleared = true;
             for (int i = 0; i < EnemyArray.Length; ++i)
@@ -84,8 +85,6 @@ public class GateManager : MonoBehaviour
             //set door to active
             gateArray[i].GetComponent<GateController>().LockGate();
         }
-
-        //TODO: Animation for doors that would close off path
     }
 
     //open the doors
@@ -99,8 +98,6 @@ public class GateManager : MonoBehaviour
             //set door to active
             gateArray[i].GetComponent<GateController>().UnlockGate();
         }
-
-        //TODO: Animation for doors that would open path
     }
 
     //on entry
@@ -113,7 +110,6 @@ public class GateManager : MonoBehaviour
             if (other.gameObject.CompareTag(playerTag))
             {
                 //activate room
-                isActivated = true;
                 ActivateRoom();
             }
         }

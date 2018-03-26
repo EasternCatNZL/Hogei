@@ -98,19 +98,22 @@ public class CactusRandomSpray : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         //if not active
         if (!isActive)
         {
             //check is bullet
-            if (collision.gameObject.CompareTag(bulletTag))
+            if (other.gameObject.CompareTag(bulletTag))
             {
                 //activate
                 isActive = true;
             }
         }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
         EntityHealth myHealth = GetComponent<EntityHealth>();
         float percentLoss = myHealth.CurrentHealth / myHealth.MaxHealth;
         if(percentLoss < NextRampTrigger)
