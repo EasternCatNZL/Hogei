@@ -15,6 +15,7 @@ public class CloudManager : MonoBehaviour {
     public GameObject[] CloudVariations;
 
     private List<GameObject> Clouds;
+	private bool SphereArea = false;
 	private float BoxWidth = 0f;
 	private float BoxLength = 0f;
 
@@ -38,14 +39,27 @@ public class CloudManager : MonoBehaviour {
 		if (GetComponent<SphereCollider> ()) {
 			SphereCollider SphereC = GetComponent<SphereCollider> ();
 			SphereC.radius = CloudAreaSize;
-		} else if (!GetComponent<BoxCollider> ()) {
+			SphereArea = true;
+		} else if (GetComponent<BoxCollider> ()) {
+			BoxCollider BoxC = GetComponent<BoxCollider> ();
+			BoxWidth = BoxC.size.x;
+			BoxLength = BoxC.size.z;
+		}
+		else
+		{
 			Debug.Log ("No Collider on " + gameObject.name);
 		}
         ClearClouds();
         for(int i = 0; i < CloudAmount; ++i)
         {
-            Vector3 CloudPosition = Random.insideUnitSphere * CloudAreaSize + transform.position;
-            Debug.Log(CloudPosition.ToString());
+			Vector3 CloudPosition = Vector3.zero;
+			if (SphereArea) {
+				CloudPosition = Random.insideUnitSphere * CloudAreaSize + transform.position;
+				Debug.Log (CloudPosition.ToString ());
+			} else {
+				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2) * CloudAreaSize + transform.position;
+				Debug.Log (CloudPosition.ToString ());
+			}
             CloudPosition.y = transform.position.y + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud
             GameObject newCloud = Instantiate(CloudVariations[Random.Range(0, CloudVariations.Length)],CloudPosition, Quaternion.identity);
