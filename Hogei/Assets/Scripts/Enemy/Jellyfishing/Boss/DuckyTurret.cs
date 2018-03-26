@@ -25,8 +25,8 @@ public class DuckyTurret : MonoBehaviour {
     public float angleBetweenSprays = 2.0f;
     [Tooltip("Starting angle")]
     public float startingAngle = 20.0f;
-    [Tooltip("Angle alteration")]
-    public float angleAlteration = 1.5f;
+    [Tooltip("Angle variance")]
+    public float angleVariance = 1.5f;
     [Tooltip("Direction")]
     [Range(-1, 1)]
     public int direction = 1;
@@ -99,6 +99,6 @@ public class DuckyTurret : MonoBehaviour {
         //set is attacking to true
         isAttacking = true;
         //set current angle to start angle with random alter
-        currentAngle = startingAngle + Random.Range(-angleAlteration, angleAlteration);
+        currentAngle = startingAngle + Random.Range(-angleVariance, angleVariance);
     }
 }

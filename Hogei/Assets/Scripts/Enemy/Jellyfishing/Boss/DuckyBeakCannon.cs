@@ -34,7 +34,7 @@ public class DuckyBeakCannon : MonoBehaviour {
 
     //control refs
     private bool isAttacking = false; //check if currently attacking
-    private bool isTurning = true; //check if head is currently turning
+    private bool isTurning = false; //check if head is currently turning
 
     private float laserStartTime = 0.0f; //time laser started
 
