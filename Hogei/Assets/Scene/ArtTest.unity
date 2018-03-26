@@ -12102,8 +12102,11 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
+  OnHitShake: 0
   DeathVFX: []
   HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -16689,8 +16692,11 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
+  OnHitShake: 0
   DeathVFX: []
   HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -18179,15 +18185,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4682520304844632, guid: 5025e1248f42bd94695b5fa531dc1291, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.0567131
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4682520304844632, guid: 5025e1248f42bd94695b5fa531dc1291, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -8.729877
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 4682520304844632, guid: 5025e1248f42bd94695b5fa531dc1291, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -14.419117
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4682520304844632, guid: 5025e1248f42bd94695b5fa531dc1291, type: 2}
       propertyPath: m_LocalRotation.x
@@ -18232,6 +18238,26 @@ Prefab:
         type: 2}
       propertyPath: CloudSpeedRange.x
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114805521943173296, guid: 5025e1248f42bd94695b5fa531dc1291,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114726604799932118, guid: 5025e1248f42bd94695b5fa531dc1291,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603192229015946, guid: 5025e1248f42bd94695b5fa531dc1291,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135407226145325568, guid: 5025e1248f42bd94695b5fa531dc1291,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5025e1248f42bd94695b5fa531dc1291, type: 2}
@@ -19187,6 +19213,7 @@ MonoBehaviour:
     type: 2}
   bulletTravelSpeed: 20
   timeBetweenShots: 0.15
+  angleVariance: 2
   distanceToStart: 0.1
   barrelLocation: {fileID: 704703652}
   isFiring: 0
@@ -20935,8 +20962,11 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
+  OnHitShake: 0
   DeathVFX: []
   HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -28484,8 +28514,11 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
+  OnHitShake: 0
   DeathVFX: []
   HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -28834,8 +28867,11 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
+  OnHitShake: 0
   DeathVFX: []
   HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -28860,8 +28896,11 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
+  OnHitShake: 0
   DeathVFX: []
   HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []

@@ -28,11 +28,10 @@ public class EntityHealth : MonoBehaviour {
     bool FlashBack = false;
     float LastTime = 0f;
 
-    [Header("Health Settings")]
+    //Heath Variables
     public float CurrentHealth;
-    [Tooltip("Maximum health the entity can have")]
     public float MaxHealth = 10;
-    [Header("VFX Settings")]
+    //VFX Variables
     public bool OnHitShake = false;
     public GameObject[] DeathVFX;
     public GameObject HitVFX;

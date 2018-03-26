@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23524305150589896}
   - component: {fileID: 95732041031168218}
   - component: {fileID: 65435277954062228}
+  - component: {fileID: 114909754508452430}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -113,3 +114,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114909754508452430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698504965936108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHit: 0
+  CurrentHealth: 0
+  MaxHealth: 10
+  OnHitShake: 1
+  DeathVFX: []
+  HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

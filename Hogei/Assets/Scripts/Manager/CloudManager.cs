@@ -55,10 +55,10 @@ public class CloudManager : MonoBehaviour {
 			Vector3 CloudPosition = Vector3.zero;
 			if (SphereArea) {
 				CloudPosition = Random.insideUnitSphere * CloudAreaSize + transform.position;
-				Debug.Log (CloudPosition.ToString ());
+                Debug.Log("SP " + CloudPosition.ToString());
 			} else {
-				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2) * CloudAreaSize + transform.position;
-				Debug.Log (CloudPosition.ToString ());
+				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2) + transform.position;
+				Debug.Log ("BX " + CloudPosition.ToString ());
 			}
             CloudPosition.y = transform.position.y + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud
@@ -87,6 +87,7 @@ public class CloudManager : MonoBehaviour {
     private void OnTriggerExit(Collider collision)
     {
         GameObject Cloud = collision.gameObject;
-        Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.25f;
+        if(SphereArea) Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.25f;
+        else Cloud.transform.position -= CloudDirection * BoxLength * 1.25f;
     }
 }
