@@ -15,6 +15,8 @@ public class CloudManager : MonoBehaviour {
     public GameObject[] CloudVariations;
 
     private List<GameObject> Clouds;
+	private float BoxWidth = 0f;
+	private float BoxLength = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -33,8 +35,12 @@ public class CloudManager : MonoBehaviour {
     public void Init()
     {
         //transform.position = new Vector3(0f, CloudHeightCenter, 0f);
-        SphereCollider SphereC = GetComponent<SphereCollider>();
-        SphereC.radius = CloudAreaSize;
+		if (GetComponent<SphereCollider> ()) {
+			SphereCollider SphereC = GetComponent<SphereCollider> ();
+			SphereC.radius = CloudAreaSize;
+		} else if (!GetComponent<BoxCollider> ()) {
+			Debug.Log ("No Collider on " + gameObject.name);
+		}
         ClearClouds();
         for(int i = 0; i < CloudAmount; ++i)
         {
