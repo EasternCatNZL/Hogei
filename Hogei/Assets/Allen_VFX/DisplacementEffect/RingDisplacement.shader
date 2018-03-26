@@ -5,6 +5,7 @@
 		_MainTex ("Texture", 2D) = "white" {}
 		_DispTex ("Displace Texture", 2D) = "white" {}
 		_DispStrength("Displacement Strength",Range(0,2)) = .1
+		_ChromaOffset ("Chromatic Offset", vector) = (0,0,0,0)
 	}
 	SubShader
 	{
@@ -42,6 +43,7 @@
 			sampler2D _MainTex;
 			sampler2D _DispTex;
 			fixed _DispStrength;
+			float4 _ChromaOffset;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
@@ -49,7 +51,12 @@
 				i.uv.y -=(disp.r+.5)*_DispStrength*disp.b;
 				i.uv.x -=(disp.g+.5)*_DispStrength*disp.b;
 
-				fixed4 col = tex2D(_MainTex, i.uv);
+				fixed4 col;
+				col.r = tex2D(_MainTex, float2( i.uv.x + _ChromaOffset.x, i.uv.y + _ChromaOffset.y)).r;
+				col.g = tex2D(_MainTex, i.uv).g;
+				col.b = tex2D(_MainTex, float2( i.uv.x + _ChromaOffset.z, i.uv.y + _ChromaOffset.w)).b;
+
+			
 
 				return col;
 			}
