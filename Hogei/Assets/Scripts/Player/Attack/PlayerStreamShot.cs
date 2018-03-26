@@ -54,6 +54,12 @@ public class PlayerStreamShot : MonoBehaviour {
         //check if input 
         if (Time.time > lastShotTime + timeBetweenShots)
         {
+            //Play VFX
+            if (muzzleFireVFX)
+            {
+                //Instantiate(muzzleFireVFX, barrelLocation.position, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, -90f, 0f)));
+                Instantiate(muzzleFireVFX, barrelLocation);
+            }
             //set last shot time to now
             lastShotTime = Time.time;
 
@@ -61,7 +67,7 @@ public class PlayerStreamShot : MonoBehaviour {
             GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
             isFiring = true;
             //set the bullets position to this pos
-            bullet.transform.position = transform.position + (transform.right * distanceToStart);
+            bullet.transform.position = barrelLocation.position + (transform.right * distanceToStart);
             //set the bullet's rotation to current rotation
             bullet.transform.rotation = transform.rotation;
             //set up bullet
@@ -70,7 +76,7 @@ public class PlayerStreamShot : MonoBehaviour {
             //get a second bullet
             GameObject bullet2 = Instantiate(bulletObject, transform.position, transform.rotation);
             //set the bullets position to this pos
-            bullet2.transform.position = transform.position + (-transform.right * distanceToStart);
+            bullet2.transform.position = barrelLocation.position + (-transform.right * distanceToStart);
             //set the bullet's rotation to current rotation
             bullet2.transform.rotation = transform.rotation;
             //set up bullet
@@ -78,9 +84,6 @@ public class PlayerStreamShot : MonoBehaviour {
 
             //play audio
             bulletFireSound.Play();
-            if(muzzleFireVFX) Instantiate(muzzleFireVFX, transform.position, transform.rotation);
-
-
         }
     }
 }

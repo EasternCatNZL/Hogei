@@ -24,6 +24,7 @@ public class SceneHandler : MonoBehaviour {
     // Use this for initialization
     void Start () {
         singleton = this;
+        sceneNumber = SceneManager.GetActiveScene().buildIndex;
         RefEnemies();
 	}
 

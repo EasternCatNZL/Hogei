@@ -59,11 +59,11 @@ public class Follow : MonoBehaviour
 
             //Move the camera towards the desired position
             transform.DOMove(DesiredPos, LerpDuration);
-            if(StreamShot.isFiring == true)
-            {
-                transform.DOShakePosition(1, 0.05f);
-                StreamShot.isFiring = false;
-            }          
+            //if(StreamShot.isFiring == true)
+            //{
+            //    transform.DOShakePosition(1, 0.05f);
+            //    StreamShot.isFiring = false;
+            //}          
             if (Player.GetComponent<EntityHealth>().isHit == true)
             {
                 transform.DOShakePosition(1, 0.5f);

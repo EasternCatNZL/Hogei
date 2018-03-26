@@ -2222,8 +2222,14 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 10
-  DeathVFX: {fileID: 0}
+  DeathVFX:
+  - {fileID: 0}
   HitVFX: {fileID: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114207530953772562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2257,8 +2263,11 @@ MonoBehaviour:
   bulletTravelSpeed: 10
   timeBetweenShots: 0.1
   distanceToStart: 0.1
+  barrelLocation: {fileID: 4802254238048606}
   isFiring: 0
   bulletFireSound: {fileID: 82587579182821438}
+  muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
+    type: 2}
 --- !u!114 &114404353282089118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2303,6 +2312,8 @@ MonoBehaviour:
   timeBetweenShots: 0.2
   timeBetweenWaves: 0.1
   bulletFireSound: {fileID: 82087920657585646}
+  muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
+    type: 2}
 --- !u!114 &114664679432362114
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,9 @@ public class PeaShooter : MonoBehaviour {
     [Header("Audio")]
     public AudioSource bulletFireSound;
 
+    [Header("VFX")]
+    public GameObject muzzleFireVFX = null;
+
     //[Header("Tags")]
     //[Tooltip("Bullet bank tag")]
     //public string bankTag = "Bullet Bank";
@@ -52,6 +55,10 @@ public class PeaShooter : MonoBehaviour {
         //check if input 
         if (Time.time > lastShotTime + timeBetweenShots)
         {
+            if(muzzleFireVFX)
+            {
+                Instantiate(muzzleFireVFX, transform.position, transform.rotation);
+            }
             //set last shot time to now
             lastShotTime = Time.time;
 

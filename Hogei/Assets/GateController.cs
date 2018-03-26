@@ -8,6 +8,9 @@ public class GateController : MonoBehaviour {
     public GameObject LeftGate;
     public GameObject RightGate;
 
+    [Header("Sound Settings")]
+    public AudioSource OpenSound;
+
     private bool LockGateTimer;
     private float LastTime;
     private float LockTime = 1f;
@@ -56,5 +59,10 @@ public class GateController : MonoBehaviour {
         //Unfreeze rigidbody positions
         RightGate.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         LeftGate.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        //Play Sound
+        if(OpenSound)
+        {
+            OpenSound.Play();
+        }
     }
 }
