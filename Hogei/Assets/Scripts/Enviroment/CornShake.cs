@@ -12,7 +12,7 @@ public class CornShake : MonoBehaviour {
 
     public GameObject HitVFX = null;
     public Vector3 VFXRotationOffset = Vector3.zero;
-    public Vector3 VFXScaleMultiper = Vector3.one;
+    public Vector3 VFXScaleOverride = Vector3.one;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,7 +30,7 @@ public class CornShake : MonoBehaviour {
         {
             GameObject VFX = Instantiate(HitVFX, transform.position, Quaternion.identity);
             VFX.transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles + VFXRotationOffset);
-            VFX.transform.GetChild(0).localScale = (VFXScaleMultiper);
+            VFX.transform.GetChild(0).localScale = (VFXScaleOverride);
             if (!VFX.GetComponent<ParticleSystem>().isPlaying)
             {
                 VFX.GetComponent<ParticleSystem>().Play();
@@ -55,7 +55,7 @@ public class CornShake : MonoBehaviour {
         {
             GameObject VFX = Instantiate(HitVFX, transform.position, Quaternion.identity);
             VFX.transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles + VFXRotationOffset);
-            VFX.transform.GetChild(0).localScale = (VFXScaleMultiper);
+            VFX.transform.GetChild(0).localScale = (VFXScaleOverride);
             if (!VFX.GetComponent<ParticleSystem>().isPlaying)
             {
                 VFX.GetComponent<ParticleSystem>().Play();
