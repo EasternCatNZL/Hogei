@@ -5,10 +5,9 @@ using UnityEngine;
 public class CloudManager : MonoBehaviour {
 
     [Header("Cloud Options")]
-    public float CloudHeightCenter = 0f;
+    [Tooltip("Heights the cloud can vary between for height")]
     public Vector2 CloudHeightRange = Vector2.zero;
     public float CloudAmount = 10;
-    public Vector3 CloudCenter = Vector3.zero;
     public float CloudAreaSize = 10f;
     public Vector3 CloudDirection = Vector3.forward;
     public Vector2 CloudSpeedRange = Vector2.zero;
@@ -16,6 +15,9 @@ public class CloudManager : MonoBehaviour {
     public GameObject[] CloudVariations;
 
     private List<GameObject> Clouds;
+	private bool SphereArea = false;
+	private float BoxWidth = 0f;
+	private float BoxLength = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -33,15 +35,32 @@ public class CloudManager : MonoBehaviour {
 
     public void Init()
     {
-        transform.position = new Vector3(0f, CloudHeightCenter, 0f);
-        SphereCollider SphereC = GetComponent<SphereCollider>();
-        SphereC.radius = CloudAreaSize;
+        //transform.position = new Vector3(0f, CloudHeightCenter, 0f);
+		if (GetComponent<SphereCollider> ()) {
+			SphereCollider SphereC = GetComponent<SphereCollider> ();
+			SphereC.radius = CloudAreaSize;
+			SphereArea = true;
+		} else if (GetComponent<BoxCollider> ()) {
+			BoxCollider BoxC = GetComponent<BoxCollider> ();
+			BoxWidth = BoxC.size.x;
+			BoxLength = BoxC.size.z;
+		}
+		else
+		{
+			Debug.Log ("No Collider on " + gameObject.name);
+		}
         ClearClouds();
         for(int i = 0; i < CloudAmount; ++i)
         {
-            Vector3 CloudPosition = Random.insideUnitSphere * CloudAreaSize;
-            Debug.Log(CloudPosition.ToString());
-            CloudPosition.y = CloudHeightCenter + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
+			Vector3 CloudPosition = Vector3.zero;
+			if (SphereArea) {
+				CloudPosition = Random.insideUnitSphere * CloudAreaSize + transform.position;
+                Debug.Log("SP " + CloudPosition.ToString());
+			} else {
+				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2) + transform.position;
+				Debug.Log ("BX " + CloudPosition.ToString ());
+			}
+            CloudPosition.y = transform.position.y + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud
             GameObject newCloud = Instantiate(CloudVariations[Random.Range(0, CloudVariations.Length)],CloudPosition, Quaternion.identity);
             //Rotate to point in the cloud direction
@@ -68,6 +87,7 @@ public class CloudManager : MonoBehaviour {
     private void OnTriggerExit(Collider collision)
     {
         GameObject Cloud = collision.gameObject;
-        Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.25f;
+        if(SphereArea) Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.25f;
+        else Cloud.transform.position -= CloudDirection * BoxLength * 1.25f;
     }
 }

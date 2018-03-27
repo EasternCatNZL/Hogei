@@ -76,7 +76,7 @@ public class PlayerStreamShot : MonoBehaviour {
             //set the bullets position to this pos
             bullet.transform.position = barrelLocation.position + (transform.right * distanceToStart);
             //set the bullet's rotation with some variance
-            bullet.transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y + -random, 0.0f);
+            bullet.transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y + random, 0.0f);
             //set up bullet
             bullet.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeed, 0, false);
 

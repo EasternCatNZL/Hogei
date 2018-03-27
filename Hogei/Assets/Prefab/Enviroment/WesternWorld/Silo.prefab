@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33233110318752508}
   - component: {fileID: 23823905966750832}
   - component: {fileID: 95261302929502168}
+  - component: {fileID: 136541602624451550}
   m_Layer: 0
   m_Name: Silo
   m_TagString: Untagged
@@ -100,3 +101,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &136541602624451550
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678198936453006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.7795805
+  m_Height: 7.649094
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

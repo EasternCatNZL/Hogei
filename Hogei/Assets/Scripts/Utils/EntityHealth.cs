@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class EntityHealth : MonoBehaviour {
     
+
     public delegate void DeathEvent();
     public static event DeathEvent OnDeath;
 
@@ -26,12 +28,15 @@ public class EntityHealth : MonoBehaviour {
     bool FlashBack = false;
     float LastTime = 0f;
 
+    //Heath Variables
     public float CurrentHealth;
-    [Tooltip("Maximum health the entity can have")]
     public float MaxHealth = 10;
-
+    //VFX Variables
+    public bool OnHitShake = false;
     public GameObject[] DeathVFX;
     public GameObject HitVFX;
+    public bool ModHitVFX = false;
+    public Vector3 HitVFXScale;
 
     public UnityEvent DeathFunction;
 
@@ -134,6 +139,11 @@ public class EntityHealth : MonoBehaviour {
         {
             GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));
             
+        }
+        if(OnHitShake)
+        {
+            transform.DOComplete();
+            transform.DOShakePosition(0.1f, 0.1f, 1);
         }
     }
     

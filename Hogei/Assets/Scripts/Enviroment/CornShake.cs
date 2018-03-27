@@ -12,9 +12,11 @@ public class CornShake : MonoBehaviour {
 
     public GameObject HitVFX = null;
     public Vector3 VFXRotationOffset = Vector3.zero;
+    public Vector3 VFXScaleOverride = Vector3.one;
 
     private void OnTriggerEnter(Collider other)
     {
+        VFXCooldown = false;
         transform.DOComplete();
         transform.DOShakeRotation(ShakeLength, ShakeIntensity);
         //Add item drop
@@ -28,11 +30,36 @@ public class CornShake : MonoBehaviour {
         {
             GameObject VFX = Instantiate(HitVFX, transform.position, Quaternion.identity);
             VFX.transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles + VFXRotationOffset);
+            VFX.transform.GetChild(0).localScale = (VFXScaleOverride);
             if (!VFX.GetComponent<ParticleSystem>().isPlaying)
             {
                 VFX.GetComponent<ParticleSystem>().Play();
             }
             VFXCooldown = true;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        VFXCooldown = false;
+        transform.DOComplete();
+        transform.DOShakeRotation(ShakeLength, ShakeIntensity);
+        //Add item drop
+        if (!Used && GetComponent<Drops>())
+        {
+            GetComponent<Drops>().DropItem();
+            Used = true;
+        }
+        //Create HitVFX
+        if (!VFXCooldown && HitVFX)
+        {
+            GameObject VFX = Instantiate(HitVFX, transform.position, Quaternion.identity);
+            VFX.transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles + VFXRotationOffset);
+            VFX.transform.GetChild(0).localScale = (VFXScaleOverride);
+            if (!VFX.GetComponent<ParticleSystem>().isPlaying)
+            {
+                VFX.GetComponent<ParticleSystem>().Play();
+            }
         }
     }
 

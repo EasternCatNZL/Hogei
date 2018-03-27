@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33425439371149130}
   - component: {fileID: 23008236164323326}
   - component: {fileID: 95600009655160420}
+  - component: {fileID: 65369968182641746}
   m_Layer: 0
   m_Name: ChickenFeed
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773707309473274}
   m_Mesh: {fileID: 4300000, guid: 7cf73e7a35d4b1943950f26b62638409, type: 3}
+--- !u!65 &65369968182641746
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773707309473274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.273335, y: 1.1191548, z: 0.77668214}
+  m_Center: {x: 1.6032553, y: 0.5595774, z: 0.009442955}
 --- !u!95 &95600009655160420
 Animator:
   serializedVersion: 3

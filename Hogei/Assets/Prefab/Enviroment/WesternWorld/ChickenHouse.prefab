@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33741675160992366}
   - component: {fileID: 23702221392141732}
   - component: {fileID: 95046085152416050}
+  - component: {fileID: 65127903121089558}
   m_Layer: 0
   m_Name: ChickenHouse
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1477203137444616}
   m_Mesh: {fileID: 4300000, guid: 6ed89540d91a4e0429c6ed822d44a148, type: 3}
+--- !u!65 &65127903121089558
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477203137444616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8294483, y: 1.6870421, z: 2.1069796}
+  m_Center: {x: 0.7494094, y: 0.8358231, z: 0.024699807}
 --- !u!95 &95046085152416050
 Animator:
   serializedVersion: 3
