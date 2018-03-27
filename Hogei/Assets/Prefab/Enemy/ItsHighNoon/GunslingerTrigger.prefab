@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95633854335788490}
   - component: {fileID: 114971036675983330}
   - component: {fileID: 136399990800430494}
+  - component: {fileID: 114833289427811954}
   m_Layer: 10
   m_Name: Gunslinger
   m_TagString: Untagged
@@ -40,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066929392327522}
   - component: {fileID: 114150928807194882}
-  - component: {fileID: 135835939390171586}
+  - component: {fileID: 65885225435517434}
   m_Layer: 0
   m_Name: GunslingerTrigger
   m_TagString: Untagged
@@ -54,8 +55,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1858903617581378}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -32.64, y: 4.94312, z: -22.089113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4813731132653006}
@@ -120,6 +121,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005539767993012}
   m_Mesh: {fileID: 4300000, guid: b36170b086c8582409944eb9c9a312af, type: 3}
+--- !u!65 &65885225435517434
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1858903617581378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 11.5, y: 5, z: 0}
 --- !u!95 &95633854335788490
 Animator:
   serializedVersion: 3
@@ -149,6 +162,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+--- !u!114 &114833289427811954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005539767993012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHit: 0
+  CurrentHealth: 0
+  MaxHealth: 10
+  OnHitShake: 0
+  DeathVFX: []
+  HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114971036675983330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,22 +205,12 @@ MonoBehaviour:
   timeBetweenShots: 0.2
   timeBetweenRounds: 1
   targetTag: Player
+  bulletTag: Bullet
   setupDistance: 0
   setupTime: 0
   isSetup: 0
   isMoving: 0
---- !u!135 &135835939390171586
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1858903617581378}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 1, z: 0}
+  target: {fileID: 0}
 --- !u!136 &136399990800430494
 CapsuleCollider:
   m_ObjectHideFlags: 1
