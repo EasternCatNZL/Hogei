@@ -53,16 +53,24 @@ public class CloudManager : MonoBehaviour {
         for(int i = 0; i < CloudAmount; ++i)
         {
 			Vector3 CloudPosition = Vector3.zero;
+            //If the cloud are spawning in a sphere
 			if (SphereArea) {
-				CloudPosition = Random.insideUnitSphere * CloudAreaSize + transform.position;
+				CloudPosition = Random.insideUnitSphere * CloudAreaSize;
                 Debug.Log("SP " + CloudPosition.ToString());
-			} else {
-				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2) + transform.position;
+			}
+            //If the clouds are spawning in a box
+            else {
+                CloudDirection = transform.forward;
+				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2);
 				Debug.Log ("BX " + CloudPosition.ToString ());
 			}
             CloudPosition.y = transform.position.y + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud
-            GameObject newCloud = Instantiate(CloudVariations[Random.Range(0, CloudVariations.Length)],CloudPosition, Quaternion.identity);
+            GameObject newCloud = Instantiate(CloudVariations[Random.Range(0, CloudVariations.Length)],Vector3.zero, Quaternion.identity);
+            //Set cloud parent
+            newCloud.transform.parent = gameObject.transform;
+            //Set cloud position
+            newCloud.transform.localPosition = CloudPosition;
             //Rotate to point in the cloud direction
             newCloud.transform.Rotate(new Vector3(0f, -Vector3.Angle(newCloud.transform.right, CloudDirection)));
             //Change cloud scale
@@ -70,6 +78,7 @@ public class CloudManager : MonoBehaviour {
             newCloud.transform.localScale = new Vector3(CloudScale, CloudScale, CloudScale);
             //Set cloud velocity
             newCloud.GetComponent<Rigidbody>().velocity = CloudDirection * Random.Range(CloudSpeedRange.x, CloudSpeedRange.y);
+
             //Add cloud to cloud list
             Clouds.Add(newCloud);
         }
@@ -87,7 +96,7 @@ public class CloudManager : MonoBehaviour {
     private void OnTriggerExit(Collider collision)
     {
         GameObject Cloud = collision.gameObject;
-        if(SphereArea) Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.25f;
-        else Cloud.transform.position -= CloudDirection * BoxLength * 1.25f;
+        if(SphereArea) Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.5f;
+        else Cloud.transform.position -= CloudDirection * BoxLength;
     }
 }
