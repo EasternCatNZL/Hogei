@@ -110,6 +110,13 @@ public class CactusRandomSpray : MonoBehaviour {
                 isActive = true;
             }
         }
+        EntityHealth myHealth = GetComponent<EntityHealth>();
+        float percentLoss = myHealth.CurrentHealth / myHealth.MaxHealth;
+        if (percentLoss < NextRampTrigger)
+        {
+            timeBetweenShots -= rampAmount;
+            NextRampTrigger -= rampPercentTrigger;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
