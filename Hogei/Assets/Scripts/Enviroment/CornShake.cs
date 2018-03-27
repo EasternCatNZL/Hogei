@@ -30,6 +30,7 @@ public class CornShake : MonoBehaviour {
         {
             GameObject VFX = Instantiate(HitVFX, transform.position, Quaternion.identity);
             VFX.transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles + VFXRotationOffset);
+            VFX.transform.GetChild(0).localScale = (VFXScaleMultiper);
             if (!VFX.GetComponent<ParticleSystem>().isPlaying)
             {
                 VFX.GetComponent<ParticleSystem>().Play();
@@ -54,7 +55,7 @@ public class CornShake : MonoBehaviour {
         {
             GameObject VFX = Instantiate(HitVFX, transform.position, Quaternion.identity);
             VFX.transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles + VFXRotationOffset);
-            VFX.transform.localScale.Scale(VFXScaleMultiper);
+            VFX.transform.GetChild(0).localScale = (VFXScaleMultiper);
             if (!VFX.GetComponent<ParticleSystem>().isPlaying)
             {
                 VFX.GetComponent<ParticleSystem>().Play();
