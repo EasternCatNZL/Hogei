@@ -13,6 +13,8 @@ public class CloudManager : MonoBehaviour {
     public Vector2 CloudSpeedRange = Vector2.zero;
     public Vector2 CloudScaleRange = Vector2.zero;
     public GameObject[] CloudVariations;
+    [Header("Material Options")]
+    public float EmissionsValue = 1.5f;
 
     private List<GameObject> Clouds;
 	private bool SphereArea = false;
@@ -56,13 +58,13 @@ public class CloudManager : MonoBehaviour {
             //If the cloud are spawning in a sphere
 			if (SphereArea) {
 				CloudPosition = Random.insideUnitSphere * CloudAreaSize;
-                Debug.Log("SP " + CloudPosition.ToString());
+                //Debug.Log("SP " + CloudPosition.ToString());
 			}
             //If the clouds are spawning in a box
             else {
                 CloudDirection = transform.forward;
 				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2);
-				Debug.Log ("BX " + CloudPosition.ToString ());
+				//Debug.Log ("BX " + CloudPosition.ToString ());
 			}
             CloudPosition.y = transform.position.y + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud
@@ -78,6 +80,10 @@ public class CloudManager : MonoBehaviour {
             newCloud.transform.localScale = new Vector3(CloudScale, CloudScale, CloudScale);
             //Set cloud velocity
             newCloud.GetComponent<Rigidbody>().velocity = CloudDirection * Random.Range(CloudSpeedRange.x, CloudSpeedRange.y);
+
+            //Change the clouds material settings
+            newCloud.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+            newCloud.GetComponent<MeshRenderer>().material.SetFloat("_Emission", EmissionsValue);
 
             //Add cloud to cloud list
             Clouds.Add(newCloud);
