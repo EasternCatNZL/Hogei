@@ -1563,11 +1563,14 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 6
+  OnHitShake: 0
   DeathVFX:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1823,11 +1826,14 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 6
+  OnHitShake: 0
   DeathVFX:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -3171,11 +3177,14 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 6
+  OnHitShake: 0
   DeathVFX:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -3409,6 +3418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 979640052}
   - component: {fileID: 979640051}
+  - component: {fileID: 979640053}
   m_Layer: 0
   m_Name: CloudMananger
   m_TagString: Untagged
@@ -3427,15 +3437,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534ed619cce95442b67be64b627670b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CloudHeightCenter: 0
-  CloudHeightRange: {x: 0, y: 0}
-  CloudAmount: 10
-  CloudCenter: {x: 0, y: 0, z: 0}
-  CloudAreaSize: 10
+  CloudHeightRange: {x: 5, y: 20}
+  CloudAmount: 80
+  CloudAreaSize: 100
   CloudDirection: {x: 0, y: 0, z: 1}
-  CloudSpeedRange: {x: 0, y: 0}
-  CloudScaleRange: {x: 0, y: 0}
-  CloudVariations: []
+  CloudSpeedRange: {x: 2, y: 2.5}
+  CloudScaleRange: {x: 0.5, y: 1.2}
+  CloudVariations:
+  - {fileID: 1843779777851048, guid: f7de408eb3909ff46be43a53b53f7a54, type: 2}
+  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
+  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
+  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
+  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
+  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
+  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
 --- !u!4 &979640052
 Transform:
   m_ObjectHideFlags: 0
@@ -3449,6 +3464,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &979640053
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979640050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 100}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &981056076
 Prefab:
   m_ObjectHideFlags: 0
@@ -8063,11 +8090,14 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 100
+  OnHitShake: 0
   DeathVFX:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []

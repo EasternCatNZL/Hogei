@@ -1732,6 +1732,7 @@ MonoBehaviour:
   ShakeIntensity: 1
   HitVFX: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6, type: 2}
   VFXRotationOffset: {x: -90, y: 50, z: 0}
+  VFXScaleOverride: {x: 1, y: 1, z: 1}
 --- !u!1001 &105531554
 Prefab:
   m_ObjectHideFlags: 0
@@ -3559,7 +3560,7 @@ Prefab:
       value: GunslingerTrigger (2)
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 135835939390171586, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &251031926 stripped
@@ -5917,7 +5918,7 @@ Prefab:
       value: GunslingerTrigger (1)
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 135835939390171586, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &416742779
@@ -7982,8 +7983,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 29
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 135835939390171586, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &516067105
@@ -19065,7 +19065,7 @@ Prefab:
       value: GunslingerTrigger (3)
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 135835939390171586, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d810309cfa9d20f4ab854a46b3cfa87a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1182672489
@@ -21124,23 +21124,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4355962372214706, guid: 515929ee763e4284dba4310ffbd84275,
     type: 2}
   m_PrefabInternal: {fileID: 1272939249}
---- !u!1 &1275249665 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1858903617581378, guid: d810309cfa9d20f4ab854a46b3cfa87a,
-    type: 2}
-  m_PrefabInternal: {fileID: 514171735}
---- !u!65 &1275249666
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1275249665}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 11.5, y: 5, z: 0}
 --- !u!4 &1275249668 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4066929392327522, guid: d810309cfa9d20f4ab854a46b3cfa87a,
@@ -21962,6 +21945,7 @@ MonoBehaviour:
   ShakeIntensity: 1
   HitVFX: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6, type: 2}
   VFXRotationOffset: {x: -90, y: 50, z: 0}
+  VFXScaleOverride: {x: 1, y: 1, z: 1}
 --- !u!1001 &1332482551
 Prefab:
   m_ObjectHideFlags: 0
@@ -29434,35 +29418,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4355962372214706, guid: 515929ee763e4284dba4310ffbd84275,
     type: 2}
   m_PrefabInternal: {fileID: 1711552789}
---- !u!1 &1717990276 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1005539767993012, guid: d810309cfa9d20f4ab854a46b3cfa87a,
-    type: 2}
-  m_PrefabInternal: {fileID: 514171735}
---- !u!114 &1717990283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1717990276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHit: 0
-  CurrentHealth: 0
-  MaxHealth: 10
-  OnHitShake: 0
-  DeathVFX: []
-  HitVFX: {fileID: 0}
-  ModHitVFX: 0
-  HitVFXScale: {x: 0, y: 0, z: 0}
-  DeathFunction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1718510361 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1005539767993012, guid: d810309cfa9d20f4ab854a46b3cfa87a,
