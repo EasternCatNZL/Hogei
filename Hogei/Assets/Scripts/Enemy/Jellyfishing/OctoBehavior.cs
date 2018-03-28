@@ -81,7 +81,7 @@ public class OctoBehavior : MonoBehaviour {
             //get the current head to face the current angle
             octoHeadList[i].transform.rotation = Quaternion.Euler(0.0f, angleArray[i], 0.0f);
             //create a clone of the bullet
-            GameObject bulletClone = Instantiate(bulletObject, transform.position, octoHeadList[i].transform.rotation);
+            GameObject bulletClone = Instantiate(bulletObject, octoHeadList[i].transform.position, octoHeadList[i].transform.rotation);
             //launch the bullet using force
             bulletClone.GetComponent<Rigidbody>().AddForce(bulletClone.transform.forward * shotForce, ForceMode.Impulse);
         }
