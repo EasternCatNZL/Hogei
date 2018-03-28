@@ -64,7 +64,7 @@ public class CloudManager : MonoBehaviour {
 				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2);
 				Debug.Log ("BX " + CloudPosition.ToString ());
 			}
-            CloudPosition.y = transform.position.y + Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
+            CloudPosition.y = Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud
             GameObject newCloud = Instantiate(CloudVariations[Random.Range(0, CloudVariations.Length)],Vector3.zero, Quaternion.identity);
             //Set cloud parent
