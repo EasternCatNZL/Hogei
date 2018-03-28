@@ -55,15 +55,15 @@ LightmapSettings:
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 9
-    m_Resolution: 2
-    m_BakeResolution: 40
-    m_TextureWidth: 1024
+    m_Resolution: 0.01
+    m_BakeResolution: 20
+    m_TextureWidth: 2048
     m_TextureHeight: 1024
-    m_AO: 0
+    m_AO: 1
     m_AOMaxDistance: 1
-    m_CompAOExponent: 1
-    m_CompAOExponentDirect: 0
-    m_Padding: 2
+    m_CompAOExponent: 2
+    m_CompAOExponentDirect: 2
+    m_Padding: 8
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
@@ -3485,7 +3485,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.85
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -28648,8 +28648,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1654058045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 633, y: 324.5, z: 0}
-  m_LocalScale: {x: 1.3083339, y: 1.3083339, z: 1.3083339}
+  m_LocalPosition: {x: 502.5, y: 272.5, z: 0}
+  m_LocalScale: {x: 1.0682199, y: 1.0682199, z: 1.0682199}
   m_Children:
   - {fileID: 1646097017}
   m_Father: {fileID: 0}
