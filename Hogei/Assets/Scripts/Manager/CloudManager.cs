@@ -56,13 +56,13 @@ public class CloudManager : MonoBehaviour {
             //If the cloud are spawning in a sphere
 			if (SphereArea) {
 				CloudPosition = Random.insideUnitSphere * CloudAreaSize;
-                Debug.Log("SP " + CloudPosition.ToString());
+                //Debug.Log("SP " + CloudPosition.ToString());
 			}
             //If the clouds are spawning in a box
             else {
                 CloudDirection = transform.forward;
 				CloudPosition = new Vector3(Random.Range(0f,BoxWidth) - BoxWidth/2, 0f, Random.Range(0f,BoxLength) - BoxLength/2);
-				Debug.Log ("BX " + CloudPosition.ToString ());
+				//Debug.Log ("BX " + CloudPosition.ToString ());
 			}
             CloudPosition.y = Random.Range(CloudHeightRange.x, CloudHeightRange.y) - CloudHeightRange.y/2;
             //Create a new cloud

@@ -135,10 +135,9 @@ public class EntityHealth : MonoBehaviour {
         {
             Instantiate(HitVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         }
-        if(GetComponent<Animator>())
+        if(GetComponent<Animator>() && GetComponent<Animator>().runtimeAnimatorController)
         {
-            GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));
-            
+            GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));          
         }
         if(OnHitShake)
         {

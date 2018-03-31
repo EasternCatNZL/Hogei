@@ -103,7 +103,7 @@ public class SheepBehaviour : MonoBehaviour {
             transform.DOJump(transform.position, 1f, 1, 0.5f);
             DoJumped = true;
         }
-        transform.DOLookAt(target.transform.position, 0.5f);
+        if(target) transform.DOLookAt(target.transform.position, 0.5f);
         //remove any x and z change
         //Quaternion newRotation = new Quaternion();
         //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
