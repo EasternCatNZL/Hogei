@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95814027191204870}
   - component: {fileID: 114571970765158876}
   - component: {fileID: 135268206698076232}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Corn_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShakeLength: 1
   ShakeIntensity: 10
+  HitVFX: {fileID: 0}
+  VFXRotationOffset: {x: 0, y: 0, z: 0}
+  VFXScaleOverride: {x: 1, y: 1, z: 1}
 --- !u!135 &135268206698076232
 SphereCollider:
   m_ObjectHideFlags: 1

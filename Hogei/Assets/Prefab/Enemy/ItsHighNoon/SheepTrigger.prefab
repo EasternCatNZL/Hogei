@@ -180,9 +180,12 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 4
+  OnHitShake: 0
   DeathVFX:
   - {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073, type: 2}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls:

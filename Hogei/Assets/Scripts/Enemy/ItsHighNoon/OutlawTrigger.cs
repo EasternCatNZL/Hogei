@@ -6,6 +6,7 @@ public class OutlawTrigger : MonoBehaviour {
 
     [Header("Tags")]
     public string targetTag = "Player";
+    public string bulletTag = "Bullet";
 
     OutlawBehaviour outlaw;
 
@@ -25,13 +26,13 @@ public class OutlawTrigger : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //check other
-        if (other.gameObject.CompareTag(targetTag) && !isTriggered)
+        if ((other.gameObject.CompareTag(targetTag) || other.gameObject.CompareTag(bulletTag)) && !isTriggered)
         {
             //check object hasnt been destroyed before being triggered
             if (outlaw)
             {
                 isTriggered = true;
-                outlaw.target = other.gameObject;
+                outlaw.target = GameObject.FindGameObjectWithTag(targetTag);
                 outlaw.isSetup = true;
             }
             

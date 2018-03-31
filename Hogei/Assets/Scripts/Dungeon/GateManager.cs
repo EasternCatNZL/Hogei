@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GateManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class GateManager : MonoBehaviour
 
     [Header("Tags")]
     public string playerTag = "Player";
+
+    [Header("VFX")]
+    public bool ScaleEnemiesIn = false;
+    public float ScaleEndValue = 0f;
 
     //control vars
     private bool isActivated = false; //checks if room has been activated
@@ -39,6 +44,22 @@ public class GateManager : MonoBehaviour
     private void ActivateRoom()
     {
         isActivated = true;
+        if(ScaleEnemiesIn)
+        {
+            foreach(GameObject Obj in EnemyArray)
+            {
+                Obj.transform.DOScaleY(ScaleEndValue, 1f).SetEase(Ease.OutElastic);
+                if (Obj.GetComponent<CactusRandomSpray>())
+                {
+                    Obj.GetComponent<CactusRandomSpray>().isActive = true;
+                }
+                else
+                {
+                    Obj.GetComponent<CactusRandomSprayBOSS>().isActive = true;
+                }
+                Obj.transform.DOJump(Obj.transform.position, 1f, 1, 0.5f);
+            }
+        }
         //close doors
         CloseDoors();
     }

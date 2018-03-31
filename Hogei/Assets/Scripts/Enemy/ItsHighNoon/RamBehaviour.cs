@@ -223,7 +223,7 @@ public class RamBehaviour : MonoBehaviour {
             //set last shot time to now
             timeLastShot = Time.time;
             //spawn a bullet
-            GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
+            GameObject bulletClone = Instantiate(bulletObject, transform.position  + transform.up, transform.rotation);
             //setup vars
             bulletClone.GetComponent<RegularStraightBullet>().SetupVars(0.0f);
         }
@@ -251,13 +251,13 @@ public class RamBehaviour : MonoBehaviour {
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         //if not active
         if (!isTriggered)
         {
             //check is bullet
-            if (collision.gameObject.CompareTag(bulletTag))
+            if (other.gameObject.CompareTag(bulletTag))
             {
                 Anim.SetBool("Alert", true);
                 //activate
@@ -266,7 +266,10 @@ public class RamBehaviour : MonoBehaviour {
                 target = GameObject.FindGameObjectWithTag(targetTag);
             }
         }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
         //make sure collision isnt with floor
         //check that is moving
         if (isMoving && !collision.gameObject.CompareTag(dungeonTag))
