@@ -16,6 +16,8 @@ public class SheepBehaviour : MonoBehaviour {
     public float damage = 3.0f;
     [Tooltip("Track?")]
     public bool doTrack = true;
+    [Tooltip("Collision damage")]
+    public float collisionSelfDamage = 10.0f;
 
     [Header("Bullet vars")]
     [Tooltip("Bullet object")]
@@ -189,7 +191,7 @@ public class SheepBehaviour : MonoBehaviour {
                 //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
             }
             //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
-            GetComponent<EntityHealth>().DecreaseHealth(1);
+            GetComponent<EntityHealth>().DecreaseHealth(collisionSelfDamage);
         }
     }
 
