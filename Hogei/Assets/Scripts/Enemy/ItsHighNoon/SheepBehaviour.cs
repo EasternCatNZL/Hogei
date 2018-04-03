@@ -84,10 +84,10 @@ public class SheepBehaviour : MonoBehaviour {
                     ChargeUp();
                 }
             }
-            else
-            {
-                Move();
-            }
+            //else
+            //{
+            //    Move();
+            //}
         }
         
 	}

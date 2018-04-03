@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoupManager : MonoBehaviour {
 
@@ -13,7 +14,9 @@ public class SoupManager : MonoBehaviour {
     public GameObject TheSoup;
     [Tooltip("The angle the soup rotates each second")]
     public float SoupRotationSpeed = 90f;
-    private List<GameObject> SoupIngredients;
+    public List<GameObject> SoupIngredients;
+    [Header("UI Settings")]
+    public Text UpgradeText;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +31,9 @@ public class SoupManager : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         GameObject Obj = other.gameObject;
-        SoupIngredients.Add(Obj);
+        if (!SoupIngredients.Contains(Obj))
+        {
+            SoupIngredients.Add(Obj);
+        }
     }
 }

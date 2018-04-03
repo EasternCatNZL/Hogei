@@ -369,6 +369,7 @@ MonoBehaviour:
   - {fileID: 1843779777851048, guid: b4d12e465ba83f948a524de178918019, type: 2}
   - {fileID: 1843779777851048, guid: 6e857ed2014b0854391540abce184631, type: 2}
   - {fileID: 1843779777851048, guid: 788e1eb3d1fb55d43873e04e00353706, type: 2}
+  EmissionsValue: 1.5
 --- !u!4 &271072200
 Transform:
   m_ObjectHideFlags: 0
@@ -451,7 +452,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482367417
 GameObject:
@@ -686,7 +687,7 @@ GameObject:
   - component: {fileID: 608236883}
   - component: {fileID: 608236882}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: AppleRR
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,7 +772,7 @@ Transform:
   m_LocalScale: {x: 0.2697811, y: 0.2697812, z: 0.2697812}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728631923
 GameObject:
@@ -1003,7 +1004,7 @@ GameObject:
   - component: {fileID: 826808102}
   - component: {fileID: 826808101}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: AppleG
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1088,7 +1089,7 @@ Transform:
   m_LocalScale: {x: 0.2697811, y: 0.2697812, z: 0.2697812}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &847207703 stripped
 GameObject:
@@ -1706,6 +1707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TheSoup: {fileID: 1005281516}
   SoupRotationSpeed: 25
+  SoupIngredients: []
 --- !u!1 &1027916418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,7 +1867,7 @@ GameObject:
   - component: {fileID: 1142761580}
   - component: {fileID: 1142761579}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: AppleY
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1950,7 +1952,7 @@ Transform:
   m_LocalScale: {x: 0.2697811, y: 0.2697812, z: 0.2697812}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146007043
 GameObject:
@@ -2209,7 +2211,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
       propertyPath: m_LocalScale.x
@@ -2744,7 +2746,7 @@ GameObject:
   - component: {fileID: 1768310924}
   - component: {fileID: 1768310923}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: AppleR
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2829,7 +2831,7 @@ Transform:
   m_LocalScale: {x: 0.2697811, y: 0.2697812, z: 0.2697812}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1821951862
 GameObject:
@@ -3509,6 +3511,7 @@ MonoBehaviour:
   - {fileID: 1843779777851048, guid: b4d12e465ba83f948a524de178918019, type: 2}
   - {fileID: 1843779777851048, guid: 6e857ed2014b0854391540abce184631, type: 2}
   - {fileID: 1843779777851048, guid: 788e1eb3d1fb55d43873e04e00353706, type: 2}
+  EmissionsValue: 1.5
 --- !u!4 &2057999646
 Transform:
   m_ObjectHideFlags: 0

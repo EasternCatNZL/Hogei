@@ -41,7 +41,7 @@ public class SheepTriggerer : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //check other
-        if (other.gameObject.CompareTag(targetTag) && !isTriggered)
+        if ((other.gameObject.CompareTag(targetTag) || other.gameObject.CompareTag(bulletTag)) && !isTriggered)
         {
             //Check object hasnt been killed before triggered
             if (sheep)
@@ -54,7 +54,7 @@ public class SheepTriggerer : MonoBehaviour {
                 //set time charge begins to now
                 sheep.timeChargeBegan = Time.time;
                 //set target object
-                sheep.target = other.gameObject;
+                sheep.target = GameObject.FindGameObjectWithTag(targetTag);
             }
         }
     }

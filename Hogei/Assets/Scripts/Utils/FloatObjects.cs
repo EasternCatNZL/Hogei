@@ -17,7 +17,10 @@ public class FloatObjects : MonoBehaviour {
     {
         GameObject Obj = other.gameObject;
         Obj.GetComponent<Rigidbody>().useGravity = false;
-        FloatingObjects.Add(Obj);
+        if (!FloatingObjects.Contains(other.gameObject))
+        {
+            FloatingObjects.Add(Obj);
+        }
         Obj.transform.parent = gameObject.transform;
         Obj.GetComponent<Rigidbody>().DOMoveY(transform.position.y, 3f).SetEase(Ease.OutElastic, 2f);
         Obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -27,7 +30,6 @@ public class FloatObjects : MonoBehaviour {
     {
         GameObject Obj = other.gameObject;
         Obj.GetComponent<Rigidbody>().useGravity = false;
-        FloatingObjects.Add(Obj);
         Obj.transform.parent = gameObject.transform;
         Obj.GetComponent<Rigidbody>().DOMoveY(transform.position.y, 3f).SetEase(Ease.OutElastic, 2f);
         Obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
