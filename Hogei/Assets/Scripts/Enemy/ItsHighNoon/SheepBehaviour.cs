@@ -14,6 +14,10 @@ public class SheepBehaviour : MonoBehaviour {
     public float chargeSpeed = 10.0f;
     [Tooltip("The damage sheep does on collision")]
     public float damage = 3.0f;
+    [Tooltip("Track?")]
+    public bool doTrack = true;
+    [Tooltip("Collision damage")]
+    public float collisionSelfDamage = 10.0f;
 
     [Header("Bullet vars")]
     [Tooltip("Bullet object")]
@@ -65,19 +69,27 @@ public class SheepBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isTriggered && !isPaused)
+        if (!isPaused)
         {
-            AdjustStates();
-            if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
+            if (isTriggered && doTrack)
             {
-                Move();
+                AdjustStates();
+                if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
+                {
+                    Move();
+                }
+                else
+                {
+
+                    ChargeUp();
+                }
             }
             else
             {
-  
-                ChargeUp();
+                Move();
             }
         }
+        
 	}
 
     private void OnEnable()
@@ -179,7 +191,7 @@ public class SheepBehaviour : MonoBehaviour {
                 //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
             }
             //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
-            GetComponent<EntityHealth>().DecreaseHealth(1);
+            GetComponent<EntityHealth>().DecreaseHealth(collisionSelfDamage);
         }
     }
 
