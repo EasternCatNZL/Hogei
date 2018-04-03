@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 54993152347180972}
   - component: {fileID: 114445250007940404}
   - component: {fileID: 114565700746098026}
+  - component: {fileID: 114956723517693960}
   m_Layer: 10
   m_Name: SheepBomb
   m_TagString: Enemy
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHit: 0
   CurrentHealth: 0
-  MaxHealth: 4
+  MaxHealth: 1
   OnHitShake: 0
   DeathVFX:
   - {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073, type: 2}
@@ -185,6 +186,8 @@ MonoBehaviour:
   chargeTime: 2
   chargeSpeed: 10
   damage: 3
+  doTrack: 1
+  collisionSelfDamage: 10
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
   bulletSpeed: 2
@@ -200,6 +203,18 @@ MonoBehaviour:
   dropSpeed: 10
   dropHeight: 10
   dropPos: {x: 0, y: 0, z: 0}
+--- !u!114 &114956723517693960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844612070174928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7d2281ab038664f8a44cde4eb36e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 200
 --- !u!136 &136633562261331164
 CapsuleCollider:
   m_ObjectHideFlags: 1

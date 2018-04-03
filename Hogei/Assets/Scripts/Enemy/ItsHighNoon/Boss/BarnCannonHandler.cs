@@ -22,18 +22,23 @@ public class BarnCannonHandler : MonoBehaviour {
     public float rotationTime = 2.0f;
     [Tooltip("Rotation delay")]
     public float rotationDelay = 5.0f;
+    [Tooltip("Starting rotation")]
+    public float startingRotation = 90.0f;
 
     //control vars
+    [HideInInspector]
+    public bool isUsing = false; //check if this should be used
     private bool doRotation = true; //check if cannons should be rotating
     private bool doShoot = true; //check if cannons should be shooting
 
+    //private float startingRotation = 0.0f; //for rotation control
     private float cannonTurnTime = 0.0f; //time cannon turn began
     private float cannonShotTime = 0.0f; //time cannon last shot
     private float cannonReloadTime = 0.0f; //time needed for next reload
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -60,9 +65,10 @@ public class BarnCannonHandler : MonoBehaviour {
         //set timing
         cannonTurnTime = Time.time;
         //get random rotation
-        Vector3 randRot = new Vector3(0.0f, Random.Range(-rotationLimit, rotationLimit), 0.0f);
+        Vector3 randRot = new Vector3(0.0f, startingRotation + Random.Range(-rotationLimit, rotationLimit), 0.0f);
+        //print(randRot);
         //turn cannon
-        transform.DORotate(randRot, rotationTime);
+        transform.DOLocalRotate(randRot, rotationTime);
     }
 
     //Fire cannon

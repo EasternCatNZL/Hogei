@@ -35,6 +35,9 @@ public class BarnSheepLauncher : MonoBehaviour {
     public GameObject crosshair;
 
     //control vars
+    [HideInInspector]
+    public bool isUsing = false;
+
     private bool isLanuching = false; //check to see if currently launching sheep
 
     private int currentSheepIndex = 0; //the current sheep that has been launched
@@ -49,20 +52,24 @@ public class BarnSheepLauncher : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isLanuching)
+        if (isUsing)
         {
-            if (Time.time >= lastSheepTime + timeBetweenSheep)
+            if (isLanuching)
             {
-                SheepLaunch();
+                if (Time.time >= lastSheepTime + timeBetweenSheep)
+                {
+                    SheepLaunch();
+                }
+            }
+            else if (!isLanuching)
+            {
+                if (Time.time >= launchStartTime + timeBetweenLaunches)
+                {
+                    BeginLaunch();
+                }
             }
         }
-        else if (!isLanuching)
-        {
-            if(Time.time >= launchStartTime + timeBetweenLaunches)
-            {
-                BeginLaunch();
-            }
-        }
+
 	}
 
     //begin launch

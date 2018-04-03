@@ -25,18 +25,19 @@ public class BarnSheepRumble : MonoBehaviour {
     public float angleVariance = 30.0f;
 
     //control vars
-    private bool useThis = false; //use this attack
+    [HideInInspector]
+    public bool isUsing = false; //use this attack
 
     private float lastAttackTime = 0.0f; //time of last attack
 
 	// Use this for initialization
 	void Start () {
-        useThis = true;
+        isUsing = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (useThis)
+        if (isUsing)
         {
             if(Time.time > lastAttackTime + timeBetweenLaunches)
             {
