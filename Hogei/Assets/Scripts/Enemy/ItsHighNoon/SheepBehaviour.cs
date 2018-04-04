@@ -37,7 +37,8 @@ public class SheepBehaviour : MonoBehaviour {
     //control vars
     [HideInInspector]
     public bool isTriggered = false; //checks to see if trigger has been triggered
-    private bool isPaused = false; //checks if pause has been called
+    [HideInInspector]
+    public bool isPaused = false; //checks if pause has been called
     private bool isQuiting = false; //checks if the application is quiting
     [HideInInspector]
     public float currentSpeed = 0.0f; //the current speed of the object
@@ -71,17 +72,24 @@ public class SheepBehaviour : MonoBehaviour {
 	void Update () {
         if (!isPaused)
         {
-            if (isTriggered && doTrack)
+            if (isTriggered)
             {
-                AdjustStates();
-                if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
+                if (doTrack)
                 {
-                    Move();
+                    AdjustStates();
+                    if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
+                    {
+                        Move();
+                    }
+                    else
+                    {
+
+                        ChargeUp();
+                    }
                 }
                 else
                 {
-
-                    ChargeUp();
+                    Move();
                 }
             }
             //else

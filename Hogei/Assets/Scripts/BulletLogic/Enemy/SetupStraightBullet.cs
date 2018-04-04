@@ -59,8 +59,8 @@ public class SetupStraightBullet : MonoBehaviour {
     void Start () {
         myRigid = GetComponent<Rigidbody>();
         startTime = Time.time;
-        bulletFireSound.playOnAwake = false;
-        bulletChangeDirectionSound.playOnAwake = false;
+        //bulletFireSound.playOnAwake = false;
+        //bulletChangeDirectionSound.playOnAwake = false;
         //SetUp();
     }
 	
