@@ -35,7 +35,7 @@ public class BarnSheepLauncher : MonoBehaviour {
     public GameObject crosshair;
 
     //control vars
-    [HideInInspector]
+    //[HideInInspector]
     public bool isUsing = false;
 
     private bool isLanuching = false; //check to see if currently launching sheep
@@ -47,7 +47,7 @@ public class BarnSheepLauncher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
