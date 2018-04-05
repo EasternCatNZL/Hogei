@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoupIngredient : MonoBehaviour {
 
-    public bool IsWeaponUpgrade = false;
+    public bool IsWeaponEffect = false;
     public SoupManager.WeaponEffect WeaponEffect;
 
 	// Use this for initialization

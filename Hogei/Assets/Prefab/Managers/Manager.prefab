@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114726604799932118}
   - component: {fileID: 114805521943173296}
   - component: {fileID: 135407226145325568}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219046185649540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0567131, y: -8.729877, z: -14.419117}
+  m_LocalPosition: {x: 0, y: -91.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameoverScreen: {fileID: 0}
   Player: {fileID: 0}
+  Inventory: []
 --- !u!114 &114805521943173296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,13 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534ed619cce95442b67be64b627670b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CloudHeightCenter: -100
   CloudHeightRange: {x: 5, y: 20}
   CloudAmount: 200
-  CloudCenter: {x: 0, y: 0, z: 0}
   CloudAreaSize: 300
   CloudDirection: {x: -1, y: 0, z: 1}
-  CloudSpeedRange: {x: 0.1, y: 2}
+  CloudSpeedRange: {x: 0.2, y: 2.5}
   CloudScaleRange: {x: 0.5, y: 1.2}
   CloudVariations:
   - {fileID: 1843779777851048, guid: f7de408eb3909ff46be43a53b53f7a54, type: 2}
@@ -110,6 +109,8 @@ MonoBehaviour:
   - {fileID: 1843779777851048, guid: b4d12e465ba83f948a524de178918019, type: 2}
   - {fileID: 1843779777851048, guid: 6e857ed2014b0854391540abce184631, type: 2}
   - {fileID: 1843779777851048, guid: 788e1eb3d1fb55d43873e04e00353706, type: 2}
+  EmissionsValue: 1.5
+  ScaleFade: 0
 --- !u!135 &135407226145325568
 SphereCollider:
   m_ObjectHideFlags: 1

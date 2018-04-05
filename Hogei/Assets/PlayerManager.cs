@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour {
 
     public List<GameObject> Inventory;
 
+
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(gameObject);
