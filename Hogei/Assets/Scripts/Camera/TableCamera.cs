@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableMapCamera : MonoBehaviour {
+public class TableCamera : MonoBehaviour {
 
     [Header("Camera Settings")]
     public float CameraSpeed;
@@ -18,5 +18,9 @@ public class TableMapCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 NewCamPos = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        NewCamPos.Normalize();
+        NewCamPos.Scale(new Vector3(CameraSpeed, 0f, CameraSpeed));
+
+        Camera.main.transform.position = Camera.main.transform.position + NewCamPos;
 	}
 }

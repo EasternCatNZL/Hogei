@@ -43,4 +43,15 @@ public class MouseTarget : MonoBehaviour {
         
         return rayHit;
     }
+
+    static public RaycastHit GetWorldMouseHit(int _LayerMask)
+    {
+        RaycastHit rayHit; //ray hit info
+        //send a ray from the position of mouse on screen
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Physics.Raycast(ray, out rayHit, Mathf.Infinity, _LayerMask);
+
+        return rayHit;
+    }
 }

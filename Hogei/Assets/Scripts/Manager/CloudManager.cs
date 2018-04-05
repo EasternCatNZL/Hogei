@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CloudManager : MonoBehaviour {
 
@@ -15,11 +16,14 @@ public class CloudManager : MonoBehaviour {
     public GameObject[] CloudVariations;
     [Header("Material Options")]
     public float EmissionsValue = 1.5f;
+    [Header("VFX Options")]
+    public bool ScaleFade = false;
 
     private List<GameObject> Clouds;
 	private bool SphereArea = false;
 	private float BoxWidth = 0f;
 	private float BoxLength = 0f;
+    private bool IsHiding = false;
 
 	// Use this for initialization
 	void Start () {
@@ -32,8 +36,7 @@ public class CloudManager : MonoBehaviour {
         {
             Debug.Log("There are no cloud prefabs for the cloud manager to spawn");
         }
-
-	}
+    }
 
     public void Init()
     {
@@ -99,10 +102,67 @@ public class CloudManager : MonoBehaviour {
         Clouds.Clear();
     }
 
+    public void HideClouds()
+    {
+        IsHiding = true;
+        if (ScaleFade)
+        {
+            foreach(GameObject Obj in Clouds)
+            {
+                Obj.transform.DOScale(0f, 1f);
+            }
+        }
+        else
+        {
+            foreach (GameObject Obj in Clouds)
+            {
+                Obj.transform.DOScale(0f, 0f);
+            }
+        }
+    }
+
+    public void ShowClouds()
+    {
+        IsHiding = false;
+        if (ScaleFade)
+        {
+            foreach (GameObject Obj in Clouds)
+            {
+                float CloudScale = Random.Range(CloudScaleRange.x, CloudScaleRange.y);
+                Obj.transform.DOScale(CloudScale, 1f);
+            }
+        }
+        else
+        {
+            foreach (GameObject Obj in Clouds)
+            {
+                float CloudScale = Random.Range(CloudScaleRange.x, CloudScaleRange.y);
+                Obj.transform.DOScale(CloudScale, 0f);
+            }
+        }
+    }
+
     private void OnTriggerExit(Collider collision)
     {
         GameObject Cloud = collision.gameObject;
-        if(SphereArea) Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.5f;
-        else Cloud.transform.position -= CloudDirection * BoxLength;
+        if (Cloud.CompareTag("Enviroment"))
+        {
+            if (ScaleFade)
+            {
+                float OldScale = Cloud.transform.localScale.x;
+                Sequence ScaleSequence = DOTween.Sequence();
+                ScaleSequence.Append(Cloud.transform.DOScale(0f, 1f));
+                if (SphereArea) ScaleSequence.Append(Cloud.transform.DOMove(Cloud.transform.position - CloudDirection * CloudAreaSize * 1.5f, 0f));
+                else ScaleSequence.Append(Cloud.transform.DOMove(Cloud.transform.position - CloudDirection * BoxLength, 0f));
+
+                ScaleSequence.Append(Cloud.transform.DOScale(OldScale, 1f));
+                ScaleSequence.Play();
+            }
+            else
+            {
+                if (SphereArea) Cloud.transform.position -= CloudDirection * CloudAreaSize * 1.5f;
+                else Cloud.transform.position -= CloudDirection * BoxLength;
+            }
+        }
     }
 }
