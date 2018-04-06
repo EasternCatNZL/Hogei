@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class FertilizerShot : MonoBehaviour {
+public class FertilizerShot : Weapon {
 
     private Vector3 Target;
     public GameObject bulletObject;
@@ -14,7 +14,7 @@ public class FertilizerShot : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+        Type = WeaponTypes.Fert;
 	}
 	
 	// Update is called once per frame
@@ -25,11 +25,11 @@ public class FertilizerShot : MonoBehaviour {
         }
         if(Input.GetKeyUp(KeyCode.Mouse0))
         {
-            Launch();
+            UseWeapon();
         }
 	}
 
-    void Launch()
+    public override void UseWeapon()
     {
         Vector3 bolah = new Vector3(-1.0f, 0.5f, 0.0f);
         GameObject Bullet = Instantiate(bulletObject, transform.position + bolah, transform.rotation);

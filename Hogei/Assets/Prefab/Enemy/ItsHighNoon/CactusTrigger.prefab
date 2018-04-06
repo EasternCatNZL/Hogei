@@ -788,6 +788,7 @@ MonoBehaviour:
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
+  - {fileID: 1623844405684748, guid: d9e20d0c1afdf084eba66def908ee587, type: 2}
 --- !u!114 &114498884800913292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -802,10 +803,13 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 100
+  OnHitShake: 0
   DeathVFX:
   - {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2, type: 2}
   - {fileID: 1278268787249522, guid: 362fae900511e8f4cb3cc23516bb16c9, type: 2}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []

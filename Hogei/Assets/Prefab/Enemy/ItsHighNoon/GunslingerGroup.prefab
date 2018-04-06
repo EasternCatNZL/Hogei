@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114116872282184020}
   - component: {fileID: 136903192658131936}
   - component: {fileID: 114048361975526342}
+  - component: {fileID: 114466158067376008}
   m_Layer: 10
   m_Name: GunslingerEnemy
   m_TagString: Untagged
@@ -46,6 +47,7 @@ GameObject:
   - component: {fileID: 114687158960040214}
   - component: {fileID: 136209386762944130}
   - component: {fileID: 114204952217707276}
+  - component: {fileID: 114169139947963980}
   m_Layer: 10
   m_Name: GunslingerEnemy (1)
   m_TagString: Untagged
@@ -67,6 +69,7 @@ GameObject:
   - component: {fileID: 114923987454385504}
   - component: {fileID: 136954103830368624}
   - component: {fileID: 114477214488095206}
+  - component: {fileID: 114125433489398086}
   m_Layer: 10
   m_Name: GunslingerEnemy (2)
   m_TagString: Untagged
@@ -343,8 +346,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHit: 0
   CurrentHealth: 0
   MaxHealth: 8
+  OnHitShake: 0
+  DeathVFX: []
+  HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114116872282184020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,10 +378,12 @@ MonoBehaviour:
   timeBetweenShots: 0.2
   timeBetweenRounds: 1
   targetTag: Player
+  bulletTag: Bullet
   setupDistance: 0
   setupTime: 0
   isSetup: 0
   isMoving: 0
+  target: {fileID: 0}
 --- !u!114 &114119662604237584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,6 +403,32 @@ MonoBehaviour:
   - {fileID: 1461809975961906}
   - {fileID: 1715849492346200}
   targetTag: Player
+--- !u!114 &114125433489398086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715849492346200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1008997776285568, guid: 9379946bccfaaa747906b3c8f88d3ef6, type: 2}
+--- !u!114 &114169139947963980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461809975961906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1008997776285568, guid: 9379946bccfaaa747906b3c8f88d3ef6, type: 2}
 --- !u!114 &114204952217707276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,8 +440,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHit: 0
   CurrentHealth: 0
   MaxHealth: 8
+  OnHitShake: 0
+  DeathVFX: []
+  HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114466158067376008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068909624027728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1008997776285568, guid: 9379946bccfaaa747906b3c8f88d3ef6, type: 2}
 --- !u!114 &114477214488095206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,8 +477,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHit: 0
   CurrentHealth: 0
   MaxHealth: 8
+  OnHitShake: 0
+  DeathVFX: []
+  HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114687158960040214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -432,10 +509,12 @@ MonoBehaviour:
   timeBetweenShots: 0.2
   timeBetweenRounds: 1
   targetTag: Player
+  bulletTag: Bullet
   setupDistance: 0
   setupTime: 0
   isSetup: 0
   isMoving: 0
+  target: {fileID: 0}
 --- !u!114 &114923987454385504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,10 +534,12 @@ MonoBehaviour:
   timeBetweenShots: 0.2
   timeBetweenRounds: 1
   targetTag: Player
+  bulletTag: Bullet
   setupDistance: 0
   setupTime: 0
   isSetup: 0
   isMoving: 0
+  target: {fileID: 0}
 --- !u!135 &135170629248056250
 SphereCollider:
   m_ObjectHideFlags: 1

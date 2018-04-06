@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114971036675983330}
   - component: {fileID: 136399990800430494}
   - component: {fileID: 114833289427811954}
+  - component: {fileID: 114784831834764768}
   m_Layer: 10
   m_Name: Gunslinger
   m_TagString: Untagged
@@ -162,6 +163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+--- !u!114 &114784831834764768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005539767993012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1008997776285568, guid: 9379946bccfaaa747906b3c8f88d3ef6, type: 2}
 --- !u!114 &114833289427811954
 MonoBehaviour:
   m_ObjectHideFlags: 1

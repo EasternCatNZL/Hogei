@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChainLighting : MonoBehaviour
+public class PlayerChainLighting : Weapon
 {
 
     public float InitalRange = 10f;
@@ -24,6 +24,7 @@ public class PlayerChainLighting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Type = WeaponTypes.Lighting;
         LastTick = Time.time;
         ChainPositions = new Vector3[NumberChains + 2];
         ChainedEnemies = new List<GameObject>();
@@ -52,7 +53,7 @@ public class PlayerChainLighting : MonoBehaviour
             }
             LineRend.enabled = true;
             ChainedEnemies.Clear();
-            FireChainLighting();
+            UseWeapon();
             DrawLighting();
             DamageEnemies();
         }
@@ -63,7 +64,7 @@ public class PlayerChainLighting : MonoBehaviour
 
     }
 
-    void FireChainLighting()
+    public override void UseWeapon()
     {
         int Enemylayer = 1 << EnemyLayerNum;
         Vector3 Direction = MouseTarget.GetWorldMousePos() - transform.position;

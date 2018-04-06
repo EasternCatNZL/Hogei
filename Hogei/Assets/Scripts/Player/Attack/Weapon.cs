@@ -1,0 +1,38 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class Weapon : MonoBehaviour {
+
+    public enum WeaponTypes
+    {
+        Stream,
+        Fert,
+        Lighting
+    }
+
+    public enum WeaponEffects
+    {
+        Spread,
+        Damage,
+        Bullet,
+        Split,
+        Firerate
+    }
+
+    [System.Serializable]
+    public struct WeaponModifier
+    {
+        public WeaponEffects Effect;
+        public float Value;
+    }
+
+    public WeaponTypes Type;
+
+    private SoupUpgrade Upgrade;
+
+    public abstract void UseWeapon();
+
+    public virtual void SetUpgrade(SoupUpgrade _NewUpgrade) { Upgrade = _NewUpgrade; }
+    public virtual SoupUpgrade GetUpgrade() { return Upgrade; }
+}

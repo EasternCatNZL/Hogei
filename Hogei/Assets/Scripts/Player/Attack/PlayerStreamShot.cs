@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStreamShot : MonoBehaviour {
+public class PlayerStreamShot : Weapon {
 
     [Header("Bullet vars")]
     [Tooltip("Bullet object")]
@@ -43,6 +43,7 @@ public class PlayerStreamShot : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Type = WeaponTypes.Stream;
         bulletFireSound.playOnAwake = false;
         //bank = GameObject.FindGameObjectWithTag(bankTag).GetComponent<BulletBank>();
     }
@@ -53,7 +54,7 @@ public class PlayerStreamShot : MonoBehaviour {
 	}
 
     //attack use logic
-    public void UseWeapon()
+    public override void UseWeapon()
     {
         //check if input 
         if (Time.time > lastShotTime + timeBetweenShots)

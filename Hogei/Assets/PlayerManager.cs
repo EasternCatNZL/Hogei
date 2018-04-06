@@ -9,7 +9,15 @@ public class PlayerManager : MonoBehaviour {
 
     public static PlayerManager Singleton;
 
-    public List<GameObject> Inventory;
+    private List<Weapon> WeaponInventory;
+    private List<SoupUpgrade> SoupInventory;
+    public int[] IngredientInventory;
+    //The two weapons the player has equiped for a dungeon
+    private Weapon PrimaryWeapon;
+    private Weapon SecondaryWeapon;
+    //The two upgrades applied to those weapons(Might just have one universal upgrade?)
+    private SoupUpgrade PrimarySoup;
+    private SoupUpgrade SecondarySoup;
 
 
 	// Use this for initialization
@@ -23,11 +31,7 @@ public class PlayerManager : MonoBehaviour {
         {
             Player = GameObject.FindGameObjectWithTag("Player");
         }
-        else
-        {
-            Debug.LogError(gameObject.name + ": The Player doesn't exist");
-        }
-        Inventory = new List<GameObject>();
+        IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
 
     }
 
@@ -54,15 +58,24 @@ public class PlayerManager : MonoBehaviour {
 		
 	}
 
-    public void AddInventory(GameObject _NewObject)
-    {
-        Inventory.Add(_NewObject);
-    }
+    //Getters and Setters
+    public Weapon GetPrimary() { return PrimaryWeapon; }
+    public void SetPrimary(Weapon _NewWeapon) { PrimaryWeapon = _NewWeapon; }
 
-    public void RemoveInventory(GameObject _ToRemove)
-    {
-        Inventory.Remove(_ToRemove);
-    }
+    public Weapon GetSecondary() { return SecondaryWeapon; }
+    public void SetSecondary(Weapon _NewWeapon) { SecondaryWeapon = _NewWeapon; }
+
+    public int[] GetIngredientInventory() { return IngredientInventory; }
+    public void AddIngredientInventory(SoupIngredient _NewObject) { IngredientInventory[(int)_NewObject.Type] += 1; }
+    public void RemoveIngredientInventory(SoupIngredient _ToRemove) { IngredientInventory[(int)_ToRemove.Type] -= 1; }
+
+    public List<SoupUpgrade> GetSoupInventory() { return SoupInventory; }
+    public void AddSoupInventory(SoupUpgrade _NewUpgrade) { SoupInventory.Add(_NewUpgrade); }
+    public void RemoveSoupInventory(SoupUpgrade _ToRemove) { SoupInventory.Remove(_ToRemove); }
+
+    public List<Weapon> GetWeaponInventory() { return WeaponInventory; }
+    public void AddWeaponInventory(Weapon _NewWeapon) { WeaponInventory.Add(_NewWeapon); }
+    public void RemoveWeaponInventory(Weapon _ToRemove) { WeaponInventory.Remove(_ToRemove); }
 
     public static PlayerManager GetInstance()
     {
