@@ -76,7 +76,7 @@ public class HermitAttackBehavior : MonoBehaviour {
         //create a bullet
         GameObject bulletClone = Instantiate(bulletObject, transform.position, transform.rotation);
         //set the rotation
-        Quaternion newRotation = Quaternion.Euler(0.0f, randomAngle, 0.0f);
+        Quaternion newRotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y + randomAngle, 0.0f);
         bulletClone.transform.rotation = newRotation;
         bulletClone.GetComponent<Rigidbody>().velocity = bulletClone.transform.forward * bulletSpeed;
 
