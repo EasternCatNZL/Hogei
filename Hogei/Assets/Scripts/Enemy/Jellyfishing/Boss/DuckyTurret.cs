@@ -39,7 +39,7 @@ public class DuckyTurret : MonoBehaviour {
     private float lastShotTime = 0.0f; //the time of last shot
     private float attackEndTime = 0.0f; //time attack ended
 
-    private bool isAttacking = false; //checks if currently attacking
+    public bool isShooting = false; //checks if currently attacking
 
 	// Use this for initialization
 	void Start () {
@@ -48,7 +48,7 @@ public class DuckyTurret : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isAttacking)
+        if (isShooting)
         {
             if(Time.time > lastShotTime + timeBetweenShots)
             {
@@ -76,7 +76,7 @@ public class DuckyTurret : MonoBehaviour {
         if(currentShot >= numShotsWave)
         {
             //is attacking to false
-            isAttacking = false;
+            isShooting = false;
             //reset current shot
             currentShot = 0;
             //reset current angle
@@ -97,7 +97,7 @@ public class DuckyTurret : MonoBehaviour {
     public void FireTurrets()
     {
         //set is attacking to true
-        isAttacking = true;
+        isShooting = true;
         //set current angle to start angle with random alter
         currentAngle = startingAngle + Random.Range(-angleVariance, angleVariance);
     }

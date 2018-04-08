@@ -538,11 +538,12 @@ MonoBehaviour:
   numBulletsShot: 2
   bulletSpeed: 10
   timeBetweenShots: 0.1
-  angleBetweenBullets: 10
-  angleBetweenSprays: 5
-  startingAngle: 5
+  angleBetweenBullets: 4
+  angleBetweenSprays: 2
+  startingAngle: 20
   angleVariance: 1.5
   direction: 1
+  isShooting: 1
 --- !u!23 &347769675
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -832,7 +833,6 @@ GameObject:
   - component: {fileID: 458229064}
   - component: {fileID: 458229063}
   - component: {fileID: 458229062}
-  - component: {fileID: 458229066}
   - component: {fileID: 458229065}
   m_Layer: 10
   m_Name: DuckHead
@@ -996,23 +996,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &458229066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 458229060}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c79c5f3be24a5844792eea5a0145e77f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserLength: 20
-  turnTime: 2
-  startDelay: 0.5
-  rotationStart: 50
-  rotationEnd: 10
-  direction: 1
 --- !u!1 &465459316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,13 +1232,14 @@ GameObject:
   - component: {fileID: 522471256}
   - component: {fileID: 522471258}
   - component: {fileID: 522471259}
+  - component: {fileID: 522471260}
   m_Layer: 0
   m_Name: DuckStuff
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &522471256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,9 +1252,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 5
-  turretOne: {fileID: 1739551707}
-  turretTwo: {fileID: 347769674}
-  beak: {fileID: 458229066}
+  turretOne: {fileID: 0}
+  turretTwo: {fileID: 0}
+  beak: {fileID: 0}
 --- !u!4 &522471257
 Transform:
   m_ObjectHideFlags: 0
@@ -1323,7 +1307,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522471255}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 426adf2e040c6114f99331bbf875faa5, type: 3}
   m_Name: 
@@ -1347,6 +1331,43 @@ MonoBehaviour:
   angleChange: 12
   playerTag: Player
   isUsing: 1
+--- !u!114 &522471260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522471255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182a55ebc0cf22a4a9c4edfc19f6a8e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserLength: 20
+  line: {fileID: 458229065}
+  bulletObject: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55,
+    type: 2}
+  numShotsWave: 15
+  numBulletsShot: 2
+  bulletSpeed: 10
+  mainDuck: {fileID: 458229061}
+  leftDuck: {fileID: 1739551711}
+  rightDuck: {fileID: 347769673}
+  timeBetweenAttacks: 3
+  turnTime: 3
+  startDelay: 0.5
+  timeBetweenTurrets: 4
+  timeBetweenShots: 0.1
+  rotationStart: 70
+  rotationEnd: 20
+  direction: 1
+  angleBetweenBullets: 4
+  angleBetweenSprays: 2
+  startingAngle: 20
+  angleVariance: 1.5
+  isAttacking: 0
+  isTurning: 0
+  isShootingLeft: 0
+  isShootingRight: 0
 --- !u!4 &683881898 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4149411041785912, guid: 5720eba4bce23b3429b73198fbfc26a5,
@@ -2652,11 +2673,12 @@ MonoBehaviour:
   numBulletsShot: 2
   bulletSpeed: 10
   timeBetweenShots: 0.1
-  angleBetweenBullets: 10
-  angleBetweenSprays: 5
-  startingAngle: 5
+  angleBetweenBullets: 4
+  angleBetweenSprays: 2
+  startingAngle: 20
   angleVariance: 1.5
-  direction: -1
+  direction: 1
+  isShooting: 1
 --- !u!23 &1739551708
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2824,7 +2846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1767968838
 MonoBehaviour:
   m_ObjectHideFlags: 0
