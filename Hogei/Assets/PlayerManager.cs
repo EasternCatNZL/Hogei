@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -49,11 +50,13 @@ public class PlayerManager : MonoBehaviour {
     void OnEnable()
     {
         EntityHealth.OnPlayerHealthUpdate += CheckGameOver;
+        SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     void OnDisable()
     {
         EntityHealth.OnPlayerHealthUpdate -= CheckGameOver;
+        SceneManager.sceneLoaded -= OnSceneLoad;
     }
 
     void CheckGameOver()
@@ -68,6 +71,19 @@ public class PlayerManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
+    {
+        if(GameObject.FindGameObjectWithTag("Player"))
+        {
+            ApplyUpgrades();
+        }
+    }
+
+    private void ApplyUpgrades()
+    {
+        PrimaryWeapon.ApplyUpgrade(PrimarySoup);
+    }
 
     //Getters and Setters
     public Weapon GetPrimary() { return PrimaryWeapon; }

@@ -196,7 +196,18 @@ public class AdjustableCircularSpray : MonoBehaviour {
                 //set the bullet's rotation to current rotation
                 bullet.transform.rotation = alteredRotation;
                 //setup the bullet and fire
-                bullet.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
+                if (bullet.GetComponent<RegularStraightBullet>())
+                {
+                    bullet.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
+                }
+                else if (bullet.GetComponent<AcceleratingBullet>())
+                {
+                    bullet.GetComponent<AcceleratingBullet>().SetupVars(1.0f, 2.0f, 50.0f);
+                }
+                else if (bullet.GetComponent<DecceleratingBullet>())
+                {
+                    bullet.GetComponent<DecceleratingBullet>().SetupVars(20.0f, 10.0f, 1.0f);
+                }
             }
             //change the angle between shots
             currentAngle += angleChangePerShot * rotationDirection;

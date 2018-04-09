@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,7 +70,7 @@ public class PlayerStreamShot : Weapon {
             lastShotTime = Time.time;
 
             //get random variance
-            float random = Random.Range(-angleVariance, angleVariance);
+            float random = UnityEngine.Random.Range(-angleVariance, angleVariance);
 
             //get a bullet
             GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
@@ -92,6 +93,30 @@ public class PlayerStreamShot : Weapon {
 
             //play audio
             bulletFireSound.Play();
+        }
+    }
+
+    public override void ApplyUpgrade(SoupUpgrade _Upgrade)
+    {
+        foreach(WeaponModifier Mod in _Upgrade.WeaponModifiers)
+        {
+            switch(Mod.Effect)
+            {
+                case WeaponEffects.Spread:
+                    angleVariance += Mod.Value;
+                    break;
+                case WeaponEffects.Damage:
+                    break;
+                case WeaponEffects.Bullet:
+                    break;
+                case WeaponEffects.Split:
+                    break;
+                case WeaponEffects.Firerate:
+                    timeBetweenShots -= Mod.Value;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

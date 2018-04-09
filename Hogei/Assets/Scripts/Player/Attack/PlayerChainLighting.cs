@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -143,5 +144,10 @@ public class PlayerChainLighting : Weapon
             LastTick = Time.time;
         }
 
+    }
+
+    public override void ApplyUpgrade(SoupUpgrade _Upgrade)
+    {
+        throw new NotImplementedException();
     }
 }

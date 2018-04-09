@@ -6,6 +6,8 @@ using DG.Tweening;
 public class BarnPhaseHandler : MonoBehaviour {
 
     [Header("Health phase changes")]
+    [Tooltip("Boss start health")]
+    public float bossStartHealth = 300.0f;
     [Tooltip("Phase two start health")]
     public float phaseTwoStartHealth = 200.0f;
     [Tooltip("Phase three start health")]
@@ -49,13 +51,18 @@ public class BarnPhaseHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        health.MaxHealth = bossStartHealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ChangePhase();
+        
 	}
+
+    void LateUpdate()
+    {
+        ChangePhase();
+    }
 
     //change phase
     private void ChangePhase()
@@ -90,7 +97,9 @@ public class BarnPhaseHandler : MonoBehaviour {
                 {
                     cannonArray[i].isUsing = false;
                 }
+                SinkBarn();
             }
+            
         }
     }
 

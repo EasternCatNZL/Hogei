@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class FertilizerShot : Weapon {
 
@@ -63,6 +64,11 @@ public class FertilizerShot : Weapon {
     {
         MousePosition = MouseTarget.GetWorldMousePos();
         Target = MousePosition;
+    }
+
+    public override void ApplyUpgrade(SoupUpgrade _Upgrade)
+    {
+        throw new NotImplementedException();
     }
 
 }
