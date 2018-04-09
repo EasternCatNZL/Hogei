@@ -32,6 +32,7 @@ public abstract class Weapon : MonoBehaviour {
     private SoupUpgrade Upgrade;
 
     public abstract void UseWeapon();
+    public abstract void ApplyUpgrade(SoupUpgrade _Upgrade);
 
     public virtual void SetUpgrade(SoupUpgrade _NewUpgrade) { Upgrade = _NewUpgrade; }
     public virtual SoupUpgrade GetUpgrade() { return Upgrade; }

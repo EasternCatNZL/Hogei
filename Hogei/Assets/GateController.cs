@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GateController : MonoBehaviour {
 
+    public bool IsOpen;
 
     public GameObject LeftGate;
     public GameObject RightGate;
@@ -17,7 +18,10 @@ public class GateController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        if(IsOpen)
+        {
+            UnlockGate();
+        }
 	}
 	
 	// Update is called once per frame
@@ -34,7 +38,7 @@ public class GateController : MonoBehaviour {
     {
         //Set right gate values
         JointSpring NewSpring = new JointSpring();
-        NewSpring.spring = 100;
+        NewSpring.spring = 1000;
         NewSpring.damper = 0;
         NewSpring.targetPosition = 0;
         RightGate.GetComponent<HingeJoint>().spring = NewSpring;
