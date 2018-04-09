@@ -6,10 +6,11 @@ public class ItemGrabbing : MonoBehaviour {
 
     public GameObject DebugSphere;
     public float ItemHoldDistance = 10f;
-    private GameObject HeldItem;
+    public GameObject HeldItem = null;
     private Vector3 LastMousePos = Vector3.zero;
 
     private float LastTime;
+    private bool JustPickedUp = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -17,7 +18,7 @@ public class ItemGrabbing : MonoBehaviour {
         {
             CheckRayCast();
         }
-        else if(Input.GetMouseButtonDown(0))
+        else if(!JustPickedUp && Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = ItemHoldDistance;
@@ -40,6 +41,7 @@ public class ItemGrabbing : MonoBehaviour {
                 //Debugging
                 DebugSphere.transform.position = LastMousePos;
             }
+            JustPickedUp = false;
         }
 	}
 
@@ -60,5 +62,15 @@ public class ItemGrabbing : MonoBehaviour {
     void GrabItem(RaycastHit rayHit)
     {
         HeldItem = rayHit.collider.gameObject;
+    }
+
+    public void SetHeldItem(GameObject _Object)
+    {
+        if (!HeldItem)
+        {
+            HeldItem = _Object;
+            JustPickedUp = true;
+        }
+        else Debug.Log("Item already being held - " + HeldItem.name);
     }
 }

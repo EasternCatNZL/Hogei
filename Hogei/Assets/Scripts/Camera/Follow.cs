@@ -26,6 +26,7 @@ public class Follow : MonoBehaviour
     private Vector3 CameraOffset;
 
     private PlayerStreamShot StreamShot;
+    public bool StopFollowing = false;
     // Use this for initialization
     void Start()
     {
@@ -38,7 +39,7 @@ public class Follow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Target != null)
+        if (Target != null && !StopFollowing)
         {
             Vector3 MousePos = MouseTarget.GetWorldMousePos();
             Debug.DrawLine(Target.position, Target.position + (MousePos - Target.position).normalized * AheadDistance, Color.green);
@@ -73,6 +74,13 @@ public class Follow : MonoBehaviour
             //Adjust the camera
             AdjustCamera();
         }
+        else
+        {
+            if (GameObject.FindGameObjectWithTag("Player"))
+            {
+                Target = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+        }
     }
 
     void AdjustCamera()
@@ -87,13 +95,5 @@ public class Follow : MonoBehaviour
         transform.DOShakePosition(1f, 1f, 10, 0f);
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-       
-    }
+    public void SetStopFollowing(bool _State) { StopFollowing = _State; }
 }

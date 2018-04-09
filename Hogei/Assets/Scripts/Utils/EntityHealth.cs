@@ -88,11 +88,19 @@ public class EntityHealth : MonoBehaviour {
                         Instantiate(vfx, transform.position, Quaternion.Euler(-90f, 0f, 0f));
                     }
                 }
-
-
             }
+
             DeathFunction.Invoke();
-            Destroy(gameObject);
+            //If the player has zero health then disable their renderer
+            if (gameObject.CompareTag("Player"))
+            {
+                Camera.main.GetComponentInParent<Follow>().SetStopFollowing(true);
+                gameObject.transform.position += new Vector3(0f, 1000f, 0f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 		if(DOTActive)
         {
@@ -155,6 +163,11 @@ public class EntityHealth : MonoBehaviour {
         {
             OnPlayerHealthUpdate();
         }
+    }
+
+    public void Revive()
+    {
+        CurrentHealth = MaxHealth;
     }
 
     //Deals the given damage spread over the time given

@@ -8,6 +8,7 @@ public class FunctionOnMouseDown : MonoBehaviour {
 
     public UnityEvent functionToCall;
 
+    //Unity function called when collider is clicked down on
 	void OnMouseDown()
     {
         functionToCall.Invoke();

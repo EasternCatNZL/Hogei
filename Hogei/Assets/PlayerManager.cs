@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
-    public GameObject GameoverScreen;
-    public GameObject Player;
+    public GameObject GameoverScreen = null;
+    public GameObject Player = null;
 
     public static PlayerManager Singleton;
 
@@ -20,9 +20,10 @@ public class PlayerManager : MonoBehaviour {
     private SoupUpgrade PrimarySoup;
     private SoupUpgrade SecondarySoup;
 
+    private bool SceneLoaded = false;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         DontDestroyOnLoad(gameObject);
         if(!Singleton)
         {
@@ -33,6 +34,10 @@ public class PlayerManager : MonoBehaviour {
         {
             Debug.Log("Player Manager already exists destroying self " + gameObject.name);
             Destroy(gameObject);
+        }
+        if (Player)
+        {
+            PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
         }
     }
 
@@ -61,7 +66,7 @@ public class PlayerManager : MonoBehaviour {
 
     void CheckGameOver()
     {
-        if(Player.GetComponent<EntityHealth>().CurrentHealth <= 0)
+        if(SceneLoaded && Player.GetComponent<EntityHealth>().CurrentHealth <= 0)
         {
             GameoverScreen.SetActive(true);
         }
@@ -74,15 +79,34 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
     {
-        if(GameObject.FindGameObjectWithTag("Player"))
+        SceneLoaded = false;
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        if (Player)
         {
-            ApplyUpgrades();
+            //Player.SetActive(true);
+            Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
+            Player.GetComponent<EntityHealth>().Revive();
+            if (Camera.main.GetComponentInParent<Follow>())
+            {
+                Camera.main.GetComponentInParent<Follow>().SetStopFollowing(false);
+            }
+            Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
+            Player.GetComponent<PlayerAttack>().SetupWeapons();
+            if (SoupInventory.Count > 0)
+            {
+                Debug.Log(Time.time + ": " + gameObject.name + " - Applying weapon upgrades...");
+                PrimarySoup = SoupInventory[0];
+                ApplyUpgrades();
+            }
+    
         }
+        GameoverScreen.SetActive(false);
+        SceneLoaded = true;
     }
 
     private void ApplyUpgrades()
     {
-        PrimaryWeapon.ApplyUpgrade(PrimarySoup);
+        if(PrimaryWeapon && PrimarySoup)PrimaryWeapon.ApplyUpgrade(PrimarySoup);
     }
 
     //Getters and Setters
@@ -95,6 +119,7 @@ public class PlayerManager : MonoBehaviour {
     public int[] GetIngredientInventory() { return IngredientInventory; }
     public void AddIngredientInventory(SoupIngredient _NewObject) { IngredientInventory[(int)_NewObject.Type] += 1; }
     public void RemoveIngredientInventory(SoupIngredient _ToRemove) { IngredientInventory[(int)_ToRemove.Type] -= 1; }
+    public int GetIngredientAmount(SoupIngredient.IngredientType _Type) { return IngredientInventory[(int)_Type]; }
 
     public List<SoupUpgrade> GetSoupInventory() { return SoupInventory; }
     public void AddSoupInventory(SoupUpgrade _NewUpgrade) { SoupInventory.Add(_NewUpgrade); }
@@ -115,5 +140,15 @@ public class PlayerManager : MonoBehaviour {
             Singleton.Init();
         }
         return Singleton;
+    }
+
+    public void LoadScene(int _Index)
+    {
+        SceneManager.LoadScene(_Index);
+    }
+
+    public void LoadCurrentLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour {
 
+    [Header("Player Settings")]
+    public Transform PlayerSpawnPoint;
     [Header("Scene number")]
     public int sceneNumber = 1;
 
@@ -21,12 +23,13 @@ public class SceneHandler : MonoBehaviour {
 
     private int MapSceneIndex = 0;
 
-    // Use this for initialization
-    void Start () {
+    void Awake()
+    {
         singleton = this;
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
+
         RefEnemies();
-	}
+    }
 
     private void OnEnable()
     {
@@ -42,6 +45,8 @@ public class SceneHandler : MonoBehaviour {
     void Update () {
 		
 	}
+
+    public Transform GetPlayerSpawnPoint() { return PlayerSpawnPoint; }
 
     //Gets all enemies in scene and create a copy
     void CopyEnemies()

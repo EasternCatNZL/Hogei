@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour {
 
     //control vars
     private int currentWeaponIndex = 0;
-    public int numWeapons = 0;
+    private int numWeapons = 0;
     public bool peaShootStrengthened = false;
 
     //script refs
@@ -33,11 +33,29 @@ public class PlayerAttack : MonoBehaviour {
     private PlayerStreamShot streamShot;
     private PlayerHomingShot homingShot;
 
+    private Weapon PrimaryWeapon;
+    private Weapon SecondaryWeapon;
+
     //Component
     private Animator Anim;
 
+    //Singleton
+    private static GameObject PlayerInstance;
+
     // Use this for initialization
     void Start () {
+        if(PlayerInstance == null)
+        {
+            PlayerInstance = gameObject;
+        }
+        else
+        {
+            Debug.Log("Player character already exists destroying self " + gameObject.name);
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+
         if (GetComponent<WhatCanIDO>())
         {
             canDo = GetComponent<WhatCanIDO>();
@@ -63,23 +81,29 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
     //setup weapon script releationships 
-    private void SetupWeapons()
+    public void SetupWeapons()
     {
-        peaShooter = GetComponentInChildren<PeaShooter>();
-        if (peaShooter)
-        {
-            numWeapons++;
-        }
-        streamShot = GetComponentInChildren<PlayerStreamShot>();
-        if (streamShot)
-        {
-            numWeapons++;
-        }
-        homingShot = GetComponentInChildren<PlayerHomingShot>();
-        if (homingShot)
-        {
-            numWeapons++;
-        }
+        //peaShooter = GetComponentInChildren<PeaShooter>();
+        //if (peaShooter)
+        //{
+        //    numWeapons++;
+        //}
+        //streamShot = GetComponentInChildren<PlayerStreamShot>();
+        //if (streamShot)
+        //{
+        //    numWeapons++;
+        //}
+        //homingShot = GetComponentInChildren<PlayerHomingShot>();
+        //if (homingShot)
+        //{
+        //    numWeapons++;
+        //}
+        numWeapons = 0;
+
+        PrimaryWeapon = PlayerManager.GetInstance().GetPrimary();
+        SecondaryWeapon = PlayerManager.GetInstance().GetSecondary();
+        if (PrimaryWeapon != null) numWeapons++;
+        if (SecondaryWeapon != null) numWeapons++;
     }
 
     //attack use logic
@@ -94,15 +118,13 @@ public class PlayerAttack : MonoBehaviour {
             switch (currentWeaponIndex)
             {
                 case 0:
-                    //peaShooter.UseWeapon(peaShootStrengthened);
-                    streamShot.UseWeapon();
-                    //homingShot.UseWeapon();
+                    if(PrimaryWeapon) PrimaryWeapon.UseWeapon();
                     break;
                 case 1:
-                    streamShot.UseWeapon();
+                    if(SecondaryWeapon) SecondaryWeapon.UseWeapon();
                     break;
-                case 2:
-                    homingShot.UseWeapon();
+                default:
+                    Debug.Log("Something broke with the weapon switching...");
                     break;
             }
         }

@@ -41,7 +41,6 @@ public class SoupManager : MonoBehaviour {
                 NewSoupUpgrade.GetComponent<SoupUpgrade>().AddModifier(Effect);
             }
             PlayerManager.GetInstance().AddSoupInventory(NewSoupUpgrade.GetComponent<SoupUpgrade>());
-
             ClearSoup();
         }
         else
@@ -75,7 +74,7 @@ public class SoupManager : MonoBehaviour {
 
     private void SpawnIngredients()
     {
-        
+
     }
 
     private void ClearSoup()
