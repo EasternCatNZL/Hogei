@@ -142,7 +142,8 @@ public class AllRoundSpray : MonoBehaviour {
             //set the bullet's rotation to current rotation
             bullet.transform.rotation = currentRotation;
             //setup the bullet and fire
-            bullet.GetComponent<RegularStraightBullet>().SetupVars(scaledBulletSpeed);
+            bullet.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
+            //bullet.GetComponent<AcceleratingBullet>().SetupVars(1.0f, 1.0f, 10.0f);
 
             //change the angle between shots
             angle += scaledAngleChangePerShot;
