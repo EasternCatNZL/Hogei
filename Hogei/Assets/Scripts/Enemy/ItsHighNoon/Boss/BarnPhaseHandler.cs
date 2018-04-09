@@ -119,12 +119,10 @@ public class BarnPhaseHandler : MonoBehaviour {
         barnSinkStartTime = Time.time;
         //set moving down to true
         isMoving = true;
-        //start movement sequence
-        Sequence moveToFinal = DOTween.Sequence();
         //move down
         //get vector below current pos
-        Vector3 belowSelf = new Vector3(transform.position.x, transform.position.y + descentAmount, transform.position.z);
-        moveToFinal.Append(transform.DOMove(belowSelf, moveTime));
+        Vector3 belowSelf = new Vector3(barn.transform.position.x, barn.transform.position.y - descentAmount, barn.transform.position.z);
+        barn.transform.DOMove(belowSelf, moveTime);
         Invoke("MoveToPrepLocation", moveTime);
     }
 
@@ -132,9 +130,10 @@ public class BarnPhaseHandler : MonoBehaviour {
     {
         //move to location
         barn.transform.position = riseLocation.position;
-        barn.transform.rotation = riseLocation.rotation;
+        barn.transform.rotation = riseEndLocation.rotation;
         //begin rise
-        transform.DOMove(riseEndLocation.position, moveTime);
+        barn.transform.DOMove(riseEndLocation.position, moveTime);
+        Invoke("StartPhaseThree", moveTime);
     }
 
     //start phase 3
