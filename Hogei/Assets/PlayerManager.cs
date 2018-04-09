@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour {
     public static PlayerManager Singleton;
 
     private List<Weapon> WeaponInventory;
-    private List<SoupUpgrade> SoupInventory;
+    public List<SoupUpgrade> SoupInventory;
     public int[] IngredientInventory;
     //The two weapons the player has equiped for a dungeon
     private Weapon PrimaryWeapon;
@@ -26,13 +26,24 @@ public class PlayerManager : MonoBehaviour {
         if(!Singleton)
         {
             Singleton = this;
+            Init();
         }
+        else if(Singleton != this)
+        {
+            Debug.Log("Player Manager already exists destroying self " + gameObject.name);
+            Destroy(gameObject);
+        }
+    }
+
+    void Init()
+    {
         if (!Player)
         {
             Player = GameObject.FindGameObjectWithTag("Player");
         }
         IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
-
+        if (SoupInventory == null) SoupInventory = new List<SoupUpgrade>();
+        if (WeaponInventory == null) WeaponInventory = new List<Weapon>();
     }
 
     void OnEnable()
@@ -82,8 +93,10 @@ public class PlayerManager : MonoBehaviour {
         if(!Singleton)
         {
             GameObject Instance = new GameObject();
+            Instance.name = "PlayerManager";
             Instance.AddComponent<PlayerManager>();
             Singleton = Instance.GetComponent<PlayerManager>();
+            Singleton.Init();
         }
         return Singleton;
     }

@@ -30,12 +30,24 @@ public class SoupManager : MonoBehaviour {
 
     public void CompleteSoup()
     {
-        SoupUpgrade NewUpgrade = new SoupUpgrade();
-        foreach(SoupIngredient Effect in SoupIngredients)
+        if (SoupIngredients.Count > 0)
         {
-            NewUpgrade.AddModifier(Effect);
+            GameObject NewSoupUpgrade = new GameObject();
+            NewSoupUpgrade.name = "SoupUpgrade";
+            NewSoupUpgrade.transform.parent = PlayerManager.GetInstance().gameObject.transform;
+            NewSoupUpgrade.AddComponent<SoupUpgrade>();
+            foreach (SoupIngredient Effect in SoupIngredients)
+            {
+                NewSoupUpgrade.GetComponent<SoupUpgrade>().AddModifier(Effect);
+            }
+            PlayerManager.GetInstance().AddSoupInventory(NewSoupUpgrade.GetComponent<SoupUpgrade>());
+
+            ClearSoup();
         }
-        PlayerManager.GetInstance().AddSoupInventory(NewUpgrade);
+        else
+        {
+            Debug.Log("No ingredients in the pot to make soup");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,5 +76,14 @@ public class SoupManager : MonoBehaviour {
     private void SpawnIngredients()
     {
         
+    }
+
+    private void ClearSoup()
+    {
+        for(int i = SoupIngredients.Count - 1; i >= 0; --i)
+        {
+            Destroy(SoupIngredients[i].gameObject);
+        }
+        SoupIngredients.Clear();
     }
 }
