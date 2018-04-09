@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SoupIngredient : MonoBehaviour {
 
+    public bool Spin = true;
+
     public enum IngredientType
     {
         Lamb,
@@ -19,7 +21,7 @@ public class SoupIngredient : MonoBehaviour {
 
     private void Update()
     {
-        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        if(Spin) transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
     }
 
     public Weapon.WeaponModifier GetModifier() { return WeaponMod; }
