@@ -11,6 +11,8 @@ public class DuckyEnclosedSpray : MonoBehaviour {
     public float sideCannonSpeed = 10.0f;
     [Tooltip("Main cannon speed")]
     public float mainCannonSpeed = 15.0f;
+    [Tooltip("Num shots in spray")]
+    public int numShotsInSpray = 8;
 
     [Header("Transform refs")]
     public Transform mainDuck;
@@ -37,6 +39,9 @@ public class DuckyEnclosedSpray : MonoBehaviour {
     [Tooltip("Angle change per shot")]
     [Range(0.0f, 360.0f)]
     public float angleChangePerShot = 1.0f;
+    [Tooltip("Angle change between shots")]
+    [Range(0.0f, 360.0f)]
+    public float angleChangeBetweenShots = 2.0f;
     [Tooltip("Direction Left")]
     [Range(-1, 1)]
     public int directionLeft = -1;
@@ -89,13 +94,19 @@ public class DuckyEnclosedSpray : MonoBehaviour {
     //logic for two side cannons
     private void LeftCannon()
     {
-        //create a bullet, aligned to current angle at pos of left cannon
-        GameObject bulletClone = Instantiate(bulletObject, leftDuck.position, Quaternion.Euler(0.0f, leftCurrentAngle, 0.0f));
-        //set up bullet vars
-        bulletClone.GetComponent<RegularStraightBullet>().SetupVars(sideCannonSpeed);
-        //increment the angle
-        //leftCurrentAngle += angleChangePerShot;
-        Mathf.Clamp(leftCurrentAngle += (angleChangePerShot * directionLeft), -sideCannonMinAngle, -sideCannonMaxAngle);
+        //for the num shots in spray
+        for(int i = 0; i < numShotsInSpray; i++)
+        {
+            //create a bullet, aligned to current angle at pos of left cannon
+            GameObject bulletClone = Instantiate(bulletObject, leftDuck.position, Quaternion.Euler(0.0f, leftCurrentAngle + (angleChangeBetweenShots * i), 0.0f));
+            //set up bullet vars
+            bulletClone.GetComponent<RegularStraightBullet>().SetupVars(sideCannonSpeed);
+            //increment the angle
+            //leftCurrentAngle += angleChangePerShot;
+            Mathf.Clamp(leftCurrentAngle += (angleChangePerShot * directionLeft), -sideCannonMinAngle, -sideCannonMaxAngle);
+        }
+
+
         //if angle has reached edge, change direction
         if(leftCurrentAngle >= -sideCannonMinAngle || leftCurrentAngle <= -sideCannonMaxAngle)
         {
@@ -105,13 +116,19 @@ public class DuckyEnclosedSpray : MonoBehaviour {
 
     private void RightCannon()
     {
-        //create a bullet, aligned to current angle at pos of left cannon
-        GameObject bulletClone = Instantiate(bulletObject, rightDuck.position, Quaternion.Euler(0.0f, rightCurrentAngle, 0.0f));
-        //set up bullet vars
-        bulletClone.GetComponent<RegularStraightBullet>().SetupVars(sideCannonSpeed);
-        //increment the angle
-        //leftCurrentAngle += angleChangePerShot;
-        Mathf.Clamp(rightCurrentAngle += (angleChangePerShot * directionRight), sideCannonMinAngle, sideCannonMaxAngle);
+        //for the num shots in spray
+        for (int i = 0; i < numShotsInSpray; i++)
+        {
+            //create a bullet, aligned to current angle at pos of left cannon
+            GameObject bulletClone = Instantiate(bulletObject, rightDuck.position, Quaternion.Euler(0.0f, rightCurrentAngle - (angleChangeBetweenShots * i), 0.0f));
+            //set up bullet vars
+            bulletClone.GetComponent<RegularStraightBullet>().SetupVars(sideCannonSpeed);
+            //increment the angle
+            //leftCurrentAngle += angleChangePerShot;
+            Mathf.Clamp(rightCurrentAngle += (angleChangePerShot * directionRight), sideCannonMinAngle, sideCannonMaxAngle);
+        }
+
+
         //if angle has reached edge, change direction
         if (rightCurrentAngle <= sideCannonMinAngle || rightCurrentAngle >= sideCannonMaxAngle)
         {
