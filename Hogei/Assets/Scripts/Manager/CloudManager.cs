@@ -85,8 +85,8 @@ public class CloudManager : MonoBehaviour {
             newCloud.GetComponent<Rigidbody>().velocity = CloudDirection * Random.Range(CloudSpeedRange.x, CloudSpeedRange.y);
 
             //Change the clouds material settings
-            newCloud.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
-            newCloud.GetComponent<MeshRenderer>().material.SetFloat("_Emission", EmissionsValue);
+            //newCloud.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+            //newCloud.GetComponent<MeshRenderer>().material.SetFloat("_Emission", EmissionsValue);
 
             //Add cloud to cloud list
             Clouds.Add(newCloud);

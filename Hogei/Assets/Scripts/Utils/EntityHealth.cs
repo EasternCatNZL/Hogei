@@ -28,15 +28,18 @@ public class EntityHealth : MonoBehaviour {
     bool FlashBack = false;
     float LastTime = 0f;
 
-    //Heath Variables
+    [Header("Health Settings")]
     public float CurrentHealth;
     public float MaxHealth = 10;
-    //VFX Variables
+    [Header("VFX Settings")]
     public bool OnHitShake = false;
     public GameObject[] DeathVFX;
     public GameObject HitVFX;
     public bool ModHitVFX = false;
     public Vector3 HitVFXScale;
+    [Header("Sound Settings")]
+    public AudioClip HitSound;
+    private AudioSource LastSound;
 
     public UnityEvent DeathFunction;
 
@@ -48,12 +51,8 @@ public class EntityHealth : MonoBehaviour {
     float DOTDuration;
     float DOTStart;
 
-
 	// Use this for initialization
-	void Start () { 
-
-
-
+	void Start () {
         CurrentHealth = MaxHealth;
         if (GetComponent<MeshRenderer>()) GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
         else if (GetComponentInChildren<SkinnedMeshRenderer>()) GetComponentInChildren<SkinnedMeshRenderer>().material.EnableKeyword("_EMISSION");
@@ -139,16 +138,24 @@ public class EntityHealth : MonoBehaviour {
             OnPlayerHealthUpdate();
 			Camera.main.GetComponent<Animator> ().SetTrigger ("ChromaBurst");
         }
-        if(HitVFX)
+        //Feedback
+        if(HitVFX)//VFX
         {
             Instantiate(HitVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         }
-        if(GetComponent<Animator>())
+        if(HitSound)//Sound
+        {
+            if (LastSound == null)
+            {
+                LastSound = MusicManager.PlaySoundAtLocation(HitSound, transform.position);
+            }
+        }
+        if(GetComponent<Animator>())//Animation
         {
             GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));
             
         }
-        if(OnHitShake)
+        if(OnHitShake)//Shake
         {
             transform.DOComplete();
             transform.DOShakePosition(0.1f, 0.1f, 1);

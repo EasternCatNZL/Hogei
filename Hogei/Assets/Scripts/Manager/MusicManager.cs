@@ -165,4 +165,14 @@ public class MusicManager : MonoBehaviour {
         isSfxMuted = choice;
         SfxEvents();
     }
+
+    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location)
+    {
+        GameObject _Obj = new GameObject("AudioAtLocation");
+        AudioSource Source = _Obj.AddComponent<AudioSource>();
+        Source.clip = _Clip;
+        Source.Play();
+        Destroy(_Obj, Source.clip.length);
+        return Source;
+    }
 }

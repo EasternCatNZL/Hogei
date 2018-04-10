@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
+    public HealthBarNotched HealthBar = null;
     public GameObject GameoverScreen = null;
     public GameObject Player = null;
 
@@ -82,6 +83,15 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
     {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            DontDestroyOnLoad(HealthBar.gameObject);
+            HealthBar.gameObject.SetActive(false);
+        }
+        else
+        {
+            HealthBar.gameObject.SetActive(true);
+        }
         SceneLoaded = false;
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         if (Player)

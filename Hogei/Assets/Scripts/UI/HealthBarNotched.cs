@@ -16,6 +16,7 @@ public class HealthBarNotched : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        DontDestroyOnLoad(gameObject);
         CreateNotches();
 	}
 

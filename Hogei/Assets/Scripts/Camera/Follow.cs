@@ -64,11 +64,18 @@ public class Follow : MonoBehaviour
             //{
             //    transform.DOShakePosition(1, 0.05f);
             //    StreamShot.isFiring = false;
-            //}          
-            if (Player.GetComponent<EntityHealth>().isHit == true)
+            //}  
+            if (Player)
             {
-                transform.DOShakePosition(1, 0.5f);
-                Player.GetComponent<EntityHealth>().isHit = false;
+                if (Player.GetComponent<EntityHealth>().isHit == true)
+                {
+                    transform.DOShakePosition(1, 0.5f);
+                    Player.GetComponent<EntityHealth>().isHit = false;
+                }
+            }
+            else
+            {
+                Player = GameObject.FindGameObjectWithTag("Player");
             }
             if (DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             //Adjust the camera

@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3060a4e2ce8c164cbf9a7a98f36c3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthBar: {fileID: 1554992210}
   GameoverScreen: {fileID: 1528499810}
   Player: {fileID: 1756850055}
   SoupInventory: []
@@ -585,6 +586,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -637,13 +639,13 @@ MonoBehaviour:
   CloudSpeedRange: {x: 0.2, y: 2.5}
   CloudScaleRange: {x: 0.5, y: 1.2}
   CloudVariations:
-  - {fileID: 1843779777851048, guid: f7de408eb3909ff46be43a53b53f7a54, type: 2}
-  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
-  - {fileID: 1843779777851048, guid: 81780e4e41070ca4ab4a1ee64f905ff2, type: 2}
-  - {fileID: 1843779777851048, guid: 2f930ab62b72af94a817ce66ef1fb2ca, type: 2}
   - {fileID: 1843779777851048, guid: b4d12e465ba83f948a524de178918019, type: 2}
+  - {fileID: 1843779777851048, guid: f7de408eb3909ff46be43a53b53f7a54, type: 2}
   - {fileID: 1843779777851048, guid: 6e857ed2014b0854391540abce184631, type: 2}
+  - {fileID: 1843779777851048, guid: 1e46b16b1736f9c4a85077b3e48904b1, type: 2}
   - {fileID: 1843779777851048, guid: 788e1eb3d1fb55d43873e04e00353706, type: 2}
+  - {fileID: 1843779777851048, guid: 2f930ab62b72af94a817ce66ef1fb2ca, type: 2}
+  - {fileID: 1843779777851048, guid: 81780e4e41070ca4ab4a1ee64f905ff2, type: 2}
   EmissionsValue: 1.5
   ScaleFade: 0
 --- !u!4 &271072200
@@ -1067,6 +1069,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1261,6 +1264,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -4075,6 +4079,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -4275,6 +4280,53 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc93496e22adcbe41b8eff8262e1b762, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1351019028
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114866818235533046, guid: 3c8285144825f5549966df7eea145314,
+        type: 2}
+      propertyPath: TargetHealth
+      value: 
+      objectReference: {fileID: 1756850061}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3c8285144825f5549966df7eea145314, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1369534365
 Prefab:
@@ -4899,6 +4951,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1550198246}
+--- !u!114 &1554992210 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114866818235533046, guid: 3c8285144825f5549966df7eea145314,
+    type: 2}
+  m_PrefabInternal: {fileID: 1351019028}
+  m_Script: {fileID: 11500000, guid: 7efbc19c7bf65df408baba87039f5c62, type: 3}
 --- !u!4 &1574089951 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 4fac9ea9a35571347bb85a28ae694434, type: 3}
@@ -5187,6 +5245,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5286,6 +5345,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1642553012151216, guid: 5720eba4bce23b3429b73198fbfc26a5,
     type: 2}
   m_PrefabInternal: {fileID: 293803554}
+--- !u!114 &1756850061 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114460639458277200, guid: 5720eba4bce23b3429b73198fbfc26a5,
+    type: 2}
+  m_PrefabInternal: {fileID: 293803554}
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
 --- !u!1 &1768310922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5785,6 +5850,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5895,6 +5961,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -6331,6 +6398,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
