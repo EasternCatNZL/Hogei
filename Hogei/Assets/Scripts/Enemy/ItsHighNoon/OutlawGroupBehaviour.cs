@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutlawGroupBehaviour : MonoBehaviour {
+public class OutlawGroupBehaviour : EnemyTrigger {
 
     [Header("Setup vars")]
     [Tooltip("Setup starting distance")]
@@ -15,12 +15,6 @@ public class OutlawGroupBehaviour : MonoBehaviour {
     [Header("Enemy Group")]
     [Tooltip("Enemy array")]
     public GameObject[] enemyGroupArray = new GameObject[0];
-
-    [Header("Tags")]
-    public string targetTag = "Player";
-
-    //control vars
-    private bool hasSetup = false;
 
 	// Use this for initialization
 	void Start () {
@@ -51,11 +45,11 @@ public class OutlawGroupBehaviour : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //check other
-        if (other.gameObject.CompareTag(targetTag) && !hasSetup)
+        if ((doTriggerPlayer && other.gameObject.CompareTag(targetTag)) || (doTriggerBullet && other.gameObject.CompareTag(bulletTag)) && !isTriggered)
         {
             Setup();
             //change has setup to true
-            hasSetup = true;
+            isTriggered = true;
         }
     }
 }

@@ -59,7 +59,7 @@ public class BarnSheepRumble : MonoBehaviour {
             SheepBehaviour sheepBehave = sheepClone.GetComponent<SheepBehaviour>();
             sheepBehave.doTrack = false;
             sheepBehave.chargeSpeed = Random.Range(minChargeSpeed, maxChargeSpeed);
-            sheepBehave.isTriggered = true;
+            sheepBehave.isActive = true;
             sheepClone.GetComponent<EntityHealth>().CurrentHealth = 1;
         }
     }

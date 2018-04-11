@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class RamBehaviour : MonoBehaviour {
+public class RamBehaviour : EnemyBehavior {
 
     [Header("Timing vars")]
     [Tooltip("Charge up time")]
@@ -44,8 +44,6 @@ public class RamBehaviour : MonoBehaviour {
     public string bulletTag = "Bullet";
 
     //control vars
-    [HideInInspector]
-    public bool isTriggered = false; //checks to see if trigger has been triggered
     private bool isCharging = false; //checks if ram is currently charging up
     private bool isMoving = false; //checks if ram is currently moving
     private bool isRecovering = false; //checks if ram is recovering from a collision
@@ -89,7 +87,7 @@ public class RamBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isTriggered && !isPaused)
+        if (isActive && !isPaused)
         {
             Anim.SetBool("Alert", true);
             AdjustStates();
@@ -246,7 +244,7 @@ public class RamBehaviour : MonoBehaviour {
     }
 
     //On death logic
-    public void AmDead()
+    public override void AmDead()
     {
 
     }
@@ -254,14 +252,14 @@ public class RamBehaviour : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         //if not active
-        if (!isTriggered)
+        if (!isActive)
         {
             //check is bullet
             if (collision.gameObject.CompareTag(bulletTag))
             {
                 Anim.SetBool("Alert", true);
                 //activate
-                isTriggered = true;
+                isActive = true;
                 //set target
                 target = GameObject.FindGameObjectWithTag(targetTag);
             }

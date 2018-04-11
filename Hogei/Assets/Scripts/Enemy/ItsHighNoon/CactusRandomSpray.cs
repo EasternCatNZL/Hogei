@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CactusRandomSpray : MonoBehaviour {
+public class CactusRandomSpray : EnemyBehavior {
 
     [Header("Attack vars")]
     [Tooltip("The bullet game object fires")]
@@ -30,8 +30,6 @@ public class CactusRandomSpray : MonoBehaviour {
     public string bulletTag = "Bullet";
 
     //control vars
-    [HideInInspector]
-    public bool isActive = false; // check if cactus active
     private bool isPaused = false; //check if pause has been called
     private float timeLastShot = 0.0f; //the time the last shot was fired
     private float pauseStartTime = 0.0f; //time pause started

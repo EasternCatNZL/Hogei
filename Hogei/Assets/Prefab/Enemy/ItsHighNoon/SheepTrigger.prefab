@@ -230,6 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   bulletTag: Bullet
+  isTriggered: 0
+  doTriggerPlayer: 1
+  doTriggerBullet: 1
   WarningObject: {fileID: 1585930551208490, guid: 75c6f504236aadb4c9f53b1c56c87d1a,
     type: 2}
   WarningTime: 0.5
@@ -244,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee59d67b69410294ca461ce34dd4e288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   chargeTime: 0.5
   chargeSpeed: 8
   damage: 1
@@ -256,7 +260,6 @@ MonoBehaviour:
   targetTag: Player
   bulletTag: Bullet
   floorTag: Dungeon
-  isTriggered: 0
   isPaused: 0
   currentSpeed: 0
   timeChargeBegan: 0

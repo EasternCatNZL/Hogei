@@ -16,7 +16,6 @@ public class ChickenBehavior : EnemyBehavior {
     private GameObject target;
 
     //control refs
-    private bool isActive = false;
     Rigidbody myRigid;
 
 	// Use this for initialization
@@ -61,7 +60,7 @@ public class ChickenBehavior : EnemyBehavior {
     }
 
     //On death logic
-    public void AmDead()
+    public override void AmDead()
     {
 
     }

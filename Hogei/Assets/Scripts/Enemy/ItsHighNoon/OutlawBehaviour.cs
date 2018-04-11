@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class OutlawBehaviour : MonoBehaviour {
+public class OutlawBehaviour : EnemyBehavior {
 
     [Header("Attack vars")]
     [Tooltip("The bullet game object enemy fires")]
@@ -40,8 +40,6 @@ public class OutlawBehaviour : MonoBehaviour {
     private float tempSetupTime = 0.0f; //setup time recalculated when coming out of pause
     private float setupStartTime = 0.0f; //time setup began
     [HideInInspector]
-    public bool isSetup = false; //check if setup has been completed
-    [HideInInspector]
     public bool isMoving = false; //check if object is currently moving
     private bool isPaused = false; //checks if pause has been called
 
@@ -59,13 +57,13 @@ public class OutlawBehaviour : MonoBehaviour {
         if (!isPaused)
         {
             //check if setup has finished
-            if (isSetup)
+            if (isActive)
             {
                 AttackBehaviour();
             }
             else if (transform.position == locationToSetup)
             {
-                isSetup = true;
+                isActive = true;
                 isMoving = false;
             }
         }
@@ -156,13 +154,13 @@ public class OutlawBehaviour : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         //if not active
-        if (!isSetup)
+        if (!isActive)
         {
             //check is bullet
             if (collision.gameObject.CompareTag(bulletTag))
             {
                 //activate
-                isSetup = true;
+                isActive = true;
             }
         }
     }

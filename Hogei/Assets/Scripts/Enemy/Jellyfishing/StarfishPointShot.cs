@@ -17,15 +17,21 @@ public class StarfishPointShot : MonoBehaviour {
     //control vars
     private float lastShotTime = 0.0f;
 
+    //script refs
+    private StarfishSpinBehavior star;
 
 	// Use this for initialization
 	void Start () {
-		
+        star = GetComponentInParent<StarfishSpinBehavior>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ShootBullet();
+        if (star.isActive)
+        {
+            ShootBullet();
+        }
+
 	}
 
     //Bullet fire logic
