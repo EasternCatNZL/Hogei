@@ -1165,6 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa547cace4e17b54ebd8e205dcc5fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   chargeTime: 0.8
   recoverTime: 1
   timeBetweenBullets: 0.2
@@ -1182,7 +1183,6 @@ MonoBehaviour:
   targetTag: Player
   dungeonTag: Dungeon
   bulletTag: Bullet
-  isTriggered: 0
   timeChargeBegan: 0
   currentSpeed: 0
   target: {fileID: 0}
@@ -1213,6 +1213,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+  bulletTag: Bullet
+  isTriggered: 0
+  doTriggerPlayer: 1
+  doTriggerBullet: 0
 --- !u!114 &114446101101151484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1240,9 +1244,18 @@ MonoBehaviour:
   isHit: 0
   CurrentHealth: 0
   MaxHealth: 20
+  OnHitShake: 0
   DeathVFX:
   - {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073, type: 2}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!135 &135882479548249966
 SphereCollider:
   m_ObjectHideFlags: 1

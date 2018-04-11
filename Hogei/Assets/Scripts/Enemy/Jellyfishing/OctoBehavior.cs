@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class OctoBehavior : MonoBehaviour {
+public class OctoBehavior : EnemyBehavior {
 
     [Header("Bullet vars")]
     [Tooltip("Bullet object")]
@@ -49,22 +49,32 @@ public class OctoBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (isActive)
+        {
+            AttackLogic();
+        }
+        
+	}
+
+    //attack logic
+    private void AttackLogic()
+    {
         if (useRotate)
         {
             RotateHeads();
         }
-		if(Time.time > attackStartTime + timeBetweenAttacks)
+        if (Time.time > attackStartTime + timeBetweenAttacks)
         {
             AttackSequence();
         }
         if (isAttacking)
         {
-            if(Time.time > attackStartTime + headTurnTime)
+            if (Time.time > attackStartTime + headTurnTime)
             {
                 Attack();
             }
         }
-	}
+    }
 
     //Sequence logic
     private void AttackSequence()

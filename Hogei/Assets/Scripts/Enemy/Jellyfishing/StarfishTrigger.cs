@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutlawTrigger : EnemyTrigger {
+public class StarfishTrigger : EnemyTrigger {
 
-    OutlawBehaviour outlaw;
+    //script refs
+    public StarfishSpinBehavior star;
 
-    // Use this for initialization
-    void Start () {
-        outlaw = GetComponentInChildren<OutlawBehaviour>();
+	// Use this for initialization
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
@@ -22,14 +23,13 @@ public class OutlawTrigger : EnemyTrigger {
         //check other
         if ((doTriggerPlayer && other.gameObject.CompareTag(targetTag)) || (doTriggerBullet && other.gameObject.CompareTag(bulletTag)) && !isTriggered)
         {
-            //check object hasnt been destroyed before being triggered
-            if (outlaw)
+            //check object still exists
+            if (star)
             {
+                //set triggered to true
                 isTriggered = true;
-                outlaw.target = other.gameObject;
-                outlaw.isActive = true;
+                star.isActive = true;
             }
-            
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class SheepBehaviour : MonoBehaviour {
+public class SheepBehaviour : EnemyBehavior {
 
     [Header("Timing vars")]
     [Tooltip("Charge up time")]
@@ -35,8 +35,6 @@ public class SheepBehaviour : MonoBehaviour {
     public string floorTag = "Dungeon";
 
     //control vars
-    [HideInInspector]
-    public bool isTriggered = false; //checks to see if trigger has been triggered
     [HideInInspector]
     public bool isPaused = false; //checks if pause has been called
     private bool isQuiting = false; //checks if the application is quiting
@@ -72,33 +70,33 @@ public class SheepBehaviour : MonoBehaviour {
 	void Update () {
         if (!isPaused)
         {
-            if (isTriggered)
+            if (isActive)
             {
-                if (doTrack)
-                {
-                    AdjustStates();
-                    if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
-                    {
-                        Move();
-                    }
-                    else
-                    {
-
-                        ChargeUp();
-                    }
-                }
-                else
-                {
-                    Move();
-                }
+                AttackLogic();
             }
-            //else
-            //{
-            //    Move();
-            //}
         }
-        
 	}
+
+    //Attack logic
+    private void AttackLogic()
+    {
+        if (doTrack)
+        {
+            AdjustStates();
+            if (Time.time > timeChargeBegan + chargeTime + (pauseEndTime - pauseStartTime))
+            {
+                Move();
+            }
+            else
+            {
+                ChargeUp();
+            }
+        }
+        else
+        {
+            Move();
+        }
+    }
 
     private void OnEnable()
     {

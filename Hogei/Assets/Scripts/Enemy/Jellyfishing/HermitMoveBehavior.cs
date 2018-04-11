@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HermitMoveBehavior : MonoBehaviour {
+public class HermitMoveBehavior : EnemyBehavior {
 
     [Header("Movement vars")]
     [Tooltip("Movement speed of the object")]
@@ -10,12 +10,6 @@ public class HermitMoveBehavior : MonoBehaviour {
     [Tooltip("Travel points")]
     public HermitCheckPointHandler[] travelPoints = new HermitCheckPointHandler[0];
 
-    //[Header("Timing vars")]
-    //[Tooltip("Time between attacks")]
-    //public float timeBetweenAttacks = 3.0f;
-
-    //control vars
-    public bool isActive = false; //check if object active
     //[HideInInspector]
     public bool isMoving = false; //check if object is moving
 

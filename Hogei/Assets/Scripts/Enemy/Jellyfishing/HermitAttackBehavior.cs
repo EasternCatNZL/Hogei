@@ -45,9 +45,18 @@ public class HermitAttackBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (hermit.isActive)
+        {
+            AttackBehavior();
+        }
+	}
+
+    //Attack behavior logic
+    private void AttackBehavior()
+    {
         if (isReadying)
         {
-            if(Time.time > timeTillReady + lastReadyUpTime)
+            if (Time.time > timeTillReady + lastReadyUpTime)
             {
                 AttackSequence();
             }
@@ -56,17 +65,17 @@ public class HermitAttackBehavior : MonoBehaviour {
         {
             if (canShoot)
             {
-                if(Time.time > lastShotTime + timeBetweenBubbles)
+                if (Time.time > lastShotTime + timeBetweenBubbles)
                 {
                     FireBubble();
                 }
             }
-            if(Time.time > lastAttackTime + timeBetweenAttacks)
+            if (Time.time > lastAttackTime + timeBetweenAttacks)
             {
                 ContinueMovement();
             }
         }
-	}
+    }
 
     //Shoot out bubble
     private void FireBubble()

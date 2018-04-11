@@ -1025,6 +1025,7 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1041,6 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331ac571069fb214ba546cf0ab5235c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   bulletObject: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55,
     type: 2}
   bulletSpeed: 12
@@ -1052,7 +1054,6 @@ MonoBehaviour:
   bulletTag: Bullet
   setupDistance: 0
   setupTime: 0
-  isSetup: 0
   isMoving: 0
   target: {fileID: 0}
 --- !u!114 &114247934923596774
@@ -1067,6 +1068,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+  bulletTag: Bullet
+  isTriggered: 0
+  doTriggerPlayer: 1
+  doTriggerBullet: 0
 --- !u!114 &114394728860101190
 MonoBehaviour:
   m_ObjectHideFlags: 1

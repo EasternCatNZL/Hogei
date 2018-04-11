@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeaCucumberBehavior : MonoBehaviour {
+public class SeaCucumberBehavior : EnemyBehavior {
 
     [Header("Bullet vars")]
     [Tooltip("Bullet object")]
@@ -58,14 +58,18 @@ public class SeaCucumberBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Time.time > timeLastShotA + timeBetweenShotsA)
+        if (isActive)
         {
-            SprayA();
+            if (Time.time > timeLastShotA + timeBetweenShotsA)
+            {
+                SprayA();
+            }
+            if (Time.time > timeLastShotB + timeBetweenShotsB)
+            {
+                SprayB();
+            }
         }
-        if(Time.time > timeLastShotB + timeBetweenShotsB)
-        {
-            SprayB();
-        }
+
 	}
 
     //Spray a logic

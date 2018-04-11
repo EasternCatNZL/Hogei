@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarfishSpinBehavior : MonoBehaviour {
+public class StarfishSpinBehavior : EnemyBehavior {
 
     [Header("Spin vars")]
     [Tooltip("The max speed that starfish spins at")]
@@ -15,7 +15,6 @@ public class StarfishSpinBehavior : MonoBehaviour {
     public float maxSpeedHoldTime = 3.0f;
 
     //control vars
-    public bool isActive = false; //checks to see if active
     private bool isHoldingMaxSpeed = false; //checks to see if max speed is currently being held
 
     private int currentDirection = 1; //the direction the starfish is spinning

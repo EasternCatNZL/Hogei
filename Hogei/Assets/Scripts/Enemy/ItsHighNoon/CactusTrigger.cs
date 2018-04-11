@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CactusTrigger : MonoBehaviour {
-
-    [Header("Tags")]
-    public string targetTag = "Player";
+public class CactusTrigger : EnemyTrigger {
 
     //script refs
     CactusRandomSpray cactus;
-
-    private bool isTriggered = false; //checks to see if trigger has been triggered
 
     // Use this for initialization
     void Start () {
@@ -27,7 +22,7 @@ public class CactusTrigger : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //check other
-        if (other.gameObject.CompareTag(targetTag) && !isTriggered)
+        if ((doTriggerPlayer && other.gameObject.CompareTag(targetTag)) || (doTriggerBullet && other.gameObject.CompareTag(bulletTag)) && !isTriggered)
         {
             //check object hasnt been destroyed before being triggered
             if (cactus)
