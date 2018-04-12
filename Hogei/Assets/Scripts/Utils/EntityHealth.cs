@@ -38,7 +38,7 @@ public class EntityHealth : MonoBehaviour {
     public bool ModHitVFX = false;
     public Vector3 HitVFXScale;
     [Header("Sound Settings")]
-    public AudioClip HitSound;
+    public AudioClip[] HitSound = null;
     private AudioSource LastSound;
 
     public UnityEvent DeathFunction;
@@ -143,11 +143,22 @@ public class EntityHealth : MonoBehaviour {
         {
             Instantiate(HitVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         }
-        if(HitSound)//Sound
+        if(HitSound != null)//Sound
         {
-            if (LastSound == null)
+            if (HitSound.Length == 1)
             {
-                LastSound = MusicManager.PlaySoundAtLocation(HitSound, transform.position);
+                if (LastSound == null)
+                {
+                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[0], transform.position);
+                }
+            }
+            else if(HitSound.Length > 1)
+            {
+                if (LastSound == null)
+                {
+                    int RandomInt = Random.Range(0, HitSound.Length - 1);
+                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[RandomInt], transform.position);
+                }
             }
         }
         if(GetComponent<Animator>())//Animation

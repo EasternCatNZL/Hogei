@@ -353,6 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 98928860}
   - component: {fileID: 98928859}
+  - component: {fileID: 98928861}
   m_Layer: 0
   m_Name: PlayerManagerUnqiue
   m_TagString: Untagged
@@ -389,6 +390,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &98928861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98928858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2492ed31b73abf34990016e8c3a485bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicFiles: []
+  sfxVol: 1
+  bgmVol: 1
+  masterVol: 1
 --- !u!114 &147333661 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114955019632356496, guid: 2dac16bdfad7ad348ba5253d788103e7,
@@ -586,7 +602,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1069,7 +1086,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1264,7 +1282,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -2184,12 +2203,12 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_Bias: 0
+    m_NormalBias: 0
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
@@ -2834,6 +2853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpawnPoint: {fileID: 945228131}
   sceneNumber: 1
+  BackgroundMusic: {fileID: 8300000, guid: 12f4817c5df0f8c4c93b4babc881832d, type: 3}
   enemyTag: Enemy
   enemiesInSceneCopyList: []
   enemiesInSceneList: []
@@ -4079,7 +4099,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5245,7 +5266,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5850,7 +5872,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5961,7 +5984,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -6398,7 +6422,8 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitSound:
+  - {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []

@@ -83,14 +83,17 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
     {
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if (HealthBar)
         {
-            DontDestroyOnLoad(HealthBar.gameObject);
-            HealthBar.gameObject.SetActive(false);
-        }
-        else
-        {
-            HealthBar.gameObject.SetActive(true);
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                DontDestroyOnLoad(HealthBar.gameObject);
+                HealthBar.gameObject.SetActive(false);
+            }
+            else
+            {
+                HealthBar.gameObject.SetActive(true);
+            }
         }
         SceneLoaded = false;
         GameObject Player = GameObject.FindGameObjectWithTag("Player");

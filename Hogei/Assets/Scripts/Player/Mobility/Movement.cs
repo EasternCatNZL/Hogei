@@ -14,6 +14,9 @@ public class Movement : MonoBehaviour {
 
     private Vector3 Direction = Vector3.zero;
 
+    [Header("Sounds")]
+    public AudioClip FootstepSound = null;
+
     [Header("Camera")]
     [Tooltip("Budget camera that follows the player and nothing else")]
     public GameObject followCamera;
@@ -154,5 +157,10 @@ public class Movement : MonoBehaviour {
     public Vector3 GetDirection()
     {
         return Direction.normalized;
+    }
+
+    private void PlayFootstepSound()
+    {
+        MusicManager.PlaySoundAtLocation(FootstepSound, transform.position);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour {
 
@@ -39,14 +40,29 @@ public class MusicManager : MonoBehaviour {
     private bool isSfxMuted = false; //checks if sfx is muted
 
     private AudioSource bgm; //audiosource used for background music
+    private AudioClip CurrentBGM;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+		if(bgm == null)
+        {
+            bgm = gameObject.AddComponent<AudioSource>();
+            bgm.volume = bgmVol;
+        }
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoad;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -135,6 +151,11 @@ public class MusicManager : MonoBehaviour {
         return vol;
     }
 
+    private void GetSceneBGM()
+    {
+        CurrentBGM = SceneHandler.GetSceneHandler().BackgroundMusic;
+    }
+
     //to receive values from music menu
     public void UpdateBgmValue(float value)
     {
@@ -174,5 +195,23 @@ public class MusicManager : MonoBehaviour {
         Source.Play();
         Destroy(_Obj, Source.clip.length);
         return Source;
+    }
+
+    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch)
+    {
+        GameObject _Obj = new GameObject("AudioAtLocation");
+        AudioSource Source = _Obj.AddComponent<AudioSource>();
+        Source.clip = _Clip;
+        Source.pitch = _Pitch;
+        Source.Play();
+        Destroy(_Obj, Source.clip.length);
+        return Source;
+    }
+
+    private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
+    {
+        GetSceneBGM();
+        bgm.clip = CurrentBGM;
+        bgm.Play();
     }
 }

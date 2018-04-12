@@ -10,6 +10,9 @@ public class SceneHandler : MonoBehaviour {
     [Header("Scene number")]
     public int sceneNumber = 1;
 
+    [Header("Music Settings")]
+    public AudioClip BackgroundMusic;
+
     [Header("Tags")]
     public string enemyTag = "Enemy";
 
@@ -19,13 +22,11 @@ public class SceneHandler : MonoBehaviour {
     //[HideInInspector]
     public List<GameObject> enemiesInSceneList = new List<GameObject>();
 
-    private static SceneHandler singleton;
-
     private int MapSceneIndex = 0;
 
     void Awake()
     {
-        singleton = this;
+        //singleton = this;
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
 
         RefEnemies();
@@ -105,12 +106,11 @@ public class SceneHandler : MonoBehaviour {
 
     static public SceneHandler GetSceneHandler()
     {
-        if (!singleton)
+        GameObject Obj = GameObject.Find("SceneHandler");
+        if (Obj != null)
         {
-            GameObject newObject = new GameObject();
-            newObject.AddComponent<SceneHandler>();
-            singleton = newObject.GetComponent<SceneHandler>();
+            return Obj.GetComponent<SceneHandler>();
         }
-        return singleton;
+        else return null;
     }
 }
