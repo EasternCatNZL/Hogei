@@ -5,14 +5,20 @@ using DG.Tweening;
 
 public class CornShake : MonoBehaviour {
   
+    [Header("Shake Settings")]
     public float ShakeLength = 1f;
     public float ShakeIntensity = 10f;
     private bool Used = false;
     private bool VFXCooldown = false;
-
+    [Header("Hit VFX Settings")]
     public GameObject HitVFX = null;
     public Vector3 VFXRotationOffset = Vector3.zero;
     public Vector3 VFXScaleOverride = Vector3.one;
+    [Header("Sound Settings")]
+    public AudioClip ShakeSound = null;
+    [Range(0f,1f)]
+    public float ShakeSoundVolume = 1f;
+    public Vector2 PitchVarianceRange = Vector2.zero;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,6 +42,10 @@ public class CornShake : MonoBehaviour {
                 VFX.GetComponent<ParticleSystem>().Play();
             }
             VFXCooldown = true;
+        }
+        if(ShakeSound)
+        {
+            PlaySound();
         }
     }
 
@@ -61,6 +71,16 @@ public class CornShake : MonoBehaviour {
                 VFX.GetComponent<ParticleSystem>().Play();
             }
         }
+        if(ShakeSound)
+        {
+            PlaySound();
+        }
+    }
+
+    private void PlaySound()
+    {
+        float Pitch = Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
+        MusicManager.PlaySoundAtLocation(ShakeSound, transform.position, Pitch, ShakeSoundVolume);
     }
 
     private void OnTriggerExit(Collider other)

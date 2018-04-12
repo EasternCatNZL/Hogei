@@ -13,6 +13,13 @@ public class MusicManager : MonoBehaviour {
         AudioClip clip;
     }
 
+    public struct AudioSourceSettings
+    {
+        public float Pitch;
+        public float Volume;
+        public float SpatialBlend;
+    }
+
     [Header("Background Music Files")]
     public MusicFile[] musicFiles = new MusicFile[0];
 
@@ -215,6 +222,19 @@ public class MusicManager : MonoBehaviour {
         Source.clip = _Clip;
         Source.pitch = _Pitch;
         Source.volume = _Volume;
+        Source.Play();
+        Destroy(_Obj, Source.clip.length);
+        return Source;
+    }
+
+    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, AudioSourceSettings _Settings)
+    {
+        GameObject _Obj = new GameObject("AudioAtLocation");
+        AudioSource Source = _Obj.AddComponent<AudioSource>();
+        Source.clip = _Clip;
+        Source.pitch = _Settings.Pitch;
+        Source.volume = _Settings.Volume;
+        Source.spatialBlend = _Settings.SpatialBlend;
         Source.Play();
         Destroy(_Obj, Source.clip.length);
         return Source;

@@ -44,6 +44,7 @@ public class EntityHealth : MonoBehaviour {
     public float HitSoundVol = 1f;
     public Vector2 HitSoundPitchRange = Vector2.zero;
     public AudioClip[] HitSound = null;
+    public AudioClip FinalHitSound = null;
     private AudioSource LastSound;
 
     public UnityEvent DeathFunction;
@@ -82,6 +83,14 @@ public class EntityHealth : MonoBehaviour {
                 {
                     transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
                 }
+            }
+            if(FinalHitSound)
+            {
+                MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
+                SoundSettings.Pitch = 1f;
+                SoundSettings.SpatialBlend = 0f;
+                SoundSettings.Volume = HitSoundVol;
+                MusicManager.PlaySoundAtLocation(FinalHitSound, transform.position, SoundSettings);
             }
             if (DeathVFX.Length > 0)
             {
