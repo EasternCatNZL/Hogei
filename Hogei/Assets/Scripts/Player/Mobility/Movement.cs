@@ -16,6 +16,9 @@ public class Movement : MonoBehaviour {
 
     [Header("Sounds")]
     public AudioClip FootstepSound = null;
+    [Range(0f,1f)]
+    public float FootstepVolume = 1f;
+    public Vector2 FootstepPitchRange = Vector2.zero;
 
     [Header("Camera")]
     [Tooltip("Budget camera that follows the player and nothing else")]
@@ -161,6 +164,7 @@ public class Movement : MonoBehaviour {
 
     private void PlayFootstepSound()
     {
-        MusicManager.PlaySoundAtLocation(FootstepSound, transform.position);
+        float Pitch = Random.Range(FootstepPitchRange.x, FootstepPitchRange.y);
+        MusicManager.PlaySoundAtLocation(FootstepSound, transform.position, Pitch, FootstepVolume);
     }
 }

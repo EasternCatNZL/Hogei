@@ -35,7 +35,10 @@ public class PlayerStreamShot : Weapon {
 
     [Header("Audio")]
     public AudioSource bulletFireSound;
+    [Range(0,1)]
+    public float FireVolume = 1f;
     public Vector2 PitchVarianceRange;
+    
 
     [Header("VFX")]
     public GameObject muzzleFireVFX;
@@ -93,6 +96,7 @@ public class PlayerStreamShot : Weapon {
             bullet2.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeed, 0, false);
 
             bulletFireSound.pitch = UnityEngine.Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
+            bulletFireSound.volume = FireVolume;
             //play audio
             bulletFireSound.Play();
         }

@@ -23,6 +23,8 @@ public class OutlawBehaviour : EnemyBehavior {
 
     [Header("Sound Settigs")]
     public AudioClip ShotSound = null;
+    [Range(0f,1f)]
+    public float ShotSoundVolume = 1f;
     public Vector2 PitchVarianceRange = Vector2.zero;
 
     [Header("Tags")]
@@ -126,7 +128,7 @@ public class OutlawBehaviour : EnemyBehavior {
         if(Time.time > timeLastShot + timeTillNextShot + (pauseEndTime - pauseStartTime))
         {
             float pitch = Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
-            MusicManager.PlaySoundAtLocation(ShotSound, transform.position, pitch);
+            MusicManager.PlaySoundAtLocation(ShotSound, transform.position, pitch, ShotSoundVolume);
             
             //create a shot
             GameObject bulletClone = Instantiate(bulletObject, transform.position + transform.up, transform.rotation);

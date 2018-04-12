@@ -37,7 +37,12 @@ public class EntityHealth : MonoBehaviour {
     public GameObject HitVFX;
     public bool ModHitVFX = false;
     public Vector3 HitVFXScale;
+    public bool HitAnimationOn = false;
     [Header("Sound Settings")]
+    public bool StackSounds = false;
+    [Range(0f,1f)]
+    public float HitSoundVol = 1f;
+    public Vector2 HitSoundPitchRange = Vector2.zero;
     public AudioClip[] HitSound = null;
     private AudioSource LastSound;
 
@@ -145,26 +150,39 @@ public class EntityHealth : MonoBehaviour {
         }
         if(HitSound != null)//Sound
         {
+            float Pitch = Random.Range(HitSoundPitchRange.x, HitSoundPitchRange.y);
             if (HitSound.Length == 1)
             {
-                if (LastSound == null)
+                if (!StackSounds && LastSound == null)
                 {
-                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[0], transform.position);
+                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[0], transform.position, Pitch, HitSoundVol);
                 }
+                else if(StackSounds)
+                {
+                    MusicManager.PlaySoundAtLocation(HitSound[0], transform.position, Pitch, HitSoundVol);
+                }
+
             }
             else if(HitSound.Length > 1)
             {
-                if (LastSound == null)
-                {
-                    int RandomInt = Random.Range(0, HitSound.Length - 1);
-                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[RandomInt], transform.position);
+                int RandomInt = Random.Range(0, HitSound.Length - 1);
+                if (!StackSounds && LastSound == null)
+                {                  
+                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[RandomInt], transform.position, Pitch, HitSoundVol);
+                }
+                else if(StackSounds)
+                {                    
+                    MusicManager.PlaySoundAtLocation(HitSound[RandomInt], transform.position, Pitch, HitSoundVol);
                 }
             }
         }
-        if(GetComponent<Animator>())//Animation
+        if (HitAnimationOn)
         {
-            GetComponent<Animator>().SetTrigger("Hit"+ Random.Range(1,6));
-            
+            if (GetComponent<Animator>())//Animation
+            {
+                GetComponent<Animator>().SetTrigger("Hit" + Random.Range(1, 6));
+
+            }
         }
         if(OnHitShake)//Shake
         {

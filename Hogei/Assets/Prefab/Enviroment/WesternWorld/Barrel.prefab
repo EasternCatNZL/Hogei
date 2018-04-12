@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95732041031168218}
   - component: {fileID: 65435277954062228}
   - component: {fileID: 114909754508452430}
+  - component: {fileID: 114131549618268172}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -114,6 +115,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114131549618268172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698504965936108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58ace4e937123540af613a08b7a02ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpwardsForce: 5
+  Bits:
+  - {fileID: 1927365915673658, guid: ce9e37daf2415004ab1f93eaec59bb80, type: 2}
+  - {fileID: 1650542462881272, guid: 012bd14de9e9aba43b62c0ebf70b06a4, type: 2}
+  - {fileID: 1033047488264012, guid: 9e5ea3a84afc9ba4db6d6e5baa182302, type: 2}
+  - {fileID: 1554696140739978, guid: 4fcf04c04bf4f7a48ab8ece041214106, type: 2}
+  - {fileID: 1790390179205530, guid: fec285dea2697ea4783fbd2c2afd072e, type: 2}
 --- !u!114 &114909754508452430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHit: 0
+  isHit: 1
   CurrentHealth: 0
   MaxHealth: 10
   OnHitShake: 1
@@ -133,8 +152,25 @@ MonoBehaviour:
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 1
+  HitSoundVol: 0.5
+  HitSoundPitchRange: {x: 0.95, y: 1.05}
+  HitSound:
+  - {fileID: 8300000, guid: 4b171dc97f8ec70489bf0bc17b5795fd, type: 3}
   DeathFunction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114131549618268172}
+        m_MethodName: Explode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

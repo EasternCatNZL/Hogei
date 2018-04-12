@@ -208,6 +208,18 @@ public class MusicManager : MonoBehaviour {
         return Source;
     }
 
+    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch, float _Volume)
+    {
+        GameObject _Obj = new GameObject("AudioAtLocation");
+        AudioSource Source = _Obj.AddComponent<AudioSource>();
+        Source.clip = _Clip;
+        Source.pitch = _Pitch;
+        Source.volume = _Volume;
+        Source.Play();
+        Destroy(_Obj, Source.clip.length);
+        return Source;
+    }
+
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
     {
         GetSceneBGM();
