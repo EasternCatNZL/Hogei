@@ -116,7 +116,7 @@ public class PlayerManager : MonoBehaviour {
             }
     
         }
-        GameoverScreen.SetActive(false);
+        if(GameoverScreen) GameoverScreen.SetActive(false);
         SceneLoaded = true;
     }
 
