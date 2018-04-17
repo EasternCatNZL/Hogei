@@ -106,9 +106,9 @@ public class Movement : MonoBehaviour {
             Anim.SetBool("IsMoving", false);
         }
         newPos.Normalize();
-        transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
+        //transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
         //Rigid.MovePosition(transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime);
-        //Rigid.velocity = Direction * (Speed * SpeedModifier);
+        Rigid.velocity = Direction * (Speed * SpeedModifier);
 
     }
 
