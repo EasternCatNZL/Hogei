@@ -8,16 +8,21 @@ public class BarnSideMovement : MonoBehaviour {
     [Header("Speed vars")]
     [Tooltip("Max speed barn can move at")]
     public float barnMaxMoveSpeed = 20.0f;
-    [Tooltip("Min speed barn can move at")]
-    public float barnMinMoveSpeed = 15.0f;
+    [Tooltip("Barn accel speed")]
+    public float barnAccelSpeed = 2.0f;
 
     [Header("Rotation control")]
-    [Tooltip("Max angle rotation limit")]
+    [Tooltip("Angle rotation limit")]
     [Range(0.0f, 360.0f)]
-    public float angleRotationLimitMax = 80.0f;
-    [Tooltip("Min angle rotation limit")]
-    [Range(1.0f, 360.0f)]
-    public float angleRotationLimitMin = 40.0f;
+    public float angleRotationLimit = 40.0f;
+    [Tooltip("Angle rotation limit leeway")]
+    public float angleRotationLeeway = 10.0f;
+    //[Tooltip("Max angle rotation limit")]
+    //[Range(0.0f, 360.0f)]
+    //public float angleRotationLimitMax = 80.0f;
+    //[Tooltip("Min angle rotation limit")]
+    //[Range(1.0f, 360.0f)]
+    //public float angleRotationLimitMin = 40.0f;
     [Tooltip("Starting direction")]
     [Range(-1, 1)]
     public int startDirection = 1;
@@ -36,6 +41,9 @@ public class BarnSideMovement : MonoBehaviour {
     [Range(-1, 1)]
     public int direction = 1; //direction rotation is moving in
 
+    //control vars
+    private float currentSpeed = 0.0f; //the current speed of motion
+
 	// Use this for initialization
 	void Start () {
         direction = startDirection;
@@ -52,9 +60,10 @@ public class BarnSideMovement : MonoBehaviour {
     private void MoveBarn()
     {
         //get the speed of rotation
-        float rotateSpeed = Mathf.Clamp(Random.Range(barnMinMoveSpeed, barnMaxMoveSpeed), barnMinMoveSpeed, barnMaxMoveSpeed);
+        currentSpeed += (barnAccelSpeed * Time.deltaTime) * direction;
+        currentSpeed = Mathf.Clamp(currentSpeed, -barnMaxMoveSpeed, barnMaxMoveSpeed);
         //trun axis to move barn
-        transform.Rotate(transform.up, (rotateSpeed * direction) * Time.deltaTime);
+        transform.Rotate(transform.up, currentSpeed * Time.deltaTime);
         ChangeDirections();
     }
 
@@ -62,7 +71,9 @@ public class BarnSideMovement : MonoBehaviour {
     private void ChangeDirections()
     {
         //check too far left
-        if(transform.rotation.eulerAngles.y <= angleRotationLimitMin)
+        if(direction == -1
+            && transform.rotation.eulerAngles.y - 360.0f <= -angleRotationLimit
+            && transform.rotation.eulerAngles.y - 360.0f >= -angleRotationLimit - angleRotationLeeway)
         {
             //move positive
             direction = 1;
@@ -70,7 +81,9 @@ public class BarnSideMovement : MonoBehaviour {
             TiltBarn(-direction);
         }
         //check too far right
-        else if (transform.rotation.eulerAngles.y >= angleRotationLimitMax)
+        else if (direction == 1
+            && transform.rotation.eulerAngles.y >= angleRotationLimit
+            && transform.rotation.eulerAngles.y <= angleRotationLeeway + angleRotationLimit)
         {
             //move negative
             direction = -1;

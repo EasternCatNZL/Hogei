@@ -22,6 +22,10 @@ public class SequenceSpawner : MonoBehaviour {
     [Header("Spawn groups")]
     public SpawnGroup[] spawnGroupsArray = new SpawnGroup[0];
 
+    [Header("Gate ref")]
+    [Tooltip("Ref to gate for this spawner")]
+    public GateManager gate;
+
     [Header("Tags")]
     public string playerTag = "Player";
 
@@ -63,8 +67,18 @@ public class SequenceSpawner : MonoBehaviour {
             //spawn the object
             GameObject enemyClone = Instantiate(spawnGroupsArray[currentGroupIndex].spawnDetailsArray[i].enemyObject, spawnLoc, rot);
 
-            //activate the enemy
-            enemyClone.GetComponent<EnemyBehavior>().isActive = true;
+            //activate the enemy <- if spawning enemybehavior in child, check into child
+            if (enemyClone.GetComponent<EnemyBehavior>())
+            {
+                enemyClone.GetComponent<EnemyBehavior>().isActive = true;
+            }
+            else if (enemyClone.GetComponentInChildren<EnemyBehavior>())
+            {
+                enemyClone.GetComponentInChildren<EnemyBehavior>().isActive = true;
+            }
+
+            //add to gate
+            gate.enemyList.Add(enemyClone);
         }
         //set timing
         lastSpawnTime = Time.time;

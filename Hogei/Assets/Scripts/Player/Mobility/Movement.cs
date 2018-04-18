@@ -78,22 +78,22 @@ public class Movement : MonoBehaviour {
         Direction = Vector3.zero;
         if (Input.GetAxisRaw("Horizontal") > 0f)
         {
-            newPos.z += 1;
+            newPos.x += 1;
             Direction += new Vector3(0f, 0f, 1f);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0f)
         {
-            newPos.z -= 1;
+            newPos.x -= 1;
             Direction += new Vector3(0f, 0f, -1f);
         }
         if (Input.GetAxisRaw("Vertical") > 0f)
         {
-            newPos.x -= 1;
+            newPos.z -= 1;
             Direction += new Vector3(-1f, 0f, 0f);
         }
         else if (Input.GetAxisRaw("Vertical") < 0f)
         {
-            newPos.x += 1;
+            newPos.z += 1;
             Direction += new Vector3(1f, 0f, 0f);
         }
 

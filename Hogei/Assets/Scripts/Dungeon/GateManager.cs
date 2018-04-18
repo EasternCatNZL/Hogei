@@ -7,7 +7,7 @@ public class GateManager : MonoBehaviour
 
     [Header("Enemies")]
     [Tooltip("Enemies required to defeat to pass the gate")]
-    public GameObject[] EnemyArray = new GameObject[0];
+    public List<GameObject> enemyList = new List<GameObject>();
     [Header("Doors")]
     [Tooltip("Array of gates to this room")]
     public GameObject[] gateArray = new GameObject[0];
@@ -48,9 +48,9 @@ public class GateManager : MonoBehaviour
         if (isActivated && !isCleared)
         {
             bool EnemiesCleared = true;
-            for (int i = 0; i < EnemyArray.Length; ++i)
+            for (int i = 0; i < enemyList.Count; ++i)
             {
-                if (EnemyArray[i] != null && EnemyArray[i].activeSelf == true)
+                if (enemyList[i] != null && enemyList[i].activeSelf == true)
                 {
                     Debug.Log("Enemies are not cleared");
                     EnemiesCleared = false;
