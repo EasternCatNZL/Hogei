@@ -2050,11 +2050,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41474c897828aba45af4f03f814cbbab, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &115874840 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1180522303191844, guid: 50869bff1a26de243b0aa47cee4342ca,
-    type: 2}
-  m_PrefabInternal: {fileID: 404898802}
 --- !u!1001 &121062745
 Prefab:
   m_ObjectHideFlags: 0
@@ -6049,11 +6044,6 @@ Transform:
   m_Father: {fileID: 573010802}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -73.39001, z: 63.346004}
---- !u!1 &435163280 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1180522303191844, guid: 50869bff1a26de243b0aa47cee4342ca,
-    type: 2}
-  m_PrefabInternal: {fileID: 1622050762}
 --- !u!1 &437085021
 GameObject:
   m_ObjectHideFlags: 0
@@ -9365,6 +9355,11 @@ Prefab:
       propertyPath: timeBetweenShots
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114215769585281404, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: colliderRadius
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
   m_IsPrefabParent: 0
@@ -11357,11 +11352,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 764845639}
   m_Mesh: {fileID: 4300000, guid: d6d4865651c3e184db3802b82cfaeac9, type: 3}
---- !u!1 &765539050 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1180522303191844, guid: 50869bff1a26de243b0aa47cee4342ca,
-    type: 2}
-  m_PrefabInternal: {fileID: 1581707731}
 --- !u!1001 &771008222
 Prefab:
   m_ObjectHideFlags: 0
@@ -12131,6 +12121,7 @@ MonoBehaviour:
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -16542,6 +16533,7 @@ MonoBehaviour:
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -17260,9 +17252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c45b87665006c9439a6f4e3c8eb94ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyArray:
-  - {fileID: 765539050}
-  - {fileID: 115874840}
+  enemyList: []
   gateArray:
   - {fileID: 422480568}
   - {fileID: 1231096109}
@@ -27958,6 +27948,7 @@ MonoBehaviour:
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -28256,6 +28247,7 @@ MonoBehaviour:
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -29182,8 +29174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c45b87665006c9439a6f4e3c8eb94ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyArray:
-  - {fileID: 435163280}
+  enemyList: []
   gateArray:
   - {fileID: 1750149676}
   playerTag: Player

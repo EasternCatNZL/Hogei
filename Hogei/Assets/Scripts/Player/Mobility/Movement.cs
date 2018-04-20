@@ -14,6 +14,17 @@ public class Movement : MonoBehaviour {
 
     private Vector3 Direction = Vector3.zero;
 
+    [Header("Ground check vars")]
+    [Tooltip("Character height")]
+    public float charHeight = 2.0f;
+    [Tooltip("Radius of collider")]
+    public float colliderRadius = 2.0f;
+    [Tooltip("Down check distance")]
+    public float downCheckDist = 2.0f;
+
+    [Header("Tags")]
+    public string dungeonTag = "Dungeon";
+
     [Header("Sounds")]
     public AudioClip FootstepSound = null;
     [Range(0f,1f)]
@@ -35,10 +46,8 @@ public class Movement : MonoBehaviour {
     //script ref
     private WhatCanIDO canDo;
 
-    //control vars <- Budget camera vars
-    float yOffset = 0.0f;
-    float zOffset = 0.0f;
-    Vector3 cameraOffset = Vector3.zero;
+    //control vars
+    bool isGrounded = false;
     
 
 	// Use this for initialization
@@ -58,7 +67,7 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (canDo.canMove)
+        if (canDo.canMove && isGrounded)
         {
             if (canDo.useKeyboard)
             {
@@ -167,4 +176,51 @@ public class Movement : MonoBehaviour {
         float Pitch = Random.Range(FootstepPitchRange.x, FootstepPitchRange.y);
         MusicManager.PlaySoundAtLocation(FootstepSound, transform.position, Pitch, FootstepVolume);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("Entered: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag(dungeonTag))
+        {
+            isGrounded = true;
+        }
+        
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        print("Inside: " + collision.gameObject.name);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        print("Left: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag(dungeonTag))
+        {
+            isGrounded = false;
+        }
+        
+    }
+
+    ////check for the ground
+    //private bool CheckForGround()
+    //{
+    //    bool isGrounded = false;
+
+    //    RaycastHit hit;
+    //    //get pos of two ends of capsule
+    //    Vector3 capTop = transform.position + transform.up * (charHeight / 2);
+    //    Vector3 capBot = transform.position - transform.up * (charHeight / 2);
+    //    if (Physics.Raycast(capTop, -transform.up, out hit, downCheckDist))
+    //    {
+    //        print(hit.collider.gameObject.name);
+    //        if (hit.collider.CompareTag(dungeonTag)){
+    //            isGrounded = true;
+    //        }
+    //    }
+
+    //    print(isGrounded);
+
+    //    return isGrounded;
+    //}
 }
