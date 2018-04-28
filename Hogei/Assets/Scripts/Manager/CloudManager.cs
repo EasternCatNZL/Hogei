@@ -147,7 +147,7 @@ public class CloudManager : MonoBehaviour {
         GameObject Cloud = collision.gameObject;
         if (Cloud.CompareTag("Enviroment"))
         {
-            if (ScaleFade)
+            if (ScaleFade && !IsHiding)
             {
                 float OldScale = Cloud.transform.localScale.x;
                 Sequence ScaleSequence = DOTween.Sequence();
