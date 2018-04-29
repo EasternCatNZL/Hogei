@@ -403,7 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicFiles: []
   sfxVol: 1
-  bgmVol: 1
+  bgmVol: 0.5
   masterVol: 1
 --- !u!114 &147333661 stripped
 MonoBehaviour:
@@ -602,8 +602,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -687,7 +692,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4149411041785912, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.5901675
+      value: -49.4
       objectReference: {fileID: 0}
     - target: {fileID: 4149411041785912, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -695,7 +700,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4149411041785912, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -14.496634
+      value: -49.1
       objectReference: {fileID: 0}
     - target: {fileID: 4149411041785912, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
       propertyPath: m_LocalRotation.x
@@ -720,6 +725,35 @@ Prefab:
     - target: {fileID: 1642553012151216, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215769585281404, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: FootstepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 46c45f7500a87274e956058237a2e47e, type: 3}
+    - target: {fileID: 114215769585281404, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: FootstepVolume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215769585281404, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: FootstepPitchRange.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215769585281404, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: FootstepPitchRange.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82076856422729250, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c622c63a5aab734eb37eac51e080819, type: 3}
+    - target: {fileID: 1642553012151216, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
+      propertyPath: m_Name
+      value: PlayerCharacterUnique
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
@@ -1086,8 +1120,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1282,8 +1321,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -4099,8 +4143,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5266,8 +5315,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5872,8 +5926,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5984,8 +6043,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -6422,8 +6486,13 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -6517,7 +6586,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2026897853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a87c22977e0ab974d99cac0a30d253e3, type: 3}
   m_Name: 

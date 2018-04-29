@@ -36,10 +36,7 @@ public class PlayerManager : MonoBehaviour {
             Debug.Log("Player Manager already exists destroying self " + gameObject.name);
             Destroy(gameObject);
         }
-        if (Player)
-        {
-            PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
-        }
+
     }
 
     void Init()
@@ -82,7 +79,7 @@ public class PlayerManager : MonoBehaviour {
 	}
 
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
-    {
+    {       
         if (HealthBar)
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -93,12 +90,17 @@ public class PlayerManager : MonoBehaviour {
             else
             {
                 HealthBar.gameObject.SetActive(true);
+                HealthBar.TargetHealth = Player.GetComponent<EntityHealth>();
+                //HealthBar.UpdateNotches();
             }
         }
+
         SceneLoaded = false;
-        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+       
         if (Player)
         {
+            DontDestroyOnLoad(Player);
+            PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
             //Player.SetActive(true);
             Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
             Player.GetComponent<EntityHealth>().Revive();
@@ -114,9 +116,15 @@ public class PlayerManager : MonoBehaviour {
                 PrimarySoup = SoupInventory[0];
                 ApplyUpgrades();
             }
-    
+
+                
+
         }
-        if(GameoverScreen) GameoverScreen.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            Player.GetComponent<PlayerAttack>().ClearWeapons();
+        }
+        if (GameoverScreen) GameoverScreen.SetActive(false);
         SceneLoaded = true;
     }
 
