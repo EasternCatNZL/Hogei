@@ -67,7 +67,7 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (canDo.canMove && isGrounded)
+        if (canDo.canMove /*&& isGrounded*/)
         {
             if (canDo.useKeyboard)
             {
@@ -97,12 +97,12 @@ public class Movement : MonoBehaviour {
         }
         if (Input.GetAxisRaw("Vertical") > 0f)
         {
-            newPos.z -= 1;
+            newPos.z += 1;
             Direction += new Vector3(-1f, 0f, 0f);
         }
         else if (Input.GetAxisRaw("Vertical") < 0f)
         {
-            newPos.z += 1;
+            newPos.z -= 1;
             Direction += new Vector3(1f, 0f, 0f);
         }
 
@@ -115,9 +115,9 @@ public class Movement : MonoBehaviour {
             Anim.SetBool("IsMoving", false);
         }
         newPos.Normalize();
-        //transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
+        transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
         //Rigid.MovePosition(transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime);
-        Rigid.velocity = Direction * (Speed * SpeedModifier);
+        //Rigid.velocity = Direction * (Speed * SpeedModifier);
 
     }
 
