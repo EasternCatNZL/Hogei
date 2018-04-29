@@ -11,17 +11,23 @@ public class IngredientBowl : MonoBehaviour {
     [Header("Soup Settings")]
     public SoupManager SoupManager;
 
+    public int IngredientAmount = 0;
     private PlayerManager PlayMgt;
 
     void Start()
     {
         PlayMgt = PlayerManager.GetInstance();
+        IngredientAmount = PlayMgt.GetIngredientAmount(IngredientType);
     }
 
-    //Unity function called when collider is clicked down on
+    //In-built function called when collider is clicked down on
     void OnMouseDown()
     {
-        GameObject Ingred = Instantiate(IngredientPrefab);
-        SoupManager.GetComponent<ItemGrabbing>().SetHeldItem(Ingred);
+        if (IngredientAmount > 0)
+        {
+            GameObject Ingred = Instantiate(IngredientPrefab);
+            SoupManager.GetComponent<ItemGrabbing>().SetHeldItem(Ingred);
+            IngredientAmount -= 1;
+        }
     }
 }
