@@ -140,6 +140,12 @@ MonoBehaviour:
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
   ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
       m_Calls:
@@ -167,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee59d67b69410294ca461ce34dd4e288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   chargeTime: 0.5
   chargeSpeed: 8
   damage: 1
@@ -179,7 +186,7 @@ MonoBehaviour:
   targetTag: Player
   bulletTag: Bullet
   floorTag: Dungeon
-  isTriggered: 0
+  isPaused: 0
   currentSpeed: 0
   timeChargeBegan: 0
   target: {fileID: 0}

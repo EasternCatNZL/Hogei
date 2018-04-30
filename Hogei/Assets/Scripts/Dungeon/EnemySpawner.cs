@@ -34,42 +34,42 @@ public class EnemySpawner : MonoBehaviour {
 
     void SpawnEnemies()
     {
-        //int EnemyIndex = Random.Range(0, Enemy.Length);
+        ////int EnemyIndex = Random.Range(0, Enemy.Length);
    
-        //spawn enemies equal to level
-        for (int i = 0; i < manager.currentFloor; i++)
-        {
-            //spawn an enemy
-            GameObject enemyClone = Instantiate(Enemy[Random.Range(0, Enemy.Length)], EnemySpawnPoints[i].position, Quaternion.identity);
-            //Name the enemy
-            enemyClone.name = "Enemy" + i.ToString();
-            //scale enemy values by level
-            //TODO: Refractor
-            if (enemyClone.GetComponent<AdjustableCircularSpray>())
-            {
-                enemyClone.GetComponent<AdjustableCircularSpray>().ScaleShotVars(manager.currentFloor);
-            }
-            else if (enemyClone.GetComponent<AllRoundSpray>())
-            {
-                enemyClone.GetComponent<AllRoundSpray>().ScaleShotVars(manager.currentFloor);
-            }
-            else if (enemyClone.GetComponent<WallSpray>())
-            {
-                enemyClone.GetComponent<WallSpray>().ScaleShotVars(manager.currentFloor);
-            }
-            else if (enemyClone.GetComponent<Demarcation>())
-            {
-                enemyClone.GetComponent<Demarcation>().ScaleShotVars(manager.currentFloor);
-            }
-            else if (enemyClone.GetComponent<NightBird>())
-            {
-                //enemyClone.GetComponent<NightBird>().ScaleShotVars(manager.currentFloor);
-            }
-            else if (enemyClone.GetComponent<AimedProngedShot>()){
-                enemyClone.GetComponent<AimedProngedShot>().ScaleShotVars(manager.currentFloor);
-            }
-            //place new enemy into roomactivate enemy array
-            roomAct.myEnemies.Add(enemyClone);
-        }
+        ////spawn enemies equal to level
+        //for (int i = 0; i < manager.currentFloor; i++)
+        //{
+        //    //spawn an enemy
+        //    GameObject enemyClone = Instantiate(Enemy[Random.Range(0, Enemy.Length)], EnemySpawnPoints[i].position, Quaternion.identity);
+        //    //Name the enemy
+        //    enemyClone.name = "Enemy" + i.ToString();
+        //    //scale enemy values by level
+        //    //TODO: Refractor
+        //    if (enemyClone.GetComponent<AdjustableCircularSpray>())
+        //    {
+        //        enemyClone.GetComponent<AdjustableCircularSpray>().ScaleShotVars(manager.currentFloor);
+        //    }
+        //    else if (enemyClone.GetComponent<AllRoundSpray>())
+        //    {
+        //        enemyClone.GetComponent<AllRoundSpray>().ScaleShotVars(manager.currentFloor);
+        //    }
+        //    else if (enemyClone.GetComponent<WallSpray>())
+        //    {
+        //        enemyClone.GetComponent<WallSpray>().ScaleShotVars(manager.currentFloor);
+        //    }
+        //    else if (enemyClone.GetComponent<Demarcation>())
+        //    {
+        //        enemyClone.GetComponent<Demarcation>().ScaleShotVars(manager.currentFloor);
+        //    }
+        //    else if (enemyClone.GetComponent<NightBird>())
+        //    {
+        //        //enemyClone.GetComponent<NightBird>().ScaleShotVars(manager.currentFloor);
+        //    }
+        //    else if (enemyClone.GetComponent<AimedProngedShot>()){
+        //        enemyClone.GetComponent<AimedProngedShot>().ScaleShotVars(manager.currentFloor);
+        //    }
+        //    //place new enemy into roomactivate enemy array
+        //    roomAct.myEnemies.Add(enemyClone);
+        //}
     }
 }

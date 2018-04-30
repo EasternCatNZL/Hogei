@@ -51,17 +51,11 @@ public class AimedAllRoundSpray : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (enemyState.GetIsActive() && !isPaused)
+        if (!isPaused)
         {
             if (Time.time > (timeLastSprayFired + timeBetweenSprays) - (pauseEndTime - pauseStartTime))
             {
-                print("Time between shots:" + (Time.time - timeLastSprayFired + timeBetweenSprays));
-                if (wasPaused)
-                {
-                    print("Pause time:" + (pauseEndTime - pauseStartTime));
-                    print("Time between shots + pause time calc: " + (Time.time - timeLastSprayFired + timeBetweenSprays) + (pauseEndTime - pauseStartTime));
-                    wasPaused = false;
-                }
+
                 BulletSpray();
             }
         }
