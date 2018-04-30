@@ -223,9 +223,6 @@ public class MusicManager : MonoBehaviour {
         Source.pitch = _Pitch;
         Source.volume = _Volume;
         Source.Play();
-        print(_Obj.ToString());
-        print(Source.clip.length);
-        print("BLANK");
         Destroy(_Obj, Source.clip.length);
         return Source;
     }

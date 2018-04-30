@@ -17,6 +17,9 @@ public class EnemyBehavior : MonoBehaviour {
 		
 	}
 
+    public virtual void Activate() { isActive = true; }
+    public virtual void Deactivate() { isActive = false; }
+
     //On death func
     public virtual void AmDead()
     {
