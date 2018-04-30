@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: M_Sail
-  m_Shader: {fileID: 4800000, guid: 182c16ae942a90247837c6e5e321bd9e, type: 3}
+  m_Name: M_Bridge
+  m_Shader: {fileID: 4800000, guid: 91fdb65751c1fb94aab99e6c28b6b3d9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,6 +18,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Bridge_D:
+        m_Texture: {fileID: 2800000, guid: 559e4465cf2e89048b7fec826fc2b26c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bridge_ambient_occlusion:
+        m_Texture: {fileID: 2800000, guid: 55d4e4d3cab81844987b36438fe70d3d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -47,27 +55,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: e88453fd522c30e4f944cdc2256923be, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _PirateSail_1_D:
-        m_Texture: {fileID: 2800000, guid: 8badc15f0134d8d479e5be09f361e221, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _PirateSail_1_Opacity:
-        m_Texture: {fileID: 2800000, guid: 4b71cf1467f051447a9b802797d17e49, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _PirateSail_1_Opacity2:
-        m_Texture: {fileID: 2800000, guid: bd03686cae3d7d542b3c5ad548d3d794, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Pirate_Sail_ambient_occlusion:
-        m_Texture: {fileID: 2800000, guid: e88453fd522c30e4f944cdc2256923be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -80,7 +72,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.131
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -93,5 +85,5 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.44852942, g: 0.44852942, b: 0.44852942, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
