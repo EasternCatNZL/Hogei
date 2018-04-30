@@ -23,6 +23,9 @@ public class BarnFrontCannon : MonoBehaviour {
     [Range(0.0f, 360.0f)]
     public float angleChangePerShot = 4.0f;
 
+    [Header("Tags")]
+    public string playerTag = "Player";
+
     //control vars
     [HideInInspector]
     public bool isUsing = false; //check if this should be used
@@ -40,8 +43,6 @@ public class BarnFrontCannon : MonoBehaviour {
         {
             FireCannon();
         }
-      
-
     }
 
     //Fire cannon
@@ -69,6 +70,42 @@ public class BarnFrontCannon : MonoBehaviour {
             bulletOne.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
 
             rot = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - angleChangePerShot * i, transform.rotation.eulerAngles.z);
+            //create second bullet
+            GameObject bulletTwo = Instantiate(bulletObject, transform.position, rot);
+            bulletTwo.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
+        }
+    }
+
+    //Fire cannon aimed ver
+    private void AimedFireCannon()
+    {
+        //set timing
+        cannonShotTime = Time.time;
+
+        //get direction to target
+        Vector3 directionTo = GameObject.FindGameObjectWithTag(playerTag).transform.position - transform.position;
+        //get rotation
+        float startAngle = Vector3.Angle(transform.forward, directionTo);
+
+        //create sheep
+        GameObject sheepClone = Instantiate(sheepObject, transform.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - startAngle, transform.rotation.eulerAngles.z));
+        //set up vars on sheep behavior
+        SheepBehaviour sheepBehave = sheepClone.GetComponent<SheepBehaviour>();
+        sheepBehave.doTrack = false;
+        sheepBehave.chargeSpeed = bulletSpeed;
+        sheepBehave.isActive = true;
+        sheepClone.GetComponent<EntityHealth>().CurrentHealth = 1;
+
+        //for the number of arcs, fire regular bullets
+        for (int i = 1; i < numArcs; i++)
+        {
+            //get rotation
+            Quaternion rot = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - startAngle + angleChangePerShot * i, transform.rotation.eulerAngles.z);
+            //create a bullet
+            GameObject bulletOne = Instantiate(bulletObject, transform.position, rot);
+            bulletOne.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
+
+            rot = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - startAngle - angleChangePerShot * i, transform.rotation.eulerAngles.z);
             //create second bullet
             GameObject bulletTwo = Instantiate(bulletObject, transform.position, rot);
             bulletTwo.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);

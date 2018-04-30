@@ -207,7 +207,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: cf021f92a1af2e345bcf6f06e0b719b9, type: 3}
+  - {fileID: 2100000, guid: f2d51f8a6ac6afb4d97f752d38c6168f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -277,10 +277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67a8ffd02fcb8a41871c56dcaaa05f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   maxSpinSpeed: 5
   spinSpeedChangeRate: 0.5
+  shotPointArray: []
+  bulletObject: {fileID: 0}
+  bulletSpeed: 5
+  timeBetweenShots: 0.1
   maxSpeedHoldTime: 3
-  isActive: 0
 --- !u!114 &114581686082247416
 MonoBehaviour:
   m_ObjectHideFlags: 1

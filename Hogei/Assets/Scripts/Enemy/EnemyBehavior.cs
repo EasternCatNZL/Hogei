@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool isActive = false; //check if active
 
     // Use this for initialization
@@ -16,6 +16,9 @@ public class EnemyBehavior : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public virtual void Activate() { isActive = true; }
+    public virtual void Deactivate() { isActive = false; }
 
     //On death func
     public virtual void AmDead()

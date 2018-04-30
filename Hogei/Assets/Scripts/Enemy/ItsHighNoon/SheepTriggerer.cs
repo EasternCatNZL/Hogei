@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class SheepTriggerer : EnemyTrigger {
 
-    public GameObject WarningObject;
-    private float WarningBegan = 0.0f;
-    public float WarningTime = 0.5f;
-    private bool WarningActive = false;
+    //public GameObject WarningObject;
+    //private float WarningBegan = 0.0f;
+    //public float WarningTime = 0.5f;
+    //private bool WarningActive = false;
 
     //script refs
     SheepBehaviour sheep;
@@ -40,7 +40,7 @@ public class SheepTriggerer : EnemyTrigger {
             //Check object hasnt been killed before triggered
             if (sheep)
             {
-                Warning();
+                base.Warning();
                 //Setup();
                 //change has setup to true
                 isTriggered = true;
@@ -53,14 +53,14 @@ public class SheepTriggerer : EnemyTrigger {
         }
     }
 
-    void Warning()
-    {
-        WarningActive = true;
-        Vector3 currentPos = transform.position;
-        Vector3 extraHeight = new Vector3(0.0f, 2.0f, 0.0f);
-        GameObject Object = Instantiate(WarningObject, currentPos + extraHeight, Quaternion.identity);
-        Object.transform.DOScaleY(0.5f, 0.5f).SetEase(Ease.OutBack, 5f);
-    }
+    //void Warning()
+    //{
+    //    WarningActive = true;
+    //    Vector3 currentPos = transform.position;
+    //    Vector3 extraHeight = new Vector3(0.0f, 2.0f, 0.0f);
+    //    GameObject Object = Instantiate(WarningObject, currentPos + extraHeight, Quaternion.identity);
+    //    Object.transform.DOScaleY(0.5f, 0.5f).SetEase(Ease.OutBack, 5f);
+    //}
 
 
 }

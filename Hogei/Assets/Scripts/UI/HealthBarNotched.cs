@@ -12,12 +12,22 @@ public class HealthBarNotched : MonoBehaviour {
     public GameObject[] Notches;
     private int NumNotches;
     private int LastHealth = 0;
+
+    private static HealthBarNotched Singleton;
    
 
     // Use this for initialization
     void Start () {
         DontDestroyOnLoad(gameObject);
         CreateNotches();
+        if (Singleton)
+        {
+            Destroy(gameObject);
+        }
+        else if(!Singleton)
+        {
+            Singleton = this;
+        }
 	}
 
     void OnEnable()
@@ -55,7 +65,7 @@ public class HealthBarNotched : MonoBehaviour {
         }
     }
 
-    private void UpdateNotches()
+    public void UpdateNotches()
     {
         bool Shake = false;
         if ((int)TargetHealth.MaxHealth > NumNotches)

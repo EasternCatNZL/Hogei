@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -267,6 +267,11 @@ Prefab:
       propertyPath: CameraDistance
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 114890689982696856, guid: d13471350260f974c9f03d9b60d32866,
+        type: 2}
+      propertyPath: SceneAdjustAngle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d13471350260f974c9f03d9b60d32866, type: 2}
   m_IsPrefabParent: 0
@@ -373,11 +378,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5753d43c586d78943b0953cf41b22b84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5753d43c586d78943b0953cf41b22b84, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.26
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5753d43c586d78943b0953cf41b22b84, type: 3}
       propertyPath: m_LocalRotation.x
@@ -413,7 +418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5753d43c586d78943b0953cf41b22b84, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5753d43c586d78943b0953cf41b22b84, type: 3}
@@ -503,6 +508,16 @@ Prefab:
     - target: {fileID: 4149411041785912, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 136671544404397856, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54901232168630986, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
@@ -635,7 +650,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1324763463}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -3, z: 17.64}
+  m_LocalPosition: {x: 0, y: -4.5, z: 13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1465318335}
@@ -657,9 +672,10 @@ MonoBehaviour:
   sheepObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
     type: 2}
   bulletSpeed: 15
-  numArcs: 2
-  timeBetweenSprays: 1
-  angleChangePerShot: 4
+  numArcs: 5
+  timeBetweenSprays: 0.5
+  angleChangePerShot: 12
+  playerTag: Player
   isUsing: 0
 --- !u!4 &1342205497 stripped
 Transform:
