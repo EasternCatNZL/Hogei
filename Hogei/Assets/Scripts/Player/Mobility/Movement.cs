@@ -179,7 +179,7 @@ public class Movement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("Entered: " + collision.gameObject.name);
+        //print("Entered: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag(dungeonTag))
         {
             isGrounded = true;
@@ -189,12 +189,12 @@ public class Movement : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        print("Inside: " + collision.gameObject.name);
+        //print("Inside: " + collision.gameObject.name);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        print("Left: " + collision.gameObject.name);
+        //print("Left: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag(dungeonTag))
         {
             isGrounded = false;

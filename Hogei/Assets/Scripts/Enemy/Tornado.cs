@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class Tornado : MonoBehaviour {
 
+    public float Knockback = 1.0f;
+
+    /*
     public float force = 1.0f;
     private bool hit = false;
     private float timer = 0.0f;
@@ -13,11 +16,11 @@ public class Tornado : MonoBehaviour {
     public GameObject Player;
 
     Vector3 PlayerPos;
-
+    */
     //public float radius = 1.0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {        
 		
 	}
 	
@@ -63,7 +66,15 @@ public class Tornado : MonoBehaviour {
     {
         if (col.gameObject.tag.Equals("Player"))
         {
-            PlayerPos = col.gameObject.transform.position;
+            Vector3 HitPos = col.contacts[0].point;
+            Vector3 Pos = col.transform.position;
+            Vector3 Temp = Pos - HitPos;
+            Temp.Scale(new Vector3(1, 0, 1));
+
+            col.rigidbody.DOJump(col.transform.position - Temp * -Knockback, 1.0f, 0, 0.5f, false);
+            
+            
+            //PlayerPos = col.gameObject.transform.position;
 
             
             /*
