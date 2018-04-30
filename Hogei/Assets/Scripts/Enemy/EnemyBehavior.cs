@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool isActive = false; //check if active
 
     // Use this for initialization

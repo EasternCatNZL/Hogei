@@ -6,9 +6,23 @@ public class StarfishSpinBehavior : EnemyBehavior {
 
     [Header("Spin vars")]
     [Tooltip("The max speed that starfish spins at")]
-    public float maxSpinSpeed = 5.0f;
+    public float maxSpinSpeed = 720.0f;
     [Tooltip("Spin speed change rate")]
-    public float spinSpeedChangeRate = 0.5f;
+    public float spinSpeedChangeRate = 60.0f;
+
+    [Header("Shot points")]
+    [Tooltip("Points where to shoot bullets from")]
+    public Transform[] shotPointArray = new Transform[0];
+
+    [Header("Bullet vars")]
+    [Tooltip("The bullet object")]
+    public GameObject bulletObject;
+    [Tooltip("The speed of the bullet")]
+    public float bulletSpeed = 5.0f;
+
+    [Header("Timing vars")]
+    [Tooltip("Time between shots")]
+    public float timeBetweenShots = 0.1f;
 
     [Header("Timing vars")]
     [Tooltip("The amount of time max speed is held")]
@@ -21,10 +35,10 @@ public class StarfishSpinBehavior : EnemyBehavior {
 
     private float currentSpeed = 0.0f; //the current speed of the spin
     private float maxSpeedReachedTime = 0.0f; //the time max speed was reached
+    private float lastShotTime = 0.0f;
 
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -33,6 +47,7 @@ public class StarfishSpinBehavior : EnemyBehavior {
         if (isActive)
         {
             Spin();
+            PointShot();
         }
 	}
 
@@ -103,6 +118,27 @@ public class StarfishSpinBehavior : EnemyBehavior {
         else if (currentDirection == -1)
         {
             currentDirection *= -1;
+        }
+    }
+
+    //point shot behavior
+    private void PointShot()
+    {
+        //if timing reached
+        if (Time.time > lastShotTime + timeBetweenShots)
+        {
+            //for all points
+            for (int i = 0; i < shotPointArray.Length; i++)
+            {
+
+                //create a clone of the bullet
+                GameObject bulletClone = Instantiate(bulletObject, shotPointArray[i].transform.position, shotPointArray[i].transform.rotation);
+                //set the speed of the bullet
+                bulletClone.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
+                //set timing to now
+                lastShotTime = Time.time;
+
+            }
         }
     }
 }

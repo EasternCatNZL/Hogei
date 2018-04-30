@@ -11,6 +11,7 @@ public class Follow : MonoBehaviour
     [Header("Camera Settings")]
     public float CameraDistance;
     public float CameraAngle;
+    public float SceneAdjustAngle = -90.0f;
     public Vector3 CameraDirection;
     public float AheadDistance = 1f;
     public float MooseDistance = 0f;
@@ -92,7 +93,7 @@ public class Follow : MonoBehaviour
 
     void AdjustCamera()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(CameraAngle, -90f, 0f));
+        transform.rotation = Quaternion.Euler(new Vector3(CameraAngle, -SceneAdjustAngle, 0f));
         CameraTransform.localPosition = new Vector3(0f, 0f, -CameraDistance);
         
     }
