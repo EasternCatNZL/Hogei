@@ -36,18 +36,58 @@ public class PlayerManager : MonoBehaviour {
             Debug.Log("Player Manager already exists destroying self " + gameObject.name);
             Destroy(gameObject);
         }
-        if (Player)
-        {
-            PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
-        }
+
     }
 
     void Init()
     {
-        if (!Player)
+        //Setup Player Character
+        if (!Player) Player = GameObject.FindGameObjectWithTag("Player");
+        if (Player)
         {
-            Player = GameObject.FindGameObjectWithTag("Player");
+            DontDestroyOnLoad(Player);
+            PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
+            //Player.SetActive(true);
+            Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
+            Player.GetComponent<EntityHealth>().Revive();
+            if (Camera.main.GetComponentInParent<Follow>())
+            {
+                Camera.main.GetComponentInParent<Follow>().SetStopFollowing(false);
+            }
+            Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
+            Player.GetComponent<PlayerAttack>().SetupWeapons();
+            if (SoupInventory.Count > 0)
+            {
+                Debug.Log(Time.time + ": " + gameObject.name + " - Applying weapon upgrades...");
+                PrimarySoup = SoupInventory[0];
+                ApplyUpgrades();
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                Player.GetComponent<PlayerAttack>().ClearWeapons();
+            }
         }
+
+        //Setup HealthBar
+        if(!HealthBar) HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarNotched>();
+        if (HealthBar)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                DontDestroyOnLoad(HealthBar.gameObject);
+                HealthBar.gameObject.SetActive(false);
+            }
+            else
+            {
+                HealthBar.gameObject.SetActive(true);
+                HealthBar.TargetHealth = Player.GetComponent<EntityHealth>();
+                //HealthBar.UpdateNotches();
+            }
+        }
+        //Setup GameoverScreen
+        if(!GameoverScreen) GameoverScreen = GameObject.Find("Gameover");
+        if (GameoverScreen) GameoverScreen.SetActive(false);
+        //Setup Inventories
         IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
         if (SoupInventory == null) SoupInventory = new List<SoupUpgrade>();
         if (WeaponInventory == null) WeaponInventory = new List<Weapon>();
@@ -83,40 +123,8 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
     {
-        if (HealthBar)
-        {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
-            {
-                DontDestroyOnLoad(HealthBar.gameObject);
-                HealthBar.gameObject.SetActive(false);
-            }
-            else
-            {
-                HealthBar.gameObject.SetActive(true);
-            }
-        }
         SceneLoaded = false;
-        GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        if (Player)
-        {
-            //Player.SetActive(true);
-            Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
-            Player.GetComponent<EntityHealth>().Revive();
-            if (Camera.main.GetComponentInParent<Follow>())
-            {
-                Camera.main.GetComponentInParent<Follow>().SetStopFollowing(false);
-            }
-            Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
-            Player.GetComponent<PlayerAttack>().SetupWeapons();
-            if (SoupInventory.Count > 0)
-            {
-                Debug.Log(Time.time + ": " + gameObject.name + " - Applying weapon upgrades...");
-                PrimarySoup = SoupInventory[0];
-                ApplyUpgrades();
-            }
-    
-        }
-        if(GameoverScreen) GameoverScreen.SetActive(false);
+        Init();
         SceneLoaded = true;
     }
 

@@ -65,7 +65,6 @@ public class PlayerAttack : MonoBehaviour {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
         Anim = GetComponent<Animator>();
-        SetupWeapons();
     }
 	
 	// Update is called once per frame
@@ -189,5 +188,12 @@ public class PlayerAttack : MonoBehaviour {
         }
 
         return valid;
+    }
+
+    public void ClearWeapons()
+    {
+        PrimaryWeapon = null;
+        SecondaryWeapon = null;
+        numWeapons = 0;
     }
 }

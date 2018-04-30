@@ -14,6 +14,8 @@ public class OutlawBehaviour : EnemyBehavior {
     public float damage = 1.0f;
     [Tooltip("Number of shots in round")]
     public int numShotsInRound = 3;
+    [Tooltip("How far away the gunslinger can attack")]
+    public float MaxRange = 1000f;
 
     [Header("Timing vars")]
     [Tooltip("Time between shots in round")]
@@ -67,6 +69,11 @@ public class OutlawBehaviour : EnemyBehavior {
             if (isActive)
             {
                 AttackBehaviour();
+                Vector3 Dist = target.transform.position - transform.position;
+                if (Dist.magnitude > MaxRange)
+                {                   
+                    isActive = false;
+                }
             }
             else if (transform.position == locationToSetup)
             {
@@ -128,12 +135,15 @@ public class OutlawBehaviour : EnemyBehavior {
         //check timing
         if(Time.time > timeLastShot + timeTillNextShot + (pauseEndTime - pauseStartTime))
         {
-            float pitch = Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
-            MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
-            SoundSettings.Pitch = pitch;
-            SoundSettings.Volume = ShotSoundVolume;
-            SoundSettings.SpatialBlend = ShotSpatialBlend;
-            MusicManager.PlaySoundAtLocation(ShotSound, transform.position, SoundSettings);
+            if (ShotSound)
+            {
+                float pitch = Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
+                MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
+                SoundSettings.Pitch = pitch;
+                SoundSettings.Volume = ShotSoundVolume;
+                SoundSettings.SpatialBlend = ShotSpatialBlend;
+                MusicManager.PlaySoundAtLocation(ShotSound, transform.position, SoundSettings);
+            }
             
             //create a shot
             GameObject bulletClone = Instantiate(bulletObject, transform.position + transform.up, transform.rotation);
