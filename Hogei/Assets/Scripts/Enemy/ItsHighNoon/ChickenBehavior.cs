@@ -113,7 +113,7 @@ public class ChickenBehavior : EnemyBehavior
     }
 
     private void OnCollisionStay(Collision collision)
-    {
+    {      
         if (isActive)
         {
             if (Time.time - LastAttackTime >= timeBetweenAttacks && collision.gameObject.CompareTag(targetTag))

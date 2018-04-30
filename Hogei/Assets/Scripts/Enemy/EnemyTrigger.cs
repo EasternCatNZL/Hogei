@@ -43,7 +43,7 @@ public class EnemyTrigger : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         //check other
-        if ((doTriggerPlayer && other.gameObject.CompareTag(targetTag)) || (doTriggerBullet && other.gameObject.CompareTag(bulletTag)) && !isTriggered)
+        if (((doTriggerPlayer && other.gameObject.CompareTag(targetTag)) || (doTriggerBullet && other.gameObject.CompareTag(bulletTag))) && !isTriggered)
         {
             //Check object hasnt been killed before triggered
             if (Enemy)
