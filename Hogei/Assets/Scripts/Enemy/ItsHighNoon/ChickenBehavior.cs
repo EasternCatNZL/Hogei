@@ -26,6 +26,7 @@ public class ChickenBehavior : EnemyBehavior
     //control refs
     Rigidbody myRigid;
 
+    private GameObject HitTarget;
     private float LastAttackTime;
 
     // Use this for initialization
@@ -33,7 +34,7 @@ public class ChickenBehavior : EnemyBehavior
     {
         myRigid = GetComponent<Rigidbody>();
         myAnim = GetComponent<Animator>();
-
+        moveSpeed += (Random.Range(0f, 1f) - 0.5f);
     }
 
     // Update is called once per frame
@@ -92,7 +93,6 @@ public class ChickenBehavior : EnemyBehavior
 
     public void JumpEvent()
     {
-        print("I Jump");
         myRigid.AddForce((transform.forward + transform.up) * moveSpeed, ForceMode.Impulse);
     }
 
@@ -118,9 +118,16 @@ public class ChickenBehavior : EnemyBehavior
         {
             if (Time.time - LastAttackTime >= timeBetweenAttacks && collision.gameObject.CompareTag(targetTag))
             {
+                myAnim.SetTrigger("Attack");
+                //HitTarget = collision.gameObject;
                 collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(Damage);
                 LastAttackTime = Time.time;
             }
         }
+    }
+
+    public void AttackHit()
+    {
+        if(HitTarget) HitTarget.GetComponent<EntityHealth>().DecreaseHealth(Damage);
     }
 }

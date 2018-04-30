@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour {
     private float currentSpeed = 0;
     private float SpeedModifier = 1;
 
+    public Transform MovementAlignment;
+
     public float Hori = 0;
     public float Vert = 0;
 
@@ -60,7 +62,7 @@ public class Movement : MonoBehaviour {
         {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
-
+        if (MovementAlignment == null) Debug.Log("NEED A MOVEMENT ALIGNMENT TRANSFORM");
         Rigid = GetComponent<Rigidbody>();
         Anim = GetComponent<Animator>();
     }
@@ -84,29 +86,29 @@ public class Movement : MonoBehaviour {
     private void MovePlayer()
     {
         Vector3 newPos = Vector3.zero;
-        Direction = Vector3.zero;
+        Direction = Vector3.zero;        
         if (Input.GetAxisRaw("Horizontal") > 0f)
         {
-            newPos.x += 1;
-            Direction += new Vector3(0f, 0f, 1f);
+            newPos += MovementAlignment.right * Speed * SpeedModifier;
+            Direction += MovementAlignment.right;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0f)
         {
-            newPos.x -= 1;
-            Direction += new Vector3(0f, 0f, -1f);
+            newPos -= MovementAlignment.right * Speed * SpeedModifier;
+            Direction -= MovementAlignment.right;
         }
         if (Input.GetAxisRaw("Vertical") > 0f)
         {
-            newPos.z += 1;
-            Direction += new Vector3(-1f, 0f, 0f);
+            newPos += MovementAlignment.forward * Speed * SpeedModifier;
+            Direction += MovementAlignment.forward;
         }
         else if (Input.GetAxisRaw("Vertical") < 0f)
         {
-            newPos.z -= 1;
-            Direction += new Vector3(1f, 0f, 0f);
+            newPos -= MovementAlignment.forward * Speed * SpeedModifier;
+            Direction -= MovementAlignment.forward;
         }
 
-        if(newPos != Vector3.zero)
+        if (newPos != Vector3.zero)
         {
             Anim.SetBool("IsMoving", true);
         }
