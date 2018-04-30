@@ -24,7 +24,7 @@ public class DecceleratingBullet : MonoBehaviour {
     private float startTime = 0.0f;
     private float currentSpeed = 0.0f;
     private Rigidbody myRigid;
-    private bool isActive = false;
+    private bool isActive = true;
     private float pauseStartTime = 0.0f;
     private float pauseEndTime = 0.0f;
 
@@ -39,6 +39,10 @@ public class DecceleratingBullet : MonoBehaviour {
 	void Update () {
         if (isActive)
         {
+            if (Time.time > startTime + lifeTime + (pauseEndTime - pauseStartTime))
+            {
+                Destroy(gameObject);
+            }
             currentSpeed = Mathf.Clamp(currentSpeed - decelSpeed * Time.deltaTime, minSpeed, startSpeed);
             myRigid.velocity = transform.forward * currentSpeed;
         }

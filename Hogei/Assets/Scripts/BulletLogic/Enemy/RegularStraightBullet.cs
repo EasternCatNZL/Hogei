@@ -22,7 +22,7 @@ public class RegularStraightBullet : MonoBehaviour {
     //control vars
     private float startTime = 0.0f;
     private Rigidbody myRigid;
-    private bool isActive = false;
+    private bool isActive = true;
     private float pauseStartTime = 0.0f;
     private float pauseEndTime = 0.0f;
 

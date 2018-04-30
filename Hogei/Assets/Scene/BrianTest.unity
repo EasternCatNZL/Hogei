@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1765,6 +1765,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1295805824694480, guid: f8550a6b1bdb1b64f9bdf959e74dc6fe, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8550a6b1bdb1b64f9bdf959e74dc6fe, type: 2}
   m_IsPrefabParent: 0
@@ -1906,7 +1910,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1919948337535542, guid: fe215de1494c9f74cb46b221103ecb34, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114624439676930892, guid: fe215de1494c9f74cb46b221103ecb34,
         type: 2}
@@ -1932,7 +1936,13 @@ Prefab:
         type: 2}
       propertyPath: bulletObject
       value: 
-      objectReference: {fileID: 1908703928391894, guid: 25542d5597509bf43badab28c8132b91,
+      objectReference: {fileID: 1130471014798190, guid: 3354bcccaa87b97468d8067d96f99ae8,
+        type: 2}
+    - target: {fileID: 114547144030930054, guid: fe215de1494c9f74cb46b221103ecb34,
+        type: 2}
+      propertyPath: bulletObject
+      value: 
+      objectReference: {fileID: 1130471014798190, guid: 3354bcccaa87b97468d8067d96f99ae8,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe215de1494c9f74cb46b221103ecb34, type: 2}
@@ -2159,7 +2169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1132336272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2531,7 +2541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1401984987
 MonoBehaviour:
   m_ObjectHideFlags: 0
