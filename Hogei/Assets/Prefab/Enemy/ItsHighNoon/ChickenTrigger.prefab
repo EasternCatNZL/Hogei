@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 114939267894434488}
   - component: {fileID: 114763967712315866}
   - component: {fileID: 54354247856744576}
+  - component: {fileID: 114497118303641526}
   m_Layer: 10
   m_Name: ChickenEnemy
   m_TagString: Untagged
@@ -1051,13 +1052,43 @@ MonoBehaviour:
   bulletTag: Bullet
   isTriggered: 0
   doTriggerPlayer: 1
-  doTriggerBullet: 0
+  doTriggerBullet: 1
   WarningObject: {fileID: 1585930551208490, guid: 75c6f504236aadb4c9f53b1c56c87d1a,
     type: 2}
   WarningBegan: 0
   WarningTime: 0.5
   WarningActive: 0
   Enemy: {fileID: 114763967712315866}
+--- !u!114 &114497118303641526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678877248782734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHit: 0
+  CurrentHealth: 0
+  MaxHealth: 6
+  OnHitShake: 0
+  DeathVFX: []
+  HitVFX: {fileID: 0}
+  ModHitVFX: 0
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114763967712315866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1075,6 +1106,7 @@ MonoBehaviour:
   bulletTag: Bullet
   timeBetweenAttacks: 1
   Damage: 1
+  IdleSpeedVariance: {x: 0.5, y: 1.5}
   target: {fileID: 0}
 --- !u!114 &114939267894434488
 MonoBehaviour:
@@ -1101,7 +1133,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.79
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136963981092426104
 CapsuleCollider:

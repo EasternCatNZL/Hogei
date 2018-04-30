@@ -17,8 +17,11 @@ public class ChickenBehavior : EnemyBehavior
     public float timeBetweenAttacks = 1f;
     public int Damage = 1;
 
+    [Header("Animation Settings")]
+    public Vector2 IdleSpeedVariance = Vector2.zero;
+
     //object refs
-    public GameObject target;
+    private GameObject target;
 
     //Animator Ref
     private Animator myAnim;
@@ -34,6 +37,7 @@ public class ChickenBehavior : EnemyBehavior
     {
         myRigid = GetComponent<Rigidbody>();
         myAnim = GetComponent<Animator>();
+        myAnim.speed = Random.Range(IdleSpeedVariance.x, IdleSpeedVariance.y);
         moveSpeed += (Random.Range(0f, 1f) - 0.5f);
     }
 
@@ -69,6 +73,7 @@ public class ChickenBehavior : EnemyBehavior
     {
         if (target)
         {
+            myAnim.speed = 1;
             myAnim.SetBool("Walking", true);
             //Look at target
             transform.LookAt(target.transform.position);
@@ -80,6 +85,7 @@ public class ChickenBehavior : EnemyBehavior
         }
         else
         {
+            myAnim.speed = Random.Range(IdleSpeedVariance.x, IdleSpeedVariance.y);
             myAnim.SetBool("Walking", false);
             myRigid.velocity = Vector3.zero;
         }
