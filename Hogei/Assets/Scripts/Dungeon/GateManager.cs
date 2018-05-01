@@ -5,12 +5,17 @@ using UnityEngine;
 public class GateManager : MonoBehaviour
 {
 
+    [Header("Timer Settings")]
+    public bool OpenAfterTime = false;
+    public float TimerLength = 0f;
+    private float StartTime = 0f;
     [Header("Enemies")]
     [Tooltip("Enemies required to defeat to pass the gate")]
     public List<GameObject> enemyList = new List<GameObject>();
     [Header("Doors")]
     [Tooltip("Array of gates to this room")]
     public GameObject[] gateArray = new GameObject[0];
+
 
     [Header("Tags")]
     public string playerTag = "Player";
@@ -32,7 +37,14 @@ public class GateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(OpenAfterTime)
+        {
+            if(Time.time - StartTime >= TimerLength)
+            {
+                OpenDoors();
+                OpenAfterTime = false;
+            }
+        }
     }
 
     //on room activation logic
