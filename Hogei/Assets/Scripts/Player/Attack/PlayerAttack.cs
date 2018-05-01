@@ -174,14 +174,14 @@ public class PlayerAttack : MonoBehaviour {
         //check what player is using
         if (canDo.useKeyboard)
         {
-            if (Input.GetAxisRaw(attackInputAxis) != 0)
+            if (Luminosity.IO.InputManager.GetAxisRaw(attackInputAxis) != 0)
             {
                 valid = true;
             }
         }
         else if (canDo.useController)
         {
-            if(Input.GetAxisRaw(attackInputAxisController) != 0)
+            if(Luminosity.IO.InputManager.GetAxisRaw(attackInputAxisController) != 0)
             {
                 valid = true;
             }

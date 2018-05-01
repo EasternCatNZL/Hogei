@@ -87,22 +87,22 @@ public class Movement : MonoBehaviour {
     {
         Vector3 newPos = Vector3.zero;
         Direction = Vector3.zero;        
-        if (Input.GetAxisRaw("Horizontal") > 0f)
+        if (Luminosity.IO.InputManager.GetAxisRaw("Horizontal") > 0f)
         {
             newPos += MovementAlignment.right * Speed * SpeedModifier;
             Direction += MovementAlignment.right;
         }
-        else if (Input.GetAxisRaw("Horizontal") < 0f)
+        else if (Luminosity.IO.InputManager.GetAxisRaw("Horizontal") < 0f)
         {
             newPos -= MovementAlignment.right * Speed * SpeedModifier;
             Direction -= MovementAlignment.right;
         }
-        if (Input.GetAxisRaw("Vertical") > 0f)
+        if (Luminosity.IO.InputManager.GetAxisRaw("Vertical") > 0f)
         {
             newPos += MovementAlignment.forward * Speed * SpeedModifier;
             Direction += MovementAlignment.forward;
         }
-        else if (Input.GetAxisRaw("Vertical") < 0f)
+        else if (Luminosity.IO.InputManager.GetAxisRaw("Vertical") < 0f)
         {
             newPos -= MovementAlignment.forward * Speed * SpeedModifier;
             Direction -= MovementAlignment.forward;
