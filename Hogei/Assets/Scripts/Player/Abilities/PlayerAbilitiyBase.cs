@@ -84,7 +84,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private void UseAbilityOne()
     {
         //check if input
-        if ((canDo.useKeyboard && Input.GetAxisRaw(abilityOneAxis) != 0) || (canDo.useController && Input.GetAxisRaw(controllerOneAxis) != 0))
+        if ((canDo.useKeyboard && Luminosity.IO.InputManager.GetAxisRaw(abilityOneAxis) != 0) || (canDo.useController && Luminosity.IO.InputManager.GetAxisRaw(controllerOneAxis) != 0))
         {
             //try to use current ability
             switch (abilityOne)
@@ -108,7 +108,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private void UseAbilityTwo()
     {
         //check if input
-        if ((canDo.useKeyboard && Input.GetAxisRaw(abilityTwoAxis) != 0) || (canDo.useController && Input.GetAxisRaw(controllerTwoAxis) != 0))
+        if ((canDo.useKeyboard && Luminosity.IO.InputManager.GetAxisRaw(abilityTwoAxis) != 0) || (canDo.useController && Luminosity.IO.InputManager.GetAxisRaw(controllerTwoAxis) != 0))
         {
             //try to use current ability
             switch (abilityTwo)
@@ -132,7 +132,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private void UseAbilityThree()
     {
         //check if input
-        if ((canDo.useKeyboard && Input.GetAxisRaw(abilityThreeAxis) != 0) || (canDo.useController && Input.GetAxisRaw(controllerThreeAxis) != 0))
+        if ((canDo.useKeyboard && Luminosity.IO.InputManager.GetAxisRaw(abilityThreeAxis) != 0) || (canDo.useController && Luminosity.IO.InputManager.GetAxisRaw(controllerThreeAxis) != 0))
         {
             //try to use current ability
             switch (abilityThree)
@@ -157,7 +157,7 @@ public class PlayerAbilitiyBase : MonoBehaviour {
     private void ChangeAbility()
     {
         //check if input
-        if (Input.GetKeyDown(abilityTwoKey))
+        if (Luminosity.IO.InputManager.GetKeyDown(abilityTwoKey))
         {
 
         }

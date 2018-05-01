@@ -7,20 +7,12 @@ public class Demarcation : MonoBehaviour {
     [Header("Timing Vars")]
     [Tooltip("Time Between Sprays")]
     public float timeBetweenSprays = 4.5f;
-    [Tooltip("Min time between sprays")]
-    public float minTimeBetweenSprays = 1.5f;
-    [Tooltip("Time between waves")]
-    public float timeBetweenWaves = 0.5f;
 
     [Header("Bullet Vars")]
     [Tooltip("Bullet object")]
     public GameObject bulletObject;
     [Tooltip("Number of bullet layers")]
     public int numBulletLayers = 1;
-    [Tooltip("Max number of layers")]
-    public int maxNumBulletLayers = 2;
-    //scaled num of layers
-    private int scaledNumBulletLayers = 0;
 
     [Header("Bullet set up vars")]
     [Tooltip("Bullet base setup distance")]
@@ -36,20 +28,11 @@ public class Demarcation : MonoBehaviour {
 
     [Tooltip("Pattern bullet set speed")]
     public float patternBulletSpeed = 2.0f;
-    [Tooltip("Bullet max speed")]
-    public float maxBulletSpeed = 10.0f;
-    //scaled bullet speed
-    private float scaledBulletSpeed = 0.0f;
 
     [Header("Angle Control")]
     [Tooltip("Angle change per shot in spray")]
     [Range(0.0f, 360.0f)]
     public float angleChangePerShot = 60.0f;
-    [Tooltip("Minimum angle change per shot in spray")]
-    [Range(0.0f, 360.0f)]
-    public float minAngleChangePerShot = 20.0f;
-    //scaled angle change per shot
-    private float scaledAngleChangePerShot = 0.0f;
 
     [Tooltip("Positive or negative (1 or -1)")]
     [Range(-1, 1)]
@@ -98,34 +81,6 @@ public class Demarcation : MonoBehaviour {
         PauseHandler.PauseEvent -= OnPause;
         PauseHandler.UnpauseEvent -= OnUnpause;
         print("Unsubscribed to event");
-    }
-
-    //scales the values based on how deep the player is
-    public void ScaleShotVars(int level)
-    {
-        //num of layers
-        scaledNumBulletLayers = numBulletLayers + (level / 4);
-        //check not above max
-        if (scaledNumBulletLayers > maxNumBulletLayers)
-        {
-            scaledNumBulletLayers = maxNumBulletLayers;
-        }
-
-        //bullet speed
-        scaledBulletSpeed = patternBulletSpeed + level;
-        //check not above max
-        if (scaledBulletSpeed > maxBulletSpeed)
-        {
-            scaledBulletSpeed = maxBulletSpeed;
-        }
-
-        //angle per shot
-        scaledAngleChangePerShot = angleChangePerShot - (level * 2f);
-        //check not below min
-        if (scaledAngleChangePerShot < minAngleChangePerShot)
-        {
-            scaledAngleChangePerShot = minAngleChangePerShot;
-        }
     }
 
     //bullet firing coroutine
