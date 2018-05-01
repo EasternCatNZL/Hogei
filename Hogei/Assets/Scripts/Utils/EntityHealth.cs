@@ -35,9 +35,11 @@ public class EntityHealth : MonoBehaviour {
     public bool OnHitShake = false;
     public GameObject[] DeathVFX;
     public GameObject HitVFX;
-    public bool ModHitVFX = false;
+    //public bool ModHitVFX = false;
     public Vector3 HitVFXScale;
+    [Header("Animation Settings")]
     public bool HitAnimationOn = false;
+    public bool ScaleUpBeforeDeath = false;
     [Header("Sound Settings")]
     public bool StackSounds = false;
     [Range(0f,1f)]
@@ -47,7 +49,10 @@ public class EntityHealth : MonoBehaviour {
     public AudioClip FinalHitSound = null;
     private AudioSource LastSound;
 
+    [Header("Function To Call On Death")]
     public UnityEvent DeathFunction;
+
+    private bool Dead = false;
 
     //[Header("Audio")]
     //public AudioSource deathSound;
@@ -71,10 +76,12 @@ public class EntityHealth : MonoBehaviour {
         if(gameObject.tag == "Enemy") if(OnDeath != null) OnDeath();
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update () {
-        if(CurrentHealth <= 0.0f)
-        {          
+        //If the current health is zero or below(ie Entity is dead)
+        if(!Dead && CurrentHealth <= 0.0f)
+        {
+            Dead = true;
             if (gameObject.tag == "Enemy")
             {
                 if(GetComponent<Drops>())GetComponent<Drops>().OnDeathDrop();
@@ -84,6 +91,7 @@ public class EntityHealth : MonoBehaviour {
                     transform.parent.GetComponent<RoomEnemyManager>().enemyList.Remove(gameObject);
                 }
             }
+            //Play death sound
             if(FinalHitSound)
             {
                 MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
@@ -92,6 +100,7 @@ public class EntityHealth : MonoBehaviour {
                 SoundSettings.Volume = HitSoundVol;
                 MusicManager.PlaySoundAtLocation(FinalHitSound, transform.position, SoundSettings);
             }
+            //Instantiate Death VFX
             if (DeathVFX.Length > 0)
             {
                 foreach (GameObject vfx in DeathVFX)
@@ -102,19 +111,25 @@ public class EntityHealth : MonoBehaviour {
                     }
                 }
             }
-
-            DeathFunction.Invoke();
-            //If the player has zero health then disable their renderer
+            //Called DeathFuncton
+            if(DeathFunction != null) DeathFunction.Invoke();
+            //If the player has zero health then place them out of sight
             if (gameObject.CompareTag("Player"))
             {
                 Camera.main.GetComponentInParent<Follow>().SetStopFollowing(true);
                 gameObject.transform.position += new Vector3(0f, 1000f, 0f);
             }
-            else
+            else if(ScaleUpBeforeDeath)
+            {
+                transform.DOScale(1.5f, 0.1f);
+                Destroy(gameObject, 0.1f);
+            }
+            else//Otherwise destroy the entity
             {
                 Destroy(gameObject);
             }
         }
+        //If there is a damage over time effect active 
 		if(DOTActive)
         {
             CurrentHealth -= DOTDamage * Time.deltaTime;
@@ -123,6 +138,7 @@ public class EntityHealth : MonoBehaviour {
                 DOTActive = false;
             }
         }
+        //Set the emission value of the entities material back to zero
         if (FlashBack & Time.time - LastTime > 0.05f)
         {
             if (GetComponent<MeshRenderer>())
@@ -130,6 +146,7 @@ public class EntityHealth : MonoBehaviour {
                 GetComponent<MeshRenderer>().materials[0].SetColor("_EmissionColor", Color.black);
                 FlashBack = false;
                 LastTime = 0f;
+                GetComponent<MeshRenderer>().materials[0].SetFloat("_Emission", 0f);
             }
             else if (GetComponentInChildren<SkinnedMeshRenderer>())
             {
@@ -143,13 +160,14 @@ public class EntityHealth : MonoBehaviour {
 
     public void DecreaseHealth(float _value)
     {
+        //Decrease the health of the entity
         isHit = true;
         DamageFlash();
         CurrentHealth -= _value;
         if (CurrentHealth < 0) CurrentHealth = 0;
         if (gameObject.tag.Equals("Player"))
         {
-            OnPlayerHealthUpdate();
+            if(OnPlayerHealthUpdate != null) OnPlayerHealthUpdate();
 			Camera.main.GetComponent<Animator> ().SetTrigger ("ChromaBurst");
         }
         //Feedback
@@ -157,9 +175,11 @@ public class EntityHealth : MonoBehaviour {
         {
             Instantiate(HitVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         }
-        if(HitSound != null)//Sound
+        //Play hit sound if it exists
+        if(HitSound != null)
         {
             float Pitch = Random.Range(HitSoundPitchRange.x, HitSoundPitchRange.y);
+            //Play the one sound
             if (HitSound.Length == 1)
             {
                 if (!StackSounds && LastSound == null)
@@ -172,6 +192,7 @@ public class EntityHealth : MonoBehaviour {
                 }
 
             }
+            //Pick a random available sound
             else if(HitSound.Length > 1)
             {
                 int RandomInt = Random.Range(0, HitSound.Length - 1);
@@ -185,6 +206,7 @@ public class EntityHealth : MonoBehaviour {
                 }
             }
         }
+        //Play hit animation if it exists
         if (HitAnimationOn)
         {
             if (GetComponent<Animator>())//Animation
@@ -193,7 +215,8 @@ public class EntityHealth : MonoBehaviour {
 
             }
         }
-        if(OnHitShake)//Shake
+        //Play DOShake if wanted
+        if(OnHitShake)
         {
             transform.DOComplete();
             transform.DOShakePosition(0.1f, 0.1f, 1);
@@ -202,10 +225,12 @@ public class EntityHealth : MonoBehaviour {
     
     public void IncreaseHealth(float _value)
     {
+        //Increase health of the entity
         CurrentHealth += _value;
         if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
-        if (gameObject.tag.Equals("Player"))
+        if (gameObject.tag.Equals("Player")) 
         {
+            //Called the player health update event
             OnPlayerHealthUpdate();
         }
     }
@@ -225,11 +250,13 @@ public class EntityHealth : MonoBehaviour {
 
     void DamageFlash()
     {
+        //Set the emission value of the entities material to max
         if (GetComponent<MeshRenderer>())
         {
             GetComponent<MeshRenderer>().materials[0].SetColor("_EmissionColor", Color.white);
             FlashBack = true;
             LastTime = Time.time;
+            GetComponent<MeshRenderer>().materials[0].SetFloat("_Emission", 1f);
         }
         else if(GetComponentInChildren<SkinnedMeshRenderer>())
         {

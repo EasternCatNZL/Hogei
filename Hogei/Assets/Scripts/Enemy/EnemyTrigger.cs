@@ -18,6 +18,7 @@ public class EnemyTrigger : MonoBehaviour {
     public GameObject WarningObject;
     public float WarningBegan = 0.0f;
     public float WarningTime = 0.5f;
+    public float WarningYEndValue = 0.4f;
     public bool WarningActive = false;
 
     public EnemyBehavior Enemy;
@@ -63,7 +64,7 @@ public class EnemyTrigger : MonoBehaviour {
         Vector3 currentPos = transform.position;
         Vector3 extraHeight = new Vector3(0.0f, 2.0f, 0.0f);
         GameObject Object = Instantiate(WarningObject, currentPos + extraHeight, Quaternion.identity);
-        Object.transform.DOScaleY(0.5f, 0.5f).SetEase(Ease.OutBack, 5f);
+        Object.transform.DOScaleY(WarningYEndValue, 0.5f).SetEase(Ease.OutBack, 5f);
     }
 
 }

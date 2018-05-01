@@ -196,6 +196,7 @@ public class MusicManager : MonoBehaviour {
 
     public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location)
     {
+        if (_Clip == null) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
@@ -206,6 +207,7 @@ public class MusicManager : MonoBehaviour {
 
     public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch)
     {
+        if (_Clip == null) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
@@ -217,6 +219,7 @@ public class MusicManager : MonoBehaviour {
 
     public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch, float _Volume)
     {
+        if (_Clip == null) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
@@ -229,6 +232,7 @@ public class MusicManager : MonoBehaviour {
 
     public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, AudioSourceSettings _Settings)
     {
+        if (_Clip == null) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
