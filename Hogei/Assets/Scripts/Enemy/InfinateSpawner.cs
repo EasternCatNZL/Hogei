@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class InfinateSpawner : MonoBehaviour
 {
 
     public GameObject Enemy;
     public float SpawnTime = 1.0f;
+    public float ScaleUpTime = 0.5f;
     private float timer = 0.0f;
     private bool CanSpawn = false;
+    private GameObject PlayerRef;
 
 
     // Use this for initialization
@@ -34,6 +37,7 @@ public class InfinateSpawner : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            PlayerRef = other.gameObject;
             CanSpawn = true;
             timer = SpawnTime;
         }
@@ -49,7 +53,10 @@ public class InfinateSpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(Enemy, transform.position, transform.rotation);
+        GameObject Chick = Instantiate(Enemy, transform.position, transform.rotation);
+        Chick.transform.localScale = Vector3.zero;
+        Chick.GetComponent<EnemyBehavior>().Activate();
+        Chick.transform.DOScale(1f, ScaleUpTime);
         timer = SpawnTime;
     }
 }
