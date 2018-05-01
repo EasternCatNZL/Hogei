@@ -202,7 +202,7 @@ public class SetupStraightBullet : MonoBehaviour {
             collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
             //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
         }
-        GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
+        Instantiate(particleObject, transform.position, Quaternion.identity);
         //Deactivate();
         Destroy(gameObject);
     }

@@ -102,7 +102,7 @@ public class PlayerStraightBullet : MonoBehaviour {
                 }
             }
             //Deactivate();
-            GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
+            Instantiate(explosionVFX, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

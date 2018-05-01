@@ -128,12 +128,6 @@ public class CactusRandomSpray : EnemyBehavior {
         }
     }
 
-    //On death logic
-    public void AmDead()
-    {
-
-    }
-
     //pause funcs
     void OnPause()
     {

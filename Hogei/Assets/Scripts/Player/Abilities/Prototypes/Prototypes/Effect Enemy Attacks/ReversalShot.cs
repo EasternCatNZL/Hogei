@@ -32,6 +32,6 @@ public class ReversalShot : MonoBehaviour {
         Vector3 bitAhead = transform.position + (transform.forward * distance);
         //alter vertical
         bitAhead += new Vector3(0.0f, verticalRepos, 0.0f);
-        GameObject shotClone = Instantiate(shotObject, bitAhead, transform.rotation);
+        Instantiate(shotObject, bitAhead, transform.rotation);
     }
 }

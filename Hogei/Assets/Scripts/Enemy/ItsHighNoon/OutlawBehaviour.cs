@@ -169,12 +169,6 @@ public class OutlawBehaviour : EnemyBehavior {
         }
     }
 
-    //On death logic
-    public void AmDead()
-    {
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         //if not active

@@ -20,6 +20,6 @@ public class BulletClearer : MonoBehaviour {
 
     public void UseAbility()
     {
-        GameObject clearerClone = Instantiate(clearerObject, transform.position, transform.rotation);
+        Instantiate(clearerObject, transform.position, transform.rotation);
     }
 }

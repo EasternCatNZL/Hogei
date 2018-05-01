@@ -26,7 +26,6 @@ public class Follow : MonoBehaviour
     private Transform CameraTransform;
     private Vector3 CameraOffset;
 
-    private PlayerStreamShot StreamShot;
     public bool StopFollowing = false;
     // Use this for initialization
     void Start()
@@ -34,7 +33,6 @@ public class Follow : MonoBehaviour
         CameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         transform.position = Target.position;
         Player = GameObject.FindGameObjectWithTag("Player");
-        StreamShot = Target.GetComponentInChildren<PlayerStreamShot>();
     }
 
     // Update is called once per frame
@@ -50,22 +48,10 @@ public class Follow : MonoBehaviour
             Vector3 Dir = (MousePos - Target.position).normalized ;
             Vector3 DesiredPos = Vector3.zero;
             DesiredPos = Target.position + Vector3.ClampMagnitude(Dir * MouseDistance, AheadDistance);
-            //if (MouseDistance < AheadDistance)
-            //{
-            //    DesiredPos = Target.position;
-            //}
-            //else
-            //{
-            //    DesiredPos = Target.position + (MousePos - Target.position).normalized * AheadDistance;
-            //}
 
             //Move the camera towards the desired position
             transform.DOMove(DesiredPos, LerpDuration);
-            //if(StreamShot.isFiring == true)
-            //{
-            //    transform.DOShakePosition(1, 0.05f);
-            //    StreamShot.isFiring = false;
-            //}  
+
             if (Player)
             {
                 if (Player.GetComponent<EntityHealth>().isHit == true)

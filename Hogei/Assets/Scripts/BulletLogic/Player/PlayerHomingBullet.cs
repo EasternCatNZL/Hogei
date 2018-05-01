@@ -152,7 +152,7 @@ public class PlayerHomingBullet : MonoBehaviour {
         {
             collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);            
         }
-        GameObject vfxClone = Instantiate(explosionVFX, transform.position, transform.rotation);
+        Instantiate(explosionVFX, transform.position, transform.rotation);
         Deactivate();        
     }
 

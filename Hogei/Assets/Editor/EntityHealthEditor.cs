@@ -7,16 +7,16 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class EntityHealthEditor : Editor {
 
-    private EntityHealth EntHealth = null;
+    //private EntityHealth EntHealth = null;
 
-    SerializedProperty DeathFunc;
-    SerializedProperty SerialHitVFX;
+    //SerializedProperty DeathFunc;
+    //SerializedProperty SerialHitVFX;
 
     private void OnEnable()
     {
-        EntHealth = (EntityHealth)target;
-        DeathFunc = serializedObject.FindProperty("DeathFunction");
-        SerialHitVFX = serializedObject.FindProperty("HitVFX");
+        //EntHealth = (EntityHealth)target;
+        //DeathFunc = serializedObject.FindProperty("DeathFunction");
+        //SerialHitVFX = serializedObject.FindProperty("HitVFX");
     }
 
     public override void OnInspectorGUI()

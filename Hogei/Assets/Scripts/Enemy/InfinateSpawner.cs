@@ -11,7 +11,6 @@ public class InfinateSpawner : MonoBehaviour
     public float ScaleUpTime = 0.5f;
     private float timer = 0.0f;
     private bool CanSpawn = false;
-    private GameObject PlayerRef;
 
 
     // Use this for initialization
@@ -37,7 +36,6 @@ public class InfinateSpawner : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            PlayerRef = other.gameObject;
             CanSpawn = true;
             timer = SpawnTime;
         }

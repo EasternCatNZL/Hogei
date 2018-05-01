@@ -57,10 +57,10 @@ public class EntityHealth : MonoBehaviour {
     //[Header("Audio")]
     //public AudioSource deathSound;
 
-    bool DOTActive;
-    float DOTDamage;
-    float DOTDuration;
-    float DOTStart;
+    bool DOTActive = false;
+    float DOTDamage = 0f;
+    float DOTDuration = 0f;
+    float DOTStart = 0f;
 
 	// Use this for initialization
 	void Start () {
