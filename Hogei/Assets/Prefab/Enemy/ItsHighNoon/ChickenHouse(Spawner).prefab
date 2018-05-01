@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 65803341921336076}
   - component: {fileID: 114974357244433524}
   - component: {fileID: 114472002750889762}
+  - component: {fileID: 114324628380074222}
   - component: {fileID: 82097849967221338}
   m_Layer: 10
   m_Name: ChickenHouse(Spawner)
@@ -74,15 +75,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870582703345732}
-  m_LocalRotation: {x: -0.042316627, y: 0.90925765, z: 0.0030093633, w: 0.41406623}
-  m_LocalPosition: {x: 14.43, y: 15.76, z: -25.23}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4484173, y: 1.4484168, z: 1.4484165}
   m_Children:
   - {fileID: 4494173620987986}
   - {fileID: 4093937303184872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -2.322, y: 131.119, z: -4.274}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4093937303184872
 Transform:
   m_ObjectHideFlags: 1
@@ -312,6 +313,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114324628380074222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870582703345732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58ace4e937123540af613a08b7a02ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpwardsForce: 10
+  Bits:
+  - {fileID: 1650542462881272, guid: 012bd14de9e9aba43b62c0ebf70b06a4, type: 2}
+  - {fileID: 1033047488264012, guid: 9e5ea3a84afc9ba4db6d6e5baa182302, type: 2}
+  - {fileID: 1554696140739978, guid: 4fcf04c04bf4f7a48ab8ece041214106, type: 2}
+  - {fileID: 1790390179205530, guid: fec285dea2697ea4783fbd2c2afd072e, type: 2}
+  - {fileID: 1033047488264012, guid: 9e5ea3a84afc9ba4db6d6e5baa182302, type: 2}
 --- !u!114 &114472002750889762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,7 +386,18 @@ MonoBehaviour:
   FinalHitSound: {fileID: 0}
   DeathFunction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114324628380074222}
+        m_MethodName: Explode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!135 &135172256681009890
