@@ -33,12 +33,14 @@ public class BarnPhaseHandler : MonoBehaviour {
 
     [Header("Script refs")]
     public EntityHealth health;
-    public BarnAxisMovement axisMove;
+    //public BarnAxisMovement axisMove;
+    public BarnSideMovement sideMove;
+    public BarnFrontCannon frontCannon;
     public BarnSheepLauncher sheepLaunch;
     public BarnSheepRumble sheepRumble;
 
-    [Header("Cannon refs")]
-    public BarnCannonHandler[] cannonArray = new BarnCannonHandler[0];
+    //[Header("Cannon refs")]
+    //public BarnCannonHandler[] cannonArray = new BarnCannonHandler[0];
 
     //control vars
     private bool inPhaseOne = true; //checks in phase one
@@ -89,14 +91,11 @@ public class BarnPhaseHandler : MonoBehaviour {
                 inPhaseTwo = false;
                 inPhaseThree = true;
                 //turn off movement
-                axisMove.doRotation = false;
+                sideMove.isUsing = false;
                 //turn off sheep launcher
                 sheepLaunch.isUsing = false;
-                //turn off cannons
-                for (int i = 0; i < cannonArray.Length; i++)
-                {
-                    cannonArray[i].isUsing = false;
-                }
+                //turn off front shot
+                frontCannon.isUsing = false;
                 SinkBarn();
             }
             
@@ -121,7 +120,7 @@ public class BarnPhaseHandler : MonoBehaviour {
         isMoving = true;
         //move down
         //get vector below current pos
-        Vector3 belowSelf = new Vector3(barn.transform.position.x, barn.transform.position.y - descentAmount, barn.transform.position.z);
+        Vector3 belowSelf = new Vector3(barn.transform.position.x, barn.transform.position.y + descentAmount, barn.transform.position.z);
         barn.transform.DOMove(belowSelf, moveTime);
         Invoke("MoveToPrepLocation", moveTime);
     }

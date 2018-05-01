@@ -40,6 +40,7 @@ public class BarnSideMovement : MonoBehaviour {
     [Header("Control vars")]
     [Range(-1, 1)]
     public int direction = 1; //direction rotation is moving in
+    public bool isUsing = true; //check if should be using
 
     //control vars
     private float currentSpeed = 0.0f; //the current speed of motion

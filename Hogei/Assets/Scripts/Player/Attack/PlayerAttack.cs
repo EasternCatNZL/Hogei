@@ -174,7 +174,7 @@ public class PlayerAttack : MonoBehaviour {
         //check what player is using
         if (canDo.useKeyboard)
         {
-            if (Luminosity.IO.InputManager.GetAxisRaw(attackInputAxis) != 0)
+            if (/*Luminosity.IO.InputManager.GetAxisRaw(attackInputAxis) != 0*/ Luminosity.IO.InputManager.GetButton(attackInputAxis) )
             {
                 valid = true;
             }

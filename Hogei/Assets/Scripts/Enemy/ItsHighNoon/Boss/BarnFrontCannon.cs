@@ -26,9 +26,8 @@ public class BarnFrontCannon : MonoBehaviour {
     [Header("Tags")]
     public string playerTag = "Player";
 
-    //control vars
-    [HideInInspector]
-    public bool isUsing = false; //check if this should be used
+    [Header("Control vars")]
+    public bool isUsing = true; //check if this should be used
 
     private float cannonShotTime = 0.0f; //time cannon last shot
 
@@ -39,10 +38,14 @@ public class BarnFrontCannon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Time.time > cannonShotTime + timeBetweenSprays)
+        if (isUsing)
         {
-            FireCannon();
+            if (Time.time > cannonShotTime + timeBetweenSprays)
+            {
+                FireCannon();
+            }
         }
+
     }
 
     //Fire cannon
