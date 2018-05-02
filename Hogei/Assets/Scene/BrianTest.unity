@@ -610,7 +610,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &120941655
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -932,8 +932,8 @@ MonoBehaviour:
     - m_name: Vertical
       m_description: 
       m_bindings:
-      - m_positive: 273
-        m_negative: 274
+      - m_positive: 119
+        m_negative: 115
         m_deadZone: 0.001
         m_gravity: 3
         m_sensitivity: 3
@@ -945,8 +945,8 @@ MonoBehaviour:
         m_gamepadButton: 0
         m_gamepadAxis: 0
         m_gamepadIndex: 0
-      - m_positive: 119
-        m_negative: 115
+      - m_positive: 273
+        m_negative: 274
         m_deadZone: 0.001
         m_gravity: 3
         m_sensitivity: 3
@@ -1085,6 +1085,102 @@ MonoBehaviour:
         m_deadZone: 0.001
         m_gravity: 1000
         m_sensitivity: 1000
+        m_snap: 0
+        m_invert: 0
+        m_type: 0
+        m_axis: 0
+        m_joystick: 0
+        m_gamepadButton: 0
+        m_gamepadAxis: 0
+        m_gamepadIndex: 0
+    - m_name: UI_Up
+      m_description: 
+      m_bindings:
+      - m_positive: 119
+        m_negative: 0
+        m_deadZone: 0
+        m_gravity: 1
+        m_sensitivity: 1
+        m_snap: 0
+        m_invert: 0
+        m_type: 0
+        m_axis: 0
+        m_joystick: 0
+        m_gamepadButton: 0
+        m_gamepadAxis: 0
+        m_gamepadIndex: 0
+    - m_name: UI_Down
+      m_description: 
+      m_bindings:
+      - m_positive: 115
+        m_negative: 0
+        m_deadZone: 0
+        m_gravity: 1
+        m_sensitivity: 1
+        m_snap: 0
+        m_invert: 0
+        m_type: 0
+        m_axis: 0
+        m_joystick: 0
+        m_gamepadButton: 0
+        m_gamepadAxis: 0
+        m_gamepadIndex: 0
+    - m_name: UI_Left
+      m_description: 
+      m_bindings:
+      - m_positive: 97
+        m_negative: 0
+        m_deadZone: 0
+        m_gravity: 1
+        m_sensitivity: 1
+        m_snap: 0
+        m_invert: 0
+        m_type: 0
+        m_axis: 0
+        m_joystick: 0
+        m_gamepadButton: 0
+        m_gamepadAxis: 0
+        m_gamepadIndex: 0
+    - m_name: UI_Right
+      m_description: 
+      m_bindings:
+      - m_positive: 100
+        m_negative: 0
+        m_deadZone: 0
+        m_gravity: 1
+        m_sensitivity: 1
+        m_snap: 0
+        m_invert: 0
+        m_type: 0
+        m_axis: 0
+        m_joystick: 0
+        m_gamepadButton: 0
+        m_gamepadAxis: 0
+        m_gamepadIndex: 0
+    - m_name: UI_Submit
+      m_description: 
+      m_bindings:
+      - m_positive: 323
+        m_negative: 0
+        m_deadZone: 0
+        m_gravity: 1
+        m_sensitivity: 1
+        m_snap: 0
+        m_invert: 0
+        m_type: 0
+        m_axis: 0
+        m_joystick: 0
+        m_gamepadButton: 0
+        m_gamepadAxis: 0
+        m_gamepadIndex: 0
+    - m_name: UI_Cancel
+      m_description: 
+      m_bindings:
+      - m_positive: 27
+        m_negative: 0
+        m_deadZone: 0
+        m_gravity: 1
+        m_sensitivity: 1
         m_snap: 0
         m_invert: 0
         m_type: 0
@@ -2542,7 +2638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bindButton: {fileID: 513613579}
-  m_keyDescription: {fileID: 821426329}
+  m_keyDescription: {fileID: 120941654}
   m_controlSchemeName: KeyboardMouse
   m_inputActionName: Vertical
   m_bindingIndex: 0
@@ -2590,7 +2686,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 513613580}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 64e760008aea46c4c94c6b546412c2a2, type: 3}
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnPointerDown
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &513613580
@@ -4259,6 +4366,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114955035197925360, guid: f8550a6b1bdb1b64f9bdf959e74dc6fe,
+        type: 2}
+      propertyPath: SceneAdjustAngle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8550a6b1bdb1b64f9bdf959e74dc6fe, type: 2}
   m_IsPrefabParent: 0
@@ -4854,15 +4966,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1080517165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: cb136099cc3379144a392d48c3cce324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
+  m_UpButton: UI_Up
+  m_DownButton: UI_Down
+  m_LeftButton: UI_Left
+  m_RightButton: UI_Right
+  m_SubmitButton: UI_Submit
+  m_CancelButton: UI_Cancel
   m_ForceModuleActive: 0
 --- !u!114 &1080517167
 MonoBehaviour:
@@ -5218,6 +5330,16 @@ MonoBehaviour:
   enemyList: []
   gateArray:
   - {fileID: 889602396}
+  FunctionOnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  FunctionOnExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   playerTag: Player
 --- !u!4 &1132336274
 Transform:
@@ -5947,46 +6069,55 @@ MonoBehaviour:
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 5, y: 1, z: 0}
+      spawnTransform: {fileID: 0}
       startRot: 270
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 7, y: 1, z: 1}
+      spawnTransform: {fileID: 0}
       startRot: 270
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 9, y: 1, z: 2}
+      spawnTransform: {fileID: 0}
       startRot: 270
     spawnTiming: 0
   - spawnDetailsArray:
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 0, y: 1, z: 10}
+      spawnTransform: {fileID: 0}
       startRot: 180
     spawnTiming: 1
   - spawnDetailsArray:
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 0, y: 1, z: -10}
+      spawnTransform: {fileID: 0}
       startRot: 0
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 0, y: 1, z: 10}
+      spawnTransform: {fileID: 0}
       startRot: 180
     spawnTiming: 1
   - spawnDetailsArray:
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 5, y: 1, z: 10}
+      spawnTransform: {fileID: 0}
       startRot: 180
     spawnTiming: 1
   - spawnDetailsArray:
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 0, y: 1, z: 15}
+      spawnTransform: {fileID: 0}
       startRot: 180
     - enemyObject: {fileID: 1253003679556996, guid: ed18b8d1abc0f3344987dc2408e86611,
         type: 2}
       spawnLocationLocal: {x: 0, y: 1, z: 10}
+      spawnTransform: {fileID: 0}
       startRot: 180
     spawnTiming: 1
   gate: {fileID: 1132336273}
