@@ -27,7 +27,7 @@ using System.Collections;
 
 namespace Luminosity.IO.Examples
 {
-	[RequireComponent(typeof(Image))]
+	//[RequireComponent(typeof(Image))]
 	public class RebindInput : MonoBehaviour, IPointerDownHandler 
 	{
 		public enum RebindType
@@ -35,10 +35,12 @@ namespace Luminosity.IO.Examples
 			Keyboard, GamepadButton, GamepadAxis
 		}
 
-		[SerializeField]
-		private Sprite m_normalState;
-		[SerializeField]
-		private Sprite m_scanningState;
+        public Button bindButton;
+
+		//[SerializeField]
+		//private Sprite m_normalState;
+		//[SerializeField]
+		//private Sprite m_scanningState;
 		[SerializeField]
 		private Text m_keyDescription;
 		[SerializeField]
@@ -69,7 +71,8 @@ namespace Luminosity.IO.Examples
 		private void Awake()
 		{
 			m_image = GetComponent<Image>();
-			m_image.overrideSprite = m_normalState;
+            //m_image.overrideSprite = m_normalState;
+            bindButton.interactable = true;
 			GenerateJoystickAxisNames();
 			InitializeInputAction();
 
@@ -125,7 +128,9 @@ namespace Luminosity.IO.Examples
 
 			if(!InputManager.IsScanning && m_inputAction != null)
 			{
-				m_image.overrideSprite = m_scanningState;
+                //m_image.overrideSprite = m_scanningState;
+                //make button interaction false
+                bindButton.interactable = false;
 				m_keyDescription.text = "...";
 
 				ScanSettings settings;
@@ -183,8 +188,9 @@ namespace Luminosity.IO.Examples
 				m_keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
 			}
 
-			m_image.overrideSprite = m_normalState;
-			return true;
+            //m_image.overrideSprite = m_normalState;
+            bindButton.interactable = true;
+            return true;
 		}
 
 		private bool IsKeyValid(KeyCode key)
@@ -244,8 +250,9 @@ namespace Luminosity.IO.Examples
 						m_keyDescription.text = (m_inputBinding.Invert ? "-" : "+") + m_axisNames[m_inputBinding.Axis];
 					}
 				}
-				m_image.overrideSprite = m_normalState;
-			}
+                //m_image.overrideSprite = m_normalState;
+                bindButton.interactable = true;
+            }
 			else
 			{
 				//	The axis is negative when the timeout has been reached or the scan has been canceled
@@ -268,8 +275,9 @@ namespace Luminosity.IO.Examples
 						m_keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
 					}
 				}
-				m_image.overrideSprite = m_normalState;
-			}
+                //m_image.overrideSprite = m_normalState;
+                bindButton.interactable = true;
+            }
 
 			return true;
 		}
@@ -299,8 +307,9 @@ namespace Luminosity.IO.Examples
 			if(result.JoystickAxis >= 0)
 				m_inputBinding.Axis = result.JoystickAxis;
 
-			m_image.overrideSprite = m_normalState;
-			m_keyDescription.text = m_axisNames[m_inputBinding.Axis];
+            //m_image.overrideSprite = m_normalState;
+            bindButton.interactable = true;
+            m_keyDescription.text = m_axisNames[m_inputBinding.Axis];
 			return true;
 		}
 
