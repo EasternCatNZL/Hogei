@@ -117,16 +117,16 @@ namespace Luminosity.IO.Examples
 			}
 		}
 
-		public void OnPointerDown(PointerEventData data)
-		{
-			StartCoroutine(StartInputScanDelayed());
-		}
+        public void OnPointerDown(PointerEventData data)
+        {
+            StartCoroutine(StartInputScanDelayed());
+        }
 
-		private IEnumerator StartInputScanDelayed()
+        public IEnumerator StartInputScanDelayed()
 		{
-			yield return null;
+            yield return null;
 
-			if(!InputManager.IsScanning && m_inputAction != null)
+            if (!InputManager.IsScanning && m_inputAction != null)
 			{
                 //m_image.overrideSprite = m_scanningState;
                 //make button interaction false
