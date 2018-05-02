@@ -15,4 +15,13 @@ public class ExplodeIntoBits : MonoBehaviour {
             temp.GetComponent<Rigidbody>().AddForce(transform.up * UpwardsForce, ForceMode.Impulse);
         }
     }
+
+    public void Explode(bool _DestroyGameObject)
+    {
+        foreach (GameObject Obj in Bits)
+        {
+            GameObject temp = Instantiate(Obj, transform.position, Obj.transform.rotation);
+            temp.GetComponent<Rigidbody>().AddForce(transform.up * UpwardsForce, ForceMode.Impulse);
+        }if (_DestroyGameObject) Destroy(gameObject);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GateManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class GateManager : MonoBehaviour
     [Header("Doors")]
     [Tooltip("Array of gates to this room")]
     public GameObject[] gateArray = new GameObject[0];
+
+    [Header("Functions")]
+    public UnityEvent FunctionOnEnter;
+    public UnityEvent FunctionOnExit;
 
 
     [Header("Tags")]
@@ -41,7 +46,7 @@ public class GateManager : MonoBehaviour
         {
             if(Time.time - StartTime >= TimerLength)
             {
-                OpenDoors();
+                RoomCleared();
                 OpenAfterTime = false;
             }
         }
@@ -50,6 +55,7 @@ public class GateManager : MonoBehaviour
     //on room activation logic
     private void ActivateRoom()
     {
+        if(FunctionOnEnter != null) FunctionOnEnter.Invoke();
         isActivated = true;
         //close doors
         CloseDoors();
@@ -80,6 +86,7 @@ public class GateManager : MonoBehaviour
     //Called on room clear
     public void RoomCleared()
     {
+        if (FunctionOnExit != null) FunctionOnExit.Invoke();
         //set to cleared
         isCleared = true;
         //open the doors

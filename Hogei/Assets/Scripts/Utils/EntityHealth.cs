@@ -49,6 +49,9 @@ public class EntityHealth : MonoBehaviour {
     public AudioClip FinalHitSound = null;
     private AudioSource LastSound;
 
+    [Header("Function To Call When First Hit")]
+    public UnityEvent HitTriggerFunction;
+
     [Header("Function To Call On Death")]
     public UnityEvent DeathFunction;
 
@@ -160,9 +163,13 @@ public class EntityHealth : MonoBehaviour {
 
     public void DecreaseHealth(float _value)
     {
-        //Decrease the health of the entity
-        isHit = true;
-        DamageFlash();
+        //Call first hit function and set entity to isHit
+        if (!isHit && HitTriggerFunction != null)
+        {
+            HitTriggerFunction.Invoke();
+            isHit = true;
+        }
+        //Decrease the health of the entity        
         CurrentHealth -= _value;
         if (CurrentHealth < 0) CurrentHealth = 0;
         if (gameObject.tag.Equals("Player"))
@@ -171,7 +178,8 @@ public class EntityHealth : MonoBehaviour {
 			Camera.main.GetComponent<Animator> ().SetTrigger ("ChromaBurst");
         }
         //Feedback
-        if(HitVFX)//VFX
+        DamageFlash();
+        if (HitVFX)//VFX
         {
             Instantiate(HitVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         }

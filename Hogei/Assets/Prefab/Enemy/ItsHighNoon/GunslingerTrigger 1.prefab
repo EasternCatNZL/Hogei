@@ -1021,11 +1021,23 @@ MonoBehaviour:
   CurrentHealth: 0
   MaxHealth: 10
   OnHitShake: 0
-  DeathVFX: []
-  HitVFX: {fileID: 0}
-  ModHitVFX: 0
+  DeathVFX:
+  - {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2, type: 2}
+  HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
   HitVFXScale: {x: 0, y: 0, z: 0}
-  HitSound: {fileID: 0}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound:
+  - {fileID: 0}
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1048,8 +1060,13 @@ MonoBehaviour:
   bulletSpeed: 12
   damage: 1
   numShotsInRound: 3
+  MaxRange: 1000
   timeBetweenShots: 0.2
   timeBetweenRounds: 1
+  ShotSound: {fileID: 0}
+  ShotSoundVolume: 1
+  PitchVarianceRange: {x: 0, y: 0}
+  ShotSpatialBlend: 0.5
   targetTag: Player
   bulletTag: Bullet
   setupDistance: 0
@@ -1072,6 +1089,12 @@ MonoBehaviour:
   isTriggered: 0
   doTriggerPlayer: 1
   doTriggerBullet: 0
+  WarningObject: {fileID: 0}
+  WarningBegan: 0
+  WarningTime: 0.5
+  WarningYEndValue: 0.4
+  WarningActive: 0
+  Enemy: {fileID: 0}
 --- !u!114 &114394728860101190
 MonoBehaviour:
   m_ObjectHideFlags: 1

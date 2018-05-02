@@ -9,6 +9,8 @@ public class InfinateSpawner : MonoBehaviour
     public GameObject Enemy;
     public float SpawnTime = 1.0f;
     public float ScaleUpTime = 0.5f;
+    [Header("Launch Settings")]
+    public float LaunchForce;
     private float timer = 0.0f;
     private bool CanSpawn = false;
 
@@ -22,12 +24,12 @@ public class InfinateSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CanSpawn == true)
+        if (CanSpawn == true)
         {
-            timer -= Time.deltaTime;            
-            if(timer <= 0.0f)
+            timer -= Time.deltaTime;
+            if (timer <= 0.0f)
             {
-                SpawnEnemy();                             
+                SpawnEnemy();
             }
         }
     }
@@ -43,10 +45,10 @@ public class InfinateSpawner : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
-        {
-            CanSpawn = false;
-        }
+        //if (other.gameObject.tag.Equals("Player"))
+        //{
+        //    CanSpawn = false;
+        //}
     }
 
     void SpawnEnemy()
@@ -55,6 +57,10 @@ public class InfinateSpawner : MonoBehaviour
         Chick.transform.localScale = Vector3.zero;
         Chick.GetComponent<EnemyBehavior>().Activate();
         Chick.transform.DOScale(1f, ScaleUpTime);
+        Chick.GetComponent<Rigidbody>().AddForce(transform.forward * LaunchForce, ForceMode.Impulse);
         timer = SpawnTime;
     }
+
+    public void Activate() { CanSpawn = true; }
+    public void Deactivate() { CanSpawn = false; }
 }
