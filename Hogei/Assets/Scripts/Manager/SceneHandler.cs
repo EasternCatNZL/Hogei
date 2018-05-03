@@ -16,6 +16,7 @@ public class SceneHandler : MonoBehaviour {
 
     [Header("UI Settigns")]
     public GameObject CountDownUI;
+    public GameObject NotificationUI;
 
     [Header("Tags")]
     public string enemyTag = "Enemy";
@@ -36,6 +37,7 @@ public class SceneHandler : MonoBehaviour {
     void Initialise()
     {
         if(CountDownUI) CountDownUI.SetActive(false);
+        if (NotificationUI) NotificationUI.SetActive(false);
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
         RefEnemies();
     }
@@ -115,6 +117,11 @@ public class SceneHandler : MonoBehaviour {
     public GameObject GetCountDownUI()
     {
         return CountDownUI;
+    }
+
+    public GameObject GetNotificationUI()
+    {
+        return NotificationUI;
     }
 
     static public SceneHandler GetSceneHandler()

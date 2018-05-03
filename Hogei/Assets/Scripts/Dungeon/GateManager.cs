@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GateManager : MonoBehaviour
 {
@@ -13,9 +14,16 @@ public class GateManager : MonoBehaviour
     private GameObject CountDownUI;
     private float StartTime = 0f;
     private bool CountDownActive = false;
+
+    [Header("UI Settings")]
+    public bool ShowNotification = false;
+    public string NotificationMessage = "";
+    private GameObject NotificationUI;
+
     [Header("Enemies")]
     [Tooltip("Enemies required to defeat to pass the gate")]
     public List<GameObject> enemyList = new List<GameObject>();
+
     [Header("Doors")]
     [Tooltip("Array of gates to this room")]
     public GameObject[] gateArray = new GameObject[0];
@@ -23,6 +31,8 @@ public class GateManager : MonoBehaviour
     [Header("Functions")]
     public UnityEvent FunctionOnEnter;
     public UnityEvent FunctionOnExit;
+
+
 
 
     [Header("Tags")]
@@ -68,9 +78,24 @@ public class GateManager : MonoBehaviour
         if (OpenAfterTime)
         {
             StartTime = Time.time;
+
             CountDownUI = SceneHandler.GetSceneHandler().GetCountDownUI();
             CountDownUI.SetActive(true);
             CountDownActive = true;
+
+            if (ShowNotification)
+            {
+                NotificationUI = SceneHandler.GetSceneHandler().GetNotificationUI();
+                NotificationUI.SetActive(true);
+                NotificationUI.GetComponent<Text>().text = NotificationMessage;
+                NotificationUI.transform.localScale = Vector3.zero;
+                Sequence EnterExit = DOTween.Sequence();
+                // Add a movement tween at the beginning
+                EnterExit.Append(NotificationUI.transform.DOScale(1f, 1f).SetEase(Ease.OutBack));
+                // Add a rotation tween as soon as the previous one is finished
+                EnterExit.Append(NotificationUI.transform.DOScale(0f, 1f));
+                EnterExit.Play();
+            }
         }
 
         isActivated = true;
@@ -108,6 +133,9 @@ public class GateManager : MonoBehaviour
         //Set variables to null
         CountDownUI.SetActive(false);
         CountDownUI = null;
+        NotificationUI.transform.localScale = Vector3.one;
+        NotificationUI.SetActive(false);
+        NotificationUI = null;
         OpenAfterTime = false;
         CountDownActive = false;
         //set to cleared
