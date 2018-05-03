@@ -45,15 +45,15 @@ public class GateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(OpenAfterTime)
+        if (OpenAfterTime)
         {
             if (CountDownActive)
             {
                 CountDownUI.GetComponent<Text>().text = (TimerLength - (Time.time - StartTime)).ToString("F2");
                 if (Time.time - StartTime >= TimerLength)
                 {
+                    KillAllEnemies();
                     RoomCleared();
-                    OpenAfterTime = false;
                 }
             }
         }
@@ -63,7 +63,7 @@ public class GateManager : MonoBehaviour
     private void ActivateRoom()
     {
         //Call functions to activate when the room is entered
-        if(FunctionOnEnter != null) FunctionOnEnter.Invoke();
+        if (FunctionOnEnter != null) FunctionOnEnter.Invoke();
         //If timer based get the countdown ui
         if (OpenAfterTime)
         {
@@ -103,9 +103,13 @@ public class GateManager : MonoBehaviour
     //Called on room clear
     public void RoomCleared()
     {
+        //Call Functions to activate when a room is cleared
         if (FunctionOnExit != null) FunctionOnExit.Invoke();
+        //Set variables to null
         CountDownUI.SetActive(false);
         CountDownUI = null;
+        OpenAfterTime = false;
+        CountDownActive = false;
         //set to cleared
         isCleared = true;
         //open the doors
@@ -135,6 +139,15 @@ public class GateManager : MonoBehaviour
         {
             //set door to active
             gateArray[i].GetComponent<GateController>().UnlockGate();
+        }
+    }
+
+    //Kill all the enemies
+    private void KillAllEnemies()
+    {
+        for (int i = enemyList.Count - 1; i >= 0; --i)
+        {
+            enemyList[i].GetComponent<EntityHealth>().Kill();
         }
     }
 

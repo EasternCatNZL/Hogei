@@ -18,17 +18,17 @@ public class HealthBarNotched : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        DontDestroyOnLoad(gameObject);
-        CreateNotches();
-        if (Singleton)
-        {
-            Destroy(gameObject);
-        }
-        else if(!Singleton)
+        if(!Singleton)
         {
             Singleton = this;
         }
-	}
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+        CreateNotches();
+    }
 
     void OnEnable()
     {

@@ -145,7 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c0737248ed87d4bbf67149a89b40e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSpawnPoint: {fileID: 0}
   sceneNumber: 0
+  BackgroundMusic: {fileID: 0}
+  CountDownUI: {fileID: 0}
   enemyTag: Enemy
   enemiesInSceneCopyList: []
   enemiesInSceneList: []
@@ -573,6 +576,48 @@ Transform:
   m_Father: {fileID: 402737318}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &107607580
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400053192337830, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &109877240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,6 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa547cace4e17b54ebd8e205dcc5fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   chargeTime: 0.8
   recoverTime: 1
   timeBetweenBullets: 0.2
@@ -1546,7 +1592,6 @@ MonoBehaviour:
   targetTag: Player
   dungeonTag: Dungeon
   bulletTag: Bullet
-  isTriggered: 0
   timeChargeBegan: 0
   currentSpeed: 0
   target: {fileID: 0}
@@ -1571,8 +1616,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1792,6 +1848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa547cace4e17b54ebd8e205dcc5fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   chargeTime: 0.8
   recoverTime: 1
   timeBetweenBullets: 0.2
@@ -1809,7 +1866,6 @@ MonoBehaviour:
   targetTag: Player
   dungeonTag: Dungeon
   bulletTag: Bullet
-  isTriggered: 0
   timeChargeBegan: 0
   currentSpeed: 0
   target: {fileID: 0}
@@ -1834,8 +1890,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -3119,6 +3186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa547cace4e17b54ebd8e205dcc5fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   chargeTime: 0.8
   recoverTime: 1
   timeBetweenBullets: 0.2
@@ -3136,7 +3204,6 @@ MonoBehaviour:
   targetTag: Player
   dungeonTag: Dungeon
   bulletTag: Bullet
-  isTriggered: 0
   timeChargeBegan: 0
   currentSpeed: 0
   target: {fileID: 0}
@@ -3161,8 +3228,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -3429,6 +3507,8 @@ MonoBehaviour:
   - {fileID: 1843779777851048, guid: 788e1eb3d1fb55d43873e04e00353706, type: 2}
   - {fileID: 1843779777851048, guid: 2f930ab62b72af94a817ce66ef1fb2ca, type: 2}
   - {fileID: 1843779777851048, guid: 81780e4e41070ca4ab4a1ee64f905ff2, type: 2}
+  EmissionsValue: 1.5
+  ScaleFade: 0
 --- !u!4 &979640052
 Transform:
   m_ObjectHideFlags: 0
@@ -3542,15 +3622,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 982061906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: cb136099cc3379144a392d48c3cce324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
+  m_UpButton: UI_Up
+  m_DownButton: UI_Down
+  m_LeftButton: UI_Left
+  m_RightButton: UI_Right
+  m_SubmitButton: UI_Submit
+  m_CancelButton: UI_Cancel
   m_ForceModuleActive: 0
 --- !u!114 &982061908
 MonoBehaviour:
@@ -7722,6 +7802,9 @@ MonoBehaviour:
   HitVFX: {fileID: 0}
   VFXRotationOffset: {x: 0, y: 0, z: 0}
   VFXScaleOverride: {x: 1, y: 1, z: 1}
+  ShakeSound: {fileID: 0}
+  ShakeSoundVolume: 1
+  PitchVarianceRange: {x: 0, y: 0}
 --- !u!95 &1970514427
 Animator:
   serializedVersion: 3
@@ -8205,6 +8288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbc1604e9708cb4ead29a748e1228fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
   bulletSpeed: 3
@@ -8215,7 +8299,6 @@ MonoBehaviour:
   rampPercentTrigger: 0.5
   bulletOffsetY: 0.5
   bulletTag: Bullet
-  isActive: 0
 --- !u!114 &2058844917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8237,8 +8320,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []

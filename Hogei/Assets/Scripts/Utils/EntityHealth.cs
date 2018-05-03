@@ -120,7 +120,7 @@ public class EntityHealth : MonoBehaviour {
             if (gameObject.CompareTag("Player"))
             {
                 Camera.main.GetComponentInParent<Follow>().SetStopFollowing(true);
-                gameObject.transform.position += new Vector3(0f, 1000f, 0f);
+                gameObject.transform.position += new Vector3(0f, -1000f, 0f);
             }
             else if(ScaleUpBeforeDeath)
             {
@@ -246,6 +246,11 @@ public class EntityHealth : MonoBehaviour {
     public void Revive()
     {
         CurrentHealth = MaxHealth;
+    }
+
+    public void Kill()
+    {
+        CurrentHealth = 0f;
     }
 
     //Deals the given damage spread over the time given
