@@ -175,7 +175,7 @@ public class GateManager : MonoBehaviour
     {
         for (int i = enemyList.Count - 1; i >= 0; --i)
         {
-            enemyList[i].GetComponent<EntityHealth>().Kill();
+            if(enemyList[i] != null) enemyList[i].GetComponent<EntityHealth>().Kill(); //If the enemy isn't already dead then kill them
         }
     }
 
