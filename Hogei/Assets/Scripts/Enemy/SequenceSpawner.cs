@@ -24,7 +24,8 @@ public class SequenceSpawner : MonoBehaviour
         [Tooltip("If less than 0 the transforms rotation will be used")]
         public float startRot; //starting rotation
     }
-
+    
+    public bool DestroySelf = true;
     [Header("Spawn groups")]
     public SpawnGroup[] spawnGroupsArray = new SpawnGroup[0];
 
@@ -54,7 +55,7 @@ public class SequenceSpawner : MonoBehaviour
     {
         if (isTriggered)
         {
-            if (Time.time > lastSpawnTime + spawnGroupsArray[currentGroupIndex].spawnTiming)
+            if (currentGroupIndex < spawnGroupsArray.Length && Time.time > lastSpawnTime + spawnGroupsArray[currentGroupIndex].spawnTiming)
             {
                 SpawnSet();
             }
@@ -101,6 +102,7 @@ public class SequenceSpawner : MonoBehaviour
             if (enemyClone.GetComponent<EnemyBehavior>())
             {
                 enemyClone.GetComponent<EnemyBehavior>().isActive = true;
+                enemyClone.GetComponent<EnemyBehavior>().Activate();
             }
             else if (enemyClone.GetComponentInChildren<EnemyBehavior>())
             {
@@ -115,7 +117,7 @@ public class SequenceSpawner : MonoBehaviour
         //increment the current index
         currentGroupIndex++;
         //check if group index has exceeded group array size
-        if (currentGroupIndex >= spawnGroupsArray.Length)
+        if (DestroySelf && currentGroupIndex >= spawnGroupsArray.Length)
         {
             //destroy self
             Destroy(gameObject);

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33185237932058808}
   - component: {fileID: 23802978907760734}
   - component: {fileID: 54417539722535544}
-  - component: {fileID: 65883696576660818}
+  - component: {fileID: 135395178465500662}
   m_Layer: 0
   m_Name: Wooden_Bridge_Tiny
   m_TagString: Untagged
@@ -99,8 +99,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65883696576660818
-BoxCollider:
+--- !u!135 &135395178465500662
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,5 +109,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.851887, y: 2.450167, z: 5.939216}
+  m_Radius: 6.9259434
   m_Center: {x: 0, y: 0, z: 0}

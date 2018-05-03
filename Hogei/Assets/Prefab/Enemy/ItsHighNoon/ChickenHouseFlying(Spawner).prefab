@@ -1528,13 +1528,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616403944714944}
-  m_LocalRotation: {x: 0, y: -0.5636343, z: 0, w: 0.8260245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.227, y: -0.304, z: 0.146}
   m_LocalScale: {x: 0.69040906, y: 0.6904089, z: 0.6904087}
   m_Children: []
   m_Father: {fileID: 4810791800227376}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -68.615005, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4516399722546996
 Transform:
   m_ObjectHideFlags: 1
@@ -2355,6 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a66e3a30444dc24284e17c97a2b973d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   Enemy: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1, type: 2}
   SpawnTime: 1
   ScaleUpTime: 0.5

@@ -191,7 +191,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870582703345732}
-  m_Mesh: {fileID: 4300000, guid: 6ed89540d91a4e0429c6ed822d44a148, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 436c68930847d944f9a8ae64667249e9, type: 3}
 --- !u!65 &65785775422269602
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -355,9 +355,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a66e3a30444dc24284e17c97a2b973d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   Enemy: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1, type: 2}
   SpawnTime: 1
   ScaleUpTime: 0.5
+  LaunchForce: 0
 --- !u!114 &114974357244433524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,6 +386,11 @@ MonoBehaviour:
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls:

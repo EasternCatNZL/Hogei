@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GateManager : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class GateManager : MonoBehaviour
     [Header("Timer Settings")]
     public bool OpenAfterTime = false;
     public float TimerLength = 0f;
+    private GameObject CountDownUI;
     private float StartTime = 0f;
+    private bool CountDownActive = false;
     [Header("Enemies")]
     [Tooltip("Enemies required to defeat to pass the gate")]
     public List<GameObject> enemyList = new List<GameObject>();
@@ -44,10 +47,14 @@ public class GateManager : MonoBehaviour
     {
         if(OpenAfterTime)
         {
-            if(Time.time - StartTime >= TimerLength)
+            if (CountDownActive)
             {
-                RoomCleared();
-                OpenAfterTime = false;
+                CountDownUI.GetComponent<Text>().text = (TimerLength - (Time.time - StartTime)).ToString("F2");
+                if (Time.time - StartTime >= TimerLength)
+                {
+                    RoomCleared();
+                    OpenAfterTime = false;
+                }
             }
         }
     }
@@ -55,7 +62,17 @@ public class GateManager : MonoBehaviour
     //on room activation logic
     private void ActivateRoom()
     {
+        //Call functions to activate when the room is entered
         if(FunctionOnEnter != null) FunctionOnEnter.Invoke();
+        //If timer based get the countdown ui
+        if (OpenAfterTime)
+        {
+            StartTime = Time.time;
+            CountDownUI = SceneHandler.GetSceneHandler().GetCountDownUI();
+            CountDownUI.SetActive(true);
+            CountDownActive = true;
+        }
+
         isActivated = true;
         //close doors
         CloseDoors();
@@ -87,6 +104,8 @@ public class GateManager : MonoBehaviour
     public void RoomCleared()
     {
         if (FunctionOnExit != null) FunctionOnExit.Invoke();
+        CountDownUI.SetActive(false);
+        CountDownUI = null;
         //set to cleared
         isCleared = true;
         //open the doors

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneHandler : MonoBehaviour {
 
@@ -12,6 +13,9 @@ public class SceneHandler : MonoBehaviour {
 
     [Header("Music Settings")]
     public AudioClip BackgroundMusic;
+
+    [Header("UI Settigns")]
+    public GameObject CountDownUI;
 
     [Header("Tags")]
     public string enemyTag = "Enemy";
@@ -26,9 +30,13 @@ public class SceneHandler : MonoBehaviour {
 
     void Awake()
     {
-        //singleton = this;
-        sceneNumber = SceneManager.GetActiveScene().buildIndex;
+        Initialise();  
+    }
 
+    void Initialise()
+    {
+        if(CountDownUI) CountDownUI.SetActive(false);
+        sceneNumber = SceneManager.GetActiveScene().buildIndex;
         RefEnemies();
     }
 
@@ -102,6 +110,11 @@ public class SceneHandler : MonoBehaviour {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public GameObject GetCountDownUI()
+    {
+        return CountDownUI;
     }
 
     static public SceneHandler GetSceneHandler()

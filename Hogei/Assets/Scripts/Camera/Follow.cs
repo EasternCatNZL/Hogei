@@ -31,7 +31,7 @@ public class Follow : MonoBehaviour
     void Start()
     {
         CameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
-        transform.position = Target.position;
+        if(Target) transform.position = Target.position;
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 

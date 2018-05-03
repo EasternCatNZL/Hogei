@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class InfinateSpawner : MonoBehaviour
+public class InfinateSpawner : EnemyBehavior
 {
 
     public GameObject Enemy;
     public float SpawnTime = 1.0f;
     public float ScaleUpTime = 0.5f;
     [Header("Launch Settings")]
-    public float LaunchForce;
+    public float LaunchForce = 5f;
     private float timer = 0.0f;
-    private bool CanSpawn = false;
 
 
     // Use this for initialization
     void Start()
     {
-
+        if (LaunchForce == 0) LaunchForce = 5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CanSpawn == true)
+        if (isActive)
         {
             timer -= Time.deltaTime;
             if (timer <= 0.0f)
@@ -38,7 +37,7 @@ public class InfinateSpawner : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            CanSpawn = true;
+            isActive = true;
             timer = SpawnTime;
         }
     }
@@ -61,6 +60,7 @@ public class InfinateSpawner : MonoBehaviour
         timer = SpawnTime;
     }
 
-    public void Activate() { CanSpawn = true; }
-    public void Deactivate() { CanSpawn = false; }
+    public override void Activate() { isActive = true; }
+    public void SetLaunchForce(float _LaunchForce) { LaunchForce = _LaunchForce; }
+    public override void Deactivate() { isActive = false; }
 }
