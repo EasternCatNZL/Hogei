@@ -15,7 +15,7 @@ public class Bubble : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         timer = TrapDuration;
-        Player = 
+        
         
 	}
 	
