@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour {
 	}
 
     //turn all panels off
-    private void TurnAllPanelsOff()
+    public void TurnAllPanelsOff()
     {
         pausePanel.SetActive(false);
         audioPanel.SetActive(false);
@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     //turn on panels
-    private void TurnOnPause()
+    public void TurnOnPause()
     {
         TurnAllPanelsOff();
         pausePanel.SetActive(true);
