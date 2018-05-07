@@ -26,6 +26,13 @@ public class Follow : MonoBehaviour
     private Transform CameraTransform;
     private Vector3 CameraOffset;
 
+    [Header("Input axis")]
+    public string rightStickX = "RightStickX";
+    public string rightStickY = "RightStickY";
+
+    [Header("Transform alignment")]
+    public Transform alignment;
+
     public bool StopFollowing = false;
     // Use this for initialization
     void Start()
@@ -40,17 +47,14 @@ public class Follow : MonoBehaviour
     {
         if (Target != null && !StopFollowing)
         {
-            Vector3 MousePos = MouseTarget.GetWorldMousePos();
-            Debug.DrawLine(Target.position, Target.position + (MousePos - Target.position).normalized * AheadDistance, Color.green);
-            //Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, AheadDistance);
-            float MouseDistance = Vector3.Distance(Target.position, MousePos);
-            MooseDistance = MouseDistance;
-            Vector3 Dir = (MousePos - Target.position).normalized ;
-            Vector3 DesiredPos = Vector3.zero;
-            DesiredPos = Target.position + Vector3.ClampMagnitude(Dir * MouseDistance, AheadDistance);
-
-            //Move the camera towards the desired position
-            transform.DOMove(DesiredPos, LerpDuration);
+            if (Player.GetComponent<WhatCanIDO>().useKeyboard)
+            {
+                CameraMouseFollow();
+            }
+            else if (Player.GetComponent<WhatCanIDO>().useController)
+            {
+                CameraControllerFollow();
+            }
 
             if (Player)
             {
@@ -64,7 +68,7 @@ public class Follow : MonoBehaviour
             {
                 Player = GameObject.FindGameObjectWithTag("Player");
             }
-            if (DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
+            //if (DebugObject) DebugObject.position = Vector3.Lerp(Target.position, MousePos, AheadDistance);
             //Adjust the camera
             AdjustCamera();
         }
@@ -75,6 +79,35 @@ public class Follow : MonoBehaviour
                 Target = GameObject.FindGameObjectWithTag("Player").transform;
             }
         }
+    }
+
+    //camera mouse follow
+    private void CameraMouseFollow()
+    {
+        Vector3 MousePos = MouseTarget.GetWorldMousePos();
+        Debug.DrawLine(Target.position, Target.position + (MousePos - Target.position).normalized * AheadDistance, Color.green);
+        //Vector3 DesiredPos = Vector3.Lerp(Target.position, MousePos, AheadDistance);
+        float MouseDistance = Vector3.Distance(Target.position, MousePos);
+        //MooseDistance = MouseDistance;
+        Vector3 Dir = (MousePos - Target.position).normalized;
+        Vector3 DesiredPos = Vector3.zero;
+        DesiredPos = Target.position + Vector3.ClampMagnitude(Dir * MouseDistance, AheadDistance);
+
+        //Move the camera towards the desired position
+        transform.DOMove(DesiredPos, LerpDuration);
+    }
+
+    //camera controller aim follow
+    private void CameraControllerFollow()
+    {
+        //get direction from sticks
+        Vector3 direction = new Vector3(Luminosity.IO.InputManager.GetAxis(rightStickX), 0.0f, Luminosity.IO.InputManager.GetAxis(rightStickY));
+
+        //set desired pos
+        Vector3 DesiredPos = Target.position + (direction * AheadDistance);
+
+        //Move the camera towards the desired position
+        transform.DOMove(DesiredPos, LerpDuration);
     }
 
     void AdjustCamera()

@@ -129,8 +129,8 @@ public class Movement : MonoBehaviour {
     //move player pos
     private void MovePlayerController()
     {
-        print("X Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickX));
-        print("Y Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickY));
+        //print("X Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickX));
+        //print("Y Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickY));
 
         Vector3 newPos = Vector3.zero;
         Direction = Vector3.zero;

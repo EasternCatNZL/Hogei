@@ -78,7 +78,7 @@ public class WhatCanIDO : MonoBehaviour {
     {
         //set timing 
         lastScanTime = Time.time;
-        print("Scan start");
+        //print("Scan start");
         //make sure input scan is not already occuring
         if (!Luminosity.IO.InputManager.IsScanning /*&& inputAct != null*/)
         {
@@ -91,13 +91,13 @@ public class WhatCanIDO : MonoBehaviour {
             //check the current input
             if (useKeyboard)
             {
-                print("Trying keyboard to controller");
+                //print("Trying keyboard to controller");
                 settings.ScanFlags = Luminosity.IO.ScanFlags.JoystickButton;
                 Luminosity.IO.InputManager.StartInputScan(settings, JoystickButtonScan);
             }
             else if (useController)
             {
-                print("Trying controller to keyboard");
+                //print("Trying controller to keyboard");
                 settings.ScanFlags = Luminosity.IO.ScanFlags.Key;
                 Luminosity.IO.InputManager.StartInputScan(settings, KeyScan);
             }
