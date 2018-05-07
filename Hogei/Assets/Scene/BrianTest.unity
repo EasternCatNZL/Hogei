@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &36954810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,7 +944,7 @@ MonoBehaviour:
       m_bindings:
       - m_positive: 0
         m_negative: 0
-        m_deadZone: 0.3
+        m_deadZone: 100
         m_gravity: 0
         m_sensitivity: 1
         m_snap: 0
@@ -960,7 +960,7 @@ MonoBehaviour:
       m_bindings:
       - m_positive: 0
         m_negative: 0
-        m_deadZone: 0.3
+        m_deadZone: 100
         m_gravity: 0
         m_sensitivity: 1
         m_snap: 0
@@ -1067,7 +1067,7 @@ MonoBehaviour:
         m_gamepadButton: 0
         m_gamepadAxis: 0
         m_gamepadIndex: 0
-  m_playerOneDefault: 3ece541ad8c84236a997ee05e3aef50c
+  m_playerOneDefault: 925e28e1b627432b920e3fd250426c8a
   m_playerTwoDefault: 
   m_playerThreeDefault: 
   m_playerFourDefault: 
@@ -3163,33 +3163,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
-    - target: {fileID: 4149411041785912, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 136671544404397856, guid: 5720eba4bce23b3429b73198fbfc26a5,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54901232168630986, guid: 5720eba4bce23b3429b73198fbfc26a5,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060729911059096, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1642553012151216, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114215769585281404, guid: 5720eba4bce23b3429b73198fbfc26a5,
         type: 2}
       propertyPath: MovementAlignment
       value: 
       objectReference: {fileID: 1397749352}
+    - target: {fileID: 114363881191679428, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: timeout
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114363881191679428, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: joystick
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
   m_IsPrefabParent: 0

@@ -1144,8 +1144,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642553012151216}
-  m_LocalRotation: {x: -0, y: -0.793203, z: -0, w: 0.60895723}
-  m_LocalPosition: {x: -13.18, y: 15.5, z: -31.37}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -9.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4477446001573894}
@@ -1160,7 +1160,7 @@ Transform:
   - {fileID: 4501237026774066}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -104.97201, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4149626708075742
 Transform:
   m_ObjectHideFlags: 1
@@ -1869,7 +1869,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 1
 --- !u!82 &82072983723850892
 AudioSource:
@@ -2237,8 +2237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbfba9e7a2be5949bb03be82747a23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightStickX: RightStickX
-  rightStickY: RightStickY
+  rightStickX: CHorizontalAim
+  rightStickY: CVerticalAim
   change: 1
   controllerDelayCheck: 2
   deadZone: 0.1
@@ -2258,9 +2258,9 @@ MonoBehaviour:
   abilityOneAxis: Skill1
   abilityTwoAxis: Skill2
   abilityThreeAxis: Skill3
-  controllerOneAxis: ControllerSkill1
-  controllerTwoAxis: ControllerSkill2
-  controllerThreeAxis: ControllerSkill3
+  controllerOneAxis: CSkill1
+  controllerTwoAxis: CSkill2
+  controllerThreeAxis: CSkill3
   abilityHolder: {fileID: 1404014760540668}
   ability: 3
   abilityOne: 3
@@ -2278,14 +2278,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  MovementAlignment: {fileID: 0}
   Hori: 0
   Vert: 0
+  charHeight: 2
+  colliderRadius: 2
+  downCheckDist: 2
+  deadZone: 0.3
+  dungeonTag: Dungeon
   FootstepSound: {fileID: 8300000, guid: 46c45f7500a87274e956058237a2e47e, type: 3}
   FootstepVolume: 0.3
   FootstepPitchRange: {x: 0.9, y: 1.1}
   followCamera: {fileID: 0}
-  leftStickX: LeftStickX
-  leftStickY: LeftStickY
+  leftStickX: CHorizontal
+  leftStickY: CVertical
 --- !u!114 &114363881191679428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2301,8 +2307,10 @@ MonoBehaviour:
   canShoot: 1
   canAbility: 1
   canTalk: 0
-  useKeyboard: 1
-  useController: 0
+  useKeyboard: 0
+  useController: 1
+  joystick: 0
+  timeout: 10
 --- !u!114 &114460639458277200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2320,14 +2328,19 @@ MonoBehaviour:
   OnHitShake: 0
   DeathVFX: []
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -2348,7 +2361,7 @@ MonoBehaviour:
   prevWeaponInput: 113
   nextWeaponInput: 101
   attackInputAxis: Attack
-  attackInputAxisController: ControllerAttack
+  attackInputAxisController: CAttack
   HealthDecrease: 1
   isShooting: 0
   peaShootStrengthened: 1
