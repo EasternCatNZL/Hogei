@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4484706901597350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4725953262263872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point4
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4797697076580222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point5
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4724569959077454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4541719959495920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point3
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -115,7 +115,10 @@ GameObject:
   - component: {fileID: 23145713115568606}
   - component: {fileID: 95335861034506552}
   - component: {fileID: 114227725003317730}
-  m_Layer: 0
+  - component: {fileID: 135096744274086136}
+  - component: {fileID: 114764138785412900}
+  - component: {fileID: 114872485650870272}
+  m_Layer: 10
   m_Name: StarfishEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354099399902062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 12.37, y: 15.715, z: 36.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4706019137887844}
@@ -169,7 +172,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986461720898558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4484706901597350}
@@ -288,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67a8ffd02fcb8a41871c56dcaaa05f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 1
+  isActive: 0
   maxSpinSpeed: 720
   spinSpeedChangeRate: 60
   shotPointArray:
@@ -300,7 +303,7 @@ MonoBehaviour:
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
   bulletSpeed: 5
-  timeBetweenShots: 0.1
+  timeBetweenShots: 0.11
   maxSpeedHoldTime: 3
 --- !u!114 &114378094047870130
 MonoBehaviour:
@@ -318,7 +321,74 @@ MonoBehaviour:
   isTriggered: 0
   doTriggerPlayer: 1
   doTriggerBullet: 0
-  star: {fileID: 0}
+  WarningObject: {fileID: 1585930551208490, guid: 75c6f504236aadb4c9f53b1c56c87d1a,
+    type: 2}
+  WarningBegan: 0
+  WarningTime: 0.5
+  WarningYEndValue: 0.4
+  WarningActive: 0
+  Enemy: {fileID: 114227725003317730}
+  star: {fileID: 114227725003317730}
+--- !u!114 &114764138785412900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986461720898558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHit: 0
+  CurrentHealth: 0
+  MaxHealth: 100
+  OnHitShake: 0
+  DeathVFX:
+  - {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2, type: 2}
+  HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114872485650870272}
+        m_MethodName: DropItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114872485650870272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986461720898558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
 --- !u!135 &135062165375794938
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -326,8 +396,20 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354099399902062}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135096744274086136
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986461720898558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4616922
   m_Center: {x: 0, y: 0, z: 0}
