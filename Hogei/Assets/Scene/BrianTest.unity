@@ -1611,6 +1611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseKey: 27
+  menu: {fileID: 0}
 --- !u!4 &424738430
 Transform:
   m_ObjectHideFlags: 0
@@ -3843,7 +3844,7 @@ Prefab:
     - target: {fileID: 59639163491264906, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.x
-      value: -2.4066262
+      value: -15.726626
       objectReference: {fileID: 0}
     - target: {fileID: 59639163491264906, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
@@ -3858,7 +3859,7 @@ Prefab:
     - target: {fileID: 59017205357039444, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.x
-      value: -1.2023666
+      value: -14.522367
       objectReference: {fileID: 0}
     - target: {fileID: 59017205357039444, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
@@ -3925,7 +3926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1132336272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4615,7 +4616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1401984987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6092,6 +6093,7 @@ MonoBehaviour:
   directionB: -1
   startingAngleA: 0
   startingAngleB: 20
+  bulletSpawnHeight: 1
 --- !u!23 &1898633799
 MeshRenderer:
   m_ObjectHideFlags: 0

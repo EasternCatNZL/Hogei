@@ -1869,7 +1869,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!82 &82072983723850892
 AudioSource:
@@ -2242,6 +2242,7 @@ MonoBehaviour:
   change: 1
   controllerDelayCheck: 2
   deadZone: 0.1
+  alignment: {fileID: 0}
 --- !u!114 &114191378907525212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2309,6 +2310,8 @@ MonoBehaviour:
   canTalk: 0
   useKeyboard: 0
   useController: 1
+  keyboardSchemeName: KeyboardMouse
+  controllerSchemeName: Controller
   joystick: 0
   timeout: 10
 --- !u!114 &114460639458277200

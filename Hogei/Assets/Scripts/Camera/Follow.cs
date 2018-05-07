@@ -27,8 +27,8 @@ public class Follow : MonoBehaviour
     private Vector3 CameraOffset;
 
     [Header("Input axis")]
-    public string rightStickX = "RightStickX";
-    public string rightStickY = "RightStickY";
+    public string rightStickX = "CHorizontalAim";
+    public string rightStickY = "CVerticalAim";
 
     [Header("Transform alignment")]
     public Transform alignment;
@@ -104,10 +104,11 @@ public class Follow : MonoBehaviour
         print("Y Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(rightStickY));
 
         //get direction from sticks
-        Vector3 direction = new Vector3(Luminosity.IO.InputManager.GetAxis(rightStickX), 0.0f, Luminosity.IO.InputManager.GetAxis(rightStickY));
+        Vector3 direction = Quaternion.AngleAxis(alignment.rotation.eulerAngles.y, Vector3.up) * new Vector3(Luminosity.IO.InputManager.GetAxis(rightStickX), 0.0f, Luminosity.IO.InputManager.GetAxis(rightStickY));
+
 
         //set desired pos
-        Vector3 DesiredPos = Target.position + (direction * AheadDistance);
+        Vector3 DesiredPos =  (Target.position + (direction * AheadDistance));
 
         //Move the camera towards the desired position
         transform.DOMove(DesiredPos, LerpDuration);
@@ -115,7 +116,7 @@ public class Follow : MonoBehaviour
 
     void AdjustCamera()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(CameraAngle, -SceneAdjustAngle, 0f));
+        transform.rotation = Quaternion.Euler(new Vector3(CameraAngle, alignment.rotation.eulerAngles.y, 0f));
         CameraTransform.localPosition = new Vector3(0f, 0f, -CameraDistance);
         
     }
