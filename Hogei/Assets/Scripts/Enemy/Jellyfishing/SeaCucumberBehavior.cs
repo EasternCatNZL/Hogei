@@ -41,6 +41,8 @@ public class SeaCucumberBehavior : EnemyBehavior {
     public float startingAngleA = 0.0f;
     [Tooltip("Starting angle of B")]
     public float startingAngleB = 20.0f;
+    [Tooltip("Bullet Spawn Height")]
+    public float bulletSpawnHeight = 1f;
 
     //control vars spray a
     private float timeLastShotA = 0.0f; //time spray a last fired
@@ -75,17 +77,20 @@ public class SeaCucumberBehavior : EnemyBehavior {
     //Spray a logic
     private void SprayA()
     {
+        //Create Bullet Spawn Position
+        Vector3 bulletSpawn = new Vector3(transform.position.x, transform.position.y + bulletSpawnHeight, transform.position.z);
+
         //set timing
         timeLastShotA = Time.time;
 
         //create a bullet
-        GameObject bulletClone = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, currentAngleA, 0.0f));
+        GameObject bulletClone = Instantiate(bulletObject, bulletSpawn, Quaternion.Euler(0.0f, currentAngleA, 0.0f));
 
         //set the bullet variables
         bulletClone.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeedA);
 
         //create a second bullet
-        GameObject bulletTwo = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, currentAngleA + 180.0f, 0.0f));
+        GameObject bulletTwo = Instantiate(bulletObject, bulletSpawn, Quaternion.Euler(0.0f, currentAngleA + 180.0f, 0.0f));
 
         //set the bullet variables
         bulletTwo.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeedA);
@@ -97,6 +102,9 @@ public class SeaCucumberBehavior : EnemyBehavior {
     //spray b logic
     private void SprayB()
     {
+        //Create Bullet Spawn Position
+        Vector3 bulletSpawn = new Vector3(transform.position.x, transform.position.y + bulletSpawnHeight, transform.position.z);
+
         //set timing
         timeLastShotB = Time.time;
 
@@ -107,13 +115,13 @@ public class SeaCucumberBehavior : EnemyBehavior {
             float thisRot = currentAngleB + (i * (angleChangeBetweenBulletsB * directionB));
 
             //create a bullet
-            GameObject bulletClone = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, thisRot, 0.0f));
+            GameObject bulletClone = Instantiate(bulletObject, bulletSpawn, Quaternion.Euler(0.0f, thisRot, 0.0f));
 
             //set the bullet variables
             bulletClone.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeedB);
 
             //create a second bullet
-            GameObject bulletTwo = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, thisRot + 180.0f, 0.0f));
+            GameObject bulletTwo = Instantiate(bulletObject, bulletSpawn, Quaternion.Euler(0.0f, thisRot + 180.0f, 0.0f));
 
             //set the bullet variables
             bulletTwo.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeedB);

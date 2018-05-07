@@ -24,6 +24,9 @@ public class Movement : MonoBehaviour {
     [Tooltip("Down check distance")]
     public float downCheckDist = 2.0f;
 
+    [Header("Controller Dead Zone")]
+    public float deadZone = 0.3f;
+
     [Header("Tags")]
     public string dungeonTag = "Dungeon";
 
@@ -126,27 +129,30 @@ public class Movement : MonoBehaviour {
     //move player pos
     private void MovePlayerController()
     {
+        //print("X Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickX));
+        //print("Y Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickY));
+
         Vector3 newPos = Vector3.zero;
         Direction = Vector3.zero;
-        if (Input.GetAxisRaw(leftStickX) > 0f)
+        if (Luminosity.IO.InputManager.GetAxisRaw(leftStickX) > deadZone)
         {
-            newPos.z += 1;
-            Direction += new Vector3(0f, 0f, 1f);
+            newPos += MovementAlignment.right * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickX);
+            Direction += MovementAlignment.right;
         }
-        else if (Input.GetAxisRaw(leftStickX) < 0f)
+        else if (Luminosity.IO.InputManager.GetAxisRaw(leftStickX) < -deadZone)
         {
-            newPos.z -= 1;
-            Direction += new Vector3(0f, 0f, -1f);
+            newPos += MovementAlignment.right * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickX);
+            Direction -= MovementAlignment.right;
         }
-        if (Input.GetAxisRaw(leftStickY) > 0f)
+        if (Luminosity.IO.InputManager.GetAxisRaw(leftStickY) > deadZone)
         {
-            newPos.x -= 1;
-            Direction += new Vector3(-1f, 0f, 0f);
+            newPos += MovementAlignment.forward * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickY);
+            Direction += MovementAlignment.forward;
         }
-        else if (Input.GetAxisRaw(leftStickY) < 0f)
+        else if (Luminosity.IO.InputManager.GetAxisRaw(leftStickY) < -deadZone)
         {
-            newPos.x += 1;
-            Direction += new Vector3(1f, 0f, 0f);
+            newPos += MovementAlignment.forward * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickY);
+            Direction -= MovementAlignment.forward;
         }
 
         if (newPos != Vector3.zero)
@@ -158,8 +164,8 @@ public class Movement : MonoBehaviour {
             Anim.SetBool("IsMoving", false);
         }
         newPos.Normalize();
-        Rigid.MovePosition(transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime);
-        //transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
+        //Rigid.MovePosition(transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime);
+        transform.position = transform.position + newPos * (Speed * SpeedModifier) * Time.deltaTime;
 
     }
 
