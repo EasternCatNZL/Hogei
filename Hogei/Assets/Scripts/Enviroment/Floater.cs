@@ -15,6 +15,9 @@ public class Floater : MonoBehaviour {
     //left/right
     public float zAmp = 0.0f;
     public float zSpeed = 0.0f;
+    //make items start at random times
+    private float timer;
+    private bool isActive = false;
 
     Vector3 PositionOffset;
     Vector3 TempPos;
@@ -23,16 +26,21 @@ public class Floater : MonoBehaviour {
     void Start()
     {
         PositionOffset = transform.position;
+        timer = Random.Range(0.0f, 5.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0.0f, Time.deltaTime * DegreesPerSec, 0.0f), Space.World);
-        TempPos = PositionOffset;
-        TempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * ySpeed) * yAmp;
-        TempPos.x += Mathf.Sin(Time.fixedTime * Mathf.PI * xSpeed) * xAmp;
-        TempPos.z += Mathf.Sin(Time.fixedTime * Mathf.PI * zSpeed) * zAmp;
-        transform.position = TempPos;
+        timer -= Time.deltaTime;
+        if(timer <= 0.0f)
+        {
+            transform.Rotate(new Vector3(0.0f, Time.deltaTime * DegreesPerSec, 0.0f), Space.World);
+            TempPos = PositionOffset;
+            TempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * ySpeed) * yAmp;
+            TempPos.x += Mathf.Sin(Time.fixedTime * Mathf.PI * xSpeed) * xAmp;
+            TempPos.z += Mathf.Sin(Time.fixedTime * Mathf.PI * zSpeed) * zAmp;
+            transform.position = TempPos;
+        }
     }
 }

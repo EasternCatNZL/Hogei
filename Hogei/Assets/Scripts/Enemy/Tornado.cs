@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using DG.Tweening;
 
 public class Tornado : MonoBehaviour {
 
     public float Knockback = 1.0f;
+    public Transform[] Points;
+    private int destPoints;
+    private NavMeshAgent Agent;
 
     /*
     public float force = 1.0f;
@@ -20,13 +24,21 @@ public class Tornado : MonoBehaviour {
     //public float radius = 1.0f;
 
     // Use this for initialization
-    void Start () {        
+    void Start () {
+        Agent = GetComponent<NavMeshAgent>();
+        Agent.autoBraking = false;
+        GoToNextPoint();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+        if(!Agent.pathPending && Agent.remainingDistance < 0.5f)
+        {
+            GoToNextPoint();
+        }
+        
         /*
         if(hit == true)
         {
@@ -41,6 +53,17 @@ public class Tornado : MonoBehaviour {
         */
 		
 	}
+
+    void GoToNextPoint()
+    {
+        if(Points.Length == 0)
+        {
+            return;
+        }
+
+        Agent.destination = Points[destPoints].position;
+        destPoints = (destPoints + 1) % Points.Length;
+    }
     /*
     void OnTriggerEnter(Collider other)
     {
