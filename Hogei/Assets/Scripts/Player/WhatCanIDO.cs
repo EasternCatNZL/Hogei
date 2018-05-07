@@ -12,17 +12,38 @@ public class WhatCanIDO : MonoBehaviour {
     public bool useKeyboard = true;
     public bool useController = false;
 
-	// Use this for initialization
-	void Start () {
+    [Header("Input settings")]
+    [Tooltip("Keyboard scheme name")]
+    public string keyboardSchemeName = "KeyboardMouse";
+    [Tooltip("Controller scheme name")]
+    public string controllerSchemeName = "Controller";
+    [Tooltip("Joystick number")]
+    [Range(0, Luminosity.IO.InputBinding.MAX_JOYSTICKS)]
+    public int joystick = 0;
+    [Tooltip("Timeout timer")]
+    public float timeout = 1;
+
+    //control vars
+    private float lastScanTime = 0.0f; //time last input scan occured
+
+    private Luminosity.IO.InputAction inputAct;
+    private KeyCode cancelKey = KeyCode.Escape;
+
+    // Use this for initialization
+    void Start () {
         DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //if (PauseHandler.isPaused){
-
-        //}
-	}
+        if (!PauseHandler.isPaused)
+        {
+            if(Time.time > lastScanTime + timeout)
+            {
+                PeriodicInputScan();
+            }
+        }
+    }
 
     //All in one funcs
     public void TurnAllOn()
@@ -50,6 +71,114 @@ public class WhatCanIDO : MonoBehaviour {
     {
         useKeyboard = true;
         useController = false;
+    }
+
+    //Perform periodic scan
+    private void PeriodicInputScan()
+    {
+        //set timing 
+        lastScanTime = Time.time;
+        print("Scan start");
+        //make sure input scan is not already occuring
+        if (!Luminosity.IO.InputManager.IsScanning /*&& inputAct != null*/)
+        {
+            //set up scan settings
+            Luminosity.IO.ScanSettings settings;
+            settings.Joystick = joystick;
+            settings.Timeout = timeout;
+            settings.CancelScanKey = cancelKey;
+            settings.UserData = null;
+            //check the current input
+            if (useKeyboard)
+            {
+                print("Trying keyboard to controller");
+                settings.ScanFlags = Luminosity.IO.ScanFlags.JoystickButton;
+                Luminosity.IO.InputManager.StartInputScan(settings, JoystickButtonScan);
+            }
+            else if (useController)
+            {
+                print("Trying controller to keyboard");
+                settings.ScanFlags = Luminosity.IO.ScanFlags.Key;
+                Luminosity.IO.InputManager.StartInputScan(settings, KeyScan);
+            }
+        }
+    }
+
+    //keyboard scan
+    private bool KeyScan(Luminosity.IO.ScanResult result)
+    {
+        bool keyPressed = false;
+
+        //make sure flag is correct
+        if(result.ScanFlags == Luminosity.IO.ScanFlags.Key)
+        {
+            //check if key was pressed
+            if (IsKeyValid(result.Key))
+            {
+                //switch to keyboard control
+                useController = false;
+                useKeyboard = true;
+
+                Luminosity.IO.InputManager.SetControlScheme(keyboardSchemeName, Luminosity.IO.PlayerID.One);
+
+                //set pressed to true
+                keyPressed = true;                
+            }
+        }
+
+        return keyPressed;
+    }
+
+    //check if key is valid
+    private bool IsKeyValid(KeyCode key)
+    {
+        bool isValid = false;
+
+        if((int)key < (int)KeyCode.JoystickButton0
+            && (key != KeyCode.LeftApple || key != KeyCode.RightApple)
+            && (key != KeyCode.LeftWindows || key != KeyCode.RightWindows))
+        {
+            isValid = true;
+        }
+
+        return isValid;
+    }
+
+    //joystick button scan
+    private bool JoystickButtonScan(Luminosity.IO.ScanResult result)
+    {
+        bool joystickPressed = false;
+        //make sure scan flag is correct
+        if(result.ScanFlags == Luminosity.IO.ScanFlags.JoystickButton)
+        {
+            //check if joystick button pressed
+            if (IsJoystickButtonValid(result.Key))
+            {
+                //switch to controller control
+                useController = true;
+                useKeyboard = false;
+
+                Luminosity.IO.InputManager.SetControlScheme(controllerSchemeName, Luminosity.IO.PlayerID.One);
+
+                //set pressed to true
+                joystickPressed = true;
+            }
+        }
+
+        return joystickPressed;
+    }
+
+    //check if joystick button valid
+    private bool IsJoystickButtonValid(KeyCode key)
+    {
+        bool isValid = false;
+        //if key pressed is one of joystick buttons
+        if((int)key >= (int)KeyCode.Joystick1Button0 && (int)key <= (int)KeyCode.Joystick1Button19)
+        {
+            isValid = true;
+        }
+
+        return isValid;
     }
 
     private void OnEnable()
