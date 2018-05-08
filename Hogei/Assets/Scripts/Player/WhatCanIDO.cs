@@ -21,7 +21,7 @@ public class WhatCanIDO : MonoBehaviour {
     [Range(0, Luminosity.IO.InputBinding.MAX_JOYSTICKS)]
     public int joystick = 0;
     [Tooltip("Timeout timer")]
-    public float timeout = 1;
+    public float timeout = 0.1f;
 
     //control vars
     private float lastScanTime = 0.0f; //time last input scan occured
@@ -32,6 +32,8 @@ public class WhatCanIDO : MonoBehaviour {
     // Use this for initialization
     void Start () {
         DontDestroyOnLoad(gameObject);
+
+        SetControlScheme();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +44,21 @@ public class WhatCanIDO : MonoBehaviour {
             {
                 PeriodicInputScan();
             }
+        }
+    }
+    
+    //set control scheme on start
+    private void SetControlScheme()
+    {
+        if (Luminosity.IO.InputManager.PlayerOneControlScheme.Name == keyboardSchemeName)
+        {
+            useKeyboard = true;
+            useController = false;
+        }
+        else if (Luminosity.IO.InputManager.PlayerOneControlScheme.Name == controllerSchemeName)
+        {
+            useKeyboard = false;
+            useController = true;
         }
     }
 
