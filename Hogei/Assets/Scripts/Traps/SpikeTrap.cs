@@ -38,12 +38,6 @@ public class SpikeTrap : MonoBehaviour {
                 isTriggered = false;
                 ResetTimer = SpikeResetTimer;
                 NeedsReset = true;
-                /*
-                if (SpikeDeployment.IsComplete() == true)
-                {
-                    Spike.transform.DOMoveY(SpikeDecrease, SpikeSpeed, false);
-                }
-                */
             }
         }
         if(NeedsReset == true)

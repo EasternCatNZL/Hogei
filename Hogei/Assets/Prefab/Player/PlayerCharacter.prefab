@@ -378,6 +378,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1476442020446658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4111398696361770}
+  - component: {fileID: 65624160894658782}
+  m_Layer: 8
+  m_Name: FloorRay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1504162202581242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1073,19 @@ Transform:
   m_Father: {fileID: 4870028149720294}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.5472311e-15, y: 1.0580112e-14, z: -16.639864}
+--- !u!4 &4111398696361770
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476442020446658}
+  m_LocalRotation: {x: -0, y: 0.79320306, z: -0, w: 0.6089573}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4149411041785912}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4114188577795988
 Transform:
   m_ObjectHideFlags: 1
@@ -1144,8 +1173,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642553012151216}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9.01}
+  m_LocalRotation: {x: -0, y: -0.12517281, z: -0, w: 0.992135}
+  m_LocalPosition: {x: -10.56, y: 15.653249, z: -12.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4477446001573894}
@@ -1158,9 +1187,10 @@ Transform:
   - {fileID: 4688839160685926}
   - {fileID: 4018673257721186}
   - {fileID: 4501237026774066}
+  - {fileID: 4111398696361770}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -14.3810005, z: 0}
 --- !u!4 &4149626708075742
 Transform:
   m_ObjectHideFlags: 1
@@ -1869,8 +1899,20 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!65 &65624160894658782
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476442020446658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 300, y: 1, z: 300}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82072983723850892
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2242,6 +2284,7 @@ MonoBehaviour:
   change: 1
   controllerDelayCheck: 2
   deadZone: 0.1
+  alignment: {fileID: 0}
 --- !u!114 &114191378907525212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2309,8 +2352,10 @@ MonoBehaviour:
   canTalk: 0
   useKeyboard: 0
   useController: 1
+  keyboardSchemeName: KeyboardMouse
+  controllerSchemeName: Controller
   joystick: 0
-  timeout: 10
+  timeout: 0.1
 --- !u!114 &114460639458277200
 MonoBehaviour:
   m_ObjectHideFlags: 1
