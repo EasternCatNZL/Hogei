@@ -42,7 +42,7 @@ namespace Luminosity.IO.Examples
 		//[SerializeField]
 		//private Sprite m_scanningState;
 		[SerializeField]
-		private Text m_keyDescription;
+		private Text keyDescription;
 		[SerializeField]
 		private string m_controlSchemeName;
 		[SerializeField]
@@ -54,7 +54,7 @@ namespace Luminosity.IO.Examples
 		[SerializeField]
 		private float m_timeout = 10;
 		[SerializeField]
-		private bool m_changePositiveKey = true;
+		private bool changePositiveKey = true;
 		[SerializeField]
 		private bool m_allowAnalogButton;
 		[SerializeField]
@@ -64,7 +64,7 @@ namespace Luminosity.IO.Examples
 		private RebindType m_rebindType;
 
 		private InputAction m_inputAction;
-		private InputBinding m_inputBinding;
+		private InputBinding inputBinding;
 		private Image m_image;
 		private static string[] m_axisNames;
 
@@ -93,45 +93,45 @@ namespace Luminosity.IO.Examples
 			m_inputAction = InputManager.GetAction(m_controlSchemeName, m_inputActionName);
 			if(m_inputAction != null)
 			{
-				m_inputBinding = m_inputAction.Bindings[m_bindingIndex];
+				inputBinding = m_inputAction.Bindings[m_bindingIndex];
 				if(m_rebindType == RebindType.Keyboard || m_rebindType == RebindType.GamepadButton)
 				{
-					if(m_changePositiveKey)
+					if(changePositiveKey)
 					{
-						m_keyDescription.text = m_inputBinding.Positive == KeyCode.None ? "" : m_inputBinding.Positive.ToString();
+						keyDescription.text = inputBinding.Positive == KeyCode.None ? "" : inputBinding.Positive.ToString();
 					}
 					else
 					{
-						m_keyDescription.text = m_inputBinding.Negative == KeyCode.None ? "" : m_inputBinding.Negative.ToString();
+						keyDescription.text = inputBinding.Negative == KeyCode.None ? "" : inputBinding.Negative.ToString();
 					}
 				}
 				else
 				{
-					m_keyDescription.text = m_axisNames[m_inputBinding.Axis];
+					keyDescription.text = m_axisNames[inputBinding.Axis];
 				}
 			}
 			else
 			{
-				m_keyDescription.text = "";
+				keyDescription.text = "";
 				Debug.LogErrorFormat("Control scheme '{0}' does not exist or input action '{1}' does not exist", m_controlSchemeName, m_inputActionName);
 			}
 		}
 
         public void OnPointerDown(PointerEventData data)
         {
-            StartCoroutine(StartInputScanDelayed());
+            //StartCoroutine(StartInputScanDelayed());
         }
 
-        public IEnumerator StartInputScanDelayed()
+        public void StartInputScanDelayed()
 		{
-            yield return null;
+            //yield return null;
 
             if (!InputManager.IsScanning && m_inputAction != null)
 			{
                 //m_image.overrideSprite = m_scanningState;
                 //make button interaction false
                 bindButton.interactable = false;
-				m_keyDescription.text = "...";
+				keyDescription.text = "...";
 
 				ScanSettings settings;
 				settings.Joystick = m_joystick;
@@ -172,20 +172,20 @@ namespace Luminosity.IO.Examples
 			{
 				//	If the key is KeyCode.Backspace clear the current binding
 				result.Key = (result.Key == KeyCode.Backspace) ? KeyCode.None : result.Key;
-				if(m_changePositiveKey)
+				if(changePositiveKey)
 				{
-					m_inputBinding.Positive = result.Key;
+					inputBinding.Positive = result.Key;
 				}
 				else
 				{
-					m_inputBinding.Negative = result.Key;
+					inputBinding.Negative = result.Key;
 				}
-				m_keyDescription.text = (result.Key == KeyCode.None) ? "" : result.Key.ToString();
+				keyDescription.text = (result.Key == KeyCode.None) ? "" : result.Key.ToString();
 			}
 			else
 			{
 				KeyCode currentKey = GetCurrentKeyCode();
-				m_keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
+				keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
 			}
 
             //m_image.overrideSprite = m_normalState;
@@ -227,27 +227,27 @@ namespace Luminosity.IO.Examples
 				{
 					//	If the key is KeyCode.Backspace clear the current binding
 					result.Key = (result.Key == KeyCode.Backspace) ? KeyCode.None : result.Key;
-					m_inputBinding.Type = InputType.Button;
-					if(m_changePositiveKey)
+					inputBinding.Type = InputType.Button;
+					if(changePositiveKey)
 					{
-						m_inputBinding.Positive = result.Key;
+						inputBinding.Positive = result.Key;
 					}
 					else
 					{
-						m_inputBinding.Negative = result.Key;
+						inputBinding.Negative = result.Key;
 					}
-					m_keyDescription.text = (result.Key == KeyCode.None) ? "" : result.Key.ToString();
+					keyDescription.text = (result.Key == KeyCode.None) ? "" : result.Key.ToString();
 				}
 				else
 				{
-					if(m_inputBinding.Type == InputType.Button)
+					if(inputBinding.Type == InputType.Button)
 					{
 						KeyCode currentKey = GetCurrentKeyCode();
-						m_keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
+						keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
 					}
 					else
 					{
-						m_keyDescription.text = (m_inputBinding.Invert ? "-" : "+") + m_axisNames[m_inputBinding.Axis];
+						keyDescription.text = (inputBinding.Invert ? "-" : "+") + m_axisNames[inputBinding.Axis];
 					}
 				}
                 //m_image.overrideSprite = m_normalState;
@@ -258,21 +258,21 @@ namespace Luminosity.IO.Examples
 				//	The axis is negative when the timeout has been reached or the scan has been canceled
 				if(result.JoystickAxis >= 0)
 				{
-					m_inputBinding.Type = InputType.AnalogButton;
-					m_inputBinding.Invert = result.JoystickAxisValue < 0.0f;
-					m_inputBinding.Axis = result.JoystickAxis;
-					m_keyDescription.text = (m_inputBinding.Invert ? "-" : "+") + m_axisNames[m_inputBinding.Axis];
+					inputBinding.Type = InputType.AnalogButton;
+					inputBinding.Invert = result.JoystickAxisValue < 0.0f;
+					inputBinding.Axis = result.JoystickAxis;
+					keyDescription.text = (inputBinding.Invert ? "-" : "+") + m_axisNames[inputBinding.Axis];
 				}
 				else
 				{
-					if(m_inputBinding.Type == InputType.AnalogButton)
+					if(inputBinding.Type == InputType.AnalogButton)
 					{
-						m_keyDescription.text = (m_inputBinding.Invert ? "-" : "+") + m_axisNames[m_inputBinding.Axis];
+						keyDescription.text = (inputBinding.Invert ? "-" : "+") + m_axisNames[inputBinding.Axis];
 					}
 					else
 					{
 						KeyCode currentKey = GetCurrentKeyCode();
-						m_keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
+						keyDescription.text = (currentKey == KeyCode.None) ? "" : currentKey.ToString();
 					}
 				}
                 //m_image.overrideSprite = m_normalState;
@@ -305,11 +305,11 @@ namespace Luminosity.IO.Examples
 		{
 			//	The axis is negative when the timeout has been reached or the scan has been canceled
 			if(result.JoystickAxis >= 0)
-				m_inputBinding.Axis = result.JoystickAxis;
+				inputBinding.Axis = result.JoystickAxis;
 
             //m_image.overrideSprite = m_normalState;
             bindButton.interactable = true;
-            m_keyDescription.text = m_axisNames[m_inputBinding.Axis];
+            keyDescription.text = m_axisNames[inputBinding.Axis];
 			return true;
 		}
 
@@ -318,13 +318,13 @@ namespace Luminosity.IO.Examples
 			if(m_rebindType == RebindType.GamepadAxis)
 				return KeyCode.None;
 
-			if(m_changePositiveKey)
+			if(changePositiveKey)
 			{
-				return m_inputBinding.Positive;
+				return inputBinding.Positive;
 			}
 			else
 			{
-				return m_inputBinding.Negative;
+				return inputBinding.Negative;
 			}
 		}
 

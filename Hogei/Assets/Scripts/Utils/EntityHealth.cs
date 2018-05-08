@@ -122,6 +122,7 @@ public class EntityHealth : MonoBehaviour {
                 Camera.main.GetComponentInParent<Follow>().SetStopFollowing(true);
                 gameObject.transform.position += new Vector3(0f, -1000f, 0f);
             }
+            //Check if the entity should scale up before death
             else if(ScaleUpBeforeDeath)
             {
                 transform.DOScale(1.5f, 0.1f);

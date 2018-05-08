@@ -7,6 +7,9 @@ public class PauseHandler : MonoBehaviour {
     [Header("Key inputs")]
     public KeyCode pauseKey = KeyCode.Escape;
 
+    [Header("Pause menu")]
+    public PauseMenu menu;
+
     public delegate void PauseDelegate();
     public static event PauseDelegate PauseEvent;
     public static event PauseDelegate UnpauseEvent;
@@ -35,6 +38,8 @@ public class PauseHandler : MonoBehaviour {
                 //call unpause event
                 UnpauseEvent();
                 isPaused = false;
+                //turn off pause menu
+                menu.TurnAllPanelsOff();
             }
             //else pause
             else
@@ -42,6 +47,8 @@ public class PauseHandler : MonoBehaviour {
                 //call pause event
                 PauseEvent();
                 isPaused = true;
+                //turn on pause ui
+                menu.TurnOnPause();
             }
         }
     }
