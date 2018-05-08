@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 1554992210}
-  GameoverScreen: {fileID: 1528499810}
+  GameoverScreen: {fileID: 0}
   Player: {fileID: 1756850055}
   SoupInventory: []
   IngredientInventory: 
@@ -388,7 +388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &98928861
 MonoBehaviour:
@@ -600,15 +600,20 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -975,7 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsUnlocked: 0
   LevelName: {fileID: 978264341}
-  LevelIndex: 2
+  LevelIndex: 4
   NextNode: {fileID: 0}
 --- !u!4 &468871672
 Transform:
@@ -1094,15 +1099,20 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1295,15 +1305,20 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1577,7 +1592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsUnlocked: 0
   LevelName: {fileID: 1546327534}
-  LevelIndex: 4
+  LevelIndex: 5
   NextNode: {fileID: 468871671}
 --- !u!4 &598741816
 Transform:
@@ -2790,6 +2805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae9c6f6583bd647bfb32b02094e23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckTag: 0
+  TagCheck: 
   functionToCall:
     m_PersistentCalls:
       m_Calls:
@@ -2874,6 +2891,8 @@ MonoBehaviour:
   PlayerSpawnPoint: {fileID: 945228131}
   sceneNumber: 1
   BackgroundMusic: {fileID: 8300000, guid: 12f4817c5df0f8c4c93b4babc881832d, type: 3}
+  CountDownUI: {fileID: 0}
+  NotificationUI: {fileID: 0}
   enemyTag: Enemy
   enemiesInSceneCopyList: []
   enemiesInSceneList: []
@@ -3063,6 +3082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae9c6f6583bd647bfb32b02094e23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckTag: 0
+  TagCheck: 
   functionToCall:
     m_PersistentCalls:
       m_Calls:
@@ -3132,7 +3153,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 978264341}
-  m_Text: Pointy Cove
+  m_Text: Barn Depo
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -3574,7 +3595,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1103824715
 GameObject:
@@ -4221,15 +4242,20 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -4468,7 +4494,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944634092793614, guid: 3c8285144825f5549966df7eea145314, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 114866818235533046, guid: 3c8285144825f5549966df7eea145314,
         type: 2}
@@ -4731,7 +4757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsUnlocked: 0
   LevelName: {fileID: 396002934}
-  LevelIndex: 3
+  LevelIndex: 2
   NextNode: {fileID: 598741815}
 --- !u!4 &1411273326
 Transform:
@@ -4835,11 +4861,6 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 4fac9ea9a35571347bb85a28ae694434, type: 3}
   m_PrefabInternal: {fileID: 18960364}
---- !u!1 &1528499810 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1763680051504946, guid: a359092b90a7a38448c9e233c4232d51,
-    type: 2}
-  m_PrefabInternal: {fileID: 1275482420}
 --- !u!1001 &1537607122
 Prefab:
   m_ObjectHideFlags: 0
@@ -4930,7 +4951,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1546327534}
-  m_Text: Barn Depo
+  m_Text: Chicken Survival
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -5393,15 +5414,20 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -5626,6 +5652,34 @@ MonoBehaviour:
     Effect: 3
     Value: 1
   rotationSpeed: 90
+--- !u!1 &1777235276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1179692646}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1777235277}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1777235277
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1179692646}
+  m_GameObject: {fileID: 1777235276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1780573367
 Prefab:
   m_ObjectHideFlags: 0
@@ -6043,20 +6097,72 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &1851908213
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709208717211642, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 114585745241532852, guid: 64d4b7ca7de903f4ea6a9df22a6d871f,
+        type: 2}
+      propertyPath: m_playerOneDefault
+      value: 3ece541ad8c84236a997ee05e3aef50c
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 64d4b7ca7de903f4ea6a9df22a6d871f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1894178873
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,15 +6266,20 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -6396,22 +6507,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1502394116284942, guid: 2dac16bdfad7ad348ba5253d788103e7,
     type: 2}
   m_PrefabInternal: {fileID: 919664515}
---- !u!1 &1991251341 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1830505526709604, guid: a359092b90a7a38448c9e233c4232d51,
-    type: 2}
-  m_PrefabInternal: {fileID: 1275482420}
---- !u!114 &1991251342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1991251341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee70ae43302b6614c94192258c9a0196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1992010710
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,15 +6698,20 @@ MonoBehaviour:
   DeathVFX:
   - {fileID: 0}
   HitVFX: {fileID: 0}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound:
   - {fileID: 0}
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -7063,7 +7163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsUnlocked: 0
   LevelName: {fileID: 1114274042}
-  LevelIndex: 2
+  LevelIndex: 3
   NextNode: {fileID: 1411273325}
 --- !u!4 &2121215541
 Transform:

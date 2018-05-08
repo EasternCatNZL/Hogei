@@ -27,7 +27,7 @@ public class SceneHandler : MonoBehaviour {
     //[HideInInspector]
     public List<GameObject> enemiesInSceneList = new List<GameObject>();
 
-    private int MapSceneIndex = 0;
+    private int MapSceneIndex = 1;
 
     void Awake()
     {

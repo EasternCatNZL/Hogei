@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33586634654008870}
   - component: {fileID: 23940203018879672}
   - component: {fileID: 95004108947266780}
+  - component: {fileID: 65053801830814048}
   m_Layer: 0
   m_Name: FarmFence_3
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733837325012504}
   m_Mesh: {fileID: 4300000, guid: 714a9a6cc41e5a6449a944f64421febf, type: 3}
+--- !u!65 &65053801830814048
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733837325012504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4184675, y: 0.91832995, z: 0.2835901}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95004108947266780
 Animator:
   serializedVersion: 3

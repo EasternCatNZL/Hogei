@@ -10,6 +10,7 @@ public class InfinateSpawner : EnemyBehavior
     public float SpawnTime = 1.0f;
     public float ScaleUpTime = 0.5f;
     [Header("Launch Settings")]
+    [Tooltip("Force to launch the spawned enemy out with. Set to -1 to add no force")]
     public float LaunchForce = 5f;
     private float timer = 0.0f;
 
