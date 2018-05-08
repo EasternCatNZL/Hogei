@@ -131,11 +131,17 @@ public class GateManager : MonoBehaviour
         //Call Functions to activate when a room is cleared
         if (FunctionOnExit != null) FunctionOnExit.Invoke();
         //Set variables to null
-        CountDownUI.SetActive(false);
-        CountDownUI = null;
-        NotificationUI.transform.localScale = Vector3.one;
-        NotificationUI.SetActive(false);
-        NotificationUI = null;
+        if (CountDownUI)
+        {
+            CountDownUI.SetActive(false);
+            CountDownUI = null;
+        }
+        if (NotificationUI)
+        {
+            NotificationUI.transform.localScale = Vector3.one;
+            NotificationUI.SetActive(false);
+            NotificationUI = null;
+        }
         OpenAfterTime = false;
         CountDownActive = false;
         //set to cleared
