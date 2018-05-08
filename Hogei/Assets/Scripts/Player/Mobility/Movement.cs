@@ -65,6 +65,7 @@ public class Movement : MonoBehaviour {
         {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
+
         if (MovementAlignment == null) Debug.Log("NEED A MOVEMENT ALIGNMENT TRANSFORM");
         Rigid = GetComponent<Rigidbody>();
         Anim = GetComponent<Animator>();
@@ -74,6 +75,7 @@ public class Movement : MonoBehaviour {
 	void Update () {
         if (canDo.canMove /*&& isGrounded*/)
         {
+            if (MovementAlignment == null) MovementAlignment = SceneHandler.GetSceneHandler().transform;
             if (canDo.useKeyboard)
             {
                 MovePlayer();
@@ -88,6 +90,7 @@ public class Movement : MonoBehaviour {
     //move player pos
     private void MovePlayer()
     {
+
         Vector3 newPos = Vector3.zero;
         Direction = Vector3.zero;        
         if (Luminosity.IO.InputManager.GetAxisRaw("Horizontal") > 0f)
@@ -129,6 +132,7 @@ public class Movement : MonoBehaviour {
     //move player pos
     private void MovePlayerController()
     {
+
         //print("X Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickX));
         //print("Y Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(leftStickY));
 

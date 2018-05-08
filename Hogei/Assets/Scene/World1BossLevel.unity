@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 77715b8b6b248994891d3ccad1ad330b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18736215, g: 0.39049113, b: 0.5393302, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -272,6 +272,11 @@ Prefab:
       propertyPath: SceneAdjustAngle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114890689982696856, guid: d13471350260f974c9f03d9b60d32866,
+        type: 2}
+      propertyPath: alignment
+      value: 
+      objectReference: {fileID: 1085627340}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d13471350260f974c9f03d9b60d32866, type: 2}
   m_IsPrefabParent: 0
@@ -862,6 +867,8 @@ MonoBehaviour:
   PlayerSpawnPoint: {fileID: 285560269}
   sceneNumber: 1
   BackgroundMusic: {fileID: 0}
+  CountDownUI: {fileID: 0}
+  NotificationUI: {fileID: 0}
   enemyTag: Enemy
   enemiesInSceneCopyList: []
   enemiesInSceneList: []
@@ -1605,6 +1612,11 @@ MonoBehaviour:
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
