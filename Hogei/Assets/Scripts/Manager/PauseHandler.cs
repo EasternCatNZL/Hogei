@@ -52,4 +52,10 @@ public class PauseHandler : MonoBehaviour {
             }
         }
     }
+
+    //Unpause call
+    public void Unpause()
+    {
+        isPaused = false;
+    }
 }
