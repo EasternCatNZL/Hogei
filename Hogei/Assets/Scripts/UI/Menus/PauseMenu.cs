@@ -45,4 +45,13 @@ public class PauseMenu : MonoBehaviour {
         TurnAllPanelsOff();
         rebindPanel.SetActive(true);
     }
+
+    //resume the game
+    private void ResumeGame()
+    {
+        //turn off all panels
+        TurnAllPanelsOff();
+        //have pause handler call unpause
+        //PauseHandler.UnpauseEvent();
+    }
 }
