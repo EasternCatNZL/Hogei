@@ -201,6 +201,7 @@ public class SheepBehaviour : EnemyBehavior {
         isQuiting = true;
     }
 
+
     void OnDestroy()
     {
     }
