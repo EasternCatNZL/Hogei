@@ -206,10 +206,10 @@ GameObject:
   - component: {fileID: 136384065842253204}
   - component: {fileID: 114980503428021796}
   - component: {fileID: 114720998812871416}
-  - component: {fileID: 114435066719780292}
-  - component: {fileID: 114542101402500054}
+  - component: {fileID: 114658500011469354}
+  - component: {fileID: 114446934085973516}
   m_Layer: 10
-  m_Name: SheepBomb
+  m_Name: SheepRumblerHealth
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -706,13 +706,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216094190144506}
-  m_LocalRotation: {x: -0.000000014901161, y: 0.70710677, z: 0.000000008856802, w: 0.7071069}
+  m_LocalRotation: {x: -0.09126801, y: 0.70119196, z: -0.09126801, w: 0.70119196}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4584804376308988}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -14.832}
 --- !u!4 &4584804376308988
 Transform:
   m_ObjectHideFlags: 1
@@ -952,7 +952,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114435066719780292
+--- !u!114 &114446934085973516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -960,19 +960,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1386237171912776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8acc122966353418ecf9998c702ec4, type: 3}
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDrop:
+  - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
+--- !u!114 &114658500011469354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386237171912776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee59d67b69410294ca461ce34dd4e288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  chargeTime: 2
-  chargeSpeed: 10
-  damage: 3
+  chargeTime: 0.5
+  chargeSpeed: 8
+  damage: 1
   doTrack: 1
-  collisionSelfDamage: 10
+  collisionSelfDamage: 3
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
-  bulletSpeed: 2
-  angleChangePerShot: 60
+  bulletSpeed: 5
+  angleChangePerShot: 40
   RocketFlames: {fileID: 0}
   targetTag: Player
   bulletTag: Bullet
@@ -982,22 +995,6 @@ MonoBehaviour:
   currentSpeed: 0
   timeChargeBegan: 0
   target: {fileID: 0}
-  launchSpeed: 10
-  dropSpeed: 10
-  dropHeight: 10
-  dropPos: {x: 0, y: 0, z: 0}
---- !u!114 &114542101402500054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1386237171912776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db7d2281ab038664f8a44cde4eb36e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 200
 --- !u!114 &114720998812871416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1033,7 +1030,7 @@ MonoBehaviour:
   DeathFunction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114658500011469354}
         m_MethodName: BulletExplosion
         m_Mode: 1
         m_Arguments:
@@ -1222,7 +1219,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -1270,7 +1267,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -2045295565
+  randomSeed: -1004942913
   InitialModule:
     serializedVersion: 3
     enabled: 1

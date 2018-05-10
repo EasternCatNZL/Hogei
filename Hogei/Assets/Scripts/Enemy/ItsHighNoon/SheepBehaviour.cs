@@ -29,10 +29,16 @@ public class SheepBehaviour : EnemyBehavior {
     [Tooltip("Angle change per shot in spray")]
     public float angleChangePerShot = 60.0f;
 
+    [Header("VFX Settings")]
+    public ParticleSystem RocketFlames;
+
     [Header("Tags")]
     public string targetTag = "Player";
     public string bulletTag = "Bullet";
     public string floorTag = "Dungeon";
+
+    [Header("Debugging")]
+    public Vector3 RigidVelocity;
 
     //control vars
     [HideInInspector]
@@ -53,10 +59,13 @@ public class SheepBehaviour : EnemyBehavior {
     private bool DoJumped = false;
     //script refs
     private EnemyState state;
+    private Animator myAnim;
 
 
     // Use this for initialization
     void Start () {
+        myAnim = GetComponent<Animator>();
+        myAnim.speed = Random.Range(0.9f, 1.1f);
         myRigid = GetComponent<Rigidbody>();
         currentSpeed = chargeSpeed;
         if (GetComponent<EnemyState>())
@@ -76,6 +85,14 @@ public class SheepBehaviour : EnemyBehavior {
             }
         }
 	}
+
+    public override void Activate()
+    {
+        timeChargeBegan = Time.time;
+        target = PlayerManager.GetInstance().Player;
+        base.Activate();
+
+    }
 
     //Attack logic
     private void AttackLogic()
@@ -115,22 +132,30 @@ public class SheepBehaviour : EnemyBehavior {
     //behaviour during charge up
     private void ChargeUp()
     {
-        //look at the target
+        //Trigger animation
+        myAnim.SetTrigger("ChargeUp");
+        //Jump
         if (!DoJumped)
         {
-            transform.DOJump(transform.position, 1f, 1, 0.5f);
+            transform.DOJump(transform.position, 0.5f, 1, 0.5f);
             DoJumped = true;
         }
+        //look at the target
         transform.DOLookAt(target.transform.position, 0.5f);
-        //remove any x and z change
-        //Quaternion newRotation = new Quaternion();
-        //newRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
-        //transform.rotation = newRotation;
     }
 
     //move
     private void Move()
     {
+        myAnim.SetTrigger("Charge");
+        //Play the rocket VFX
+        if (RocketFlames)
+        {
+            if (!RocketFlames.isPlaying)
+            {
+                RocketFlames.Play();
+            }
+        }
         myRigid.velocity = (myRigid.velocity + transform.forward).normalized * currentSpeed;
     }
 
