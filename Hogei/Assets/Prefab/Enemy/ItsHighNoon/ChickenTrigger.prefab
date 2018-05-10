@@ -763,14 +763,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1416412087401258}
-  m_LocalRotation: {x: -0, y: 0.8071831, z: -0, w: 0.5903013}
-  m_LocalPosition: {x: 18.672092, y: 15.98, z: -29.158487}
+  m_LocalRotation: {x: -0, y: 0.99988693, z: -0, w: 0.015037353}
+  m_LocalPosition: {x: 13.34, y: 15.5497055, z: -28.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4251111754172102}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 178.27701, z: 0}
 --- !u!4 &4638463069818664
 Transform:
   m_ObjectHideFlags: 1
@@ -1086,6 +1086,11 @@ MonoBehaviour:
   HitSoundPitchRange: {x: 0, y: 0}
   HitSound: []
   FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []
@@ -1163,7 +1168,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 836b5555a66f66149937f2f188a76025, type: 3}
+  - {fileID: 2100000, guid: 60114754ae802a14daf1b6dd611c1d7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
