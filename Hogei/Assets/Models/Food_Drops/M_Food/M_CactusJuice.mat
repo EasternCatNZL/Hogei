@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: M_LambRack
-  m_Shader: {fileID: 4800000, guid: a6e855e01bdb5eb41a4c89fe7dac323d, type: 3}
+  m_Name: M_CactusJuice
+  m_Shader: {fileID: 4800000, guid: dd27d28d3705a794ab249cc6b3e44864, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,6 +20,14 @@ Material:
     m_TexEnvs:
     - _BumpMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CactusJuice_Diffuse:
+        m_Texture: {fileID: 2800000, guid: 9f77f51232798994a98e3d09c0bdb31b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CactusJuice_Diffuse_1:
+        m_Texture: {fileID: 2800000, guid: b623000b49423214dbc84031f796bcc7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -38,16 +46,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _LambRack_D:
-        m_Texture: {fileID: 2800000, guid: db7ee636fa7329242a10fef3d7ec4f66, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _LambRack_D1:
-        m_Texture: {fileID: 2800000, guid: f1db18d2352b10b40b096537dd37cb0a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _M_LambRack_ambient_occlusion:
-        m_Texture: {fileID: 2800000, guid: c37560e91b99bf947b47eeeee6984597, type: 3}
+    - _M_CactusJuice_ambient_occlusion:
+        m_Texture: {fileID: 2800000, guid: 5eb46ffe95abd8f49b8a59a28ed45084, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -75,6 +75,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float0: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -87,7 +88,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - __dirty: 1
+    - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
