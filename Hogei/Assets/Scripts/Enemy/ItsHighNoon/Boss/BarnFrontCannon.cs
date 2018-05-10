@@ -28,6 +28,7 @@ public class BarnFrontCannon : MonoBehaviour {
 
     [Header("Control vars")]
     public bool isUsing = true; //check if this should be used
+    public bool fireSheep = true;
 
     private float cannonShotTime = 0.0f; //time cannon last shot
 
@@ -54,15 +55,17 @@ public class BarnFrontCannon : MonoBehaviour {
         //set timing
         cannonShotTime = Time.time;
 
-        //create sheep
-        GameObject sheepClone = Instantiate(sheepObject, transform.position, transform.rotation);
-        //set up vars on sheep behavior
-        SheepBehaviour sheepBehave = sheepClone.GetComponent<SheepBehaviour>();
-        sheepBehave.doTrack = false;
-        sheepBehave.chargeSpeed = bulletSpeed;
-        sheepBehave.isActive = true;
-        sheepClone.GetComponent<EntityHealth>().CurrentHealth = 1;
-
+        if (fireSheep)
+        {
+            //create sheep
+            GameObject sheepClone = Instantiate(sheepObject, transform.position, transform.rotation);
+            //set up vars on sheep behavior
+            SheepBehaviour sheepBehave = sheepClone.GetComponent<SheepBehaviour>();
+            sheepBehave.doTrack = false;
+            sheepBehave.chargeSpeed = bulletSpeed;
+            sheepBehave.isActive = true;
+            sheepClone.GetComponent<EntityHealth>().CurrentHealth = 1;
+        }
         //for the number of arcs, fire regular bullets
         for (int i = 1; i < numArcs; i++)
         {
@@ -90,15 +93,17 @@ public class BarnFrontCannon : MonoBehaviour {
         //get rotation
         float startAngle = Vector3.Angle(transform.forward, directionTo);
 
-        //create sheep
-        GameObject sheepClone = Instantiate(sheepObject, transform.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - startAngle, transform.rotation.eulerAngles.z));
-        //set up vars on sheep behavior
-        SheepBehaviour sheepBehave = sheepClone.GetComponent<SheepBehaviour>();
-        sheepBehave.doTrack = false;
-        sheepBehave.chargeSpeed = bulletSpeed;
-        sheepBehave.isActive = true;
-        sheepClone.GetComponent<EntityHealth>().CurrentHealth = 1;
-
+        if (fireSheep)
+        {
+            //create sheep
+            GameObject sheepClone = Instantiate(sheepObject, transform.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - startAngle, transform.rotation.eulerAngles.z));
+            //set up vars on sheep behavior
+            SheepBehaviour sheepBehave = sheepClone.GetComponent<SheepBehaviour>();
+            sheepBehave.doTrack = false;
+            sheepBehave.chargeSpeed = bulletSpeed;
+            sheepBehave.isActive = true;
+            sheepClone.GetComponent<EntityHealth>().CurrentHealth = 1;
+        }
         //for the number of arcs, fire regular bullets
         for (int i = 1; i < numArcs; i++)
         {

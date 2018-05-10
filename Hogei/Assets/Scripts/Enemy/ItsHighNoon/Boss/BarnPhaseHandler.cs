@@ -107,6 +107,11 @@ public class BarnPhaseHandler : MonoBehaviour {
     {
         //start using sheep launcher
         sheepLaunch.isUsing = true;
+        //Reduce front cannon intensity
+        frontCannon.numArcs = 10;
+        frontCannon.angleChangePerShot = 14;
+        frontCannon.bulletSpeed = 5;
+        frontCannon.timeBetweenSprays = 0.5f;
         //set take damage to on
 
     }
