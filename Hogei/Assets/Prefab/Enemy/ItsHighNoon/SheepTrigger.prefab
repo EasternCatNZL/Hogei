@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 114897975775674156}
   m_Layer: 10
   m_Name: SheepTrigger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 114387489336671644}
   m_Layer: 10
   m_Name: Sheep_animation
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,7 +917,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243737086686220}
   m_LocalRotation: {x: -0, y: -0.9945286, z: -0, w: 0.104464896}
-  m_LocalPosition: {x: -11.372091, y: 16.153248, z: -0.85953045}
+  m_LocalPosition: {x: -8.080871, y: 16.15325, z: -7.244185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4123002550724856}
@@ -994,6 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnOffset: {x: 0, y: 0, z: 0}
   itemDrop:
   - {fileID: 1248819439096110, guid: 739f719f835defa48955e4948e5af75b, type: 2}
 --- !u!114 &114304882528007874
@@ -1340,7 +1341,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1485,7 +1486,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2

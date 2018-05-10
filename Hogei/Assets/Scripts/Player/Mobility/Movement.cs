@@ -191,7 +191,7 @@ public class Movement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        //print("Entered: " + collision.gameObject.name);
+        print("Entered: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag(dungeonTag))
         {
             isGrounded = true;

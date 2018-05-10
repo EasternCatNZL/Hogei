@@ -6,22 +6,18 @@ public class ProgressBar : MonoBehaviour {
 
     public Transform progressBar;
 
-    private EntityHealth PlayerHealth;
+    public EntityHealth EntityHealth;
 
     public void SetPercentage(float _Percentage)
     {
-        progressBar.localScale = new Vector3(progressBar.localScale.x, 2 * _Percentage, progressBar.localScale.z);
+        progressBar.localScale = new Vector3(_Percentage, progressBar.localScale.y , progressBar.localScale.z);
     }
 
     private void Update()
     {
-        if (!PlayerHealth)
+        if(EntityHealth)
         {
-            PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityHealth>();
-        }
-        else
-        {
-            float percentage = PlayerHealth.CurrentHealth/PlayerHealth.MaxHealth;
+            float percentage = EntityHealth.CurrentHealth/ EntityHealth.MaxHealth;
             SetPercentage(percentage);
         }
     }

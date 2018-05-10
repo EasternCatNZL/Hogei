@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Drops : MonoBehaviour {
 
+    public Vector3 SpawnOffset;
     public GameObject[] itemDrop;
 
 
@@ -21,8 +22,16 @@ public class Drops : MonoBehaviour {
 
     public void DropItem()
     {
-        Vector3 currentPosition = transform.position;
-        Instantiate(itemDrop[0], currentPosition, Quaternion.identity);
+        Vector3 DropPosition = Vector3.zero;
+        int Count = 0;
+        foreach (GameObject item in itemDrop)
+        {
+            Count++;
+            DropPosition = new Vector3(SpawnOffset.x + Mathf.Sin((360 / itemDrop.Length) * Mathf.Deg2Rad * Count), SpawnOffset.y + 0f, SpawnOffset.z + Mathf.Cos((360 / itemDrop.Length) * Mathf.Deg2Rad * Count));
+            DropPosition += transform.position;
+            Instantiate(item, DropPosition, Quaternion.identity);
+
+        }
     }
 
     /*
@@ -45,12 +54,10 @@ public class Drops : MonoBehaviour {
             foreach (GameObject item in itemDrop)
             {
                 Count++;
-                DropPosition = new Vector3(Mathf.Sin((360 / itemDrop.Length) * Mathf.Deg2Rad * Count), 0f, Mathf.Cos((360 / itemDrop.Length) * Mathf.Deg2Rad * Count));
+                DropPosition = new Vector3(SpawnOffset.x + Mathf.Sin((360 / itemDrop.Length) * Mathf.Deg2Rad * Count), SpawnOffset.y + 0f, SpawnOffset.z + Mathf.Cos((360 / itemDrop.Length) * Mathf.Deg2Rad * Count));
                 DropPosition += transform.position;
                 Instantiate(item, DropPosition, Quaternion.identity);
-
             }
-            Destroy(gameObject);
         }
     }       
 }
