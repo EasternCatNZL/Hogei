@@ -916,14 +916,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243737086686220}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.9945286, z: -0, w: 0.104464896}
+  m_LocalPosition: {x: -11.372091, y: 16.153248, z: -0.85953045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4123002550724856}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -168.007, z: 0}
 --- !u!4 &4982657315983380
 Transform:
   m_ObjectHideFlags: 1
@@ -1069,6 +1069,7 @@ MonoBehaviour:
   targetTag: Player
   bulletTag: Bullet
   floorTag: Dungeon
+  RigidVelocity: {x: 0, y: 0, z: 0}
   isPaused: 0
   currentSpeed: 0
   timeChargeBegan: 0
@@ -1339,7 +1340,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1484,7 +1485,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
