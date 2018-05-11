@@ -25,15 +25,15 @@ public class MusicManager : MonoBehaviour {
 
     [Header("Sound control vars")]
     [Tooltip("Sound effects")]
-    public float sfxVol = 1.0f;
+    public static float sfxVol = 1.0f;
 
     [Header("Background sound")]
     [Tooltip("The bgm volume")]
-    public float bgmVol = 1.0f;
+    public static float bgmVol = 1.0f;
 
     [Header("Master volume")]
     [Tooltip("Master volume")]
-    public float masterVol = 1.0f;
+    public static float masterVol = 1.0f;
 
     [Header("Tags")]
     public string sceneTag = "Scene";
@@ -161,7 +161,7 @@ public class MusicManager : MonoBehaviour {
     }
 
     //returns volume of sfx to required components
-    public float GetSfxVol()
+    public static float GetSfxVol()
     {
         float vol = 1.0f;
         vol = masterVol - (1.0f - sfxVol);

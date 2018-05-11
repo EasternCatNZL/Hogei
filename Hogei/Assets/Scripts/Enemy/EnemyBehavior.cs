@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour {
+public class EnemyBehavior : GameEntity {
 
     //[HideInInspector]
     public bool isActive = false; //check if active
@@ -25,4 +25,6 @@ public class EnemyBehavior : MonoBehaviour {
     {
 
     }
+
+
 }
