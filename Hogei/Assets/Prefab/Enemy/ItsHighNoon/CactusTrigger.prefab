@@ -777,6 +777,12 @@ MonoBehaviour:
   isTriggered: 0
   doTriggerPlayer: 1
   doTriggerBullet: 0
+  WarningObject: {fileID: 0}
+  WarningBegan: 0
+  WarningTime: 0.5
+  WarningYEndValue: 0.4
+  WarningActive: 0
+  Enemy: {fileID: 0}
 --- !u!114 &114176268066501742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,11 +794,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnOffset: {x: 0, y: 0, z: 0}
   itemDrop:
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
-  - {fileID: 1623844405684748, guid: d9e20d0c1afdf084eba66def908ee587, type: 2}
+  - {fileID: 1661773888295534, guid: e7e91e678a9400e49a78fbfdd23e9842, type: 2}
 --- !u!114 &114498884800913292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -812,9 +819,9 @@ MonoBehaviour:
   - {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2, type: 2}
   - {fileID: 1278268787249522, guid: 362fae900511e8f4cb3cc23516bb16c9, type: 2}
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 1
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 0.75
   HitSoundPitchRange: {x: 0.95, y: 1.05}
@@ -823,6 +830,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0bad8dea71f5f284b9bf50c7361909b0, type: 3}
   - {fileID: 8300000, guid: b83a1193c5f002f4c80094e8c67c77dd, type: 3}
   - {fileID: 8300000, guid: 80bc0b1494ef98c44a28b5a99cde5c90, type: 3}
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls: []

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95597876332726410}
   - component: {fileID: 114890230172403442}
   - component: {fileID: 54087070833807316}
-  - component: {fileID: 65773145847676792}
+  - component: {fileID: 135021542379489268}
   m_Layer: 14
   m_Name: Lamb_Rack
   m_TagString: Untagged
@@ -101,18 +101,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &65773145847676792
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909935847725896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6302626, y: 0.9703833, z: 1.1902473}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95597876332726410
 Animator:
   serializedVersion: 3
@@ -148,3 +136,15 @@ MonoBehaviour:
     Effect: 1
     Value: 1
   rotationSpeed: 45
+--- !u!135 &135021542379489268
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909935847725896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.59512365
+  m_Center: {x: 0, y: 0, z: 0}

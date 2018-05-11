@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 114763967712315866}
   - component: {fileID: 54354247856744576}
   - component: {fileID: 114497118303641526}
+  - component: {fileID: 114421716857121156}
   m_Layer: 10
   m_Name: ChickenEnemy
   m_TagString: Untagged
@@ -1060,6 +1061,20 @@ MonoBehaviour:
   WarningYEndValue: 0.3
   WarningActive: 0
   Enemy: {fileID: 114763967712315866}
+--- !u!114 &114421716857121156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678877248782734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnOffset: {x: 0, y: 1, z: 0}
+  itemDrop:
+  - {fileID: 1901530217081116, guid: 888e2f61c2a296c48b79edf731085d08, type: 2}
 --- !u!114 &114497118303641526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1093,7 +1108,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114421716857121156}
+        m_MethodName: DropItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114763967712315866

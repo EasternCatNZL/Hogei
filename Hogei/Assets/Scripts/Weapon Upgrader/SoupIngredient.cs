@@ -11,7 +11,8 @@ public class SoupIngredient : MonoBehaviour {
         Lamb,
         HornedLamb,
         Whiskey,
-        Cactus
+        Cactus,
+        Chicken
     }
 
     public IngredientType Type;
