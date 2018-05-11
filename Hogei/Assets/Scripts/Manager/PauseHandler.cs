@@ -54,8 +54,9 @@ public class PauseHandler : MonoBehaviour {
     }
 
     //Unpause call
-    public void Unpause()
+    static public void Unpause()
     {
+        UnpauseEvent();
         isPaused = false;
     }
 }

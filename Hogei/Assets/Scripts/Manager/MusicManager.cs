@@ -35,6 +35,9 @@ public class MusicManager : MonoBehaviour {
     [Tooltip("Master volume")]
     public float masterVol = 1.0f;
 
+    [Header("Tags")]
+    public string sceneTag = "Scene";
+
     //event stuff
     public delegate void MusicDelegate();
     public static event MusicDelegate sfxVolChangeEvent;
@@ -47,14 +50,21 @@ public class MusicManager : MonoBehaviour {
     private bool isSfxMuted = false; //checks if sfx is muted
 
     private AudioSource bgm; //audiosource used for background music
-    private AudioClip CurrentBGM;
+    private AudioSource CurrentBGM;
 
 	// Use this for initialization
 	void Awake () {
 		if(bgm == null)
         {
-            bgm = gameObject.AddComponent<AudioSource>();
-            bgm.volume = bgmVol;
+            if (GameObject.FindGameObjectWithTag(sceneTag))
+            {
+                bgm = GameObject.FindGameObjectWithTag(sceneTag).GetComponent<SceneHandler>().BackgroundMusic;
+            }
+            else
+            {
+                bgm = gameObject.AddComponent<AudioSource>();
+                bgm.volume = bgmVol;
+            }
         }
 	}
 
@@ -110,11 +120,11 @@ public class MusicManager : MonoBehaviour {
             //if bgm is muted
             if (isBgmMuted)
             {
-                bgm.mute = true;
+                bgm.mute = false;
             }
             else
             {
-                bgm.mute = false;
+                bgm.mute = true;
             }
 
             SfxEvents();
@@ -247,7 +257,7 @@ public class MusicManager : MonoBehaviour {
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
     {
         GetSceneBGM();
-        bgm.clip = CurrentBGM;
+        bgm = CurrentBGM;
         bgm.Play();
     }
 }

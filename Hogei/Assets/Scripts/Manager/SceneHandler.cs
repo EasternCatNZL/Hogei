@@ -12,7 +12,7 @@ public class SceneHandler : MonoBehaviour {
     public int sceneNumber = 1;
 
     [Header("Music Settings")]
-    public AudioClip BackgroundMusic;
+    public AudioSource BackgroundMusic;
 
     [Header("UI Settigns")]
     public GameObject CountDownUI;

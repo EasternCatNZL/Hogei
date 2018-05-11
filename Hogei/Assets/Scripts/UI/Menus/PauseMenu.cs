@@ -34,24 +34,27 @@ public class PauseMenu : MonoBehaviour {
         pausePanel.SetActive(true);
     }
 
-    private void TurnOnAudio()
+    public void TurnOnAudio()
     {
         TurnAllPanelsOff();
         audioPanel.SetActive(true);
     }
 
-    private void TurnOnRebind()
+    public void TurnOnRebind()
     {
         TurnAllPanelsOff();
         rebindPanel.SetActive(true);
     }
 
     //resume the game
-    private void ResumeGame()
+    public void ResumeGame()
     {
         //turn off all panels
         TurnAllPanelsOff();
         //have pause handler call unpause
-        //PauseHandler.UnpauseEvent();
+        PauseHandler.Unpause();
     }
+
+    //quit game <- go back to title?
+
 }
