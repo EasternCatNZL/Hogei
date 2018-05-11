@@ -23,14 +23,35 @@ public class MusicMenu : MonoBehaviour {
     [Header("Script refs")]
     public MusicManager musicMan;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [Header("Tags")]
+    public string managerTag = "Manager";
+
+    //control vars
+    private float lastInteraction = 0.0f;
+    private float interactionDelay = 0.1f; //event firing twice preventation delay
+
+    private void Awake()
+    {
+        if (!musicMan)
+        {
+            musicMan = GameObject.FindGameObjectWithTag(managerTag).GetComponent<MusicManager>();
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
+        if (!musicMan)
+        {
+            musicMan = GameObject.FindGameObjectWithTag(managerTag).GetComponent<MusicManager>();
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Time.time > lastInteraction + interactionDelay)
+        {
+            MakeEverythingInteractable();
+        }
 	}
 
     //Update value from sliders
@@ -56,17 +77,31 @@ public class MusicMenu : MonoBehaviour {
     {
         //set master mute to value of toggle
         musicMan.UpdateMasterMute(masterMuteToggle.isOn);
+        masterMuteToggle.interactable = false;
+        lastInteraction = Time.time;
     }
 
     public void UpdateBgmMute()
     {
         //set bgm mute to value of toggle
         musicMan.UpdateBgmMute(bgmMuteToggle.isOn);
+        bgmMuteToggle.interactable = false;
+        lastInteraction = Time.time;
     }
 
     public void UpdateSfxMute()
     {
         //set sfx mute to value of toggle
         musicMan.UpdateSfxMute(sfxMuteToggle.isOn);
+        sfxMuteToggle.interactable = false;
+        lastInteraction = Time.time;
+    }
+
+    //make everything interactable again <- shitty fix
+    private void MakeEverythingInteractable()
+    {
+        masterMuteToggle.interactable = true;
+        bgmMuteToggle.interactable = true;
+        sfxMuteToggle.interactable = true;
     }
 }
