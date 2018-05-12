@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirectionalWaterCurrent : MonoBehaviour {
+public class DirectionalWaterCurrent : GameEntity
+{
 
     [Header("Force vars")]
     [Tooltip("Amount of force applied")]

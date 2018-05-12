@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircularWaterCurrent : MonoBehaviour {
+public class CircularWaterCurrent : GameEntity {
 
     [Header("Force vars")]
     [Tooltip("Amount of force applied")]

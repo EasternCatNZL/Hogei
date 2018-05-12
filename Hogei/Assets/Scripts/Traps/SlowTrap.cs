@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowTrap : MonoBehaviour {
+public class SlowTrap : GameEntity {
 
     [Tooltip("Percentage slowed by")]
     [Range(0f,1f)]
