@@ -5,9 +5,13 @@ using UnityEngine;
 public class ChickenBehavior : EnemyBehavior
 {
 
-    [Header("Speed vars")]
+    [Header("Movement Settings")]
+    [Tooltip("Trigger the jumps on the animation")]
+    public bool AnimationTriggered = true;
+    [Tooltip("Time between jumps when not jumps aren't animation triggered")]
+    public float TimeBetweenJumps = 1f;
     [Tooltip("Speed object travels at")]
-    public float moveSpeed = 3.0f;
+    public float jumpForce = 3.0f;
 
     [Header("Tags")]
     public string targetTag = "Player";
@@ -31,6 +35,7 @@ public class ChickenBehavior : EnemyBehavior
 
     private GameObject HitTarget;
     private float LastAttackTime;
+    private float LastJumpTime;
 
     // Use this for initialization
     void Start()
@@ -38,7 +43,7 @@ public class ChickenBehavior : EnemyBehavior
         myRigid = GetComponent<Rigidbody>();
         myAnim = GetComponent<Animator>();
         myAnim.speed = Random.Range(IdleSpeedVariance.x, IdleSpeedVariance.y);
-        moveSpeed += (Random.Range(0f, 1f) - 0.5f);
+        jumpForce += (Random.Range(0f, 1f) - 0.5f);
     }
 
     // Update is called once per frame
@@ -82,6 +87,14 @@ public class ChickenBehavior : EnemyBehavior
             //move in that direction
             //myRigid.velocity = transform.forward * moveSpeed;
             //transform.position += (transform.forward * moveSpeed) * Time.deltaTime;
+            if (!AnimationTriggered)//Trigger the jump if the timer equals zero
+            {
+                if (Time.time - LastJumpTime > TimeBetweenJumps)
+                {
+                    JumpEvent();
+                    LastJumpTime = Time.time;
+                }
+            }
         }
         else
         {
@@ -99,7 +112,7 @@ public class ChickenBehavior : EnemyBehavior
 
     public void JumpEvent()
     {
-        myRigid.AddForce((transform.forward + transform.up) * moveSpeed, ForceMode.Impulse);
+        myRigid.AddForce((transform.forward + transform.up) * jumpForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

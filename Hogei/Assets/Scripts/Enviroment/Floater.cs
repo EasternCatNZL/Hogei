@@ -8,13 +8,17 @@ public class Floater : MonoBehaviour {
     public float DegreesPerSec = 0.0f;
     //up/down
     public float yAmp = 0.0f;
-    public float ySpeed = 0.0f;
+    public Vector2 ySpeedRange = Vector2.zero;
     //forward/backlwards
     public float xAmp = 0.0f;
-    public float xSpeed = 0.0f;
+    public Vector2 xSpeedRange = Vector2.zero;
     //left/right
     public float zAmp = 0.0f;
-    public float zSpeed = 0.0f;
+    public Vector2 zSpeedRange = Vector2.zero;
+    //Speed variables
+    private float ySpeed;
+    private float xSpeed;
+    private float zSpeed;
 
     Vector3 PositionOffset;
     Vector3 TempPos;
@@ -23,17 +27,22 @@ public class Floater : MonoBehaviour {
     void Start()
     {
         PositionOffset = transform.position;
+        //Get random speeds within the range
+        ySpeed = Random.Range(ySpeedRange.x, ySpeedRange.y);
+        xSpeed = Random.Range(xSpeedRange.x, xSpeedRange.y);
+        zSpeed = Random.Range(zSpeedRange.x, zSpeedRange.y);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         transform.Rotate(new Vector3(0.0f, Time.deltaTime * DegreesPerSec, 0.0f), Space.World);
-        TempPos = PositionOffset;
+        TempPos = PositionOffset;       
+        //Set new position based on sine wave
         TempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * ySpeed) * yAmp;
         TempPos.x += Mathf.Sin(Time.fixedTime * Mathf.PI * xSpeed) * xAmp;
         TempPos.z += Mathf.Sin(Time.fixedTime * Mathf.PI * zSpeed) * zAmp;
+        //Set new position
         transform.position = TempPos;
         
     }
