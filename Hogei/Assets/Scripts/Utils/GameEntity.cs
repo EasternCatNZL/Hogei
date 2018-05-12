@@ -11,15 +11,28 @@ public class GameEntity : MonoBehaviour {
     {
         MusicManager.sfxVolChangeEvent += ChangeSfxVol;
         MusicManager.sfxMuteEvent += ToggleSfxMuteOn;
+        MusicManager.sfxUnmuteEvent += ToggelSfxMuteOff;
+    }
+
+    private void OnDisable()
+    {
+        MusicManager.sfxVolChangeEvent -= ChangeSfxVol;
+        MusicManager.sfxMuteEvent -= ToggleSfxMuteOn;
+        MusicManager.sfxUnmuteEvent -= ToggelSfxMuteOff;
     }
 
     // Use this for initialization
     void Start () {
-		
+        ChangeSfxVol();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Awake()
+    {
+        ChangeSfxVol();
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -37,11 +50,21 @@ public class GameEntity : MonoBehaviour {
     //change mute of sfx
     private void ToggleSfxMuteOn()
     {
-
+        //for all sfx
+        for (int i = 0; i < sfxArray.Length; i++)
+        {
+            //change vol
+            sfxArray[i].mute = true;
+        }
     }
 
     private void ToggelSfxMuteOff()
     {
-
+        //for all sfx
+        for (int i = 0; i < sfxArray.Length; i++)
+        {
+            //change vol
+            sfxArray[i].mute = false;
+        }
     }
 }

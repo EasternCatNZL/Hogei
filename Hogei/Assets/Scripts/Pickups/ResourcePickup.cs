@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourcePickup : MonoBehaviour {
+public class ResourcePickup : GameEntity {
 
     [Header("Resource Settings")]
     public ResourceManager.Resources Drop;

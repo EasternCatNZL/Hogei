@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class SpikeTrap : MonoBehaviour {
+public class SpikeTrap : GameEntity {
 
     private float timer = 0.0f;
     private float ResetTimer = 0.0f;

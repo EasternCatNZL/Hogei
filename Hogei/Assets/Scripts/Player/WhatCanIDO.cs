@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhatCanIDO : MonoBehaviour {
+public class WhatCanIDO : GameEntity
+{
 
     [Header("Control bools")]
     public bool canMove = false;
