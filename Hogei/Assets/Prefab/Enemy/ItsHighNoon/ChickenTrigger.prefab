@@ -1057,8 +1057,8 @@ MonoBehaviour:
   WarningObject: {fileID: 1585930551208490, guid: 75c6f504236aadb4c9f53b1c56c87d1a,
     type: 2}
   WarningBegan: 0
-  WarningTime: 0.25
-  WarningYEndValue: 0.3
+  WarningTime: 0.5
+  WarningYEndValue: 0.4
   WarningActive: 0
   Enemy: {fileID: 114763967712315866}
 --- !u!114 &114421716857121156
@@ -1072,7 +1072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOffset: {x: 0, y: 1, z: 0}
+  SpawnOffset: {x: 0, y: 0, z: 0}
+  RotationOffset: {x: -90, y: 0, z: 0}
   itemDrop:
   - {fileID: 1901530217081116, guid: 888e2f61c2a296c48b79edf731085d08, type: 2}
 --- !u!114 &114497118303641526
@@ -1095,7 +1096,7 @@ MonoBehaviour:
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
-  ScaleUpBeforeDeath: 1
+  ScaleUpBeforeDeath: 0
   StackSounds: 0
   HitSoundVol: 1
   HitSoundPitchRange: {x: 0, y: 0}
@@ -1133,13 +1134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38020526e3bee8b4eacc7eda739f6f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxArray: []
   isActive: 0
   moveSpeed: 3
   targetTag: Player
   bulletTag: Bullet
   timeBetweenAttacks: 1
   Damage: 1
-  IdleSpeedVariance: {x: 0.5, y: 1.5}
+  IdleSpeedVariance: {x: 0.9, y: 1.1}
 --- !u!114 &114939267894434488
 MonoBehaviour:
   m_ObjectHideFlags: 1

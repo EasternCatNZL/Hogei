@@ -60,11 +60,14 @@ public class EnemyTrigger : MonoBehaviour {
 
     public void Warning()
     {
-        WarningActive = true;
-        Vector3 currentPos = transform.position;
-        Vector3 extraHeight = new Vector3(0.0f, 2.0f, 0.0f);
-        GameObject Object = Instantiate(WarningObject, currentPos + extraHeight, Quaternion.identity);
-        Object.transform.DOScaleY(WarningYEndValue, 0.5f).SetEase(Ease.OutBack, 5f);
+        if (WarningObject)
+        {
+            WarningActive = true;
+            Vector3 currentPos = transform.position;
+            Vector3 extraHeight = new Vector3(0.0f, 2.0f, 0.0f);
+            GameObject Object = Instantiate(WarningObject, currentPos + extraHeight, Quaternion.identity);
+            Object.transform.DOScaleY(WarningYEndValue, 0.5f).SetEase(Ease.OutBack, 5f);
+        }
     }
 
 }

@@ -1054,6 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331ac571069fb214ba546cf0ab5235c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxArray: []
   isActive: 0
   bulletObject: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55,
     type: 2}
@@ -1063,9 +1064,9 @@ MonoBehaviour:
   MaxRange: 1000
   timeBetweenShots: 0.2
   timeBetweenRounds: 1
-  ShotSound: {fileID: 0}
+  ShotSound: {fileID: 8300000, guid: b500386c44c59a54aad6b9634f097328, type: 3}
   ShotSoundVolume: 1
-  PitchVarianceRange: {x: 0, y: 0}
+  PitchVarianceRange: {x: 1, y: 1}
   ShotSpatialBlend: 0.5
   targetTag: Player
   bulletTag: Bullet
@@ -1089,12 +1090,13 @@ MonoBehaviour:
   isTriggered: 0
   doTriggerPlayer: 1
   doTriggerBullet: 0
-  WarningObject: {fileID: 0}
+  WarningObject: {fileID: 1585930551208490, guid: 75c6f504236aadb4c9f53b1c56c87d1a,
+    type: 2}
   WarningBegan: 0
   WarningTime: 0.5
   WarningYEndValue: 0.4
   WarningActive: 0
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 114046804120574316}
 --- !u!114 &114394728860101190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1107,6 +1109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnOffset: {x: 0, y: 0, z: 0}
+  RotationOffset: {x: 0, y: 0, z: 0}
   itemDrop:
   - {fileID: 1589430576805740, guid: 745c6adb27257c64783e30e914314916, type: 2}
 --- !u!136 &136044688517673892

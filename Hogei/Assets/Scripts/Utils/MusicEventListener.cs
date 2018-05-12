@@ -44,7 +44,7 @@ public class MusicEventListener : MonoBehaviour {
         //for all sources
         for(int i = 0; i < sfxArray.Length; i++)
         {
-            sfxArray[i].volume = musicMan.sfxVol;
+            //sfxArray[i].volume = musicMan.sfxVol;
         }
     }
 

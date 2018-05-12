@@ -917,7 +917,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243737086686220}
   m_LocalRotation: {x: -0, y: -0.9945286, z: -0, w: 0.104464896}
-  m_LocalPosition: {x: -8.080871, y: 16.15325, z: -7.244185}
+  m_LocalPosition: {x: -11.372091, y: 16.153248, z: -0.85953045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4123002550724856}
@@ -994,7 +994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOffset: {x: 0, y: 1, z: 0}
+  SpawnOffset: {x: 0, y: 0, z: 0}
+  RotationOffset: {x: 0, y: 0, z: 0}
   itemDrop:
   - {fileID: 1909935847725896, guid: 88c34228ec5618442a5c88ae13282450, type: 2}
 --- !u!114 &114304882528007874
@@ -1032,7 +1033,7 @@ MonoBehaviour:
   DeathFunction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114387489336671644}
         m_MethodName: BulletExplosion
         m_Mode: 1
         m_Arguments:
@@ -1056,6 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee59d67b69410294ca461ce34dd4e288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxArray: []
   isActive: 0
   chargeTime: 0.5
   chargeSpeed: 8
@@ -1112,7 +1114,7 @@ MonoBehaviour:
   WarningTime: 0.5
   WarningYEndValue: 0.4
   WarningActive: 0
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 114387489336671644}
 --- !u!135 &135000492689747538
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1334,7 +1336,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -2045295565
+  randomSeed: 136474959
   InitialModule:
     serializedVersion: 3
     enabled: 1
