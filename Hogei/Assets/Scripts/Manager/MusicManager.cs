@@ -168,9 +168,11 @@ public class MusicManager : MonoBehaviour {
         return vol;
     }
 
-    private void GetSceneBGM()
+    private bool GetSceneBGM()
     {
         CurrentBGM = SceneHandler.GetSceneHandler().BackgroundMusic;
+        if (CurrentBGM != null) return true;
+        return false;
     }
 
     //to receive values from music menu
@@ -256,8 +258,10 @@ public class MusicManager : MonoBehaviour {
 
     private void OnSceneLoad(Scene _Scene, LoadSceneMode _Mode)
     {
-        GetSceneBGM();
-        bgm = CurrentBGM;
-        bgm.Play();
+        if (GetSceneBGM())
+        {
+            bgm = CurrentBGM;
+            bgm.Play();
+        }
     }
 }

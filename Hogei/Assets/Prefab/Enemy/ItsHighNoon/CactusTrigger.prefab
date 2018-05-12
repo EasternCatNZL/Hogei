@@ -777,12 +777,13 @@ MonoBehaviour:
   isTriggered: 0
   doTriggerPlayer: 1
   doTriggerBullet: 0
-  WarningObject: {fileID: 0}
+  WarningObject: {fileID: 1585930551208490, guid: 75c6f504236aadb4c9f53b1c56c87d1a,
+    type: 2}
   WarningBegan: 0
   WarningTime: 0.5
   WarningYEndValue: 0.4
   WarningActive: 0
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 114722889593381400}
 --- !u!114 &114176268066501742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,7 +795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOffset: {x: 0, y: 0, z: 0}
+  SpawnOffset: {x: 0, y: 1, z: 0}
+  RotationOffset: {x: 0, y: 0, z: 0}
   itemDrop:
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
@@ -852,6 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbc1604e9708cb4ead29a748e1228fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxArray: []
   isActive: 0
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}

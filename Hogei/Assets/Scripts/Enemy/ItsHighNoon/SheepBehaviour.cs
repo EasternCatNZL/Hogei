@@ -29,6 +29,10 @@ public class SheepBehaviour : EnemyBehavior {
     [Tooltip("Angle change per shot in spray")]
     public float angleChangePerShot = 60.0f;
 
+    [Header("SFX Settings")]
+    private AudioSource mySource;
+    public AudioClip LaunchSound;
+
     [Header("VFX Settings")]
     public ParticleSystem RocketFlames;
 
@@ -67,6 +71,7 @@ public class SheepBehaviour : EnemyBehavior {
         myAnim = GetComponent<Animator>();
         myAnim.speed = Random.Range(0.9f, 1.1f);
         myRigid = GetComponent<Rigidbody>();
+        mySource = GetComponent<AudioSource>();
         currentSpeed = chargeSpeed;
         if (GetComponent<EnemyState>())
         {
@@ -147,8 +152,15 @@ public class SheepBehaviour : EnemyBehavior {
     //move
     private void Move()
     {
+        //Set Animation Trigger
         myAnim.SetTrigger("Charge");
-        //Play the rocket VFX
+        //Play the Launch SFX if it isn't already
+        if (!mySource.isPlaying)
+        {
+            mySource.clip = LaunchSound;
+            mySource.Play();
+        }
+        //Play the rocket VFX if it isn't already
         if (RocketFlames)
         {
             if (!RocketFlames.isPlaying)

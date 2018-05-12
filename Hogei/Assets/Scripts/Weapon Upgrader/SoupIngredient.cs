@@ -6,6 +6,8 @@ public class SoupIngredient : MonoBehaviour {
 
     public bool Spin = true;
 
+    public AudioClip PickupSounds;
+
     public enum IngredientType
     {
         Lamb,
@@ -34,6 +36,7 @@ public class SoupIngredient : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerManager.GetInstance().AddIngredientInventory(this);
+            if (PickupSounds) MusicManager.PlaySoundAtLocation(PickupSounds, transform.position);
             Destroy(gameObject);
         }
     }

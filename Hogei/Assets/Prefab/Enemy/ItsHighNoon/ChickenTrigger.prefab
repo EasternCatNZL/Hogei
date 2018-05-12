@@ -1096,11 +1096,12 @@ MonoBehaviour:
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
-  ScaleUpBeforeDeath: 0
+  ScaleUpBeforeDeath: 1
   StackSounds: 0
-  HitSoundVol: 1
-  HitSoundPitchRange: {x: 0, y: 0}
-  HitSound: []
+  HitSoundVol: 0.5
+  HitSoundPitchRange: {x: 0.9, y: 1.1}
+  HitSound:
+  - {fileID: 8300000, guid: a40ce7f8c3689f644a6666ff0a4c0ccc, type: 3}
   FinalHitSound: {fileID: 0}
   HitTriggerFunction:
     m_PersistentCalls:
