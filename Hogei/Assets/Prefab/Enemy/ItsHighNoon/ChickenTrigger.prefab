@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 114421716857121156}
   m_Layer: 10
   m_Name: ChickenEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1137,7 +1137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxArray: []
   isActive: 0
-  moveSpeed: 3
+  AnimationTriggered: 1
+  TimeBetweenJumps: 1
+  jumpForce: 3
   targetTag: Player
   bulletTag: Bullet
   timeBetweenAttacks: 1
