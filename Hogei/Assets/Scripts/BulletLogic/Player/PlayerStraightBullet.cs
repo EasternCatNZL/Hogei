@@ -2,32 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStraightBullet : MonoBehaviour {
+public class PlayerStraightBullet : BulletBehavior {
 
     //script ref
     //private BulletBank bulletBank;
 
-    [Header("Damage")]
-    [Tooltip("Damage dealt by bullet")]
-    public float bulletDamage = 1.0f;
-
     [Header("Explosion vfx")]
     public GameObject explosionVFX;
 
-    [Header("Lifetime")]
-    [Tooltip("Lifetime of the bullet")]
-    public float lifeTime = 5.0f;
 
     [Header("Tags")]
     public string debugTag = "Debugger";
 
-    //control vars
-    private Rigidbody myRigid;
-    private bool isActive = false;
-    private float travelSpeed = 3.0f;
-    private float startTime = 0.0f;
-    private float pauseStartTime = 0.0f;
-    private float pauseEndTime = 0.0f;
     private Vector3 startPos = Vector3.zero;
 
     // Use this for initialization
@@ -52,20 +38,6 @@ public class PlayerStraightBullet : MonoBehaviour {
         }
     }
 
-    private void OnEnable()
-    {
-        PauseHandler.PauseEvent += OnPause;
-        PauseHandler.UnpauseEvent += OnUnpause;
-        //print("Subscribed to event");
-    }
-
-    private void OnDisable()
-    {
-        PauseHandler.PauseEvent -= OnPause;
-        PauseHandler.UnpauseEvent -= OnUnpause;
-        //print("Unsubscribed to event");
-    }
-
     //set up func
     public void SetupVars(float speed, float travelDist, bool expire)
     {
@@ -81,7 +53,7 @@ public class PlayerStraightBullet : MonoBehaviour {
     }
 
     //collision = deactivate
-    private void OnTriggerEnter(Collider collision)
+    protected override void OnTriggerEnter(Collider collision)
     {
         if (!collision.isTrigger)
         {
@@ -108,13 +80,13 @@ public class PlayerStraightBullet : MonoBehaviour {
     }
 
     //Pause events
-    void OnPause()
+    protected override void OnPause()
     {
         isActive = false;
         pauseStartTime += Time.time;
     }
 
-    void OnUnpause()
+    protected override void OnUnpause()
     {
         isActive = true;
         pauseEndTime += Time.time;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DecceleratingBullet : MonoBehaviour {
+public class DecceleratingBullet : BulletBehavior {
 
     [Header("Speed")]
     [Tooltip("Start speed of bullet")]
@@ -12,21 +12,8 @@ public class DecceleratingBullet : MonoBehaviour {
     [Tooltip("Max speed")]
     public float minSpeed = 10.0f;
 
-    [Header("Damage")]
-    [Tooltip("Damage dealt by bullet")]
-    public float bulletDamage = 1.0f;
-
-    [Header("Lifetime")]
-    [Tooltip("Lifetime of the bullet")]
-    public float lifeTime = 5.0f;
-
     //control vars
-    private float startTime = 0.0f;
     private float currentSpeed = 0.0f;
-    private Rigidbody myRigid;
-    private bool isActive = true;
-    private float pauseStartTime = 0.0f;
-    private float pauseEndTime = 0.0f;
 
     // Use this for initialization
     void Start () {

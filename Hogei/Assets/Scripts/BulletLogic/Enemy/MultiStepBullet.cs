@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class MultiStepBullet : MonoBehaviour {
-
-    [Header("Damage")]
-    [Tooltip("Damage dealt by bullet")]
-    public float bulletDamage = 1.0f;
+public class MultiStepBullet : BulletBehavior {
 
     [Header("Steps")]
     public int numSteps = 0;
@@ -16,13 +12,6 @@ public class MultiStepBullet : MonoBehaviour {
     [Tooltip("Particle emitted by bullet on impact")]
     public GameObject particleObject;
 
-    [Header("Lifetime")]
-    [Tooltip("Lifetime of the bullet")]
-    public float lifeTime = 5.0f;
-
-    //set up vars
-    [HideInInspector]
-    public float travelSpeed = 2.0f;
     [HideInInspector]
     public List<float> setupDistances = new List<float>();
     [HideInInspector]
@@ -34,19 +23,14 @@ public class MultiStepBullet : MonoBehaviour {
 
     //control vars
     private int currentStep = 0;
-    private float startTime = 0.0f;
     private float tempSetupTime = 0.0f;
     private float setupStartTime = 0.0f;
-    private float pauseStartTime = 0.0f;
-    private float pauseEndTime = 0.0f;
 
     public bool isStarting = false;
     private bool isMoving = false;
     private bool stepsFinished = false;
-    private bool isPaused = false;
-    private Vector3 currentDestination = Vector3.zero;
 
-    private Rigidbody myRigid;
+    private Vector3 currentDestination = Vector3.zero;
 
     // Use this for initialization
     void Start () {
@@ -68,20 +52,6 @@ public class MultiStepBullet : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
-    }
-
-    private void OnEnable()
-    {
-        PauseHandler.PauseEvent += OnPause;
-        PauseHandler.UnpauseEvent += OnUnpause;
-        //print("Subscribed to event");
-    }
-
-    private void OnDisable()
-    {
-        PauseHandler.PauseEvent -= OnPause;
-        PauseHandler.UnpauseEvent -= OnUnpause;
-        //print("Unsubscribed to event");
     }
 
     //sets up vars for bullet behaviour
@@ -138,7 +108,7 @@ public class MultiStepBullet : MonoBehaviour {
     }
 
     //Pause events
-    void OnPause()
+    protected override void OnPause()
     {
         isPaused = true;
         pauseStartTime += Time.time;
@@ -158,7 +128,7 @@ public class MultiStepBullet : MonoBehaviour {
         }
     }
 
-    void OnUnpause()
+    protected override void OnUnpause()
     {
         pauseEndTime += Time.time;
         isPaused = false;
@@ -176,16 +146,4 @@ public class MultiStepBullet : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //any collision
-        if (collision.gameObject.GetComponent<EntityHealth>())
-        {
-            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
-            //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
-        }
-        //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
-        //Deactivate();
-        Destroy(gameObject);
-    }
 }

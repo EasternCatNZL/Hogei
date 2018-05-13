@@ -3,16 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class BarnPhaseHandler : MonoBehaviour {
-
-    [Header("Health phase changes")]
-    [Tooltip("Boss start health")]
-    public float bossStartHealth = 300.0f;
-    [Tooltip("Phase two start health")]
-    public float phaseTwoStartHealth = 200.0f;
-    [Tooltip("Phase three start health")]
-    public float phaseThreeStartHealth = 100.0f;
-
+public class BarnPhaseHandler : BossHandler
+{
     [Header("Object ref")]
     public GameObject barn;
 
@@ -30,22 +22,11 @@ public class BarnPhaseHandler : MonoBehaviour {
     [Tooltip("The transform where rise ends")]
     public Transform riseEndLocation;
 
-
-    [Header("Script refs")]
-    public EntityHealth health;
     //public BarnAxisMovement axisMove;
     public BarnSideMovement sideMove;
     public BarnFrontCannon frontCannon;
     public BarnSheepLauncher sheepLaunch;
     public BarnSheepRumble sheepRumble;
-
-    //[Header("Cannon refs")]
-    //public BarnCannonHandler[] cannonArray = new BarnCannonHandler[0];
-
-    //control vars
-    private bool inPhaseOne = true; //checks in phase one
-    private bool inPhaseTwo = false; //checks in phase two
-    private bool inPhaseThree = false; //checks in phase three
 
     private bool isMoving = false; //checks if in descent for final phase
 

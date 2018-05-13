@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WavePathBullet : MonoBehaviour {
-
-    [Header("Speed")]
-    [Tooltip("Speed of bullet")]
-    public float travelSpeed = 3.0f;
+public class WavePathBullet : BulletBehavior {
 
     [Header("Sine wave")]
     [Tooltip("Frequency of sine movement")]
@@ -14,23 +10,7 @@ public class WavePathBullet : MonoBehaviour {
     [Tooltip("Size of sine movement")]
     public float magnitude = 0.5f;
 
-    [Header("Damage")]
-    [Tooltip("Damage dealt by bullet")]
-    public float bulletDamage = 1.0f;
-
-    [Header("Lifetime")]
-    [Tooltip("Lifetime of the bullet")]
-    public float lifeTime = 5.0f;
-
     //control vars
-    private float startTime = 0.0f;
-    private float pauseStartTime = 0.0f;
-    private float pauseEndTime = 0.0f;
-
-    private Rigidbody myRigid;
-
-    private bool isActive = false;
-
     private Vector3 linePos; //position relative to line
     private Vector3 directionAxis; //the line bullet travels on
 

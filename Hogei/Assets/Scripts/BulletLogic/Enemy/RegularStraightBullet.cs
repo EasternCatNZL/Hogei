@@ -2,29 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegularStraightBullet : MonoBehaviour {
-
-    [Header("Speed")]
-    [Tooltip("Speed of bullet")]
-    public float travelSpeed = 3.0f;
-
-    [Header("Damage")]
-    [Tooltip("Damage dealt by bullet")]
-    public float bulletDamage = 1.0f;
-
-    [Header("Lifetime")]
-    [Tooltip("Lifetime of the bullet")]
-    public float lifeTime = 5.0f;
-
-    //script ref
-    //private BulletBank bulletBank;
-
-    //control vars
-    private float startTime = 0.0f;
-    private Rigidbody myRigid;
-    private bool isActive = true;
-    private float pauseStartTime = 0.0f;
-    private float pauseEndTime = 0.0f;
+public class RegularStraightBullet : BulletBehavior {
 
     // Use this for initialization
     void Start () {
@@ -49,20 +27,6 @@ public class RegularStraightBullet : MonoBehaviour {
         
     }
 
-    private void OnEnable()
-    {
-        PauseHandler.PauseEvent += OnPause;
-        PauseHandler.UnpauseEvent += OnUnpause;
-        //print("Subscribed to event");
-    }
-
-    private void OnDisable()
-    {
-        PauseHandler.PauseEvent -= OnPause;
-        PauseHandler.UnpauseEvent -= OnUnpause;
-        //print("Unsubscribed to event");
-    }
-
     //set up func
     public void SetupVars(float speed)
     {
@@ -71,27 +35,14 @@ public class RegularStraightBullet : MonoBehaviour {
         //bulletFireSound.Play();
     }
 
-    //collision = deactivate
-    private void OnCollisionEnter(Collision collision)
-    {
-        //any collision
-        if (collision.gameObject.GetComponent<EntityHealth>())
-        {
-            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
-            
-        }
-        Destroy(gameObject);
-    }
-
     //Pause events
-    void OnPause()
+    protected override void OnPause()
     {
         pauseStartTime += Time.time;
         isActive = false;
-
     }
 
-    void OnUnpause()
+    protected override void OnUnpause()
     {
         isActive = true;
         pauseEndTime += Time.time;

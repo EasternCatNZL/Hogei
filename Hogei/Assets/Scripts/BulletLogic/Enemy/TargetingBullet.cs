@@ -3,23 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class TargetingBullet : MonoBehaviour {
-
-    [Header("Damage")]
-    [Tooltip("Damage dealt by bullet")]
-    public float bulletDamage = 1.0f;
-
-    [Header("Speed")]
-    [Tooltip("Travel speed of bullet")]
-    public float travelSpeed = 2.0f;
-
-    [Header("Particle effect")]
-    [Tooltip("Particle emitted by bullet on impact")]
-    public GameObject particleObject;
-
-    [Header("Lifetime")]
-    [Tooltip("Lifetime of the bullet")]
-    public float lifeTime = 5.0f;
+public class TargetingBullet : BulletBehavior {
 
     //set up vars
     [HideInInspector]
@@ -34,19 +18,12 @@ public class TargetingBullet : MonoBehaviour {
     public string targetTag = "Player";
 
     //control vars
-    private float startTime = 0.0f;
     private float setupStartTime = 0.0f;
-    private float pauseStartTime = 0.0f;
-    private float pauseEndTime = 0.0f;
 
     public bool isStarting = false;
-    private bool isActive = false;
     private bool isSettingUp = false;
     private bool isReady = false;
     private bool isMoving = false;
-    private bool isPaused = false;
-
-    private Rigidbody myRigid;
 
     // Use this for initialization
     void Start () {
@@ -77,20 +54,6 @@ public class TargetingBullet : MonoBehaviour {
             }
         }
         
-    }
-
-    private void OnEnable()
-    {
-        PauseHandler.PauseEvent += OnPause;
-        PauseHandler.UnpauseEvent += OnUnpause;
-        //print("Subscribed to event");
-    }
-
-    private void OnDisable()
-    {
-        PauseHandler.PauseEvent -= OnPause;
-        PauseHandler.UnpauseEvent -= OnUnpause;
-        //print("Unsubscribed to event");
     }
 
     //sets up vars for bullet behaviour
@@ -124,24 +87,6 @@ public class TargetingBullet : MonoBehaviour {
         //bulletFireSound.Play();
     }
 
-    //private IEnumerator BeginMove()
-    //{
-    //    print("Beggining move");
-
-    //    //waits for setup to finish
-    //    yield return new WaitForSecondsRealtime(startDelay);
-    //    //gets a new rotation
-    //    //Quaternion newRotation = new Quaternion();
-
-    //    //set facing target
-    //    transform.LookAt(GameObject.FindGameObjectWithTag(targetTag).transform.position);
-
-    //    //start moving
-    //    myRigid.velocity = transform.forward * travelSpeed;
-    //    //play audio
-    //    //bulletChangeDirectionSound.Play();
-    //}
-
     private void Aim()
     {
         //change check vars
@@ -163,7 +108,7 @@ public class TargetingBullet : MonoBehaviour {
     }
 
     //Pause events
-    void OnPause()
+    protected override void OnPause()
     {
         isPaused = true;
         pauseStartTime += Time.time;
@@ -186,7 +131,7 @@ public class TargetingBullet : MonoBehaviour {
         }
     }
 
-    private void OnUnpause()
+    protected override void OnUnpause()
     {
         isPaused = false;
         pauseEndTime += Time.time;
@@ -203,18 +148,5 @@ public class TargetingBullet : MonoBehaviour {
         {
             myRigid.velocity = transform.forward * travelSpeed;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //any collision
-        if (collision.gameObject.GetComponent<EntityHealth>())
-        {
-            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
-            //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
-        }
-        //GameObject particle = Instantiate(particleObject, transform.position, Quaternion.identity);
-        //Deactivate();
-        Destroy(gameObject);
     }
 }

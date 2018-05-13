@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DuckyTankPhaseManager : MonoBehaviour {
+public class DuckyTankPhaseManager : BossHandler
+{
 
     [Header("Phase 1 vars")]
     [Tooltip("Time between attacks")]
