@@ -27,13 +27,13 @@ public class GameEntity : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        music = GameObject.FindGameObjectWithTag(managerTag).GetComponent<MusicManager>();
+        music = MusicManager.GetInstance();
         ChangeSfxVol();
 	}
 
     private void Awake()
     {
-        music = GameObject.FindGameObjectWithTag(managerTag).GetComponent<MusicManager>();
+        music = MusicManager.GetInstance();
         ChangeSfxVol();
     }
 
