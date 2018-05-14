@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95892128008525684}
   - component: {fileID: 114955019632356496}
   - component: {fileID: 82667632031819548}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 54519821413185304}
   - component: {fileID: 59017205357039444}
   - component: {fileID: 65534411822292658}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Western_Left_Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 54854692646104054}
   - component: {fileID: 59639163491264906}
   - component: {fileID: 65865718907665504}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Western_Right_Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1b1c77849c9e4b82706629cd9484d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsOpen: 0
   LeftGate: {fileID: 1502394116284942}
   RightGate: {fileID: 1702639662880172}
   OpenSound: {fileID: 82667632031819548}

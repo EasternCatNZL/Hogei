@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65435277954062228}
   - component: {fileID: 114909754508452430}
   - component: {fileID: 114131549618268172}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,15 +150,20 @@ MonoBehaviour:
   OnHitShake: 1
   DeathVFX: []
   HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
-  ModHitVFX: 0
   HitVFXScale: {x: 0, y: 0, z: 0}
   HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
   StackSounds: 1
   HitSoundVol: 0.5
   HitSoundPitchRange: {x: 0.95, y: 1.05}
   HitSound:
   - {fileID: 8300000, guid: 4b171dc97f8ec70489bf0bc17b5795fd, type: 3}
   FinalHitSound: {fileID: 8300000, guid: 85abcfb37d32b934691162e341c88a2b, type: 3}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DeathFunction:
     m_PersistentCalls:
       m_Calls:
