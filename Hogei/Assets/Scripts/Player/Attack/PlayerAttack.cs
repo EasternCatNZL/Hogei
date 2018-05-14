@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour {
 
     [Header("Input")]
-    [Tooltip("Keyboard input key for weapon fire")]
-    [Range(0, 1)]
-    public int mouseInputKey = 0;
+    //[Tooltip("Keyboard input key for weapon fire")]
+    //[Range(0, 1)]
+    //public int mouseInputKey = 0;
     [Tooltip("Switch weapon <-")]
     public KeyCode prevWeaponInput = KeyCode.Q;
     [Tooltip("Switch weapon ->")]
@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour {
     public string attackInputAxis = "Attack";
     public string attackInputAxisController = "ControllerAttack";
 
-    public float HealthDecrease = 1.0f;
+    //public float HealthDecrease = 1.0f;
 
     public bool isShooting = false;
 

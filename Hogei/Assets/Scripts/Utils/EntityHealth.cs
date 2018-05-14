@@ -101,7 +101,7 @@ public class EntityHealth : MonoBehaviour {
                 SoundSettings.Pitch = 1f;
                 SoundSettings.SpatialBlend = 0f;
                 SoundSettings.Volume = HitSoundVol;
-                MusicManager.PlaySoundAtLocation(FinalHitSound, transform.position, SoundSettings);
+                MusicManager.GetInstance().PlaySoundAtLocation(FinalHitSound, transform.position, SoundSettings);
             }
             //Instantiate Death VFX
             if (DeathVFX.Length > 0)
@@ -193,11 +193,11 @@ public class EntityHealth : MonoBehaviour {
             {
                 if (!StackSounds && LastSound == null)
                 {
-                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[0], transform.position, Pitch, HitSoundVol);
+                    LastSound = MusicManager.GetInstance().PlaySoundAtLocation(HitSound[0], transform.position, Pitch, HitSoundVol);
                 }
                 else if(StackSounds)
                 {
-                    MusicManager.PlaySoundAtLocation(HitSound[0], transform.position, Pitch, HitSoundVol);
+                    MusicManager.GetInstance().PlaySoundAtLocation(HitSound[0], transform.position, Pitch, HitSoundVol);
                 }
 
             }
@@ -207,11 +207,11 @@ public class EntityHealth : MonoBehaviour {
                 int RandomInt = Random.Range(0, HitSound.Length - 1);
                 if (!StackSounds && LastSound == null)
                 {                  
-                    LastSound = MusicManager.PlaySoundAtLocation(HitSound[RandomInt], transform.position, Pitch, HitSoundVol);
+                    LastSound = MusicManager.GetInstance().PlaySoundAtLocation(HitSound[RandomInt], transform.position, Pitch, HitSoundVol);
                 }
                 else if(StackSounds)
-                {                    
-                    MusicManager.PlaySoundAtLocation(HitSound[RandomInt], transform.position, Pitch, HitSoundVol);
+                {
+                    MusicManager.GetInstance().PlaySoundAtLocation(HitSound[RandomInt], transform.position, Pitch, HitSoundVol);
                 }
             }
         }

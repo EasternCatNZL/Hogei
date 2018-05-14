@@ -111,8 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b749ed58a2d834b479f5f5a6c825f3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 1
+  sfxArray: []
   travelSpeed: 2
+  bulletDamage: 1
+  lifeTime: 5
   particleObject: {fileID: 0}
   setupDestination: {x: 0, y: 0, z: 0}
   setupDestinationDistance: 0
@@ -120,8 +122,6 @@ MonoBehaviour:
   startDelay: 0
   angleChange: 0
   isStarting: 0
-  bulletFireSound: {fileID: 0}
-  bulletChangeDirectionSound: {fileID: 0}
 --- !u!135 &135329724616278954
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -129,7 +129,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716864405992520}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

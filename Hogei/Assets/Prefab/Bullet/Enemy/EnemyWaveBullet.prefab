@@ -111,11 +111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65dc2f072bacbdd4d993efbb0739da86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxArray: []
   travelSpeed: 10
-  frequency: 5
-  magnitude: 2
   bulletDamage: 1
   lifeTime: 5
+  particleObject: {fileID: 0}
+  frequency: 5
+  magnitude: 2
 --- !u!135 &135970950475815840
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -123,7 +125,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130471014798190}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

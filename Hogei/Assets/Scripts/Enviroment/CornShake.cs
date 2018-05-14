@@ -80,7 +80,7 @@ public class CornShake : MonoBehaviour {
     private void PlaySound()
     {
         float Pitch = Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
-        MusicManager.PlaySoundAtLocation(ShakeSound, transform.position, Pitch, ShakeSoundVolume);
+        MusicManager.GetInstance().PlaySoundAtLocation(ShakeSound, transform.position, Pitch, ShakeSoundVolume);
     }
 
     private void OnTriggerExit(Collider other)

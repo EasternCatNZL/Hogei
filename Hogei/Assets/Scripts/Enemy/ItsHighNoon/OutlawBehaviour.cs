@@ -142,7 +142,7 @@ public class OutlawBehaviour : EnemyBehavior {
                 SoundSettings.Pitch = pitch;
                 SoundSettings.Volume = ShotSoundVolume;
                 SoundSettings.SpatialBlend = ShotSpatialBlend;
-                MusicManager.PlaySoundAtLocation(ShotSound, transform.position, SoundSettings);
+                MusicManager.GetInstance().PlaySoundAtLocation(ShotSound, transform.position, SoundSettings);
             }
             
             //create a shot

@@ -25,6 +25,7 @@ public class MusicManager : MonoBehaviour {
 
     [Header("Sound control vars")]
     [Tooltip("Sound effects")]
+    [SerializeField]
     public static float sfxVol = 1.0f;
 
     [Header("Background sound")]
@@ -45,12 +46,14 @@ public class MusicManager : MonoBehaviour {
     public static event MusicDelegate sfxUnmuteEvent;
 
     //control vars
-    private bool isMuted = false; //checks if all is muted
-    private bool isBgmMuted = false; //checks if bgm is muted
-    private bool isSfxMuted = false; //checks if sfx is muted
+    private  bool isMuted = false; //checks if all is muted
+    private  bool isBgmMuted = false; //checks if bgm is muted
+    public  bool isSfxMuted = false; //checks if sfx is muted
 
     private AudioSource bgm; //audiosource used for background music
     private AudioSource CurrentBGM;
+
+    private static MusicManager singleton;
 
 	// Use this for initialization
 	void Awake () {
@@ -161,7 +164,7 @@ public class MusicManager : MonoBehaviour {
     }
 
     //returns volume of sfx to required components
-    public static float GetSfxVol()
+    public /*static*/ float GetSfxVol()
     {
         float vol = 1.0f;
         vol = masterVol - (1.0f - sfxVol);
@@ -206,51 +209,81 @@ public class MusicManager : MonoBehaviour {
         SfxEvents();
     }
 
-    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location)
+    public static MusicManager GetInstance()
     {
-        if (_Clip == null) return null;
+        if (!singleton)
+        {
+            GameObject gameObject = new GameObject("MusicManager");
+            gameObject.AddComponent<MusicManager>();
+            singleton = gameObject.GetComponent<MusicManager>();
+        }
+
+        return singleton;
+    }
+
+    public  AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location)
+    {
+        if (_Clip == null || isSfxMuted) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
+        Source.volume = sfxVol;
+        if (isSfxMuted)
+        {
+            Source.mute = true;
+        }
         Source.Play();
         Destroy(_Obj, Source.clip.length);
         return Source;
     }
 
-    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch)
+    public  AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch)
     {
-        if (_Clip == null) return null;
+        if (_Clip == null || isSfxMuted) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
         Source.pitch = _Pitch;
+        Source.volume = sfxVol;
+        if (isSfxMuted)
+        {
+            Source.mute = true;
+        }
         Source.Play();
         Destroy(_Obj, Source.clip.length);
         return Source;
     }
 
-    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch, float _Volume)
+    public  AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, float _Pitch, float _Volume)
     {
-        if (_Clip == null) return null;
+        if (_Clip == null || isSfxMuted) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
         Source.pitch = _Pitch;
-        Source.volume = _Volume;
+        Source.volume = sfxVol;
+        if (isSfxMuted)
+        {
+            Source.mute = true;
+        }
         Source.Play();
         Destroy(_Obj, Source.clip.length);
         return Source;
     }
 
-    public static AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, AudioSourceSettings _Settings)
+    public  AudioSource PlaySoundAtLocation(AudioClip _Clip, Vector3 _Location, AudioSourceSettings _Settings)
     {
-        if (_Clip == null) return null;
+        if (_Clip == null || isSfxMuted) return null;
         GameObject _Obj = new GameObject("AudioAtLocation");
         AudioSource Source = _Obj.AddComponent<AudioSource>();
         Source.clip = _Clip;
         Source.pitch = _Settings.Pitch;
-        Source.volume = _Settings.Volume;
+        Source.volume = sfxVol;
         Source.spatialBlend = _Settings.SpatialBlend;
+        if (isSfxMuted)
+        {
+            Source.mute = true;
+        }
         Source.Play();
         Destroy(_Obj, Source.clip.length);
         return Source;

@@ -186,7 +186,7 @@ public class Movement : MonoBehaviour {
     private void PlayFootstepSound()
     {
         float Pitch = Random.Range(FootstepPitchRange.x, FootstepPitchRange.y);
-        MusicManager.PlaySoundAtLocation(FootstepSound, transform.position, Pitch, FootstepVolume);
+        MusicManager.GetInstance().PlaySoundAtLocation(FootstepSound, transform.position, Pitch, FootstepVolume);
     }
 
     private void OnCollisionEnter(Collision collision)

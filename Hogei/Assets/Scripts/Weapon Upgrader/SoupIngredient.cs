@@ -36,7 +36,7 @@ public class SoupIngredient : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerManager.GetInstance().AddIngredientInventory(this);
-            if (PickupSounds) MusicManager.PlaySoundAtLocation(PickupSounds, transform.position);
+            if (PickupSounds) MusicManager.GetInstance().PlaySoundAtLocation(PickupSounds, transform.position);
             Destroy(gameObject);
         }
     }

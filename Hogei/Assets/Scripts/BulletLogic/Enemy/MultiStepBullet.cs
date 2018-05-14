@@ -8,10 +8,6 @@ public class MultiStepBullet : BulletBehavior {
     [Header("Steps")]
     public int numSteps = 0;
 
-    [Header("Particle effect")]
-    [Tooltip("Particle emitted by bullet on impact")]
-    public GameObject particleObject;
-
     [HideInInspector]
     public List<float> setupDistances = new List<float>();
     [HideInInspector]

@@ -7,6 +7,10 @@ public class GameEntity : MonoBehaviour {
     //sound effects
     public AudioSource[] sfxArray = new AudioSource[0];
 
+    public string managerTag = "Manager";
+
+    private MusicManager music;
+
     private void OnEnable()
     {
         MusicManager.sfxVolChangeEvent += ChangeSfxVol;
@@ -23,6 +27,7 @@ public class GameEntity : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        music = GameObject.FindGameObjectWithTag(managerTag).GetComponent<MusicManager>();
         ChangeSfxVol();
 	}
 
@@ -43,7 +48,7 @@ public class GameEntity : MonoBehaviour {
         for(int i = 0; i < sfxArray.Length; i++)
         {
             //change vol
-            sfxArray[i].volume = MusicManager.GetSfxVol();
+            sfxArray[i].volume = music.GetSfxVol();
         }
     }
 
