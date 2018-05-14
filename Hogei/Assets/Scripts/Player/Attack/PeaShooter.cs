@@ -23,7 +23,8 @@ public class PeaShooter : MonoBehaviour {
     public float timeBetweenWaves = 0.1f;
 
     [Header("Audio")]
-    public AudioSource bulletFireSound;
+    //public AudioSource bulletFireSound;
+    public AudioClip bulletFireSound;
 
     [Header("VFX")]
     public GameObject muzzleFireVFX = null;
@@ -40,7 +41,7 @@ public class PeaShooter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        bulletFireSound.playOnAwake = false;
+        //bulletFireSound.playOnAwake = false;
         //bank = GameObject.FindGameObjectWithTag(bankTag).GetComponent<BulletBank>();
 	}
 	
@@ -83,7 +84,11 @@ public class PeaShooter : MonoBehaviour {
                 bullet.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeedSlow, bulletMaxTravelDist, true);
             }
             //play audio
-            bulletFireSound.Play();
+            MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
+            SoundSettings.Pitch = 1f;
+            SoundSettings.SpatialBlend = 0f;
+            //SoundSettings.Volume = HitSoundVol;
+            MusicManager.GetInstance().PlaySoundAtLocation(bulletFireSound, transform.position, SoundSettings);
         }
     }
 }

@@ -9,7 +9,7 @@ public class GameEntity : MonoBehaviour {
 
     public string managerTag = "Manager";
 
-    private MusicManager music;
+    public MusicManager music;
 
     private void OnEnable()
     {
@@ -33,6 +33,7 @@ public class GameEntity : MonoBehaviour {
 
     private void Awake()
     {
+        music = GameObject.FindGameObjectWithTag(managerTag).GetComponent<MusicManager>();
         ChangeSfxVol();
     }
 
