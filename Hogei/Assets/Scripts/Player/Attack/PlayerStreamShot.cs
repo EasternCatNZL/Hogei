@@ -34,7 +34,7 @@ public class PlayerStreamShot : Weapon {
     //private BulletBank bank;
 
     [Header("Audio")]
-    public AudioSource bulletFireSound;
+    public AudioClip bulletFireSound;
     [Range(0,1)]
     public float FireVolume = 1f;
     public Vector2 PitchVarianceRange;
@@ -49,7 +49,6 @@ public class PlayerStreamShot : Weapon {
     // Use this for initialization
     void Start () {
         Type = WeaponTypes.Stream;
-        bulletFireSound.playOnAwake = false;
         //bank = GameObject.FindGameObjectWithTag(bankTag).GetComponent<BulletBank>();
     }
 	
@@ -95,10 +94,14 @@ public class PlayerStreamShot : Weapon {
             //set up bullet
             bullet2.GetComponent<PlayerStraightBullet>().SetupVars(bulletTravelSpeed, 0, false);
 
-            bulletFireSound.pitch = UnityEngine.Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
-            bulletFireSound.volume = FireVolume;
+            //bulletFireSound.pitch = UnityEngine.Random.Range(PitchVarianceRange.x, PitchVarianceRange.y);
+            //bulletFireSound.volume = FireVolume;
             //play audio
-            bulletFireSound.Play();
+            MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
+            SoundSettings.Pitch = 1f;
+            SoundSettings.SpatialBlend = 0f;
+            //SoundSettings.Volume = HitSoundVol;
+            MusicManager.GetInstance().PlaySoundAtLocation(bulletFireSound, transform.position, SoundSettings);
         }
     }
 

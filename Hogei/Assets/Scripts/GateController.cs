@@ -10,7 +10,8 @@ public class GateController : MonoBehaviour {
     public GameObject RightGate;
 
     [Header("Sound Settings")]
-    public AudioSource OpenSound;
+    //public AudioSource OpenSound;
+    public AudioClip openClip;
 
     private bool LockGateTimer;
     private float LastTime;
@@ -64,9 +65,9 @@ public class GateController : MonoBehaviour {
         RightGate.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         LeftGate.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         //Play Sound
-        if(OpenSound)
-        {
-            OpenSound.Play();
-        }
+        MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
+        SoundSettings.Pitch = 1f;
+        SoundSettings.SpatialBlend = 0f;
+        MusicManager.GetInstance().PlaySoundAtLocation(openClip, transform.position, SoundSettings);
     }
 }
