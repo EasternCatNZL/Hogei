@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosiveBarrelTrap : GameEntity
 {
-
+    public int ExplosionDamage = 5;
     public List<GameObject> ObjectsInRange;
 
 	// Use this for initialization
@@ -34,7 +34,7 @@ public class ExplosiveBarrelTrap : GameEntity
         {
             if (obj.GetComponent<EntityHealth>())
             {
-                obj.GetComponent<EntityHealth>().DecreaseHealth(2);
+                obj.GetComponent<EntityHealth>().DecreaseHealth(ExplosionDamage);
             }
         }
     }
