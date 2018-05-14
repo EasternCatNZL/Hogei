@@ -57,6 +57,10 @@ public class MusicManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        if(singleton == null)
+        {
+            singleton = this;
+        }
 		if(bgm == null)
         {
             if (GameObject.FindGameObjectWithTag(sceneTag))
