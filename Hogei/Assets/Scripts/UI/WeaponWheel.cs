@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class WeaponWheel : MonoBehaviour {
 
-    public Texture2D PirateWheel;
+    public float TweenDuration = 1.0f;
+    private Vector3 endValue;
+    private Vector3 currentRotation;
 
-    void OnGUI()
-    {
-        GUI.DrawTexture(new Rect(0, Screen.height - 50, 100, 50), PirateWheel, ScaleMode.ScaleToFit, true, 1.0f);
-    }
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +18,16 @@ public class WeaponWheel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        	
 	}
+
+    public void NextWeapon()
+    {
+        
+        currentRotation = transform.localEulerAngles;
+        endValue = currentRotation + new Vector3(0, 180, 0);
+        transform.DORotate(endValue, TweenDuration, RotateMode.Fast);
+        
+    }
 }

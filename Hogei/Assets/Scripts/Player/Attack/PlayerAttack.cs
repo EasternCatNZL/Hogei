@@ -36,6 +36,8 @@ public class PlayerAttack : MonoBehaviour {
     private Weapon PrimaryWeapon;
     private Weapon SecondaryWeapon;
 
+    private WeaponWheel WW;
+
     //Component
     private Animator Anim;
 
@@ -65,6 +67,7 @@ public class PlayerAttack : MonoBehaviour {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
         Anim = GetComponent<Animator>();
+        WW = GameObject.FindGameObjectWithTag("WeaponWheel").GetComponent<WeaponWheel>();
     }
 	
 	// Update is called once per frame
@@ -141,6 +144,7 @@ public class PlayerAttack : MonoBehaviour {
         if (Input.GetKeyDown(prevWeaponInput)){
             //decrement the current index
             currentWeaponIndex--;
+            WW.NextWeapon();
             //if index becomes -1
             if(currentWeaponIndex <= 0)
             {
@@ -153,6 +157,7 @@ public class PlayerAttack : MonoBehaviour {
         {
             //increment the current index
             currentWeaponIndex++;
+            WW.NextWeapon();
             //if weapon becomes larger than number of weapons
             if(currentWeaponIndex >= numWeapons)
             {
