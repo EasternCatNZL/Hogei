@@ -7,18 +7,12 @@ public class WallSpray : MonoBehaviour {
     [Header("Timing Vars")]
     [Tooltip("Time Between Sprays")]
     public float timeBetweenSprays = 1.5f;
-    [Tooltip("Minimum time between sprays")]
-    public float minTimeBetweenSprays = 0.1f;
-    //scaled time between sprays
-    private float scaledTimeBetweenSprays = 0.0f;
+
 
     [Header("Bullet Vars")]
     [Tooltip("Number of bullet per waves")]
     public int numBulletWaves = 2;
-    [Tooltip("Max number of bullets per wave")]
-    public int maxNumBulletWaves = 5;
-    //scaled number of bullets per wave
-    private int scaledNumBulletWaves = 0;
+
 
     [Header("Bullet set up vars")]
     [Tooltip("Bullet object")]
@@ -36,10 +30,7 @@ public class WallSpray : MonoBehaviour {
 
     [Tooltip("Pattern bullet set speed")]
     public float patternBulletSpeed = 2.0f;
-    [Tooltip("Max speed of bullet")]
-    public float maxBulletSpeed = 10.0f;
-    //scaled speed of bullet
-    private float scaledBulletSpeed = 0.0f;
+
 
     [Header("Angle Control")]
     [Tooltip("Facing angle")]
@@ -90,32 +81,7 @@ public class WallSpray : MonoBehaviour {
         print("Unsubscribed to event");
     }
 
-    //scales values based on how deep player is
-    public void ScaleShotVars(int level)
-    {
-        //time between sprays
-        scaledTimeBetweenSprays = timeBetweenSprays - level;
-        //check not below min
-        if (scaledTimeBetweenSprays < minTimeBetweenSprays)
-        {
-            scaledTimeBetweenSprays = minTimeBetweenSprays;
-        }
 
-        //num bullets
-        scaledNumBulletWaves = numBulletWaves + level;
-        if (scaledNumBulletWaves > maxNumBulletWaves)
-        {
-            scaledNumBulletWaves = maxNumBulletWaves;
-        }
-
-        //bullet speed
-        scaledBulletSpeed = patternBulletSpeed + level;
-        //check not above max
-        if (scaledBulletSpeed > maxBulletSpeed)
-        {
-            scaledBulletSpeed = maxBulletSpeed;
-        }
-    }
 
     //bullet firing coroutine
     private void BulletSpray()
@@ -128,7 +94,7 @@ public class WallSpray : MonoBehaviour {
         pauseEndTime = 0.0f;
 
         //for each wave
-        for (int i = 0; i < scaledNumBulletWaves; i++)
+        for (int i = 0; i < numBulletWaves; i++)
         {
             //get the distance to set up
             float distanceToSetup = bulletBaseSetupDistance + (bulletStepDistanceIncrease * i);
@@ -145,7 +111,7 @@ public class WallSpray : MonoBehaviour {
             bullet1.transform.rotation = alteredRotation;
 
             //setup the bullet
-            bullet1.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, 270.0f, scaledBulletSpeed);
+            bullet1.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, 270.0f, patternBulletSpeed);
 
             //get a second bullet from the bank
             GameObject bullet2 = Instantiate(bulletObject, transform.position, transform.rotation);
@@ -160,7 +126,7 @@ public class WallSpray : MonoBehaviour {
             bullet2.transform.rotation = alteredRotation;
 
             //setup the bullet
-            bullet2.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, 90.0f, scaledBulletSpeed);
+            bullet2.GetComponent<SetupStraightBullet>().SetupVars(distanceToSetup, bulletSetupTime, bulletSetupTime + bulletStartMoveTimeDelay, 90.0f, patternBulletSpeed);
         }
     }
 

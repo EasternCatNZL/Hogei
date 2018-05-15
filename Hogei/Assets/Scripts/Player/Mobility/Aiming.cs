@@ -70,7 +70,7 @@ public class Aiming : MonoBehaviour {
     private void ControllerInput()
     {
         //get direction from sticks
-        Vector3 direction = new Vector3(Luminosity.IO.InputManager.GetAxis(rightStickX), 0.0f, Luminosity.IO.InputManager.GetAxis(rightStickY));
+        Vector3 direction = new Vector3(Luminosity.IO.InputManager.GetAxisRaw(rightStickX), 0.0f, Luminosity.IO.InputManager.GetAxisRaw(rightStickY));
         //only work if meaningful
         if (direction.sqrMagnitude < deadZone)
             {
@@ -84,7 +84,7 @@ public class Aiming : MonoBehaviour {
                 return;
             }
         //apply rotation
-        float angle = Mathf.Atan2(Luminosity.IO.InputManager.GetAxis(rightStickX), Luminosity.IO.InputManager.GetAxis(rightStickY)) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(Luminosity.IO.InputManager.GetAxisRaw(rightStickX), Luminosity.IO.InputManager.GetAxisRaw(rightStickY)) * Mathf.Rad2Deg;
         //print(angle);
         transform.rotation = Quaternion.Euler(0.0f, alignment.rotation.eulerAngles.y + angle, 0.0f);
         ////set controller check timing

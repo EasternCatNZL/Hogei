@@ -850,6 +850,9 @@ GameObject:
   - component: {fileID: 231998308}
   - component: {fileID: 231998320}
   - component: {fileID: 231998319}
+  - component: {fileID: 231998323}
+  - component: {fileID: 231998322}
+  - component: {fileID: 231998324}
   m_Layer: 10
   m_Name: EnemyDummy
   m_TagString: Enemy
@@ -1036,7 +1039,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 231998304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc66d58b045ab647974a3f28798158e, type: 3}
   m_Name: 
@@ -1192,7 +1195,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 231998304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc66d58b045ab647974a3f28798158e, type: 3}
   m_Name: 
@@ -1206,6 +1209,79 @@ MonoBehaviour:
   angleChangePerShot: 2.5
   angleChangePerSpray: 2
   rotationDirection: -1
+--- !u!114 &231998322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 231998304}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1b574cb583c1043acde008ab9998c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1671349372478880, guid: eab45c0226143ef4c85654a22b573f5b,
+    type: 2}
+  bulletSpeed: 5
+  lifeTime: 4
+  timeBetweenAttacks: 1
+  hermit: {fileID: 0}
+  isAttacking: 0
+  isReadying: 0
+  numBurstFire: 3
+  splitTimes: 1
+  splitInto: 3
+  angleBetweenBullets: 60
+  timeBetweenShots: 0.1
+--- !u!114 &231998323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 231998304}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2029564c147f9644936b9f188bf1c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1855621670754500, guid: 3bfb2030d5421b94ab74d1b6a10fafb5,
+    type: 2}
+  bulletSpeed: 5
+  lifeTime: 4
+  timeBetweenAttacks: 1
+  hermit: {fileID: 0}
+  isAttacking: 0
+  isReadying: 0
+  angleBetweenBullets: 60
+  bulletRotationSpeed: 5
+  startingRotation: 1
+  changeDirection: 1
+--- !u!114 &231998324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 231998304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e3696f0a9604245940cc7c357ab58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1258841481705456, guid: 7a100f276fd1a36479737516d510d774,
+    type: 2}
+  bulletSpeed: 5
+  lifeTime: 4
+  timeBetweenAttacks: 1
+  hermit: {fileID: 0}
+  isAttacking: 0
+  isReadying: 0
+  numBullets: 6
+  setupDistance: 1
+  firstLayerBulletSpeed: 5
+  layerSpeedIncrementValue: 1
+  timeToSetup: 1
+  startDelay: 0.5
+  currentMiss: 0
 --- !u!1 &284383156
 GameObject:
   m_ObjectHideFlags: 0
