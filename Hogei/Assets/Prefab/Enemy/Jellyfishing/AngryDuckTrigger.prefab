@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHit: 0
   CurrentHealth: 0
-  MaxHealth: 8
+  MaxHealth: 4
   OnHitShake: 0
   DeathVFX:
   - {fileID: 1683085963613330, guid: b5f30d4b09be82c47a50c7fad792b073, type: 2}
@@ -250,9 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxArray: []
+  managerTag: Manager
+  music: {fileID: 0}
   isActive: 0
   AnimationTriggered: 0
-  TimeBetweenJumps: 1
+  TimeBetweenJumps: 1.2
   jumpForce: 4
   targetTag: Player
   bulletTag: Bullet
