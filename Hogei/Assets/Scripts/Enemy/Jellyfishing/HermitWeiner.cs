@@ -13,6 +13,12 @@ public class HermitWeiner : HermitBase {
     public float firstLayerBulletSpeed = 1.0f;
     [Tooltip("Layer speed increment value")]
     public float layerSpeedIncrementValue = 0.5f;
+    [Tooltip("Time between steps")]
+    public float timeBetweenSteps = 1.0f;
+
+    [Header("Movement angles")]
+    [Tooltip("The angle for bullets to move in after launch")]
+    public float moveAngle = 30.0f;
 
     [Header("Timing vars")]
     [Tooltip("Time needed to setup")]
@@ -90,19 +96,38 @@ public class HermitWeiner : HermitBase {
     {
         //set timing
         lastAttackTime = Time.time;
+        //make list of angles
+        List<float> angleListOne = new List<float>();
+        angleListOne.Add(moveAngle);
+        angleListOne.Add(-moveAngle);
+        //make first bullet
+        GameObject bulletOne = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, moveAngle, 0.0f));
+        bulletOne.GetComponent<RepeatStepBullet>().SetupVars(bulletSpeed, angleListOne, timeBetweenSteps, lifeTime);
+
+        //make list of angles
+        List<float> angleListTwo = new List<float>();
+        angleListTwo.Add(-moveAngle);
+        angleListTwo.Add(moveAngle);
+        //make first bullet
+        GameObject bulletTwo = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, -moveAngle, 0.0f));
+        bulletTwo.GetComponent<RepeatStepBullet>().SetupVars(bulletSpeed, angleListTwo, timeBetweenSteps, lifeTime);
+
+        /*
         //for the number of bullets
-        for(int i = 0; i < numBullets; i++)
+        for (int i = 0; i < numBullets; i++)
         {
             //create a bullet in distance right of self
             Vector3 spawnPos = transform.position + transform.right * setupDistance;
             GameObject bulletOne = Instantiate(bulletObject, spawnPos, transform.rotation);
             //setup the vars
             bulletOne.GetComponent<RegularStraightBullet>().SetupVars(firstLayerBulletSpeed + (layerSpeedIncrementValue * i));
+
             //create the second bullet
             spawnPos = transform.position - transform.right * setupDistance;
             GameObject bulletTwo = Instantiate(bulletObject, spawnPos, transform.rotation);
             //setup the vars
             bulletTwo.GetComponent<RegularStraightBullet>().SetupVars(firstLayerBulletSpeed + (layerSpeedIncrementValue * i));
         }
+        */
     }
 }
