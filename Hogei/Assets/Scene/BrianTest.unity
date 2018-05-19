@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -172,6 +172,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &99831552
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557322574561356, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309241372650698, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+      propertyPath: m_Name
+      value: CrabLongTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c42540d4be0e428408798c23a55a12ea, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &177323475
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &231998305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,10 +1321,6 @@ MonoBehaviour:
   hermit: {fileID: 0}
   isAttacking: 0
   isReadying: 0
-  numBullets: 6
-  setupDistance: 1
-  firstLayerBulletSpeed: 5
-  layerSpeedIncrementValue: 1
   timeBetweenSteps: 1
   moveAngle: 30
   timeToSetup: 1

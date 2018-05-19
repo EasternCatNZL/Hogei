@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HermitKonjac : HermitBase {
+public class HermitTri : HermitBase {
 
 
     [Tooltip("Number of bullets to shoot in burst")]
@@ -31,20 +31,24 @@ public class HermitKonjac : HermitBase {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!isAttacking)
+        if (hermit.isActive)
         {
-            if (Time.time > lastAttackTime + timeBetweenAttacks)
+            if (!isAttacking)
             {
-                BeginAttacking();
+                if (Time.time > lastAttackTime + timeBetweenAttacks)
+                {
+                    BeginAttacking();
+                }
+            }
+            else
+            {
+                if (Time.time > lastShotTime + timeBetweenShots)
+                {
+                    AttackLogic();
+                }
             }
         }
-        else
-        {
-            if(Time.time > lastShotTime + timeBetweenShots)
-            {
-                AttackLogic();
-            }
-        }
+
     }
 
     //Begin attack sequence

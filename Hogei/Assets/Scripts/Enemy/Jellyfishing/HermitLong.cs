@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HermitWeiner : HermitBase {
+public class HermitLong : HermitBase {
 
-    [Header("Spray vars")]
-    [Tooltip("Radius of bullets")]
-    public int numBullets = 4;
-    [Tooltip("Setup distance")]
-    public float setupDistance = 3.0f;
-    [Tooltip("First layer speed")]
-    public float firstLayerBulletSpeed = 1.0f;
-    [Tooltip("Layer speed increment value")]
-    public float layerSpeedIncrementValue = 0.5f;
+    //[Header("Spray vars")]
+    //[Tooltip("Radius of bullets")]
+    //public int numBullets = 4;
+    //[Tooltip("Setup distance")]
+    //public float setupDistance = 3.0f;
+    //[Tooltip("First layer speed")]
+    //public float firstLayerBulletSpeed = 1.0f;
+    //[Tooltip("Layer speed increment value")]
+    //public float layerSpeedIncrementValue = 0.5f;
     [Tooltip("Time between steps")]
     public float timeBetweenSteps = 1.0f;
 
@@ -39,10 +39,14 @@ public class HermitWeiner : HermitBase {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Time.time > lastAttackTime + timeBetweenAttacks)
+        if (hermit.isActive)
         {
-            AttackLogic();
+            if (Time.time > lastAttackTime + timeBetweenAttacks)
+            {
+                AttackLogic();
+            }
         }
+
     }
 
     /*

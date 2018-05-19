@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HermitDaikon : HermitBase {
+public class HermitRound : HermitBase {
 
     [Header("Angle control")]
     [Tooltip("Angle between bullets")]
@@ -26,9 +26,12 @@ public class HermitDaikon : HermitBase {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Time.time > lastAttackTime + timeBetweenAttacks)
+        if (hermit.isActive)
         {
-            AttackLogic();
+            if (Time.time > lastAttackTime + timeBetweenAttacks)
+            {
+                AttackLogic();
+            }
         }
 	}
 
