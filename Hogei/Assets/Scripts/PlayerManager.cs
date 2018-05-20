@@ -46,14 +46,18 @@ public class PlayerManager : MonoBehaviour {
         if (Player)
         {
             DontDestroyOnLoad(Player);
+            //Set the playesr primary weapons (CHANGE THIS WHERE WE GET PLAYER WEAPON SELECTION IN)
             PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
-            //Player.SetActive(true);
+            //Get the players spawn
             Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
+            //Revive the player
             Player.GetComponent<EntityHealth>().Revive();
+            //Set the camera to follow the player
             if (Camera.main.GetComponentInParent<Follow>())
             {
                 Camera.main.GetComponentInParent<Follow>().SetStopFollowing(false);
             }
+            //Setup the player's weapons
             Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
             Player.GetComponent<PlayerAttack>().SetupWeapons();
             if (SoupInventory.Count > 0)
@@ -62,9 +66,20 @@ public class PlayerManager : MonoBehaviour {
                 PrimarySoup = SoupInventory[0];
                 ApplyUpgrades();
             }
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            //Change WhatCanIDo script
+            WhatCanIDO PlayerPermissions = Player.GetComponent<WhatCanIDO>();
+            if (SceneManager.GetActiveScene().buildIndex == 1) //If its the map scene
             {
-                Player.GetComponent<PlayerAttack>().ClearWeapons();
+                Player.GetComponent<PlayerAttack>().ClearWeapons();               
+                PlayerPermissions.canShoot = false;
+                PlayerPermissions.canMove = false;
+                PlayerPermissions.canAbility = false;
+            }
+            else
+            {
+                PlayerPermissions.canShoot = true;
+                PlayerPermissions.canMove = true;
+                PlayerPermissions.canAbility = true;
             }
         }
 

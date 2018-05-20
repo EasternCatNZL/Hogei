@@ -11,6 +11,7 @@ public class SoupManager : MonoBehaviour {
     [Tooltip("The angle the soup rotates each second")]
     public float SoupRotationSpeed = 90f;
     public List<SoupIngredient> SoupIngredients;
+    public Dictionary<SoupIngredient.IngredientType, int> SoupUpgrades;
     public List<GameObject> IngredientPrefabs;
     [Header("Spawn Positions")]
     public Transform IngredientSpawn;
@@ -21,7 +22,8 @@ public class SoupManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoupIngredients = new List<SoupIngredient>();
-	}
+        SoupUpgrades = new Dictionary<SoupIngredient.IngredientType, int>();
+    }
 	
 	// Update is called once per frame
 	void Update () {       
@@ -55,16 +57,29 @@ public class SoupManager : MonoBehaviour {
         if (!SoupIngredients.Contains(Obj))
         {
             SoupIngredients.Add(Obj);
-            UpdateDescriptionText();
+
+            if(SoupUpgrades.ContainsKey(Obj.Type))
+            {
+                SoupUpgrades[Obj.Type] += 1;
+            }
+            else
+            {
+                SoupUpgrades.Add(Obj.Type, 1);
+            }
+            if (UpgradeDescText) UpdateDescriptionText();
         }
     }
 
     private void UpdateDescriptionText()
     {
-        SoupIngredient Upgrade = SoupIngredients[SoupIngredients.Count - 1].GetComponent<SoupIngredient>();
-        string newDesc = UpgradeDescText.text;
-        string append = "\n" + Upgrade.WeaponMod.Effect.ToString() + " " + Upgrade.WeaponMod.Value;
-        UpgradeDescText.text = newDesc + append;
+        UpgradeDescText.text = "";
+        foreach (KeyValuePair<SoupIngredient.IngredientType,int> Upgrade in SoupUpgrades)
+        {
+            SoupIngredient Ingred = IngredientPrefabs[(int)Upgrade.Key].GetComponent<SoupIngredient>();
+            string oldText = UpgradeDescText.text;
+            string append = "\n" + Ingred.WeaponMod.Effect.ToString() + " " + Ingred.WeaponMod.Value * Upgrade.Value;
+            UpgradeDescText.text = oldText + append;
+        }
     }
 
     private void ClearDescriptionText()

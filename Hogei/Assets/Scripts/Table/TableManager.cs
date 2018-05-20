@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TableManager : MonoBehaviour {
 
     public int MapNodeLayer = 0;
     public List<TableMapNode> MapNodes;
+
+    [Header("Camera Settings")]
+    public Transform HotPotCameraPosition;
+    public Transform MapCameraPosition;
 
     public CloudManager CloudMgt;
 
@@ -50,7 +55,13 @@ public class TableManager : MonoBehaviour {
         {
             CloudMgt.HideClouds();
         }
+        //Trigger animation
         Anim.SetTrigger("OpenMap");
+        //Move the camera to the correct position
+        Sequence MoveCamera = DOTween.Sequence();
+        MoveCamera.Insert(0, Camera.main.transform.DOMove(HotPotCameraPosition.position, 1.5f).SetEase(Ease.InQuart));
+        MoveCamera.Insert(0, Camera.main.transform.DORotateQuaternion(HotPotCameraPosition.rotation, 1.5f).SetEase(Ease.InQuart));
+        MoveCamera.Play();
         IsOpen = true;
     }
 
@@ -60,7 +71,13 @@ public class TableManager : MonoBehaviour {
         {
             CloudMgt.ShowClouds();
         }
+        //Trigger animation
         Anim.SetTrigger("CloseMap");
+        //Move the camera to the correct position
+        Sequence MoveCamera = DOTween.Sequence();
+        MoveCamera.Insert(0, Camera.main.transform.DOMove(MapCameraPosition.position, 1.5f).SetEase(Ease.InQuart));
+        MoveCamera.Insert(0, Camera.main.transform.DORotateQuaternion(MapCameraPosition.rotation, 1.5f).SetEase(Ease.InQuart));
+        MoveCamera.Play();
         IsOpen = false;
     }
 
