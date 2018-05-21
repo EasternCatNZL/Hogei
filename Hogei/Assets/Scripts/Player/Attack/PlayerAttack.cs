@@ -67,7 +67,12 @@ public class PlayerAttack : MonoBehaviour {
             Debug.LogError("canDo can not be assigned. WhatCanIDO script not present on " + name);
         }
         Anim = GetComponent<Animator>();
-        WW = GameObject.FindGameObjectWithTag("WeaponWheel").GetComponent<WeaponWheel>();
+        //check if weapon wheel exists
+        if (GameObject.FindGameObjectWithTag("WeaponWheel"))
+        {
+            WW = GameObject.FindGameObjectWithTag("WeaponWheel").GetComponent<WeaponWheel>();
+        }
+        
     }
 	
 	// Update is called once per frame

@@ -41,16 +41,16 @@ public class OutlawBehaviour : EnemyBehavior {
     public float setupTime = 0.0f;
 
     //control vars
-    private int currentShotInRound = 0; //the current shot in a round
-    private float timeTillNextShot = 0.0f; //the time till the next shot should be fired
-    private float timeLastShot = 0.0f; //the time the last shot was fired
-    private float pauseStartTime = 0.0f; //the time pause was called
-    private float pauseEndTime = 0.0f; //the time end pause was called
-    private float tempSetupTime = 0.0f; //setup time recalculated when coming out of pause
-    private float setupStartTime = 0.0f; //time setup began
+    protected int currentShotInRound = 0; //the current shot in a round
+    protected float timeTillNextShot = 0.0f; //the time till the next shot should be fired
+    protected float timeLastShot = 0.0f; //the time the last shot was fired
+    protected float pauseStartTime = 0.0f; //the time pause was called
+    protected float pauseEndTime = 0.0f; //the time end pause was called
+    protected float tempSetupTime = 0.0f; //setup time recalculated when coming out of pause
+    protected float setupStartTime = 0.0f; //time setup began
     [HideInInspector]
     public bool isMoving = false; //check if object is currently moving
-    private bool isPaused = false; //checks if pause has been called
+    protected bool isPaused = false; //checks if pause has been called
 
     private Vector3 locationToSetup = Vector3.zero;
     [HideInInspector]
@@ -118,7 +118,7 @@ public class OutlawBehaviour : EnemyBehavior {
     }
 
     //Behaviour when setup has completed
-    public void AttackBehaviour()
+    private void AttackBehaviour()
     {
         if (target)
         {
@@ -130,7 +130,7 @@ public class OutlawBehaviour : EnemyBehavior {
     }
 
     //Attack behaviour <- runs on timer
-    public void Attack()
+    private void Attack()
     {
         //check timing
         if(Time.time > timeLastShot + timeTillNextShot + (pauseEndTime - pauseStartTime))
@@ -183,8 +183,8 @@ public class OutlawBehaviour : EnemyBehavior {
         }
     }
 
-        //pause funcs
-        void OnPause()
+    //pause funcs
+    protected void OnPause()
     {
         isPaused = true;
         pauseStartTime = Time.time;
@@ -198,7 +198,7 @@ public class OutlawBehaviour : EnemyBehavior {
         }
     }
 
-    void OnUnpause()
+    protected void OnUnpause()
     {
         isPaused = false;
         pauseEndTime = Time.time;
