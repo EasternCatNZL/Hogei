@@ -10,19 +10,22 @@ public class SoupManager : MonoBehaviour {
     public GameObject TheSoup;
     [Tooltip("The angle the soup rotates each second")]
     public float SoupRotationSpeed = 90f;
+    [Header("Soup Settings")]
+    public int MaxSoupSize = 4;
     public List<SoupIngredient> SoupIngredients;
-    public Dictionary<SoupIngredient.IngredientType, int> SoupUpgrades;
+    public Dictionary<Weapon.WeaponEffects, float> SoupUpgrades;
     public List<GameObject> IngredientPrefabs;
     [Header("Spawn Positions")]
     public Transform IngredientSpawn;
     public Transform SoupSpawn;
     [Header("UI Settings")]
     public Text UpgradeDescText;
+    public TextMesh SoupCapacityText;
 
 	// Use this for initialization
 	void Start () {
         SoupIngredients = new List<SoupIngredient>();
-        SoupUpgrades = new Dictionary<SoupIngredient.IngredientType, int>();
+        SoupUpgrades = new Dictionary<Weapon.WeaponEffects, float>();
     }
 	
 	// Update is called once per frame
@@ -43,6 +46,7 @@ public class SoupManager : MonoBehaviour {
                 NewSoupUpgrade.GetComponent<SoupUpgrade>().AddModifier(Effect);
             }
             PlayerManager.GetInstance().AddSoupInventory(NewSoupUpgrade.GetComponent<SoupUpgrade>());
+            PlayerManager.GetInstance().SetPrimarySoup(NewSoupUpgrade.GetComponent<SoupUpgrade>());
             ClearSoup();
         }
         else
@@ -54,32 +58,37 @@ public class SoupManager : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         SoupIngredient Obj = other.gameObject.GetComponent<SoupIngredient>();
-        if (!SoupIngredients.Contains(Obj))
-        {
+        if (SoupIngredients.Count < MaxSoupSize && !SoupIngredients.Contains(Obj))
+        {         
+            //Add ingredient to ingredients list
             SoupIngredients.Add(Obj);
-
-            if(SoupUpgrades.ContainsKey(Obj.Type))
+            //Add the weapon mods to the upgrade list
+            if(SoupUpgrades.ContainsKey(Obj.WeaponMod.Effect))
             {
-                SoupUpgrades[Obj.Type] += 1;
+                SoupUpgrades[Obj.WeaponMod.Effect] += Obj.WeaponMod.Value;
             }
             else
             {
-                SoupUpgrades.Add(Obj.Type, 1);
+                SoupUpgrades.Add(Obj.WeaponMod.Effect,Obj.WeaponMod.Value);
             }
-            if (UpgradeDescText) UpdateDescriptionText();
+            if (UpgradeDescText) UpdateUI();
+        }
+        else
+        {
+            Destroy(other.gameObject);
         }
     }
 
-    private void UpdateDescriptionText()
+    public void UpdateUI()
     {
-        UpgradeDescText.text = "";
-        foreach (KeyValuePair<SoupIngredient.IngredientType,int> Upgrade in SoupUpgrades)
-        {
-            SoupIngredient Ingred = IngredientPrefabs[(int)Upgrade.Key].GetComponent<SoupIngredient>();
+        UpgradeDescText.text = "Soup Effects:";
+        foreach (KeyValuePair<Weapon.WeaponEffects,float> _Upgrade in SoupUpgrades)
+        {           
             string oldText = UpgradeDescText.text;
-            string append = "\n" + Ingred.WeaponMod.Effect.ToString() + " " + Ingred.WeaponMod.Value * Upgrade.Value;
+            string append = "\n" + _Upgrade.Key + " " + _Upgrade.Value;
             UpgradeDescText.text = oldText + append;
         }
+        SoupCapacityText.text = SoupIngredients.Count + "/" + MaxSoupSize;
     }
 
     private void ClearDescriptionText()
@@ -92,12 +101,15 @@ public class SoupManager : MonoBehaviour {
 
     }
 
-    private void ClearSoup()
+    public void ClearSoup()
     {
-        for(int i = SoupIngredients.Count - 1; i >= 0; --i)
+        //Clear Soup Ingredients List
+        for (int i = SoupIngredients.Count - 1; i >= 0; --i)
         {
             Destroy(SoupIngredients[i].gameObject);
         }
         SoupIngredients.Clear();
+        //Clear Soup Upgrades List
+        SoupUpgrades.Clear();
     }
 }

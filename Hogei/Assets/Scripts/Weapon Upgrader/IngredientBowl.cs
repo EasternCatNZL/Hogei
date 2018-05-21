@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IngredientBowl : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class IngredientBowl : MonoBehaviour {
     [Header("Soup Settings")]
     public SoupManager SoupManager;
 
+    [Header("Text Settings")]
+    public Text TextDisplay;
+
     public int IngredientAmount = 0;
     private PlayerManager PlayMgt;
 
@@ -18,6 +22,24 @@ public class IngredientBowl : MonoBehaviour {
     {
         PlayMgt = PlayerManager.GetInstance();
         IngredientAmount = PlayMgt.GetIngredientAmount(IngredientType);
+    }
+
+    private void OnMouseOver()
+    {
+        if (TextDisplay)
+        {
+            Weapon.WeaponModifier WeaponMod = IngredientPrefab.GetComponent<SoupIngredient>().WeaponMod;
+            if(WeaponMod.Value < -1 & WeaponMod.Value < 0) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    " + WeaponMod.Value;
+            else if (WeaponMod.Value > -1 && WeaponMod.Value < 0) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":   " + WeaponMod.Value + "%";
+            else if (WeaponMod.Value > 0 && WeaponMod.Value < 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value +"%";
+            else if(WeaponMod.Value >= 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value;
+
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        SoupManager.UpdateUI();
     }
 
     //In-built function called when collider is clicked down on

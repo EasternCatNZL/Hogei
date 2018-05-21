@@ -63,7 +63,7 @@ public class PlayerManager : MonoBehaviour {
             if (SoupInventory.Count > 0)
             {
                 Debug.Log(Time.time + ": " + gameObject.name + " - Applying weapon upgrades...");
-                PrimarySoup = SoupInventory[0];
+                if(PrimarySoup == null) PrimarySoup = SoupInventory[0];
                 ApplyUpgrades();
             }
             //Change WhatCanIDo script
@@ -149,21 +149,29 @@ public class PlayerManager : MonoBehaviour {
     }
 
     //Getters and Setters
+    //Weapons
     public Weapon GetPrimary() { return PrimaryWeapon; }
     public void SetPrimary(Weapon _NewWeapon) { PrimaryWeapon = _NewWeapon; }
 
     public Weapon GetSecondary() { return SecondaryWeapon; }
     public void SetSecondary(Weapon _NewWeapon) { SecondaryWeapon = _NewWeapon; }
+    //Soup
+    public SoupUpgrade GetPrimarySoup() { return PrimarySoup; }
+    public void SetPrimarySoup(SoupUpgrade _NewSoup) { PrimarySoup = _NewSoup; }
 
+    public SoupUpgrade GetSecondarySoup() { return SecondarySoup; }
+    public void SetSecondarySoup(SoupUpgrade _NewSoup) { SecondarySoup = _NewSoup; }
+    //Inventories
+    //Ingredients
     public int[] GetIngredientInventory() { return IngredientInventory; }
     public void AddIngredientInventory(SoupIngredient _NewObject) { IngredientInventory[(int)_NewObject.Type] += 1; }
     public void RemoveIngredientInventory(SoupIngredient _ToRemove) { IngredientInventory[(int)_ToRemove.Type] -= 1; }
     public int GetIngredientAmount(SoupIngredient.IngredientType _Type) { return IngredientInventory[(int)_Type]; }
-
+    //Soups
     public List<SoupUpgrade> GetSoupInventory() { return SoupInventory; }
     public void AddSoupInventory(SoupUpgrade _NewUpgrade) { SoupInventory.Add(_NewUpgrade); }
     public void RemoveSoupInventory(SoupUpgrade _ToRemove) { SoupInventory.Remove(_ToRemove); }
-
+    //Weapons
     public List<Weapon> GetWeaponInventory() { return WeaponInventory; }
     public void AddWeaponInventory(Weapon _NewWeapon) { WeaponInventory.Add(_NewWeapon); }
     public void RemoveWeaponInventory(Weapon _ToRemove) { WeaponInventory.Remove(_ToRemove); }

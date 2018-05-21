@@ -6,6 +6,7 @@ using DG.Tweening;
 public class HoverOverText : MonoBehaviour {
 
     public GameObject TextObject = null;
+    public bool CreateOwnTextObject = false;
     public Font TextFont = null;
     public Material FontMaterial = null;
     public string Text = " ";
@@ -14,11 +15,11 @@ public class HoverOverText : MonoBehaviour {
     public float TextSize = 0.05f;
     public bool FaceCamera = false;
 
-    private float TextYScale = 0f;
+    private float TextYScale = 1f;
 
 	// Use this for initialization
 	void Start () {
-		if(TextObject == null)
+		if(CreateOwnTextObject)
         {
             CreateTextObject();
         }
@@ -61,11 +62,15 @@ public class HoverOverText : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        TextObject.transform.DOScaleY(TextYScale, 0.5f).SetEase(Ease.OutBounce);
+        print("MouseOver");
+        TextObject.transform.DOScaleY(1f, 0.5f).SetEase(Ease.OutBounce);
+        //TextObject.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     private void OnMouseExit()
     {
+        print("MouseExit");
         TextObject.transform.DOScaleY(0, 0.5f);
+        //TextObject.transform.localScale = Vector3.zero;
     }
 }

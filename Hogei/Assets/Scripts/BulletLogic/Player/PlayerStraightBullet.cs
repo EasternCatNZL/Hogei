@@ -46,6 +46,13 @@ public class PlayerStraightBullet : BulletBehavior {
         startPos = transform.position;
     }
 
+    public void SetupVars(float speed, float travelDist, bool expire, int _bulletDamage)
+    {
+        isActive = true;
+        travelSpeed = speed;
+        startPos = transform.position;
+        bulletDamage = _bulletDamage;
+    }
     //deactivate func
     private void Deactivate()
     {
