@@ -17,6 +17,7 @@ public class PlayerStreamShot : Weapon {
     [Header("Timing vars")]
     [Tooltip("The amount of time between shots")]
     public float timeBetweenShots = 2.0f;
+    [Tooltip("Starting time between shots")]
     public float OriginalTimeBetweenShots;
     [Header("Angle variance")]
     [Tooltip("Angle variance in shot")]

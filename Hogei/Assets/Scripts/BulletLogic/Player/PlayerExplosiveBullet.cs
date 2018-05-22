@@ -2,22 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStraightBullet : BulletBehavior {
+public class PlayerExplosiveBullet : BulletBehavior {
 
-    //script ref
-    //private BulletBank bulletBank;
+    [Header("Explosion object")]
+    public GameObject explosionObject;
 
-    [Header("Explosion vfx")]
-    public GameObject explosionVFX;
-
-
-    [Header("Tags")]
-    public string debugTag = "Debugger";
-
-    private Vector3 startPos = Vector3.zero;
-
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
         startTime = Time.time;
         myRigid = GetComponent<Rigidbody>();
     }
@@ -38,26 +29,18 @@ public class PlayerStraightBullet : BulletBehavior {
         }
     }
 
-    //set up func
-    public void SetupVars(float speed, float travelDist, bool expire)
-    {
-        isActive = true;
-        travelSpeed = speed;
-        startPos = transform.position;
-    }
-
     public void SetupVars(float speed, float travelDist, bool expire, int _bulletDamage)
     {
         isActive = true;
         travelSpeed = speed;
-        startPos = transform.position;
         bulletDamage = _bulletDamage;
     }
 
-    //deactivate func
-    private void Deactivate()
+    //create explosion
+    private void CreateExplosion()
     {
-        Destroy(gameObject);
+        //create object in place of bullet collision
+        GameObject explosion = Instantiate(explosionObject, transform.position, transform.rotation);
     }
 
     //collision = deactivate
@@ -68,21 +51,21 @@ public class PlayerStraightBullet : BulletBehavior {
             //any collision
             if (collision.gameObject.GetComponent<EntityHealth>())
             {
-                //check if debugger has instakill toggled
-                if (GameObject.FindGameObjectWithTag(debugTag))
-                {
-                    if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
-                    {
-                        collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(collision.gameObject.GetComponent<EntityHealth>().MaxHealth);
-                    }
-                }
-                else
-                {
+                ////check if debugger has instakill toggled
+                //if (GameObject.FindGameObjectWithTag(debugTag))
+                //{
+                //    if (GameObject.FindGameObjectWithTag(debugTag).GetComponent<DebugTools>().instakillOn)
+                //    {
+                //        collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(collision.gameObject.GetComponent<EntityHealth>().MaxHealth);
+                //    }
+                //}
+                //else
+                //{
                     collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
-                }
+                //}
             }
-            //Deactivate();
-            Instantiate(explosionVFX, transform.position, transform.rotation);
+            print(collision.gameObject.name);
+            CreateExplosion();
             Destroy(gameObject);
         }
     }

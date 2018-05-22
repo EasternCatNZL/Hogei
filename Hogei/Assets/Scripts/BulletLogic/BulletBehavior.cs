@@ -67,7 +67,7 @@ public class BulletBehavior : GameEntity {
         {
             Instantiate(particleObject, transform.position, Quaternion.identity);
         }
-        
+
         Destroy(gameObject);
     }
 

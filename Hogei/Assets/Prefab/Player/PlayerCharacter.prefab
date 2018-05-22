@@ -49,11 +49,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4018673257721186}
-  - component: {fileID: 114863583119903726}
   - component: {fileID: 82675111186626658}
   - component: {fileID: 82072983723850892}
   - component: {fileID: 82076856422729250}
   - component: {fileID: 114842156171141974}
+  - component: {fileID: 114127917586123058}
+  - component: {fileID: 114954338804477746}
   m_Layer: 12
   m_Name: PlayerAttacks
   m_TagString: Untagged
@@ -1174,8 +1175,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642553012151216}
-  m_LocalRotation: {x: -0, y: -0.793203, z: -0, w: 0.60895723}
-  m_LocalPosition: {x: -2.1841393, y: 12.266, z: -5.17895}
+  m_LocalRotation: {x: -0, y: -0.79320306, z: -0, w: 0.6089573}
+  m_LocalPosition: {x: 26.79, y: 15.5, z: -27.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4477446001573894}
@@ -1191,7 +1192,7 @@ Transform:
   - {fileID: 4111398696361770}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -14.3810005, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -104.97201, z: 0}
 --- !u!4 &4149626708075742
 Transform:
   m_ObjectHideFlags: 1
@@ -2284,6 +2285,29 @@ MonoBehaviour:
   timeBetweenUses: 5
   canDo: {fileID: 114363881191679428}
   movement: {fileID: 114215769585281404}
+--- !u!114 &114127917586123058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060729911059096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf685d8e5914814bab3ec4e22857c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  bulletObject: {fileID: 1933369299213082, guid: e9338b79400dae64e8d5ee62df11076d,
+    type: 2}
+  bulletTravelSpeed: 10
+  BulletDamage: 1
+  OriginalBulletDamage: 0
+  timeBetweenShots: 0.2
+  OriginalTimeBetweenShots: 0
+  maxHomingTime: 4
+  homingStartDelay: 0.2
+  distanceToStart: 0.1
+  bulletFireSound: {fileID: 0}
 --- !u!114 &114149759694987308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2341,12 +2365,12 @@ MonoBehaviour:
   Hori: 0
   Vert: 0
   charHeight: 2
-  colliderRadius: 2
+  colliderRadius: 0.3
   downCheckDist: 2
   deadZone: 0.3
   dungeonTag: Dungeon
   FootstepSound: {fileID: 8300000, guid: 46c45f7500a87274e956058237a2e47e, type: 3}
-  FootstepVolume: 0.3
+  FootstepVolume: 0.1
   FootstepPitchRange: {x: 0.9, y: 1.1}
   followCamera: {fileID: 0}
   leftStickX: CHorizontal
@@ -2362,6 +2386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c64b3b1d2b5c74db1a9c4d0654dad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxArray: []
+  managerTag: Manager
+  music: {fileID: 0}
   canMove: 1
   canShoot: 1
   canAbility: 1
@@ -2418,12 +2445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f527e3da016c843af8e2534a514541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseInputKey: 0
   prevWeaponInput: 113
   nextWeaponInput: 101
   attackInputAxis: Attack
   attackInputAxisController: CAttack
-  HealthDecrease: 1
   isShooting: 0
   peaShootStrengthened: 1
 --- !u!114 &114842156171141974
@@ -2440,18 +2465,23 @@ MonoBehaviour:
   Type: 0
   bulletObject: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
     type: 2}
+  BulletDamage: 1
+  OriginalBulletDamage: 0
   bulletTravelSpeed: 20
+  OriginalBulletTravelSpeed: 0
   timeBetweenShots: 0.2
+  OriginalTimeBetweenShots: 0
   angleVariance: 2
+  OriginalAngleVariance: 0
   distanceToStart: 0.1
   barrelLocation: {fileID: 4847050546622370}
   isFiring: 0
-  bulletFireSound: {fileID: 82076856422729250}
+  bulletFireSound: {fileID: 8300000, guid: 6c622c63a5aab734eb37eac51e080819, type: 3}
   FireVolume: 0.25
   PitchVarianceRange: {x: 0.9, y: 1.1}
   muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
     type: 2}
---- !u!114 &114863583119903726
+--- !u!114 &114954338804477746
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2459,19 +2489,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1060729911059096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c58b06704a313a4b9f9ce941e85a7ee, type: 3}
+  m_Script: {fileID: 11500000, guid: e34cfe913d3493a4db06f35f858c9143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObject: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
+  Type: 0
+  bulletObject: {fileID: 1945265914405474, guid: fe2c47686bf97494d8e4eef6f771383f,
     type: 2}
-  numBulletWaves: 3
-  bulletTravelSpeedFast: 10
-  bulletTravelSpeedSlow: 10
-  bulletMaxTravelDist: 8
-  timeBetweenShots: 0.2
-  timeBetweenWaves: 0.1
-  bulletFireSound: {fileID: 82675111186626658}
-  muzzleFireVFX: {fileID: 0}
+  BulletDamage: 1
+  OriginalBulletDamage: 0
+  bulletTravelSpeed: 10
+  OriginalBulletTravelSpeed: 0
+  timeBetweenShots: 2
+  OriginalTimeBetweenShots: 0
+  angleVariance: 2
+  OriginalAngleVariance: 0
+  distanceToStart: 0.1
+  barrelLocation: {fileID: 4847050546622370}
+  isFiring: 0
+  muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
+    type: 2}
+  bulletFireSound: {fileID: 0}
 --- !u!136 &136671544404397856
 CapsuleCollider:
   m_ObjectHideFlags: 1
