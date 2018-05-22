@@ -72,6 +72,8 @@ public class PlayerAttack : MonoBehaviour {
         {
             WW = GameObject.FindGameObjectWithTag("WeaponWheel").GetComponent<WeaponWheel>();
         }
+
+        SetupWeapons();
         
     }
 	
@@ -85,6 +87,8 @@ public class PlayerAttack : MonoBehaviour {
                 SwitchWeapon();
             }
         }
+        print(currentWeaponIndex);
+        print(numWeapons);
 	}
 
     //setup weapon script releationships 
@@ -145,6 +149,20 @@ public class PlayerAttack : MonoBehaviour {
     //switch weapon
     private void SwitchWeapon()
     {
+       if(Input.GetKeyDown(nextWeaponInput))
+        {
+            WW.NextWeapon();
+            if (currentWeaponIndex == 0)
+            {
+                currentWeaponIndex = 1; 
+            }
+            else if(currentWeaponIndex == 1)
+            {
+                currentWeaponIndex = 0;
+            }
+        }
+        
+        /*
         //switch to prev weapon
         if (Input.GetKeyDown(prevWeaponInput)){
             //decrement the current index
@@ -170,6 +188,7 @@ public class PlayerAttack : MonoBehaviour {
                 currentWeaponIndex = 0;
             }
         }
+        */
     }
 
     public int GetWeaponIndex()

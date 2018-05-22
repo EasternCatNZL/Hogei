@@ -18,9 +18,7 @@ public class CornExplosion : MonoBehaviour {
     private List<GameObject> ObjectsInRange;
 
     //private bool hasExploded = false;
-    //private Vector3 ExplosionPos;
-
-     
+    //private Vector3 ExplosionPos;     
         
 	// Use this for initialization
 	void Start () {
