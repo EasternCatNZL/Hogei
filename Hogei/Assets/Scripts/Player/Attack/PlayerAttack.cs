@@ -90,21 +90,6 @@ public class PlayerAttack : MonoBehaviour {
     //setup weapon script releationships 
     public void SetupWeapons()
     {
-        //peaShooter = GetComponentInChildren<PeaShooter>();
-        //if (peaShooter)
-        //{
-        //    numWeapons++;
-        //}
-        //streamShot = GetComponentInChildren<PlayerStreamShot>();
-        //if (streamShot)
-        //{
-        //    numWeapons++;
-        //}
-        //homingShot = GetComponentInChildren<PlayerHomingShot>();
-        //if (homingShot)
-        //{
-        //    numWeapons++;
-        //}
         numWeapons = 0;
 
         PrimaryWeapon = PlayerManager.GetInstance().GetPrimary();

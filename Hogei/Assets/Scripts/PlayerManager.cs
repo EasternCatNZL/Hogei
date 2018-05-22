@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour {
         {
             DontDestroyOnLoad(Player);
             //Set the playesr primary weapons (CHANGE THIS WHERE WE GET PLAYER WEAPON SELECTION IN)
-            PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
+            PrimaryWeapon = Player.GetComponentInChildren<PlayerExplosiveShot>();
             //Get the players spawn
             Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
             //Revive the player
