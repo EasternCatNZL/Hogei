@@ -8,7 +8,9 @@ public abstract class Weapon : MonoBehaviour {
     {
         Stream,
         Fert,
-        Lighting
+        Lighting,
+        Explosive,
+        Home
     }
 
     public enum WeaponEffects
