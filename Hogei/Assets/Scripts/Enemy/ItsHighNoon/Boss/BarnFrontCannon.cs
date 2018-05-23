@@ -101,6 +101,7 @@ public class BarnFrontCannon : MonoBehaviour {
             SheepBehaviour sheepBehave = sheepClone.GetComponent<SheepBehaviour>();
             sheepBehave.doTrack = false;
             sheepBehave.chargeSpeed = bulletSpeed;
+            sheepBehave.Activate();
             sheepBehave.isActive = true;
             sheepClone.GetComponent<EntityHealth>().CurrentHealth = 1;
         }
