@@ -45,7 +45,7 @@ public class SheepBehaviour : EnemyBehavior {
     public Vector3 RigidVelocity;
 
     //control vars
-    [HideInInspector]
+   
     public bool isPaused = false; //checks if pause has been called
     private bool isQuiting = false; //checks if the application is quiting
     [HideInInspector]
@@ -155,11 +155,19 @@ public class SheepBehaviour : EnemyBehavior {
         //Set Animation Trigger
         myAnim.SetTrigger("Charge");
         //Play the Launch SFX if it isn't already
-        if (!mySource.isPlaying)
+        if (mySource)
         {
-            mySource.clip = LaunchSound;
-            mySource.Play();
+            if (!mySource.isPlaying)
+            {
+                mySource.clip = LaunchSound;
+                mySource.Play();
+            }
         }
+        else
+        {
+            Debug.Log("Add a goddamn source to the sheep bruh");
+        }
+
         //Play the rocket VFX if it isn't already
         if (RocketFlames)
         {
@@ -169,6 +177,7 @@ public class SheepBehaviour : EnemyBehavior {
             }
         }
         myRigid.velocity = (myRigid.velocity + transform.forward).normalized * currentSpeed;
+        print("Fella");
     }
 
     //Adjust state
