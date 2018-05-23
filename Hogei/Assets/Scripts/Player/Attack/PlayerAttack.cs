@@ -87,8 +87,8 @@ public class PlayerAttack : MonoBehaviour {
                 SwitchWeapon();
             }
         }
-        print(currentWeaponIndex);
-        print(numWeapons);
+        //print(currentWeaponIndex);
+        //print(numWeapons);
 	}
 
     //setup weapon script releationships 
