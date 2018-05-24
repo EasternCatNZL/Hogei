@@ -24,7 +24,7 @@ public class WeaponWheel : MonoBehaviour {
 
     public void NextWeapon()
     {
-        
+        transform.DOComplete();
         currentRotation = transform.localEulerAngles;
         endValue = currentRotation + new Vector3(0, 180, 0);
         transform.DORotate(endValue, TweenDuration, RotateMode.Fast);

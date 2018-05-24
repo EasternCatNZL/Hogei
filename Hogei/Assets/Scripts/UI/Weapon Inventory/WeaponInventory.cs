@@ -32,4 +32,18 @@ public class WeaponInventory : MonoBehaviour {
 
     public Text GetDetailsText() { return DetailsText; }
     public WeaponSelector GetSelector() { return TargetSelector; }
+    public bool CheckUnlocked(Weapon.WeaponTypes _Type)
+    {
+        Dictionary<Weapon.WeaponTypes, bool> Unlocks = PlayerManager.GetInstance().GetWeaponUnlocks();
+        if (Unlocks.ContainsKey(_Type))
+        {
+            return Unlocks[_Type];
+        }
+        else
+        {
+            Unlocks.Add(_Type, false);
+            return Unlocks[_Type];
+        }
+
+    }
 }

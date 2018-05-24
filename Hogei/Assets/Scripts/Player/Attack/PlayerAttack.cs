@@ -99,43 +99,53 @@ public class PlayerAttack : MonoBehaviour {
         switch(_PriType)
         {
             case Weapon.WeaponTypes.Stream:
-                PrimaryWeapon = GetComponent<PlayerStreamShot>();
+                PrimaryWeapon = GetComponentInChildren<PlayerStreamShot>();
                 break;
             case Weapon.WeaponTypes.Fert:
-                PrimaryWeapon = GetComponent<FertilizerShot>();
+                PrimaryWeapon = GetComponentInChildren<FertilizerShot>();
                 break;
             case Weapon.WeaponTypes.Home:
-                PrimaryWeapon = GetComponent<PlayerHomingShot>();
+                PrimaryWeapon = GetComponentInChildren<PlayerHomingShot>();
                 break;
             case Weapon.WeaponTypes.Explosive:
-                PrimaryWeapon = GetComponent<PlayerExplosiveShot>();
+                PrimaryWeapon = GetComponentInChildren<PlayerExplosiveShot>();
                 break;
             default:
+                PrimaryWeapon = null;
                 Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR PRIMARY");
                 break;
         }
         switch (_SecType)
         {
             case Weapon.WeaponTypes.Stream:
-                SecondaryWeapon = GetComponent<PlayerStreamShot>();
+                SecondaryWeapon = GetComponentInChildren<PlayerStreamShot>();
                 break;
             case Weapon.WeaponTypes.Fert:
-                SecondaryWeapon = GetComponent<FertilizerShot>();
+                SecondaryWeapon = GetComponentInChildren<FertilizerShot>();
                 break;
             case Weapon.WeaponTypes.Home:
-                SecondaryWeapon = GetComponent<PlayerHomingShot>();
+                SecondaryWeapon = GetComponentInChildren<PlayerHomingShot>();
                 break;
             case Weapon.WeaponTypes.Explosive:
-                SecondaryWeapon = GetComponent<PlayerExplosiveShot>();
+                SecondaryWeapon = GetComponentInChildren<PlayerExplosiveShot>();
                 break;
             default:
+                SecondaryWeapon = null;
                 Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR SECONDARY");
                 break;
         }
+        //Apply Upgrades
         if (_PriUpg) PrimaryWeapon.ApplyUpgrade(_PriUpg);
         if (_SecUpg) SecondaryWeapon.ApplyUpgrade(_SecUpg);
+        //Increment Weapon Count
         if (PrimaryWeapon != null) numWeapons++;
         if (SecondaryWeapon != null) numWeapons++;
+        //Swap the primary for the secondary if there is only a secondary weapon
+        if (SecondaryWeapon != null && PrimaryWeapon == null)
+        {
+            PrimaryWeapon = SecondaryWeapon;
+            SecondaryWeapon = null;
+        }
     }
 
     //attack use logic

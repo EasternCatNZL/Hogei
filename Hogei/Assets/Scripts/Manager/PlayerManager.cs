@@ -18,11 +18,14 @@ public class PlayerManager : MonoBehaviour {
     [Header("Debug Settings")]
     public bool FullIngredInventory = false;
     //The two weapons the player has equiped for a dungeon
-    private Weapon.WeaponTypes PrimaryWeapon;
-    private Weapon.WeaponTypes SecondaryWeapon;
+    private Weapon.WeaponTypes PrimaryWeapon = Weapon.WeaponTypes.None;
+    private Weapon.WeaponTypes SecondaryWeapon = Weapon.WeaponTypes.None;
     //The two upgrades applied to those weapons(Might just have one universal upgrade?)
     private SoupUpgrade PrimarySoup;
     private SoupUpgrade SecondarySoup;
+    //Progression Variables
+    private Dictionary<Weapon.WeaponTypes, bool> WeaponUnlocks;
+    private List<int> LevelsCompleted;
 
     private bool SceneLoaded = false;
 
@@ -44,6 +47,9 @@ public class PlayerManager : MonoBehaviour {
 
     void Init()
     {
+        //Setup Player Progression
+        if (WeaponUnlocks == null) WeaponUnlocks = new Dictionary<Weapon.WeaponTypes, bool>();
+        if (LevelsCompleted == null) LevelsCompleted = new List<int>();
         //Setup Player Character
         if (!Player) Player = GameObject.FindGameObjectWithTag("Player");
         if (Player)
@@ -58,13 +64,21 @@ public class PlayerManager : MonoBehaviour {
             {
                 Camera.main.GetComponentInParent<Follow>().SetStopFollowing(false);
             }
-            //Setup the player's weapons
-            Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
-            Player.GetComponent<PlayerAttack>().SetupWeapons(PrimaryWeapon, SecondaryWeapon, PrimarySoup, SecondarySoup);
+            //Setup Soup Upgrades
             if (SoupInventory != null && SoupInventory.Count > 0)
             {
                 Debug.Log(Time.time + ": " + gameObject.name + " - Applying weapon upgrades...");
-                if(PrimarySoup == null) PrimarySoup = SoupInventory[0];
+                if (PrimarySoup == null) PrimarySoup = SoupInventory[0];
+            }
+            //Setup the player's weapons
+            Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
+            if (PrimaryWeapon == Weapon.WeaponTypes.None && SecondaryWeapon == Weapon.WeaponTypes.None)
+            {
+                Player.GetComponent<PlayerAttack>().SetupWeapons(Weapon.WeaponTypes.Stream, Weapon.WeaponTypes.Fert, PrimarySoup, SecondarySoup);
+            }
+            else
+            {
+                Player.GetComponent<PlayerAttack>().SetupWeapons(PrimaryWeapon, SecondaryWeapon, PrimarySoup, SecondarySoup);
             }
             //Change WhatCanIDo script
             WhatCanIDO PlayerPermissions = Player.GetComponent<WhatCanIDO>();
@@ -94,13 +108,13 @@ public class PlayerManager : MonoBehaviour {
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {
                 DontDestroyOnLoad(HealthBar.gameObject);
-                HealthBar.gameObject.SetActive(false);
+                HealthBar.DisableSprites();
             }
             else
             {
-                HealthBar.gameObject.SetActive(true);
+                HealthBar.EnableSprites();
                 HealthBar.TargetHealth = Player.GetComponent<EntityHealth>();
-                //HealthBar.UpdateNotches();
+                HealthBar.UpdateNotches();
             }
         }
         //Setup GameoverScreen
@@ -117,6 +131,7 @@ public class PlayerManager : MonoBehaviour {
         }
         if (SoupInventory == null) SoupInventory = new List<SoupUpgrade>();
         if (WeaponInventory == null) WeaponInventory = new List<Weapon>();
+        //Setup For Map Scene
     }
 
     void OnEnable()
@@ -137,6 +152,7 @@ public class PlayerManager : MonoBehaviour {
         {
             if (GameoverScreen)
             {
+                LevelsCompleted.Add(SceneManager.GetActiveScene().buildIndex);
                 GameoverScreen.SetActive(true);
             }
             else Debug.LogWarning("NO GAMEOVER SCREEN UI IN SCENE");
@@ -185,6 +201,10 @@ public class PlayerManager : MonoBehaviour {
     public List<Weapon> GetWeaponInventory() { return WeaponInventory; }
     public void AddWeaponInventory(Weapon _NewWeapon) { WeaponInventory.Add(_NewWeapon); }
     public void RemoveWeaponInventory(Weapon _ToRemove) { WeaponInventory.Remove(_ToRemove); }
+    //Weapon Unlock Dictionary
+    public Dictionary<Weapon.WeaponTypes, bool> GetWeaponUnlocks() { return WeaponUnlocks; }
+    //Level Completed List
+    public List<int> GetLevelsCompleted() { return LevelsCompleted; }
 
     public static PlayerManager GetInstance()
     {

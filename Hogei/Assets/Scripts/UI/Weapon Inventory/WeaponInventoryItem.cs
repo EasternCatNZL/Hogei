@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class WeaponInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
+    public bool Locked = true;
     public WeaponInventory weaponInventory;
     public Weapon.WeaponTypes weaponType;
 
@@ -16,6 +17,7 @@ public class WeaponInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointer
 	void Start () {
         weaponInventory = GetComponentInParent<WeaponInventory>();
         DetailsText = weaponInventory.GetDetailsText();
+        Locked = weaponInventory.CheckUnlocked(weaponType);
 	}
 
     public void OnPointerEnter(PointerEventData _Event)

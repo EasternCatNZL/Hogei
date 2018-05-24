@@ -21,6 +21,7 @@ public class EntityHealthEditor : Editor {
 
     public override void OnInspectorGUI()
     {
+        EntityHealth Entity = (EntityHealth)target;
         ////Health Settings
         //GUILayout.Label("Health Settings", EditorStyles.boldLabel);
 
@@ -57,5 +58,11 @@ public class EntityHealthEditor : Editor {
         //serializedObject.ApplyModifiedProperties();
 
         base.OnInspectorGUI();
+
+
+        if (GUILayout.Button("Kill Entity"))
+        {
+            Entity.Kill();
+        }
     }
 }

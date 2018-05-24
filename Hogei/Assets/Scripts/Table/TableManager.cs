@@ -14,15 +14,14 @@ public class TableManager : MonoBehaviour {
 
     public CloudManager CloudMgt;
 
-    private TableMapNode PrevLevel;
-
     private Animator Anim;
     private bool IsOpen = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         //Get attached animator
-		if(GetComponent<Animator>())
+        if (GetComponent<Animator>())
         {
             Anim = GetComponent<Animator>();
         }
@@ -30,8 +29,9 @@ public class TableManager : MonoBehaviour {
         {
             Debug.Log("No animator attached to " + gameObject.name);
         }
-        if(MapNodes == null) MapNodes = new List<TableMapNode>();
-	}
+        if (MapNodes == null) MapNodes = new List<TableMapNode>();
+        UnlockMapNodes();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,6 +48,24 @@ public class TableManager : MonoBehaviour {
             }
         }
 	}
+
+    public void UnlockMapNodes()
+    {
+        List<int> Unlocks = PlayerManager.GetInstance().GetLevelsCompleted();
+        foreach(TableMapNode _Node in MapNodes)
+        {
+            if (_Node.RequiredNode == null)
+            {
+                _Node.IsUnlocked = true;
+                continue;
+            }
+            if(Unlocks.Contains(_Node.RequiredNode.LevelIndex))
+            {
+                _Node.IsUnlocked = true;
+                continue;
+            }
+        }
+    }
 
     public void OpenMap()
     {

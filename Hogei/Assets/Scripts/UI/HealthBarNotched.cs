@@ -25,6 +25,7 @@ public class HealthBarNotched : MonoBehaviour {
         else
         {
             Destroy(gameObject);
+            Debug.Log(Time.time + "HEALTH BAR ALREAD EXISTS DESTROYING SELF");
         }
         DontDestroyOnLoad(gameObject);
         CreateNotches();
@@ -97,9 +98,25 @@ public class HealthBarNotched : MonoBehaviour {
             
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void DisableSprites()
+    {
+        foreach(GameObject Notch in Notches)
+        {
+            Notch.GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
+    public void EnableSprites()
+    {
+        foreach (GameObject Notch in Notches)
+        {
+            Notch.GetComponent<SpriteRenderer>().enabled = true;
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

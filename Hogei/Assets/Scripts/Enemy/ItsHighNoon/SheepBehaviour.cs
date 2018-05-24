@@ -177,7 +177,6 @@ public class SheepBehaviour : EnemyBehavior {
             }
         }
         myRigid.velocity = (myRigid.velocity + transform.forward).normalized * currentSpeed;
-        print("Fella");
     }
 
     //Adjust state
