@@ -20,6 +20,8 @@ public class WeaponSelector : MonoBehaviour
         {
             weaponInventory = Finder.GetComponent<WeaponInventory>();
         }
+        if (PrimarySelector) WeaponSelected = PlayerManager.GetInstance().GetPrimary();
+        if (SecondarySelector) WeaponSelected = PlayerManager.GetInstance().GetSecondary();
     }
 
     private void OnMouseExit()
@@ -31,11 +33,11 @@ public class WeaponSelector : MonoBehaviour
     {
         if (PrimarySelector)
         {
-            DescriptionText.text = "Selects a primary weapon " + WeaponSelected.ToString();
+            DescriptionText.text = "Primary Weapon:\n" + WeaponSelected.ToString();
         }
         else if(SecondarySelector)
         {
-            DescriptionText.text = "Selects a secondary weapon " + WeaponSelected.ToString();
+            DescriptionText.text = "Secondary Weapon:\n" + WeaponSelected.ToString();
         }
     }
 

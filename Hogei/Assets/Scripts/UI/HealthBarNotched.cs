@@ -42,26 +42,29 @@ public class HealthBarNotched : MonoBehaviour {
     }
 
     private void CreateNotches()
-    {      
-        NumNotches = (int)TargetHealth.MaxHealth;
-        LastHealth = NumNotches;
-        Notches = new GameObject[NumNotches];
-        float xPos = 0f;
-        Color NotchColor = Color.red;
-        for(int i = 0; i < NumNotches; ++i)
+    {
+        if (TargetHealth)
         {
-            GameObject temp = Instantiate(Notch, this.transform);
-            temp.transform.localPosition = new Vector3(-xPos, 0f, 0f);
-            temp.GetComponent<SpriteRenderer>().color = NotchColor;
-            Notches[i] = temp;
-            xPos += NotchPadding;
-            if(i + 1> (NumNotches/3) * 2)
+            NumNotches = (int)TargetHealth.MaxHealth;
+            LastHealth = NumNotches;
+            Notches = new GameObject[NumNotches];
+            float xPos = 0f;
+            Color NotchColor = Color.red;
+            for (int i = 0; i < NumNotches; ++i)
             {
-                NotchColor = Color.yellow;
-            }
-            else if(i + 1> NumNotches/3 )
-            {
-                NotchColor = new Color(255f/255f, 128f/255f, 0f);
+                GameObject temp = Instantiate(Notch, this.transform);
+                temp.transform.localPosition = new Vector3(-xPos, 0f, 0f);
+                temp.GetComponent<SpriteRenderer>().color = NotchColor;
+                Notches[i] = temp;
+                xPos += NotchPadding;
+                if (i + 1 > (NumNotches / 3) * 2)
+                {
+                    NotchColor = Color.yellow;
+                }
+                else if (i + 1 > NumNotches / 3)
+                {
+                    NotchColor = new Color(255f / 255f, 128f / 255f, 0f);
+                }
             }
         }
     }

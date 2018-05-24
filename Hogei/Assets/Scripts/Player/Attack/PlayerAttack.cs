@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour {
+public class PlayerAttack : MonoBehaviour
+{
 
     [Header("Input")]
     //[Tooltip("Keyboard input key for weapon fire")]
@@ -20,7 +21,7 @@ public class PlayerAttack : MonoBehaviour {
 
     public bool isShooting = false;
 
-    
+
 
     //control vars
     private int currentWeaponIndex = 0;
@@ -45,8 +46,9 @@ public class PlayerAttack : MonoBehaviour {
     private static GameObject PlayerInstance;
 
     // Use this for initialization
-    void Start () {
-        if(PlayerInstance == null)
+    void Start()
+    {
+        if (PlayerInstance == null)
         {
             PlayerInstance = gameObject;
         }
@@ -74,11 +76,12 @@ public class PlayerAttack : MonoBehaviour {
         }
 
         //SetupWeapons();
-        
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (canDo)
         {
             if (canDo.canShoot)
@@ -89,14 +92,14 @@ public class PlayerAttack : MonoBehaviour {
         }
         //print(currentWeaponIndex);
         //print(numWeapons);
-	}
+    }
 
     //setup weapon script releationships 
     public void SetupWeapons(Weapon.WeaponTypes _PriType, Weapon.WeaponTypes _SecType, SoupUpgrade _PriUpg, SoupUpgrade _SecUpg)
     {
         numWeapons = 0;
         //Set the primary weapon
-        switch(_PriType)
+        switch (_PriType)
         {
             case Weapon.WeaponTypes.Stream:
                 PrimaryWeapon = GetComponentInChildren<PlayerStreamShot>();
@@ -160,10 +163,10 @@ public class PlayerAttack : MonoBehaviour {
             switch (currentWeaponIndex)
             {
                 case 0:
-                    if(PrimaryWeapon) PrimaryWeapon.UseWeapon();
+                    if (PrimaryWeapon) PrimaryWeapon.UseWeapon();
                     break;
                 case 1:
-                    if(SecondaryWeapon) SecondaryWeapon.UseWeapon();
+                    if (SecondaryWeapon) SecondaryWeapon.UseWeapon();
                     break;
                 default:
                     Debug.Log("Something broke with the weapon switching...");
@@ -180,19 +183,24 @@ public class PlayerAttack : MonoBehaviour {
     //switch weapon
     private void SwitchWeapon()
     {
-       if(Input.GetKeyDown(nextWeaponInput))
+        if (Input.GetKeyDown(nextWeaponInput))
         {
-            if(WW)WW.NextWeapon(); //Change the weapon wheel UI
+            if (WW) WW.NextWeapon(); //Change the weapon wheel UI
+            else
+            {
+                GameObject temp = GameObject.FindGameObjectWithTag("WeaponWheel");
+                if (temp) WW = temp.GetComponent<WeaponWheel>();
+            }
             if (currentWeaponIndex == 0)
             {
-                currentWeaponIndex = 1; 
+                currentWeaponIndex = 1;
             }
-            else if(currentWeaponIndex == 1)
+            else if (currentWeaponIndex == 1)
             {
                 currentWeaponIndex = 0;
             }
         }
-        
+
         /*
         //switch to prev weapon
         if (Input.GetKeyDown(prevWeaponInput)){
@@ -234,14 +242,14 @@ public class PlayerAttack : MonoBehaviour {
         //check what player is using
         if (canDo.useKeyboard)
         {
-            if (/*Luminosity.IO.InputManager.GetAxisRaw(attackInputAxis) != 0*/ Luminosity.IO.InputManager.GetButton(attackInputAxis) )
+            if (/*Luminosity.IO.InputManager.GetAxisRaw(attackInputAxis) != 0*/ Luminosity.IO.InputManager.GetButton(attackInputAxis))
             {
                 valid = true;
             }
         }
         else if (canDo.useController)
         {
-            if(Luminosity.IO.InputManager.GetAxisRaw(attackInputAxisController) != 0)
+            if (Luminosity.IO.InputManager.GetAxisRaw(attackInputAxisController) != 0)
             {
                 valid = true;
             }
