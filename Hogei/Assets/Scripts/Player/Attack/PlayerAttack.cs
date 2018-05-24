@@ -33,8 +33,8 @@ public class PlayerAttack : MonoBehaviour {
     private PlayerStreamShot streamShot;
     private PlayerHomingShot homingShot;
 
-    private Weapon PrimaryWeapon;
-    private Weapon SecondaryWeapon;
+    public Weapon PrimaryWeapon;
+    public Weapon SecondaryWeapon;
 
     private WeaponWheel WW;
 
@@ -73,7 +73,7 @@ public class PlayerAttack : MonoBehaviour {
             WW = GameObject.FindGameObjectWithTag("WeaponWheel").GetComponent<WeaponWheel>();
         }
 
-        SetupWeapons();
+        //SetupWeapons();
         
     }
 	
@@ -92,12 +92,48 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
     //setup weapon script releationships 
-    public void SetupWeapons()
+    public void SetupWeapons(Weapon.WeaponTypes _PriType, Weapon.WeaponTypes _SecType, SoupUpgrade _PriUpg, SoupUpgrade _SecUpg)
     {
         numWeapons = 0;
-
-        PrimaryWeapon = PlayerManager.GetInstance().GetPrimary();
-        SecondaryWeapon = PlayerManager.GetInstance().GetSecondary();
+        //Set the primary weapon
+        switch(_PriType)
+        {
+            case Weapon.WeaponTypes.Stream:
+                PrimaryWeapon = GetComponent<PlayerStreamShot>();
+                break;
+            case Weapon.WeaponTypes.Fert:
+                PrimaryWeapon = GetComponent<FertilizerShot>();
+                break;
+            case Weapon.WeaponTypes.Home:
+                PrimaryWeapon = GetComponent<PlayerHomingShot>();
+                break;
+            case Weapon.WeaponTypes.Explosive:
+                PrimaryWeapon = GetComponent<PlayerExplosiveShot>();
+                break;
+            default:
+                Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR PRIMARY");
+                break;
+        }
+        switch (_SecType)
+        {
+            case Weapon.WeaponTypes.Stream:
+                SecondaryWeapon = GetComponent<PlayerStreamShot>();
+                break;
+            case Weapon.WeaponTypes.Fert:
+                SecondaryWeapon = GetComponent<FertilizerShot>();
+                break;
+            case Weapon.WeaponTypes.Home:
+                SecondaryWeapon = GetComponent<PlayerHomingShot>();
+                break;
+            case Weapon.WeaponTypes.Explosive:
+                SecondaryWeapon = GetComponent<PlayerExplosiveShot>();
+                break;
+            default:
+                Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR SECONDARY");
+                break;
+        }
+        if (_PriUpg) PrimaryWeapon.ApplyUpgrade(_PriUpg);
+        if (_SecUpg) SecondaryWeapon.ApplyUpgrade(_SecUpg);
         if (PrimaryWeapon != null) numWeapons++;
         if (SecondaryWeapon != null) numWeapons++;
     }
@@ -136,7 +172,7 @@ public class PlayerAttack : MonoBehaviour {
     {
        if(Input.GetKeyDown(nextWeaponInput))
         {
-            WW.NextWeapon();
+            if(WW)WW.NextWeapon(); //Change the weapon wheel UI
             if (currentWeaponIndex == 0)
             {
                 currentWeaponIndex = 1; 

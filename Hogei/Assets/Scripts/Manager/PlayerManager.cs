@@ -14,9 +14,12 @@ public class PlayerManager : MonoBehaviour {
     private List<Weapon> WeaponInventory;
     public List<SoupUpgrade> SoupInventory;
     public int[] IngredientInventory;
+
+    [Header("Debug Settings")]
+    public bool FullIngredInventory = false;
     //The two weapons the player has equiped for a dungeon
-    private Weapon PrimaryWeapon;
-    private Weapon SecondaryWeapon;
+    private Weapon.WeaponTypes PrimaryWeapon;
+    private Weapon.WeaponTypes SecondaryWeapon;
     //The two upgrades applied to those weapons(Might just have one universal upgrade?)
     private SoupUpgrade PrimarySoup;
     private SoupUpgrade SecondarySoup;
@@ -46,8 +49,6 @@ public class PlayerManager : MonoBehaviour {
         if (Player)
         {
             DontDestroyOnLoad(Player);
-            //Set the playesr primary weapons (CHANGE THIS WHERE WE GET PLAYER WEAPON SELECTION IN)
-            PrimaryWeapon = Player.GetComponentInChildren<PlayerStreamShot>();
             //Get the players spawn
             Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
             //Revive the player
@@ -59,12 +60,11 @@ public class PlayerManager : MonoBehaviour {
             }
             //Setup the player's weapons
             Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
-            Player.GetComponent<PlayerAttack>().SetupWeapons();
+            Player.GetComponent<PlayerAttack>().SetupWeapons(PrimaryWeapon, SecondaryWeapon, PrimarySoup, SecondarySoup);
             if (SoupInventory != null && SoupInventory.Count > 0)
             {
                 Debug.Log(Time.time + ": " + gameObject.name + " - Applying weapon upgrades...");
                 if(PrimarySoup == null) PrimarySoup = SoupInventory[0];
-                ApplyUpgrades();
             }
             //Change WhatCanIDo script
             WhatCanIDO PlayerPermissions = Player.GetComponent<WhatCanIDO>();
@@ -84,7 +84,11 @@ public class PlayerManager : MonoBehaviour {
         }
 
         //Setup HealthBar
-        if(!HealthBar) HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarNotched>();
+        if (!HealthBar)
+        {
+            if (GameObject.Find("HealthBar")) HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarNotched>();
+            else Debug.LogWarning("NO HEALTH BAR UI IN SCENE");
+        }
         if (HealthBar)
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -104,6 +108,13 @@ public class PlayerManager : MonoBehaviour {
         if (GameoverScreen) GameoverScreen.SetActive(false);
         //Setup Inventories
         IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
+        if(FullIngredInventory)
+        {
+            for(int i = 0; i < IngredientInventory.Length; ++i)
+            {
+                IngredientInventory[i] = 10;
+            }
+        }
         if (SoupInventory == null) SoupInventory = new List<SoupUpgrade>();
         if (WeaponInventory == null) WeaponInventory = new List<Weapon>();
     }
@@ -124,7 +135,11 @@ public class PlayerManager : MonoBehaviour {
     {
         if(SceneLoaded && Player.GetComponent<EntityHealth>().CurrentHealth <= 0)
         {
-            GameoverScreen.SetActive(true);
+            if (GameoverScreen)
+            {
+                GameoverScreen.SetActive(true);
+            }
+            else Debug.LogWarning("NO GAMEOVER SCREEN UI IN SCENE");
         }
     }
 	
@@ -143,18 +158,13 @@ public class PlayerManager : MonoBehaviour {
         SceneLoaded = true;
     }
 
-    private void ApplyUpgrades()
-    {
-        if(PrimaryWeapon && PrimarySoup)PrimaryWeapon.ApplyUpgrade(PrimarySoup);
-    }
-
     //Getters and Setters
     //Weapons
-    public Weapon GetPrimary() { return PrimaryWeapon; }
-    public void SetPrimary(Weapon _NewWeapon) { PrimaryWeapon = _NewWeapon; }
+    public Weapon.WeaponTypes GetPrimary() { return PrimaryWeapon; }
+    public void SetPrimary(Weapon.WeaponTypes _NewWeapon) { PrimaryWeapon = _NewWeapon; }
 
-    public Weapon GetSecondary() { return SecondaryWeapon; }
-    public void SetSecondary(Weapon _NewWeapon) { SecondaryWeapon = _NewWeapon; }
+    public Weapon.WeaponTypes GetSecondary() { return SecondaryWeapon; }
+    public void SetSecondary(Weapon.WeaponTypes _NewWeapon) { SecondaryWeapon = _NewWeapon; }
     //Soup
     public SoupUpgrade GetPrimarySoup() { return PrimarySoup; }
     public void SetPrimarySoup(SoupUpgrade _NewSoup) { PrimarySoup = _NewSoup; }

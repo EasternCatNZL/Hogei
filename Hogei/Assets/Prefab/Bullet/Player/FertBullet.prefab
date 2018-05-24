@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 23653892588000612}
   - component: {fileID: 54676596897884978}
   - component: {fileID: 114259639965638998}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FertBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8a0d712274e85b140970c696742f2174, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExplosiveCorn: {fileID: 1065517728721512, guid: 1ce7514185f69614cbb7c2cb2e83a695,
     type: 2}
+  CornSpawnOffset: {x: 0, y: -0.5, z: 0}
 --- !u!135 &135343697120594158
 SphereCollider:
   m_ObjectHideFlags: 1

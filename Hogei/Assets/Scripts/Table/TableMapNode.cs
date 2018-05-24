@@ -22,6 +22,7 @@ public class TableMapNode : MonoBehaviour {
         LevelName.transform.DOScaleY(0, 0.5f);
     }
 
+
     public void LoadLevel()
     {
         SceneHandler.GetSceneHandler().LoadScene(LevelIndex);

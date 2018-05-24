@@ -11,9 +11,12 @@ public class CornExplosion : MonoBehaviour {
 
     public float scaleSize = 0.0f;
     public float scaleDuration = 0.0f;
+    public float shakeIntensity = 5f;
 
     public float Damage = 1.0f;
     public float timer = 0.3f;
+
+    public GameObject ExplosionVFX;
 
     private List<GameObject> ObjectsInRange;
 
@@ -69,7 +72,10 @@ public class CornExplosion : MonoBehaviour {
 
     void Scale()
     {
-        transform.DOScale(scaleSize, scaleDuration);
+        Sequence CornScaleUp = DOTween.Sequence();
+        CornScaleUp.Insert(0,transform.DOScale(scaleSize, scaleDuration));
+        CornScaleUp.Insert(0, transform.DOShakeRotation(scaleDuration, shakeIntensity));
+        CornScaleUp.Play();
     }
 
     void OnTriggerEnter(Collider other)
@@ -99,11 +105,14 @@ public class CornExplosion : MonoBehaviour {
     {
         foreach (GameObject obj in ObjectsInRange)
         {
+            if (obj == null) continue;
             if (obj.GetComponent<EntityHealth>())
             {
                 obj.GetComponent<EntityHealth>().DecreaseHealth(Damage);
             }
         }
+        GameObject _VFX = Instantiate(ExplosionVFX, transform.position, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(-90f, 0f, 0f)));
+        _VFX.GetComponent<ParticleSystem>().Play();
         Destroy(gameObject);
     }
 

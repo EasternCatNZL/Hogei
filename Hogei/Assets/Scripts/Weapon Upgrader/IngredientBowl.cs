@@ -22,6 +22,10 @@ public class IngredientBowl : MonoBehaviour {
     {
         PlayMgt = PlayerManager.GetInstance();
         IngredientAmount = PlayMgt.GetIngredientAmount(IngredientType);
+        if(IngredientAmount <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnMouseOver()

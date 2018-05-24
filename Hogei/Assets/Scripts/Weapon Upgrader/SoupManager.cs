@@ -26,6 +26,7 @@ public class SoupManager : MonoBehaviour {
 	void Start () {
         SoupIngredients = new List<SoupIngredient>();
         SoupUpgrades = new Dictionary<Weapon.WeaponEffects, float>();
+        UpdateUI();
     }
 	
 	// Update is called once per frame

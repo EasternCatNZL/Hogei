@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 114842156171141974}
   - component: {fileID: 114127917586123058}
   - component: {fileID: 114954338804477746}
+  - component: {fileID: 114743950048815330}
   m_Layer: 12
   m_Name: PlayerAttacks
   m_TagString: Untagged
@@ -2296,10 +2297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf685d8e5914814bab3ec4e22857c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 1
   bulletObject: {fileID: 1933369299213082, guid: e9338b79400dae64e8d5ee62df11076d,
     type: 2}
   bulletTravelSpeed: 10
+  OriginalBulletTravelSpeed: 0
   BulletDamage: 1
   OriginalBulletDamage: 0
   timeBetweenShots: 0.2
@@ -2434,6 +2436,23 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114743950048815330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060729911059096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a378280c0408f04db3dbb9b8bf789ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+  bulletObject: {fileID: 1954491734147170, guid: 5572daf1bbd38c941847c0269a8d3cbd,
+    type: 2}
+  Angle: 45
+  TimeBetweenShots: 3
+  LastShotTime: 0
 --- !u!114 &114833126359441218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2451,6 +2470,8 @@ MonoBehaviour:
   attackInputAxisController: CAttack
   isShooting: 0
   peaShootStrengthened: 1
+  PrimaryWeapon: {fileID: 0}
+  SecondaryWeapon: {fileID: 0}
 --- !u!114 &114842156171141974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2492,7 +2513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34cfe913d3493a4db06f35f858c9143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 2
   bulletObject: {fileID: 1945265914405474, guid: fe2c47686bf97494d8e4eef6f771383f,
     type: 2}
   BulletDamage: 1
