@@ -14,6 +14,7 @@ public class ExitAnchor : MonoBehaviour {
             Camera.main.GetComponentInParent<Follow>().SetStopFollowing(true);
             GetComponent<Rigidbody>().DOMove(transform.position + new Vector3(0f, 100f, 0f), 10f);
             GetComponent<Rigidbody>().useGravity = false;
+            PlayerManager.GetInstance().AddLevelCompleted(SceneHandler.GetSceneHandler().sceneNumber);
             SceneHandler.GetSceneHandler().LoadMapScene();         
         }
     }

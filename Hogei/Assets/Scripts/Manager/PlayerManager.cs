@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour {
     private SoupUpgrade SecondarySoup;
     //Progression Variables
     private Dictionary<Weapon.WeaponTypes, bool> WeaponUnlocks;
-    private List<int> LevelsCompleted;
+    public List<int> LevelsCompleted;
 
     private bool SceneLoaded = false;
 
@@ -152,7 +152,6 @@ public class PlayerManager : MonoBehaviour {
         {
             if (GameoverScreen)
             {
-                LevelsCompleted.Add(SceneManager.GetActiveScene().buildIndex);
                 GameoverScreen.SetActive(true);
             }
             else Debug.LogWarning("NO GAMEOVER SCREEN UI IN SCENE");
@@ -204,6 +203,7 @@ public class PlayerManager : MonoBehaviour {
     //Weapon Unlock Dictionary
     public Dictionary<Weapon.WeaponTypes, bool> GetWeaponUnlocks() { return WeaponUnlocks; }
     //Level Completed List
+    public void AddLevelCompleted(int _LevelIndex) { LevelsCompleted.Add(_LevelIndex); }
     public List<int> GetLevelsCompleted() { return LevelsCompleted; }
 
     public static PlayerManager GetInstance()

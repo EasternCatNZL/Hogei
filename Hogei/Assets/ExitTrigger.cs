@@ -10,6 +10,10 @@ public class ExitTrigger : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Anchor = GetComponentInChildren<Rigidbody>();
+        if(enemyList.Count <= 0)
+        {
+            DropAnchor();
+        }
     }
 
     private void OnEnable()
