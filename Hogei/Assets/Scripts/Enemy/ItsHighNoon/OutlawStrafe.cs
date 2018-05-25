@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HermitMoveBehavior : EnemyBehavior {
+public class OutlawStrafe : MonoBehaviour {
 
     [Header("Movement vars")]
     [Tooltip("Movement speed of the object")]
     public float moveSpeed = 5.0f;
     [Tooltip("Travel points")]
-    public HermitCheckPointHandler[] travelPoints = new HermitCheckPointHandler[0];
+    public OutlawCheckPointHandler[] travelPoints = new OutlawCheckPointHandler[0];
 
-    //[HideInInspector]
+    //script ref
+    OutlawBehaviour outlaw;
+
+    //control refs
     public bool isMoving = false; //check if object is moving
 
     private int currentIndex = 0; //the current index of the array
@@ -18,22 +21,21 @@ public class HermitMoveBehavior : EnemyBehavior {
     private Vector3 currentDestination = Vector3.zero;
     private Vector3 travelDirection = Vector3.zero;
 
-    private Rigidbody myRigid;
+    Rigidbody myRigid;
 
 	// Use this for initialization
 	void Start () {
+        outlaw = GetComponent<OutlawBehaviour>();
         myRigid = GetComponent<Rigidbody>();
         SetupPointRefs();
         //debug
         currentDestination = travelPoints[0].transform.position;
+    }
 
-        //isMoving = true;
-        //isActive = true;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (isActive)
+    // Update is called once per frame
+    void Update()
+    {
+        if (outlaw.isActive)
         {
             if (isMoving)
             {
@@ -44,14 +46,14 @@ public class HermitMoveBehavior : EnemyBehavior {
                 myRigid.velocity = Vector3.zero;
             }
         }
-        
-	}
+
+    }
 
     //Set up refs for all points
     private void SetupPointRefs()
     {
         // for all points set up ref
-        for(int i = 0; i < travelPoints.Length; i++)
+        for (int i = 0; i < travelPoints.Length; i++)
         {
             travelPoints[i].SetupPoint(this);
         }
@@ -75,7 +77,7 @@ public class HermitMoveBehavior : EnemyBehavior {
     {
         currentIndex++;
         //if the index is equal to length of array, reset
-        if(currentIndex >= travelPoints.Length)
+        if (currentIndex >= travelPoints.Length)
         {
             currentIndex = 0;
         }
