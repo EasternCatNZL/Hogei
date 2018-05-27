@@ -121,7 +121,7 @@ public class PlayerManager : MonoBehaviour {
         if(!GameoverScreen) GameoverScreen = GameObject.Find("Gameover");
         if (GameoverScreen) GameoverScreen.SetActive(false);
         //Setup Inventories
-        IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
+        if(IngredientInventory.Length <= 0) IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
         if(FullIngredInventory)
         {
             for(int i = 0; i < IngredientInventory.Length; ++i)

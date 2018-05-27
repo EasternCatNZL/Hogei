@@ -222,6 +222,7 @@ MonoBehaviour:
   SoupInventory: []
   IngredientInventory: 
   FullIngredInventory: 0
+  LevelsCompleted: 
 --- !u!4 &54540513
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +250,7 @@ GameObject:
   - component: {fileID: 110746891}
   - component: {fileID: 110746890}
   m_Layer: 0
-  m_Name: OpenMapButton
+  m_Name: CloseHotPotButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,6 +554,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 62.982002, y: 0, z: 0}
+--- !u!65 &465491413 stripped
+BoxCollider:
+  m_PrefabParentObject: {fileID: 65092713984788540, guid: 3a64ba34f85a0b549ad1c8a7db862e9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1208013046}
 --- !u!1 &506591297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1517,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114453584071332286, guid: 3a64ba34f85a0b549ad1c8a7db862e9e,
+        type: 2}
+      propertyPath: OpenButton
+      value: 
+      objectReference: {fileID: 465491413}
+    - target: {fileID: 114453584071332286, guid: 3a64ba34f85a0b549ad1c8a7db862e9e,
+        type: 2}
+      propertyPath: CloseButton
+      value: 
+      objectReference: {fileID: 110746892}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a64ba34f85a0b549ad1c8a7db862e9e, type: 2}
   m_IsPrefabParent: 0

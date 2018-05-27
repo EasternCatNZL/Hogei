@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 114872485650870272}
   m_Layer: 10
   m_Name: StarfishEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,6 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67a8ffd02fcb8a41871c56dcaaa05f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxArray: []
+  managerTag: Manager
+  music: {fileID: 0}
   isActive: 0
   maxSpinSpeed: 720
   spinSpeedChangeRate: 60
@@ -387,6 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71799db325309644fbfa5f090bb2a198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnOffset: {x: 0, y: 0, z: 0}
+  RotationOffset: {x: 0, y: 0, z: 0}
   itemDrop:
   - {fileID: 1862144500478462, guid: a5e5f6f19e950714eb2a446a65b9c07c, type: 2}
 --- !u!135 &135062165375794938

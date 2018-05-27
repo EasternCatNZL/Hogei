@@ -32,8 +32,8 @@ public class PlayerHomingBullet : MonoBehaviour {
     private float homingStartDelay = 1.0f;
     private float startTime = 0.0f;
     //private float lastAdjustTime = 0.0f;
-    private GameObject target;
-    private GameObject[] targetArray = new GameObject[0];
+    public GameObject target;
+    public GameObject[] targetArray = new GameObject[0];
 
     // Use this for initialization
     void Start () {
@@ -85,14 +85,17 @@ public class PlayerHomingBullet : MonoBehaviour {
 
         //set a large compare value
         float closestDist = 5000.0f;
+        float compareDist = 0f;
 
         //for all in target array
         for (int i = 0; i < targetArray.Length; i++)
         {
+            compareDist = Vector3.Distance(transform.position, targetArray[i].transform.position);
             //compare the distance, and if closer, make that object the target
-            if (closestDist > Vector3.Distance(transform.position, targetArray[i].transform.position))
+            if (closestDist > compareDist)
             {
                 target = targetArray[i];
+                closestDist = compareDist;
             }
         }
     }
@@ -145,16 +148,18 @@ public class PlayerHomingBullet : MonoBehaviour {
     }
 
     //collision = deactivate
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
+        print("Homing Collidied");
         //any collision
-        if(collision.gameObject.GetComponent<EntityHealth>())
+        if(collision.gameObject.GetComponent<EntityHealth>() || collision.CompareTag("Enviroment"))
         {
             collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);            
         }
         Instantiate(explosionVFX, transform.position, transform.rotation);
         Deactivate();        
     }
+
 
     //Pause events
     void OnPause()

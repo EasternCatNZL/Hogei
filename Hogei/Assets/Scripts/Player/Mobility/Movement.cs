@@ -87,6 +87,7 @@ public class Movement : MonoBehaviour {
         }
     }
 
+
     //move player pos
     private void MovePlayer()
     {

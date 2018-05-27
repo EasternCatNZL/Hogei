@@ -14,6 +14,10 @@ public class TableManager : MonoBehaviour {
 
     public CloudManager CloudMgt;
 
+    [Header("Buttons")]
+    public Collider OpenButton;
+    public Collider CloseButton;
+
     private Animator Anim;
     private bool IsOpen = false;
 
@@ -34,7 +38,7 @@ public class TableManager : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {        
 		if(Input.GetMouseButtonDown(0))
         {
             RaycastHit RayHit = MouseTarget.GetWorldMouseHit(1 << MapNodeLayer);
@@ -101,13 +105,20 @@ public class TableManager : MonoBehaviour {
 
     public void ChangeConfiguration()
     {
-        if(IsOpen)
+        if (!Anim.IsInTransition(0))
         {
-            CloseMap();
-        }
-        else
-        {
-            OpenMap();
+            if (IsOpen)
+            {
+                CloseMap();
+                OpenButton.enabled = true;
+                CloseButton.enabled = false;
+            }
+            else
+            {
+                OpenMap();
+                OpenButton.enabled = false;
+                CloseButton.enabled = true;
+            }
         }
     }
 }

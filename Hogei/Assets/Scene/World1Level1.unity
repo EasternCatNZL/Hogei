@@ -9232,6 +9232,16 @@ Prefab:
       propertyPath: alignment
       value: 
       objectReference: {fileID: 1821906231}
+    - target: {fileID: 54901232168630986, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54901232168630986, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
   m_IsPrefabParent: 0
@@ -18418,32 +18428,32 @@ Prefab:
     - target: {fileID: 59017205357039444, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.x
-      value: -45.377834
+      value: -42.32012
       objectReference: {fileID: 0}
     - target: {fileID: 59017205357039444, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.y
-      value: 13.4
+      value: 13.615135
       objectReference: {fileID: 0}
     - target: {fileID: 59017205357039444, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.z
-      value: 18.328768
+      value: 19.071293
       objectReference: {fileID: 0}
     - target: {fileID: 59639163491264906, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.x
-      value: -42.23108
+      value: -40.37139
       objectReference: {fileID: 0}
     - target: {fileID: 59639163491264906, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.y
-      value: 13.76
+      value: 13.975136
       objectReference: {fileID: 0}
     - target: {fileID: 59639163491264906, guid: 2dac16bdfad7ad348ba5253d788103e7,
         type: 2}
       propertyPath: m_ConnectedAnchor.z
-      value: 12.300665
+      value: 12.5564995
       objectReference: {fileID: 0}
     - target: {fileID: 4480343900283024, guid: 2dac16bdfad7ad348ba5253d788103e7, type: 2}
       propertyPath: m_LocalScale.x
@@ -19646,6 +19656,7 @@ MonoBehaviour:
   SoupInventory: []
   IngredientInventory: 
   FullIngredInventory: 0
+  LevelsCompleted: 
 --- !u!4 &1969510259
 Transform:
   m_ObjectHideFlags: 0

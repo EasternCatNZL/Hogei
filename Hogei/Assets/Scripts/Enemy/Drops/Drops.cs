@@ -57,7 +57,7 @@ public class Drops : MonoBehaviour {
                 Count++;
                 DropPosition = new Vector3(SpawnOffset.x + Mathf.Sin((360 / itemDrop.Length) * Mathf.Deg2Rad * Count), SpawnOffset.y + 0f, SpawnOffset.z + Mathf.Cos((360 / itemDrop.Length) * Mathf.Deg2Rad * Count));
                 DropPosition += transform.position;
-                Instantiate(item, DropPosition, Quaternion.identity);
+                Instantiate(item, DropPosition, Quaternion.Euler(RotationOffset));
             }
         }
     }       
