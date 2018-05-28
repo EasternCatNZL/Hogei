@@ -20,7 +20,8 @@ public abstract class Weapon : MonoBehaviour {
         Damage,
         Bullet,
         Split,
-        Firerate
+        Firerate,
+        BulletSpeed
     }
 
     [System.Serializable]

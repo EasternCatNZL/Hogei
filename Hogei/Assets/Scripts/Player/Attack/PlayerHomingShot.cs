@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHomingShot : Weapon {
+public class PlayerHomingShot : Weapon
+{
 
     [Header("Bullet vars")]
     [Tooltip("Bullet object")]
@@ -32,29 +33,17 @@ public class PlayerHomingShot : Weapon {
     [Header("Audio")]
     public AudioClip bulletFireSound;
 
-    //[Header("Tags")]
-    //[Tooltip("Bullet bank tag")]
-    //public string bankTag = "Bullet Bank";
-
-    ////bullet bank ref
-    //private BulletBank bank;
-
     //control vars
     private float lastShotTime = 0.0f; //time last bullet was fired
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Type = WeaponTypes.Home;
         OriginalTimeBetweenShots = timeBetweenShots;
-        //OriginalAngleVariance = angleVariance;
         OriginalBulletTravelSpeed = bulletTravelSpeed;
         OriginalBulletDamage = BulletDamage;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     //attack use logic
     public override void UseWeapon()
@@ -93,26 +82,34 @@ public class PlayerHomingShot : Weapon {
 
     public override void ApplyUpgrade(SoupUpgrade _Upgrade)
     {
+        int TotalDamage = 0;
+        float TotalFirerate = 0; //Perventages
+        float TotalSpeed = 0; //Percentages
+        //Collect all effects into totals
         foreach (WeaponModifier Mod in _Upgrade.WeaponModifiers)
         {
             switch (Mod.Effect)
             {
-                //case WeaponEffects.Spread:
-                //    angleVariance = OriginalAngleVariance * Mod.Value;
-                    //break;
                 case WeaponEffects.Damage:
-                    BulletDamage = OriginalBulletDamage + (int)Mod.Value;
+                    TotalDamage += (int)Mod.Value;
                     break;
                 case WeaponEffects.Bullet:
                     break;
                 case WeaponEffects.Split:
                     break;
                 case WeaponEffects.Firerate:
-                    timeBetweenShots = OriginalTimeBetweenShots * Mod.Value;
+                    TotalFirerate += Mod.Value;
+                    break;
+                case WeaponEffects.BulletSpeed:
+                    TotalSpeed += Mod.Value;
                     break;
                 default:
                     break;
             }
         }
+        //Apply the effects to the weapon
+        BulletDamage = OriginalBulletDamage + TotalDamage;
+        timeBetweenShots = OriginalTimeBetweenShots - (OriginalTimeBetweenShots * TotalFirerate);
+        bulletTravelSpeed = OriginalBulletTravelSpeed + (OriginalBulletTravelSpeed * TotalSpeed);
     }
 }
