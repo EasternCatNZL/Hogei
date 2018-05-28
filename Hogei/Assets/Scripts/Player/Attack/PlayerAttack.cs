@@ -110,6 +110,9 @@ public class PlayerAttack : MonoBehaviour
             case Weapon.WeaponTypes.Home:
                 PrimaryWeapon = GetComponentInChildren<PlayerHomingShot>();
                 break;
+            case Weapon.WeaponTypes.Bloom:
+                PrimaryWeapon = GetComponentInChildren<PlayerShotgunShot>();
+                break;
             case Weapon.WeaponTypes.Explosive:
                 PrimaryWeapon = GetComponentInChildren<PlayerExplosiveShot>();
                 break;

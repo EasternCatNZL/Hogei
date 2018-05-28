@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18735799, g: 0.3904665, b: 0.53932035, a: 1}
+  m_IndirectSpecularColor: {r: 0.18736215, g: 0.39049113, b: 0.5393302, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -388,6 +388,10 @@ Prefab:
       propertyPath: alignment
       value: 
       objectReference: {fileID: 1085627340}
+    - target: {fileID: 1648883586822386, guid: d13471350260f974c9f03d9b60d32866, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d13471350260f974c9f03d9b60d32866, type: 2}
   m_IsPrefabParent: 0
@@ -1991,6 +1995,7 @@ MonoBehaviour:
   SoupInventory: []
   IngredientInventory: 
   FullIngredInventory: 0
+  LevelsCompleted: 
 --- !u!4 &1088749806
 Transform:
   m_ObjectHideFlags: 0
@@ -2048,21 +2053,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 136671544404397856, guid: 5720eba4bce23b3429b73198fbfc26a5,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54901232168630986, guid: 5720eba4bce23b3429b73198fbfc26a5,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 114215769585281404, guid: 5720eba4bce23b3429b73198fbfc26a5,
         type: 2}
       propertyPath: MovementAlignment
       value: 
       objectReference: {fileID: 1085627340}
+    - target: {fileID: 114947303892152944, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: numBulletsInBloom
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947303892152944, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: bulletTravelSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947303892152944, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: timeBetweenShots
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947303892152944, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: angleVariance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947303892152944, guid: 5720eba4bce23b3429b73198fbfc26a5,
+        type: 2}
+      propertyPath: bulletLifeTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
   m_IsPrefabParent: 0
