@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114127917586123058}
   - component: {fileID: 114954338804477746}
   - component: {fileID: 114743950048815330}
+  - component: {fileID: 114947303892152944}
   m_Layer: 12
   m_Name: PlayerAttacks
   m_TagString: Untagged
@@ -1176,8 +1177,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642553012151216}
-  m_LocalRotation: {x: -0, y: -0.79320306, z: -0, w: 0.6089573}
-  m_LocalPosition: {x: 26.79, y: 15.5, z: -27.14}
+  m_LocalRotation: {x: -0, y: -0.11541124, z: -0, w: 0.99331784}
+  m_LocalPosition: {x: 0.62, y: 13.75, z: -11.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4477446001573894}
@@ -2297,19 +2298,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf685d8e5914814bab3ec4e22857c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
   bulletObject: {fileID: 1933369299213082, guid: e9338b79400dae64e8d5ee62df11076d,
     type: 2}
-  bulletTravelSpeed: 10
-  OriginalBulletTravelSpeed: 0
   BulletDamage: 1
   OriginalBulletDamage: 0
+  bulletTravelSpeed: 10
+  OriginalBulletTravelSpeed: 0
   timeBetweenShots: 0.2
   OriginalTimeBetweenShots: 0
+  angleVariance: 2
+  OriginalAngleVariance: 0
+  bulletLifeTime: 5
+  distanceToStart: 0.1
+  barrelLocation: {fileID: 0}
+  isFiring: 0
+  bulletFireSound: {fileID: 0}
+  FireVolume: 1
+  PitchVarianceRange: {x: 0, y: 0}
+  muzzleFireVFX: {fileID: 0}
+  Type: 1
   maxHomingTime: 4
   homingStartDelay: 0.2
-  distanceToStart: 0.1
-  bulletFireSound: {fileID: 0}
 --- !u!114 &114149759694987308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2447,6 +2456,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a378280c0408f04db3dbb9b8bf789ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1954491734147170, guid: 5572daf1bbd38c941847c0269a8d3cbd,
+    type: 2}
+  BulletDamage: 1
+  OriginalBulletDamage: 0
+  bulletTravelSpeed: 10
+  OriginalBulletTravelSpeed: 0
+  timeBetweenShots: 2
+  OriginalTimeBetweenShots: 0
+  angleVariance: 2
+  OriginalAngleVariance: 0
+  bulletLifeTime: 5
+  distanceToStart: 0.1
+  barrelLocation: {fileID: 0}
+  isFiring: 0
+  bulletFireSound: {fileID: 0}
+  FireVolume: 1
+  PitchVarianceRange: {x: 0, y: 0}
+  muzzleFireVFX: {fileID: 0}
   Type: 1
   bulletObject: {fileID: 1954491734147170, guid: 5572daf1bbd38c941847c0269a8d3cbd,
     type: 2}
@@ -2483,7 +2510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9507ed94ce395d41a763dec02cab295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
   bulletObject: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
     type: 2}
   BulletDamage: 1
@@ -2494,6 +2520,7 @@ MonoBehaviour:
   OriginalTimeBetweenShots: 0
   angleVariance: 2
   OriginalAngleVariance: 0
+  bulletLifeTime: 5
   distanceToStart: 0.1
   barrelLocation: {fileID: 4847050546622370}
   isFiring: 0
@@ -2502,6 +2529,39 @@ MonoBehaviour:
   PitchVarianceRange: {x: 0.9, y: 1.1}
   muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
     type: 2}
+  Type: 0
+--- !u!114 &114947303892152944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060729911059096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7829df102782545bd7f206cbbe2497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1026608803528678, guid: 4fbd5e77defa1f348b7c93b05a9d5aff,
+    type: 2}
+  BulletDamage: 1
+  OriginalBulletDamage: 0
+  bulletTravelSpeed: 10
+  OriginalBulletTravelSpeed: 0
+  timeBetweenShots: 2
+  OriginalTimeBetweenShots: 0
+  angleVariance: 2
+  OriginalAngleVariance: 0
+  bulletLifeTime: 5
+  distanceToStart: 0.1
+  barrelLocation: {fileID: 4847050546622370}
+  isFiring: 0
+  bulletFireSound: {fileID: 0}
+  FireVolume: 1
+  PitchVarianceRange: {x: 0, y: 0}
+  muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
+    type: 2}
+  Type: 0
+  numBulletsInBloom: 0
 --- !u!114 &114954338804477746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2513,7 +2573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34cfe913d3493a4db06f35f858c9143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
   bulletObject: {fileID: 1945265914405474, guid: fe2c47686bf97494d8e4eef6f771383f,
     type: 2}
   BulletDamage: 1
@@ -2524,12 +2583,16 @@ MonoBehaviour:
   OriginalTimeBetweenShots: 0
   angleVariance: 2
   OriginalAngleVariance: 0
+  bulletLifeTime: 5
   distanceToStart: 0.1
   barrelLocation: {fileID: 4847050546622370}
   isFiring: 0
+  bulletFireSound: {fileID: 0}
+  FireVolume: 1
+  PitchVarianceRange: {x: 0, y: 0}
   muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
     type: 2}
-  bulletFireSound: {fileID: 0}
+  Type: 2
 --- !u!136 &136671544404397856
 CapsuleCollider:
   m_ObjectHideFlags: 1

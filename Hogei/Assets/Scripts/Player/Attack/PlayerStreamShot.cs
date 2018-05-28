@@ -5,52 +5,6 @@ using UnityEngine;
 
 public class PlayerStreamShot : Weapon {
 
-    [Header("Bullet vars")]
-    [Tooltip("Bullet object")]
-    public GameObject bulletObject;
-    [Tooltip("Bullet Damange")]
-    public int BulletDamage = 1;
-    public int OriginalBulletDamage;
-    [Tooltip("Bullet travel speed")]
-    public float bulletTravelSpeed = 10.0f;
-    public float OriginalBulletTravelSpeed;
-    [Header("Timing vars")]
-    [Tooltip("The amount of time between shots")]
-    public float timeBetweenShots = 2.0f;
-    [Tooltip("Starting time between shots")]
-    public float OriginalTimeBetweenShots;
-    [Header("Angle variance")]
-    [Tooltip("Angle variance in shot")]
-    public float angleVariance = 2.0f;
-    public float OriginalAngleVariance;
-
-    [Header("Positioning vars")]
-    [Tooltip("How far out to position bullet start from center")]
-    public float distanceToStart = 0.1f;
-    [Tooltip("Where the gun barrel is located")]
-    public Transform barrelLocation;
-    public bool isFiring = false;
-
-    //[Header("Tags")]
-    //[Tooltip("Bullet bank tag")]
-    //public string bankTag = "Bullet Bank";
-
-    ////bullet bank ref
-    //private BulletBank bank;
-
-    [Header("Audio")]
-    public AudioClip bulletFireSound;
-    [Range(0,1)]
-    public float FireVolume = 1f;
-    public Vector2 PitchVarianceRange;
-    
-
-    [Header("VFX")]
-    public GameObject muzzleFireVFX;
-
-    //control vars
-    private float lastShotTime = 0.0f; //time last bullet was fired
-
     // Use this for initialization
     void Start () {
         Type = WeaponTypes.Stream;
