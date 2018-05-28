@@ -4,41 +4,6 @@ using UnityEngine;
 
 public class PlayerExplosiveShot : Weapon {
 
-    [Header("Bullet vars")]
-    [Tooltip("Bullet object")]
-    public GameObject bulletObject;
-    [Tooltip("Bullet Damange")]
-    public int BulletDamage = 1;
-    public int OriginalBulletDamage;
-    [Tooltip("Bullet travel speed")]
-    public float bulletTravelSpeed = 10.0f;
-    public float OriginalBulletTravelSpeed;
-    [Header("Timing vars")]
-    [Tooltip("The amount of time between shots")]
-    public float timeBetweenShots = 2.0f;
-    [Tooltip("Starting time between shots")]
-    public float OriginalTimeBetweenShots;
-    [Header("Angle variance")]
-    [Tooltip("Angle variance in shot")]
-    public float angleVariance = 2.0f;
-    public float OriginalAngleVariance;
-
-    [Header("Positioning vars")]
-    [Tooltip("How far out to position bullet start from center")]
-    public float distanceToStart = 0.1f;
-    [Tooltip("Where the gun barrel is located")]
-    public Transform barrelLocation;
-    public bool isFiring = false;
-
-    [Header("VFX")]
-    public GameObject muzzleFireVFX;
-
-    [Header("Audio")]
-    public AudioClip bulletFireSound;
-
-    //control vars
-    private float lastShotTime = 0.0f; //time last bullet was fired
-
     // Use this for initialization
     void Start () {
         Type = WeaponTypes.Explosive;
