@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
-public class SceneHandler : MonoBehaviour {
+public class SceneHandler : MonoBehaviour
+{
 
     [Header("Player Settings")]
     public Transform PlayerSpawnPoint;
@@ -17,6 +19,11 @@ public class SceneHandler : MonoBehaviour {
     [Header("UI Settigns")]
     public GameObject CountDownUI;
     public GameObject NotificationUI;
+
+    [Header("Intro Settings")]
+    [TextArea]
+    public string IntroText = "";
+    public float TimeShown = 0.8f;
 
     [Header("Tags")]
     public string enemyTag = "Enemy";
@@ -31,15 +38,32 @@ public class SceneHandler : MonoBehaviour {
 
     void Awake()
     {
-        Initialise();  
+        Initialise();
     }
 
     void Initialise()
     {
-        if(CountDownUI) CountDownUI.SetActive(false);
+        if (CountDownUI) CountDownUI.SetActive(false);
         if (NotificationUI) NotificationUI.SetActive(false);
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
         RefEnemies();
+        LevelIntro();
+    }
+
+    void LevelIntro()
+    {
+        if (NotificationUI && IntroText != "")
+        {
+            //Show Intro Text
+            NotificationUI.SetActive(true);
+            NotificationUI.GetComponent<Text>().text = IntroText;
+            NotificationUI.transform.localScale = Vector3.zero;
+
+            Sequence EnterExit = DOTween.Sequence();
+            EnterExit.Append(NotificationUI.transform.DOScale(1f, 1f).SetEase(Ease.OutBack));
+            EnterExit.Append(NotificationUI.transform.DOScale(0f, 1f).SetDelay(TimeShown));
+            EnterExit.Play();
+        }
     }
 
     private void OnEnable()
@@ -53,9 +77,10 @@ public class SceneHandler : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
 
     public Transform GetPlayerSpawnPoint() { return PlayerSpawnPoint; }
 

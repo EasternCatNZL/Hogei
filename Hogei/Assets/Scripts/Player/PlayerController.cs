@@ -38,27 +38,31 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        Debug.DrawRay(UpperBody.position, UpperBodyAim * 3, Color.red);
-        Debug.DrawRay(LowerBody.position, LowerBodyAim * 3, Color.blue);
-        Debug.DrawRay(LowerBody.position, MovementDirection * 3, Color.green);
         MovementUpdate();
-        UpperBodyUpdate();
-        LowerBodyUpdate();
+        if(UpperBody)UpperBodyUpdate();
+        if(LowerBody)LowerBodyUpdate();
+        //Debugging
+        if (UpperBody) Debug.DrawRay(UpperBody.position, UpperBody.up * 3, Color.red);
+        if (LowerBody)
+        {
+            Debug.DrawRay(LowerBody.position, LowerBodyAim * 3, Color.blue);
+            Debug.DrawRay(LowerBody.position, MovementDirection * 3, Color.green);
+        }
     }
 
     void UpperBodyUpdate()
     {
         //Aim the upper body
         Vector3 AimDirection = MouseTarget.GetWorldMousePos() - UpperBody.position;
-        if (Vector3.Dot(UpperBody.right, AimDirection) < 0.0f)
+        if (Vector3.Dot(-UpperBody.forward, AimDirection) < 0.0f)
         {
-            UpperBody.Rotate(0.0f, -Vector3.Angle(UpperBody.forward, AimDirection), 0.0f);
+            UpperBody.Rotate(Vector3.Angle(UpperBody.up, AimDirection), 0.0f, 0.0f);
         }
-        if (Vector3.Dot(UpperBody.right, AimDirection) > 0.0f)
+        if (Vector3.Dot(-UpperBody.forward, AimDirection) > 0.0f)
         {
-            UpperBody.Rotate(0.0f, Vector3.Angle(UpperBody.forward, AimDirection), 0.0f);
+            UpperBody.Rotate(-Vector3.Angle(UpperBody.up, AimDirection), 0.0f, 0.0f);
         }
         UpperBodyAim = UpperBody.forward;
     }
@@ -130,26 +134,26 @@ public class PlayerController : MonoBehaviour
     {
         Movement = Vector3.zero;
         MovementDirection = Vector3.zero;
-        if (Input.GetAxisRaw("Horizontal") > 0f)
+        if (Luminosity.IO.InputManager.GetAxisRaw("Horizontal") > 0f)
         {
             Movement += MovementAlignment.right * Speed * SpeedModifier;
             MovementDirection += MovementAlignment.right;
         }
-        else if (Input.GetAxisRaw("Horizontal") < 0f)
+        else if (Luminosity.IO.InputManager.GetAxisRaw("Horizontal") < 0f)
         {
             Movement -= MovementAlignment.right * Speed * SpeedModifier;
             MovementDirection -= MovementAlignment.right;
         }
-        if (Input.GetAxisRaw("Vertical") > 0f)
+        if (Luminosity.IO.InputManager.GetAxisRaw("Vertical") > 0f)
         {
             Movement += MovementAlignment.forward * Speed * SpeedModifier;
             MovementDirection += MovementAlignment.forward;
         }
-        else if (Input.GetAxisRaw("Vertical") < 0f)
+        else if (Luminosity.IO.InputManager.GetAxisRaw("Vertical") < 0f)
         {
             Movement -= MovementAlignment.forward * Speed * SpeedModifier;
             MovementDirection -= MovementAlignment.forward;
         }
-        Rigid.MovePosition(transform.position + Movement);
+        Rigid.MovePosition(transform.position + Movement * Time.deltaTime);
     }
 }
