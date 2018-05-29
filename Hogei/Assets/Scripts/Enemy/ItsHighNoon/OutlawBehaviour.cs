@@ -34,6 +34,9 @@ public class OutlawBehaviour : EnemyBehavior {
     public string targetTag = "Player";
     public string bulletTag = "Bullet";
 
+    [Header("Animation tags")]
+    public string attackTrigger = "DoAttack";
+
     //set up vars
     [HideInInspector]
     public float setupDistance = 0.0f;
@@ -56,10 +59,13 @@ public class OutlawBehaviour : EnemyBehavior {
     [HideInInspector]
     public GameObject target; //the target this object is attacking
 
+    //animator
+    private Animator anim; //anim attached to this object
+
     // Use this for initialization
     void Start () {
-		
-	}
+        anim = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -83,20 +89,6 @@ public class OutlawBehaviour : EnemyBehavior {
         }
 
 	}
-
-    private void OnEnable()
-    {
-        PauseHandler.PauseEvent += OnPause;
-        PauseHandler.UnpauseEvent += OnUnpause;
-        //print("Subscribed to event");
-    }
-
-    private void OnDisable()
-    {
-        PauseHandler.PauseEvent -= OnPause;
-        PauseHandler.UnpauseEvent -= OnUnpause;
-        //print("Unsubscribed to event");
-    }
 
     //setup vars
     public void SetupVars(float setupDist, float time)
@@ -123,7 +115,7 @@ public class OutlawBehaviour : EnemyBehavior {
         if (target)
         {
             //face the target
-            transform.LookAt(target.transform.position);
+            //transform.LookAt(target.transform.position);
             //try to attack
             Attack();
         }
@@ -147,12 +139,17 @@ public class OutlawBehaviour : EnemyBehavior {
             
             //create a shot
             GameObject bulletClone = Instantiate(bulletObject, transform.position + transform.up, transform.rotation);
+            //point the bullet at player
+            bulletClone.transform.LookAt(target.transform.position);
             //setup the bullet vars
             bulletClone.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
             //increment the current bullet count
             currentShotInRound++;
+
+            //fire animator
+            anim.SetTrigger(attackTrigger);
             //set time till next shot
-            if(currentShotInRound >= numShotsInRound)
+            if (currentShotInRound >= numShotsInRound)
             {
                 timeTillNextShot = timeBetweenRounds;
                 currentShotInRound = 0;
@@ -184,7 +181,7 @@ public class OutlawBehaviour : EnemyBehavior {
     }
 
     //pause funcs
-    protected void OnPause()
+    protected override void OnPause()
     {
         isPaused = true;
         pauseStartTime = Time.time;
@@ -198,7 +195,7 @@ public class OutlawBehaviour : EnemyBehavior {
         }
     }
 
-    protected void OnUnpause()
+    protected override void OnUnpause()
     {
         isPaused = false;
         pauseEndTime = Time.time;

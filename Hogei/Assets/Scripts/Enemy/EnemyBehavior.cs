@@ -17,6 +17,20 @@ public class EnemyBehavior : GameEntity {
 		
 	}
 
+    protected void OnEnable()
+    {
+        PauseHandler.PauseEvent += OnPause;
+        PauseHandler.UnpauseEvent += OnUnpause;
+        //print("Subscribed to event");
+    }
+
+    protected void OnDisable()
+    {
+        PauseHandler.PauseEvent -= OnPause;
+        PauseHandler.UnpauseEvent -= OnUnpause;
+        //print("Unsubscribed to event");
+    }
+
     public virtual void Activate() { isActive = true; }
     public virtual void Deactivate() { isActive = false; }
 
@@ -26,5 +40,13 @@ public class EnemyBehavior : GameEntity {
 
     }
 
+    protected virtual void OnPause()
+    {
 
+    }
+
+    protected virtual void OnUnpause()
+    {
+
+    }
 }
