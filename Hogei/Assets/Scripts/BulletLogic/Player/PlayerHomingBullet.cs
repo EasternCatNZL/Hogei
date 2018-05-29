@@ -130,7 +130,8 @@ public class PlayerHomingBullet : MonoBehaviour {
     {
         //steer towards target
         //get vector towards target
-        Vector3 desireVelocity = target.transform.position - transform.position;
+        //Vector3 desireVelocity = target.transform.position - transform.position;
+        Vector3 desireVelocity = new Vector3(target.transform.position.x, 0.0f, target.transform.position.z) - new Vector3(transform.position.x, 0.0f, transform.position.z);
         float distance = desireVelocity.magnitude;
         desireVelocity = Vector3.Normalize(desireVelocity) * travelSpeed;
         //get steering force

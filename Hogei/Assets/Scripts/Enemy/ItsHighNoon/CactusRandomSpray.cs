@@ -56,20 +56,6 @@ public class CactusRandomSpray : EnemyBehavior {
         }
 	}
 
-    private void OnEnable()
-    {
-        PauseHandler.PauseEvent += OnPause;
-        PauseHandler.UnpauseEvent += OnUnpause;
-        //print("Subscribed to event");
-    }
-
-    private void OnDisable()
-    {
-        PauseHandler.PauseEvent -= OnPause;
-        PauseHandler.UnpauseEvent -= OnUnpause;
-        //print("Unsubscribed to event");
-    }
-
     //Attack logic
     private void Attack()
     {
@@ -129,13 +115,13 @@ public class CactusRandomSpray : EnemyBehavior {
     }
 
     //pause funcs
-    void OnPause()
+    protected override void OnPause()
     {
         isPaused = true;
         pauseStartTime = Time.time;
     }
     
-    void OnUnpause()
+    protected override void OnUnpause()
     {
         isPaused = false;
         pauseEndTime = Time.time;

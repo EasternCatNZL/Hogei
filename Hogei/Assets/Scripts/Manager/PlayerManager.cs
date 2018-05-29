@@ -74,7 +74,7 @@ public class PlayerManager : MonoBehaviour {
             Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
             if (PrimaryWeapon == Weapon.WeaponTypes.None && SecondaryWeapon == Weapon.WeaponTypes.None)
             {
-                Player.GetComponent<PlayerAttack>().SetupWeapons(Weapon.WeaponTypes.Bloom, Weapon.WeaponTypes.Fert, PrimarySoup, SecondarySoup);
+                Player.GetComponent<PlayerAttack>().SetupWeapons(Weapon.WeaponTypes.Home, Weapon.WeaponTypes.Bloom, PrimarySoup, SecondarySoup);
             }
             else
             {

@@ -18,20 +18,20 @@ public class OutlawCheckPointHandler : MonoBehaviour {
 		
 	}
 
-    //setup logic for setting up points
-    public void SetupPoint(OutlawStrafe strafe)
-    {
-        outlaw = strafe;
-    }
+    ////setup logic for setting up points
+    //public void SetupPoint(OutlawStrafe strafe)
+    //{
+    //    outlaw = strafe;
+    //}
 
-    //when hermit enters trigger, change destination
-    private void OnTriggerEnter(Collider other)
-    {
-        //check if other is my hermit
-        if (other.gameObject == outlaw.gameObject)
-        {
-            print("Collided with " + name);
-            outlaw.ChangeDestination();
-        }
-    }
+    ////when hermit enters trigger, change destination
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //check if other is my hermit
+    //    if (other.gameObject == outlaw.gameObject)
+    //    {
+    //        print("Collided with " + name);
+    //        outlaw.ChangeDestination();
+    //    }
+    //}
 }

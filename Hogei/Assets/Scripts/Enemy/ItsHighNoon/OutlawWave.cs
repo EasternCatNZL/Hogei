@@ -14,15 +14,21 @@ public class OutlawWave : OutlawBehaviour {
     [Tooltip("Wave angle offset")]
     public float angleOffset = 2.5f;
 
+    [Header("Animation tags")]
+    public string attackTrigger = "DoAttack";
+
     //control vars
     private bool isAttacking = false; //check if currently attacking
 
     private float timeLastRound = 0.0f; //time of last attack sequence
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    //animator
+    private Animator anim; //anim attached to this object
+
+    // Use this for initialization
+    void Start () {
+        anim = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -110,6 +116,9 @@ public class OutlawWave : OutlawBehaviour {
 
             }
         }
+
+        //fire animator
+        anim.SetTrigger(attackTrigger);
 
         //increment current shot
         currentShotInRound++;

@@ -6,11 +6,11 @@ using DG.Tweening;
 public class CactusTrigger : EnemyTrigger {
 
     //script refs
-    CactusRandomSpray cactus;
+    
 
     // Use this for initialization
     void Start () {
-        cactus = GetComponentInChildren<CactusRandomSpray>();
+        Enemy = GetComponentInChildren<EnemyBehavior>();
 	}
 	
 	// Update is called once per frame
@@ -25,11 +25,11 @@ public class CactusTrigger : EnemyTrigger {
         if ((doTriggerPlayer && other.gameObject.CompareTag(targetTag)) || (doTriggerBullet && other.gameObject.CompareTag(bulletTag)) && !isTriggered)
         {
             //check object hasnt been destroyed before being triggered
-            if (cactus)
+            if (Enemy)
             {
                 isTriggered = true;
-                cactus.isActive = true;
-                cactus.transform.DOJump(cactus.transform.position, 1f, 1, 0.5f);
+                Enemy.isActive = true;
+                Enemy.transform.DOJump(Enemy.transform.position, 1f, 1, 0.5f);
             }
             //Setup();
             //change has setup to true
