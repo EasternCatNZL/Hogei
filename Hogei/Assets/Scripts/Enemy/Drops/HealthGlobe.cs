@@ -33,6 +33,7 @@ public class HealthGlobe : MonoBehaviour {
     {
         Player.GetComponent<EntityHealth>().IncreaseHealth(HealthIncrease);
         Instantiate(pickupVFX, Player.transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void CheckPickupRange()

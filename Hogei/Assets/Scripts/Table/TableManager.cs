@@ -18,6 +18,9 @@ public class TableManager : MonoBehaviour {
     public Collider OpenButton;
     public Collider CloseButton;
 
+    [Header("Weapon Selection Settings")]
+    public WeaponInventory WeapInvent;
+
     private Animator Anim;
     private bool IsOpen = false;
 
@@ -107,18 +110,22 @@ public class TableManager : MonoBehaviour {
     {
         if (!Anim.IsInTransition(0))
         {
-            if (IsOpen)
+            if (IsOpen)//Show MAp
             {
                 CloseMap();
+                WeapInvent.SetActive(false);
                 OpenButton.enabled = true;
                 CloseButton.enabled = false;
             }
-            else
+            else//Show Hot Pot
             {
                 OpenMap();
+                WeapInvent.SetActive(true);
                 OpenButton.enabled = false;
                 CloseButton.enabled = true;
             }
         }
     }
+
+    public bool GetIsOpen() { return IsOpen; }
 }

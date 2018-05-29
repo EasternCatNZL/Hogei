@@ -13,6 +13,8 @@ public class WeaponInventory : MonoBehaviour {
     public Transform OpenPosition;
     public Transform ClosePosition;
     public float TransitionDuration = 1f;
+    private bool Opened = false;
+    private bool Active = true;
 
     private void Start()
     {
@@ -21,13 +23,18 @@ public class WeaponInventory : MonoBehaviour {
 
     public void OpenInventory(WeaponSelector _Selector)
     {
-        TargetSelector = _Selector;
-        WeaponInventoryUI.transform.DOMove(OpenPosition.position, TransitionDuration);
+        if (Active && !Opened)
+        {
+            TargetSelector = _Selector;
+            WeaponInventoryUI.transform.DOMove(OpenPosition.position, TransitionDuration);
+            Opened = true;
+        }
     }
 
     public void CloseInventory()
     {
         WeaponInventoryUI.transform.DOMove(ClosePosition.position, TransitionDuration);
+        Opened = false;
     }
 
     public Text GetDetailsText() { return DetailsText; }
@@ -44,6 +51,7 @@ public class WeaponInventory : MonoBehaviour {
             Unlocks.Add(_Type, false);
             return Unlocks[_Type];
         }
-
     }
+
+    public void SetActive(bool _NewState) { Active = _NewState; }
 }

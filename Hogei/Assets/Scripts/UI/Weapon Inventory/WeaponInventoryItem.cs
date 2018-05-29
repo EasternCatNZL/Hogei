@@ -22,7 +22,7 @@ public class WeaponInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData _Event)
     {
-        DetailsText.text = weaponType.ToString();
+        DetailsText.text = GetDescriptionText();
     }
 
     public void OnPointerExit(PointerEventData _Event)
@@ -35,6 +35,34 @@ public class WeaponInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointer
         weaponInventory.GetSelector().SetWeapon(weaponType);
         weaponInventory.CloseInventory();
     }
-	
-	
+
+    private string GetDescriptionText()
+    {
+        string _text = "";
+        //Add the description for the correct weapon
+        switch (weaponType)
+        {
+            case Weapon.WeaponTypes.Stream:
+                _text += "Shoots out a constant stream of bullets.";
+                break;
+            case Weapon.WeaponTypes.Explosive:
+                _text += "Fire an explosive bullet, dealing damage in an area.";
+                break;
+            case Weapon.WeaponTypes.Fert:
+                _text += "Launches a corn seed that explodes into a giant corn. Showering enemies in popcorn.";
+                break;
+            case Weapon.WeaponTypes.Home:
+                _text += "Bullet fired from this weapon home in on enemies.";
+                break;
+            case Weapon.WeaponTypes.Bloom://The Shotgun
+                _text += "A group of bullets a shot at once. Effect against groups.";
+                break;
+            default:
+                Debug.Log(gameObject + ": Weapon type doesn't exist(Weapon Inventory Item Getting Text)");
+                break;
+        }
+        return _text;
+    }
+
+
 }

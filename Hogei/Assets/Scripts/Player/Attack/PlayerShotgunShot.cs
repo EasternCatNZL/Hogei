@@ -69,26 +69,39 @@ public class PlayerShotgunShot : Weapon {
 
     public override void ApplyUpgrade(SoupUpgrade _Upgrade)
     {
+        int TotalDamage = 0;
+        float TotalAngle = 0;
+        float TotalFirerate = 0; //Perventages
+        float TotalSpeed = 0; //Percentages
+        //Collect all effects into totals
         foreach (WeaponModifier Mod in _Upgrade.WeaponModifiers)
         {
             switch (Mod.Effect)
             {
-                case WeaponEffects.Spread:
-                    angleVariance = OriginalAngleVariance * Mod.Value;
-                    break;
                 case WeaponEffects.Damage:
-                    BulletDamage = OriginalBulletDamage + (int)Mod.Value;
+                    TotalDamage += (int)Mod.Value;
+                    break;
+                case WeaponEffects.Spread:
+                    TotalAngle += Mod.Value;
                     break;
                 case WeaponEffects.Bullet:
                     break;
                 case WeaponEffects.Split:
                     break;
                 case WeaponEffects.Firerate:
-                    timeBetweenShots = OriginalTimeBetweenShots * Mod.Value;
+                    TotalFirerate += Mod.Value;
+                    break;
+                case WeaponEffects.BulletSpeed:
+                    TotalSpeed += Mod.Value;
                     break;
                 default:
                     break;
             }
         }
+        //Apply the effects to the weapon
+        BulletDamage = OriginalBulletDamage + TotalDamage;
+        angleVariance = OriginalAngleVariance + (OriginalAngleVariance * TotalAngle);
+        timeBetweenShots = OriginalTimeBetweenShots - (OriginalTimeBetweenShots * TotalFirerate);
+        bulletTravelSpeed = OriginalBulletTravelSpeed + (OriginalBulletTravelSpeed * TotalSpeed);
     }
 }

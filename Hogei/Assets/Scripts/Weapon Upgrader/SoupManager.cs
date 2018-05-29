@@ -48,6 +48,7 @@ public class SoupManager : MonoBehaviour {
             }
             PlayerManager.GetInstance().AddSoupInventory(NewSoupUpgrade.GetComponent<SoupUpgrade>());
             PlayerManager.GetInstance().SetPrimarySoup(NewSoupUpgrade.GetComponent<SoupUpgrade>());
+            PlayerManager.GetInstance().SetSecondarySoup(NewSoupUpgrade.GetComponent<SoupUpgrade>());
             ClearSoup();
         }
         else

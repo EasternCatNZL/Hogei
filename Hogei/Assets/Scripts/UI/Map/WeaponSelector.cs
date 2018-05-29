@@ -33,17 +33,48 @@ public class WeaponSelector : MonoBehaviour
     {
         if (PrimarySelector)
         {
-            DescriptionText.text = "Primary Weapon:\n" + WeaponSelected.ToString();
+            DescriptionText.text = GetDescriptionText();
         }
-        else if(SecondarySelector)
+        else if (SecondarySelector)
         {
-            DescriptionText.text = "Secondary Weapon:\n" + WeaponSelected.ToString();
+            DescriptionText.text = GetDescriptionText();
         }
     }
 
     private void OnMouseDown()
     {
         weaponInventory.OpenInventory(this);
+    }
+
+    private string GetDescriptionText()
+    {
+        string _text = "";
+        //Check if the weapon is primary or secondary
+        if (PrimarySelector) _text = "Primary Weapon:\n";
+        else _text = "Secondary Weapon:\n";
+        //Add the description for the correct weapon
+        switch (WeaponSelected)
+        {
+            case Weapon.WeaponTypes.Stream:
+                _text += "Stream Shot";
+                break;
+            case Weapon.WeaponTypes.Explosive:
+                _text += "Explosive Shot";
+                break;
+            case Weapon.WeaponTypes.Fert:
+                _text += "Corn Shot";
+                break;
+            case Weapon.WeaponTypes.Home:
+                _text += "Homing Shot";
+                break;
+            case Weapon.WeaponTypes.Bloom://The Shotgun
+                _text += "Shotgun Shot";
+                break;
+            default:
+                Debug.Log(gameObject + ": Weapon type doesn't exist(Weapon Selector Getting Text)");
+                break;
+        }
+        return _text;
     }
 
     public void SetWeapon(Weapon.WeaponTypes _NewWeapon)
@@ -57,7 +88,7 @@ public class WeaponSelector : MonoBehaviour
         {
             PlayerManager.GetInstance().SetPrimary(WeaponSelected);
         }
-        else if(SecondarySelector)
+        else if (SecondarySelector)
         {
             PlayerManager.GetInstance().SetSecondary(WeaponSelected);
         }

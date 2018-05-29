@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 17982695}
   m_LocalRotation: {x: -0, y: -0.79320306, z: -0, w: 0.6089573}
-  m_LocalPosition: {x: 19.43, y: 2.39, z: -15.75}
+  m_LocalPosition: {x: 19.43, y: -14.18, z: -15.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   SoupInventory: []
   IngredientInventory: 
-  FullIngredInventory: 0
+  FullIngredInventory: 1
   LevelsCompleted: 
 --- !u!4 &54540513
 Transform:
@@ -754,11 +754,6 @@ Prefab:
       propertyPath: MovementAlignment
       value: 
       objectReference: {fileID: 1363889184}
-    - target: {fileID: 114842156171141974, guid: 5720eba4bce23b3429b73198fbfc26a5,
-        type: 2}
-      propertyPath: bulletFireSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 6c622c63a5aab734eb37eac51e080819, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5720eba4bce23b3429b73198fbfc26a5, type: 2}
   m_IsPrefabParent: 0
@@ -857,6 +852,7 @@ GameObject:
   - component: {fileID: 517234678}
   - component: {fileID: 517234677}
   - component: {fileID: 517234675}
+  - component: {fileID: 517234676}
   m_Layer: 0
   m_Name: DebugSphere
   m_TagString: Untagged
@@ -898,6 +894,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &517234676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 517234674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213dc6fee95da7e46b797bbdd89bf053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &517234677
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1325,8 +1332,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.5158405, y: -74.4}
-  m_SizeDelta: {x: 521.9, y: 48.8}
+  m_AnchoredPosition: {x: 5.5, y: -106.4}
+  m_SizeDelta: {x: 521.9, y: 112.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179632851
 MonoBehaviour:
@@ -1340,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58823526, g: 0.58823526, b: 0.58823526, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1527,6 +1534,11 @@ Prefab:
       propertyPath: CloseButton
       value: 
       objectReference: {fileID: 110746892}
+    - target: {fileID: 114453584071332286, guid: 3a64ba34f85a0b549ad1c8a7db862e9e,
+        type: 2}
+      propertyPath: WeapInvent
+      value: 
+      objectReference: {fileID: 1995818515}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a64ba34f85a0b549ad1c8a7db862e9e, type: 2}
   m_IsPrefabParent: 0
@@ -1708,7 +1720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 1
   weaponInventory: {fileID: 1995818515}
-  weaponType: 5
+  weaponType: 6
 --- !u!114 &1278983879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,7 +2093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 1
   weaponInventory: {fileID: 1995818515}
-  weaponType: 2
+  weaponType: 5
 --- !u!114 &1942663701
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -118,7 +118,7 @@ public class PlayerAttack : MonoBehaviour
                 break;
             default:
                 PrimaryWeapon = null;
-                Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR PRIMARY");
+                Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR PRIMARY: " + _PriType.ToString());
                 break;
         }
         switch (_SecType)
@@ -135,14 +135,17 @@ public class PlayerAttack : MonoBehaviour
             case Weapon.WeaponTypes.Explosive:
                 SecondaryWeapon = GetComponentInChildren<PlayerExplosiveShot>();
                 break;
+            case Weapon.WeaponTypes.Bloom:
+                SecondaryWeapon = GetComponentInChildren<PlayerShotgunShot>();
+                break;
             default:
                 SecondaryWeapon = null;
-                Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR SECONDARY");
+                Debug.LogWarning(gameObject.name + ": GIVEN WEAPON TYPES WERE NOT VALID FOR SECONDARY: " + _SecType.ToString());
                 break;
         }
         //Apply Upgrades
-        if (_PriUpg) PrimaryWeapon.ApplyUpgrade(_PriUpg);
-        if (_SecUpg) SecondaryWeapon.ApplyUpgrade(_SecUpg);
+        if (PrimaryWeapon && _PriUpg) PrimaryWeapon.ApplyUpgrade(_PriUpg);
+        if (SecondaryWeapon && _SecUpg) SecondaryWeapon.ApplyUpgrade(_SecUpg);
         //Increment Weapon Count
         if (PrimaryWeapon != null) numWeapons++;
         if (SecondaryWeapon != null) numWeapons++;
