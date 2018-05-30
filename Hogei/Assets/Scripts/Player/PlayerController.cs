@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [Header("Animation")]
     public Transform UpperBody;
     public Transform LowerBody;
+    [Tooltip("How high the angle between the lower and upper body can be.")]
+    public float LowerBodyAngleAllowance = 45f;
     Vector3 UpperBodyAim;
     Vector3 LowerBodyAim;
     public Transform DebuggerAnimSphere;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     Vector3 Movement;
 
     private Rigidbody Rigid;
+    private Animator myAnim;
 
     [Header("Speed")]
     public float Speed;
@@ -35,14 +38,15 @@ public class PlayerController : MonoBehaviour
         UpperBodyAim = transform.forward;
         LowerBodyAim = UpperBodyAim;
         Rigid = GetComponent<Rigidbody>();
+        myAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         MovementUpdate();
-        if(UpperBody)UpperBodyUpdate();
         if(LowerBody)LowerBodyUpdate();
+        if (UpperBody) UpperBodyUpdate();
         //Debugging
         if (UpperBody) Debug.DrawRay(UpperBody.position, UpperBody.up * 3, Color.red);
         if (LowerBody)
@@ -64,14 +68,14 @@ public class PlayerController : MonoBehaviour
         {
             UpperBody.Rotate(-Vector3.Angle(UpperBody.up, AimDirection), 0.0f, 0.0f);
         }
-        UpperBodyAim = UpperBody.forward;
+        UpperBodyAim = UpperBody.up;
     }
 
     void LowerBodyUpdate()
     {
         //Aim the lower body
         float AngleDiff = Vector3.Angle(UpperBodyAim, LowerBodyAim);
-        if (Mathf.Abs(AngleDiff) > 60f)
+        if (Mathf.Abs(AngleDiff) > LowerBodyAngleAllowance)
         {
             if (Vector3.Dot(LowerBody.right, UpperBodyAim) < 0.0f)
             {
@@ -90,13 +94,19 @@ public class PlayerController : MonoBehaviour
         float AngleDot = Vector3.Dot(LowerBody.right, MovementDirection);
         if (AngleDot == 0f)//Idle Animation
         {
+            myAnim.SetBool("IsMoving", false);
             if (DebuggerAnimSphere)
             {
                 DebuggerAnimSphere.position = LowerBody.position;
             }
         }
-        else if (AngleDiff < 45f)//Run Forward Animation
+        else
         {
+            myAnim.SetBool("IsMoving", true);
+        }
+        if (AngleDiff < 45f)//Run Forward Animation
+        {
+            myAnim.SetTrigger("Forward");
             if (DebuggerAnimSphere)
             {
                 DebuggerAnimSphere.position = LowerBody.position + LowerBody.forward * 2f;
@@ -106,6 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             if (AngleDot > 0.5f)//Run Right Animation
             {
+                myAnim.SetTrigger("Right");
                 if (DebuggerAnimSphere)
                 {
                     DebuggerAnimSphere.position = LowerBody.position + LowerBody.right * 2f;
@@ -113,6 +124,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (AngleDot < -0.5f)//Run Left Animation
             {
+                myAnim.SetTrigger("Left");
                 if (DebuggerAnimSphere)
                 {
                     DebuggerAnimSphere.position = LowerBody.position + -LowerBody.right * 2f;
@@ -122,6 +134,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (AngleDiff > 135f)//Run Backwards Animation
         {
+            myAnim.SetTrigger("Backward");
             if (DebuggerAnimSphere)
             {
                 DebuggerAnimSphere.position = LowerBody.position + -LowerBody.forward * 2f;

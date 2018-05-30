@@ -876,10 +876,6 @@ Transform:
   m_Father: {fileID: 1411273326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 64.131004, y: 0, z: 0}
---- !u!4 &406934223 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400122, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
-  m_PrefabInternal: {fileID: 953439801}
 --- !u!1001 &409046545
 Prefab:
   m_ObjectHideFlags: 0
@@ -1583,10 +1579,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4523428976446176, guid: ef3412e12edffa64180ea111184037b6,
     type: 2}
   m_PrefabInternal: {fileID: 569809379}
---- !u!4 &584893292 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400036, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
-  m_PrefabInternal: {fileID: 953439801}
 --- !u!1 &598741811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,11 +2476,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1769b34ed917c4f897389f5d0deeda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpperBody: {fileID: 584893292}
-  LowerBody: {fileID: 406934223}
+  UpperBody: {fileID: 1357686334}
+  LowerBody: {fileID: 924069066}
+  LowerBodyAngleAllowance: 45
   DebuggerAnimSphere: {fileID: 0}
   MovementAlignment: {fileID: 945228131}
-  Speed: 1
+  Speed: 5
   SpeedModifier: 1
 --- !u!4 &924069066 stripped
 Transform:
@@ -3121,6 +3114,30 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 740cf01778ca545438d1103d740a6cc3, type: 2}
+    - target: {fileID: 13700004, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec241632cd983049812c108ea3b28d5, type: 2}
+    - target: {fileID: 13700004, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec241632cd983049812c108ea3b28d5, type: 2}
+    - target: {fileID: 13700000, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18123f7459fb0d145861dfa7745e39a4, type: 2}
+    - target: {fileID: 13700004, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec241632cd983049812c108ea3b28d5, type: 2}
+    - target: {fileID: 13700004, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec241632cd983049812c108ea3b28d5, type: 2}
+    - target: {fileID: 13700004, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ec241632cd983049812c108ea3b28d5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
   m_IsPrefabParent: 0
@@ -4596,6 +4613,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c8285144825f5549966df7eea145314, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1357686334 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400034, guid: 0a937ffd05297d3439f50aa83ec8af1c, type: 3}
+  m_PrefabInternal: {fileID: 953439801}
 --- !u!1 &1390208696
 GameObject:
   m_ObjectHideFlags: 0
@@ -5726,7 +5747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1821951863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5782,6 +5803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpperBody: {fileID: 728631924}
   LowerBody: {fileID: 1741918691}
+  LowerBodyAngleAllowance: 45
   DebuggerAnimSphere: {fileID: 957167168}
   MovementAlignment: {fileID: 168055984}
   Speed: 1
