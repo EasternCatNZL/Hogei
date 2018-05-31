@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour {
     public List<int> LevelsCompleted;
 
     private bool SceneLoaded = false;
+    private bool SetupDone = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -47,19 +48,26 @@ public class PlayerManager : MonoBehaviour {
 
     void Init()
     {
+        if (SceneLoaded) return;
+        Debug.Log(Time.time + ": " + gameObject.name + " - Scene Setup...");
+        Debug.Log(Time.time + ": " + gameObject.name + " - Setting up progression...");
         //Setup Player Progression
         if (WeaponUnlocks == null) WeaponUnlocks = new Dictionary<Weapon.WeaponTypes, bool>();
         if (LevelsCompleted == null) LevelsCompleted = new List<int>();
+        Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player...");
         //Setup Player Character
         if (!Player) Player = GameObject.FindGameObjectWithTag("Player");
         if (Player)
         {
             DontDestroyOnLoad(Player);
             //Get the players spawn
+            Debug.Log(Time.time + ": " + gameObject.name + " - Getting player spawn...");
             Player.transform.position = SceneHandler.GetSceneHandler().GetPlayerSpawnPoint().position;
             //Revive the player
+            Debug.Log(Time.time + ": " + gameObject.name + " - Reviving player...");
             Player.GetComponent<EntityHealth>().Revive();
             //Set the camera to follow the player
+            Debug.Log(Time.time + ": " + gameObject.name + " - Setting camera to follow player...");
             if (Camera.main.GetComponentInParent<Follow>())
             {
                 Camera.main.GetComponentInParent<Follow>().SetStopFollowing(false);
@@ -67,20 +75,25 @@ public class PlayerManager : MonoBehaviour {
             //Setup Soup Upgrades
             if (SoupInventory != null && SoupInventory.Count > 0)
             {
-                Debug.Log(Time.time + ": " + gameObject.name + " - Applying weapon upgrades...");
+                Debug.Log(Time.time + ": " + gameObject.name + " - Selecting primary soup...");
                 if (PrimarySoup == null) PrimarySoup = SoupInventory[0];
             }
+            //Setup the player's movement
+            Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player movement...");
+            Player.GetComponent<PlayerController>().MovementAlignment = SceneHandler.GetSceneHandler().transform;
             //Setup the player's weapons
-            Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
             if (PrimaryWeapon == Weapon.WeaponTypes.None && SecondaryWeapon == Weapon.WeaponTypes.None)
             {
+                Debug.Log(Time.time + ": " + gameObject.name + " - No weapons selected; setting default weapons (Stream + Shotgun)...");
                 Player.GetComponent<PlayerAttack>().SetupWeapons(Weapon.WeaponTypes.Stream, Weapon.WeaponTypes.Bloom, PrimarySoup, SecondarySoup);
             }
             else
             {
+                Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player weapons...");
                 Player.GetComponent<PlayerAttack>().SetupWeapons(PrimaryWeapon, SecondaryWeapon, PrimarySoup, SecondarySoup);
             }
             //Change WhatCanIDo script
+            Debug.Log(Time.time + ": " + gameObject.name + " - Configuring WhatCanIDo script...");
             WhatCanIDO PlayerPermissions = Player.GetComponent<WhatCanIDO>();
             if (SceneManager.GetActiveScene().buildIndex == 1) //If its the map scene
             {
@@ -96,7 +109,7 @@ public class PlayerManager : MonoBehaviour {
                 PlayerPermissions.canAbility = true;
             }
         }
-
+        Debug.Log(Time.time + ": " + gameObject.name + " - Setting up Healthbar...");
         //Setup HealthBar
         if (!HealthBar)
         {
@@ -117,11 +130,13 @@ public class PlayerManager : MonoBehaviour {
                 HealthBar.UpdateNotches();
             }
         }
+        Debug.Log(Time.time + ": " + gameObject.name + " - Setting up gameover screen...");
         //Setup GameoverScreen
-        if(!GameoverScreen) GameoverScreen = GameObject.Find("Gameover");
+        if (!GameoverScreen) GameoverScreen = GameObject.Find("Gameover");
         if (GameoverScreen) GameoverScreen.SetActive(false);
+        Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player inventories...");
         //Setup Inventories
-        if(IngredientInventory.Length <= 0) IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
+        if (IngredientInventory.Length <= 0) IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
         if(FullIngredInventory)
         {
             for(int i = 0; i < IngredientInventory.Length; ++i)
@@ -132,6 +147,7 @@ public class PlayerManager : MonoBehaviour {
         if (SoupInventory == null) SoupInventory = new List<SoupUpgrade>();
         if (WeaponInventory == null) WeaponInventory = new List<Weapon>();
         //Setup For Map Scene
+        Debug.Log(Time.time + ": " + gameObject.name + " - ...Setup Done");
     }
 
     void OnEnable()

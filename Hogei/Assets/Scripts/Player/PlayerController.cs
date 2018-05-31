@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour
     public float LowerBodyAngleAllowance = 45f;
     Vector3 UpperBodyAim;
     Vector3 LowerBodyAim;
-    public Transform DebuggerAnimSphere;
 
     [Header("Movement")]
     public Transform MovementAlignment;
     Vector3 MovementDirection;
     Vector3 Movement;
+
+    [Header("Aim")]
+    public Transform AimIndicator;
 
     private Rigidbody Rigid;
     private Animator myAnim;
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
     [Header("Speed")]
     public float Speed;
     public float SpeedModifier;
+
+    private bool DebuggingMode = false;
 
     // Use this for initialization
     void Start()
@@ -41,36 +45,66 @@ public class PlayerController : MonoBehaviour
         myAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update function called once a frame.
+    /// Used so that calculated rotations can override the animations.
+    /// </summary>
     void LateUpdate()
     {
         MovementUpdate();
         if(LowerBody)LowerBodyUpdate();
         if (UpperBody) UpperBodyUpdate();
+        if (AimIndicator) AimIndicatorUpdate();
         //Debugging
-        if (UpperBody) Debug.DrawRay(UpperBody.position, UpperBody.up * 3, Color.red);
-        if (LowerBody)
+        if (DebuggingMode)
         {
-            Debug.DrawRay(LowerBody.position, LowerBodyAim * 3, Color.blue);
-            Debug.DrawRay(LowerBody.position, MovementDirection * 3, Color.green);
+            if (UpperBody) Debug.DrawRay(UpperBody.position, UpperBody.up * 3, Color.red);
+            if (LowerBody)
+            {
+                Debug.DrawRay(LowerBody.position, LowerBodyAim * 3, Color.blue);
+                Debug.DrawRay(LowerBody.position, MovementDirection * 3, Color.green);
+            }
         }
     }
 
+    /// <summary>
+    /// Handles the rotation of the upper body
+    /// </summary>
     void UpperBodyUpdate()
     {
         //Aim the upper body
-        Vector3 AimDirection = MouseTarget.GetWorldMousePos() - UpperBody.position;
-        if (Vector3.Dot(-UpperBody.forward, AimDirection) < 0.0f)
+        Vector3 _AimDirection = MouseTarget.GetWorldMousePos() - UpperBody.position;
+        if (Vector3.Dot(-UpperBody.forward, _AimDirection) < 0.0f)
         {
-            UpperBody.Rotate(Vector3.Angle(UpperBody.up, AimDirection), 0.0f, 0.0f);
+            UpperBody.Rotate(Vector3.Angle(UpperBody.up, _AimDirection), 0.0f, 0.0f);
         }
-        if (Vector3.Dot(-UpperBody.forward, AimDirection) > 0.0f)
+        if (Vector3.Dot(-UpperBody.forward, _AimDirection) > 0.0f)
         {
-            UpperBody.Rotate(-Vector3.Angle(UpperBody.up, AimDirection), 0.0f, 0.0f);
+            UpperBody.Rotate(-Vector3.Angle(UpperBody.up, _AimDirection), 0.0f, 0.0f);
         }
+
         UpperBodyAim = UpperBody.up;
     }
 
+    /// <summary>
+    /// Handles the rotation of the aiming indicator
+    /// </summary>
+    void AimIndicatorUpdate()
+    {
+        Vector3 _AimDirection = MouseTarget.GetWorldMousePos() - UpperBody.position;
+        if (Vector3.Dot(AimIndicator.right, _AimDirection) < 0.0f)
+        {
+            AimIndicator.Rotate(0, 0, Vector3.Angle(AimIndicator.up, _AimDirection));
+        }
+        if (Vector3.Dot(AimIndicator.right, _AimDirection) > 0.0f)
+        {
+            AimIndicator.Rotate(0, 0, -Vector3.Angle(AimIndicator.up, _AimDirection));
+        }
+    }
+
+    /// <summary>
+    /// Handles the rotation and animations of the lower body
+    /// </summary>
     void LowerBodyUpdate()
     {
         //Aim the lower body
@@ -79,10 +113,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Vector3.Dot(LowerBody.right, UpperBodyAim) < 0.0f)
             {
+                myAnim.SetTrigger("TurnLeft");
                 LowerBody.Rotate(0.0f, -Vector3.Angle(LowerBody.forward, UpperBodyAim), 0.0f);
             }
-            if (Vector3.Dot(LowerBody.right, UpperBodyAim) > 0.0f)
+            else if (Vector3.Dot(LowerBody.right, UpperBodyAim) > 0.0f)
             {
+                myAnim.SetTrigger("TurnRight");
                 LowerBody.Rotate(0.0f, Vector3.Angle(LowerBody.forward, UpperBodyAim), 0.0f);
             }
         }
@@ -94,11 +130,11 @@ public class PlayerController : MonoBehaviour
         float AngleDot = Vector3.Dot(LowerBody.right, MovementDirection);
         if (AngleDot == 0f)//Idle Animation
         {
+            myAnim.SetBool("Right", false);
+            myAnim.SetBool("Left", false);
+            myAnim.SetBool("Backward", false);
+            myAnim.SetBool("Forward", false);
             myAnim.SetBool("IsMoving", false);
-            if (DebuggerAnimSphere)
-            {
-                DebuggerAnimSphere.position = LowerBody.position;
-            }
         }
         else
         {
@@ -106,43 +142,42 @@ public class PlayerController : MonoBehaviour
         }
         if (AngleDiff < 45f)//Run Forward Animation
         {
-            myAnim.SetTrigger("Forward");
-            if (DebuggerAnimSphere)
-            {
-                DebuggerAnimSphere.position = LowerBody.position + LowerBody.forward * 2f;
-            }
+            myAnim.SetBool("Right", false);
+            myAnim.SetBool("Left", false);
+            myAnim.SetBool("Backward", false);
+            myAnim.SetBool("Forward", true);
         }
         else if (AngleDiff > 45f && AngleDiff < 135f)
         {
             if (AngleDot > 0.5f)//Run Right Animation
             {
-                myAnim.SetTrigger("Right");
-                if (DebuggerAnimSphere)
-                {
-                    DebuggerAnimSphere.position = LowerBody.position + LowerBody.right * 2f;
-                }
+                myAnim.SetBool("Backward", false);
+                myAnim.SetBool("Forward", false);
+                myAnim.SetBool("Left", false);
+                myAnim.SetBool("Right", true);
             }
             else if (AngleDot < -0.5f)//Run Left Animation
             {
-                myAnim.SetTrigger("Left");
-                if (DebuggerAnimSphere)
-                {
-                    DebuggerAnimSphere.position = LowerBody.position + -LowerBody.right * 2f;
-                }
+                myAnim.SetBool("Backward", false);
+                myAnim.SetBool("Forward", false);
+                myAnim.SetBool("Right", false);
+                myAnim.SetBool("Left", true);               
             }
 
         }
         else if (AngleDiff > 135f)//Run Backwards Animation
         {
-            myAnim.SetTrigger("Backward");
-            if (DebuggerAnimSphere)
-            {
-                DebuggerAnimSphere.position = LowerBody.position + -LowerBody.forward * 2f;
-            }
+            myAnim.SetBool("Right", false);
+            myAnim.SetBool("Left", false);
+            myAnim.SetBool("Forward", false);
+            myAnim.SetBool("Backward", true);
         }
 
     }
 
+    /// <summary>
+    /// Handles the movement of the player character in the world
+    /// </summary>
     void MovementUpdate()
     {
         Movement = Vector3.zero;

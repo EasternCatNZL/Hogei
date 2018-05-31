@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OutlawStrafe : MonoBehaviour {
 
+    public bool EnableStrafe = false;
     [Header("Movement vars")]
     [Tooltip("Movement speed of the object")]
     public float moveSpeed = 5.0f;
@@ -37,6 +38,8 @@ public class OutlawStrafe : MonoBehaviour {
     private float lastCheckTime = 0.0f; //last time that check occured
 
     private Vector3 startPos = Vector3.zero;
+    //Debugging value for custom inspector button
+    public bool CanStrafe = false;
 
     //private Vector3 currentDestination = Vector3.zero;
     //private Vector3 travelDirection = Vector3.zero;
@@ -57,9 +60,12 @@ public class OutlawStrafe : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (outlaw.isActive)
+        if (EnableStrafe)
         {
-            Move();
+            if (outlaw.isActive || CanStrafe)
+            {
+                Move();
+            }
         }
     }
 
