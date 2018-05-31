@@ -43,7 +43,7 @@ public class HealthBarNotched : MonoBehaviour {
 
     private void CreateNotches()
     {
-        if (TargetHealth)
+        if (TargetHealth && (int)TargetHealth.MaxHealth > NumNotches)
         {
             NumNotches = (int)TargetHealth.MaxHealth;
             LastHealth = NumNotches;
