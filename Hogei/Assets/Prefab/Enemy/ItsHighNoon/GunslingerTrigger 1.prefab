@@ -1143,13 +1143,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b3361e76400624a908ea308ee89d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnableStrafe: 0
   moveSpeed: 5
-  moveDistance: 20
+  moveDistance: 3
   direction: 1
   checkDelay: 1
   leftStep: IsLeftStep
   rightStep: IsRightStep
   isMoving: 0
+  CanStrafe: 0
 --- !u!136 &136044688517673892
 CapsuleCollider:
   m_ObjectHideFlags: 1
