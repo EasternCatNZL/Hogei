@@ -104,6 +104,11 @@ public class ChickenBehavior : EnemyBehavior
         }
     }
 
+    private void OnDestroy()
+    {
+        if(SpawnerParent) SpawnerParent.DecrementEnemyCount();
+    }
+
     //On death logic
     public override void AmDead()
     {

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95892128008525684}
   - component: {fileID: 114955019632356496}
   - component: {fileID: 82667632031819548}
+  - component: {fileID: 64791575950098096}
   m_Layer: 19
   m_Name: Gate
   m_TagString: Enviroment
@@ -92,15 +93,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013714990954224}
-  m_LocalRotation: {x: -0, y: 0.76764053, z: -0, w: 0.6408807}
-  m_LocalPosition: {x: 23.503, y: 18.983, z: 10.638}
+  m_LocalRotation: {x: -0, y: 0.9917729, z: -0, w: -0.1280101}
+  m_LocalPosition: {x: -102.76, y: 18.53, z: -36.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4485604314677050}
   - {fileID: 4419870275052144}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 100.285, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 194.709, z: 0}
 --- !u!4 &4485604314677050
 Transform:
   m_ObjectHideFlags: 1
@@ -277,7 +278,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1.33, z: 0.2}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 23.570633, y: 17.313, z: 14.203211}
+  m_ConnectedAnchor: {x: -99.21063, y: 16.86, z: -36.842457}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -311,7 +312,7 @@ HingeJoint:
   m_Anchor: {x: 0.36, y: 1.69, z: 0.21}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 22.366375, y: 17.673, z: 7.510687}
+  m_ConnectedAnchor: {x: -105.79031, y: 17.220001, z: -35.125515}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -335,6 +336,20 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!64 &64791575950098096
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013714990954224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: ab218708b772a1c409fc078575c9deb9, type: 3}
 --- !u!65 &65534411822292658
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -501,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1b1c77849c9e4b82706629cd9484d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOpen: 0
+  IsOpen: 1
   LeftGate: {fileID: 1502394116284942}
   RightGate: {fileID: 1702639662880172}
   openClip: {fileID: 0}

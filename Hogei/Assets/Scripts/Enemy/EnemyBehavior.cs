@@ -6,6 +6,8 @@ public class EnemyBehavior : GameEntity {
 
     //[HideInInspector]
     public bool isActive = false; //check if active
+    [HideInInspector]
+    public InfinateSpawner SpawnerParent;
 
     // Use this for initialization
     void Start () {

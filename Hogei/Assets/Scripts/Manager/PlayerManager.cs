@@ -36,7 +36,6 @@ public class PlayerManager : MonoBehaviour {
         if(!Singleton)
         {
             Singleton = this;
-            Init();
         }
         else if(Singleton != this)
         {
@@ -136,7 +135,7 @@ public class PlayerManager : MonoBehaviour {
         if (GameoverScreen) GameoverScreen.SetActive(false);
         Debug.Log(Time.time + ": " + gameObject.name + " - Setting up player inventories...");
         //Setup Inventories
-        if (IngredientInventory.Length <= 0) IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
+        if (IngredientInventory == null || IngredientInventory.Length <= 0) IngredientInventory = new int[SoupIngredient.GetIngredientTypeCount()];
         if(FullIngredInventory)
         {
             for(int i = 0; i < IngredientInventory.Length; ++i)
