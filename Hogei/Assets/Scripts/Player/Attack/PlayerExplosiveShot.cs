@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class PlayerExplosiveShot : Weapon {
 
+    private static bool Initialised = false;
+    private static WeaponStats OriginalStats;
+
     // Use this for initialization
     void Start () {
         Type = WeaponTypes.Explosive;
-        OriginalTimeBetweenShots = timeBetweenShots;
-        OriginalAngleVariance = angleVariance;
-        OriginalBulletTravelSpeed = bulletTravelSpeed;
-        OriginalBulletDamage = BulletDamage;
+        if (!Initialised)
+        {
+            Debug.Log(gameObject.transform.parent.name + "->" + gameObject.name + "->" + this.GetType() + ": Initialising this weapon.");
+            OriginalStats.BulletDamage = BulletDamage;
+            OriginalStats.angleVariance = angleVariance;
+            OriginalStats.BulletSpeed = bulletTravelSpeed;
+            OriginalStats.TimeBetweenShots = timeBetweenShots;
+            Initialised = true;
+        }
     }
 	
 	// Update is called once per frame
@@ -96,9 +104,9 @@ public class PlayerExplosiveShot : Weapon {
             }
         }
         //Apply the effects to the weapon
-        BulletDamage = OriginalBulletDamage + TotalDamage;
-        angleVariance = OriginalAngleVariance + (OriginalAngleVariance * TotalAngle);
-        timeBetweenShots = OriginalTimeBetweenShots - (OriginalTimeBetweenShots * TotalFirerate);
-        bulletTravelSpeed = OriginalBulletTravelSpeed + (OriginalBulletTravelSpeed * TotalSpeed);
+        BulletDamage = OriginalStats.BulletDamage + TotalDamage;
+        angleVariance = OriginalStats.angleVariance + (OriginalStats.angleVariance * TotalAngle);
+        timeBetweenShots = OriginalStats.TimeBetweenShots - (OriginalStats.TimeBetweenShots * TotalFirerate);
+        bulletTravelSpeed = OriginalStats.BulletSpeed + (OriginalStats.BulletSpeed * TotalSpeed);
     }
 }

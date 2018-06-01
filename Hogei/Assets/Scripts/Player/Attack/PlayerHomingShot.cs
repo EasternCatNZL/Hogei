@@ -10,13 +10,22 @@ public class PlayerHomingShot : Weapon
     [Tooltip("Delay time before bullet begins homing propeties")]
     public float homingStartDelay = 1.0f;
 
+    private static bool Initialised = false;
+    private static WeaponStats OriginalStats;
+
     // Use this for initialization
     void Start()
     {
         Type = WeaponTypes.Home;
-        OriginalTimeBetweenShots = timeBetweenShots;
-        OriginalBulletTravelSpeed = bulletTravelSpeed;
-        OriginalBulletDamage = BulletDamage;
+        if (!Initialised)
+        {
+            Debug.Log(gameObject.transform.parent.name + "->" + gameObject.name + "->" + this.GetType() + ": Initialising this weapon.");
+            OriginalStats.BulletDamage = BulletDamage;
+            OriginalStats.angleVariance = angleVariance;
+            OriginalStats.BulletSpeed = bulletTravelSpeed;
+            OriginalStats.TimeBetweenShots = timeBetweenShots;
+            Initialised = true;
+        }
     }
 
     //attack use logic
@@ -82,8 +91,8 @@ public class PlayerHomingShot : Weapon
             }
         }
         //Apply the effects to the weapon
-        BulletDamage = OriginalBulletDamage + TotalDamage;
-        timeBetweenShots = OriginalTimeBetweenShots - (OriginalTimeBetweenShots * TotalFirerate);
-        bulletTravelSpeed = OriginalBulletTravelSpeed + (OriginalBulletTravelSpeed * TotalSpeed);
+        BulletDamage = OriginalStats.BulletDamage + TotalDamage;
+        timeBetweenShots = OriginalStats.TimeBetweenShots - (OriginalStats.TimeBetweenShots * TotalFirerate);
+        bulletTravelSpeed = OriginalStats.BulletSpeed + (OriginalStats.BulletSpeed * TotalSpeed);
     }
 }

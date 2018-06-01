@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ExitTrigger : MonoBehaviour {
 
+    public bool WaitForTrigger = false;
     public List<GameObject> enemyList = new List<GameObject>();
     private Rigidbody Anchor;
 
     // Use this for initialization
     void Start () {
         Anchor = GetComponentInChildren<Rigidbody>();
-        if(enemyList.Count <= 0)
+        if(!WaitForTrigger && enemyList.Count <= 0)
         {
             DropAnchor();
         }
@@ -28,24 +29,25 @@ public class ExitTrigger : MonoBehaviour {
 
     public void CheckExitClear()
     {
-        bool EnemiesCleared = true;
-        for (int i = 0; i < enemyList.Count; ++i)
+        if (!WaitForTrigger)
         {
-            if (enemyList[i] != null && enemyList[i].activeSelf == true)
+            bool EnemiesCleared = true;
+            for (int i = 0; i < enemyList.Count; ++i)
             {
-                Debug.Log("Enemies are not cleared");
-                EnemiesCleared = false;
-                break;
+                if (enemyList[i] != null && enemyList[i].activeSelf == true)
+                {
+                    EnemiesCleared = false;
+                    break;
+                }
             }
-        }
-        if (EnemiesCleared)
-        {
-            Debug.Log("Enemies cleared");
-            DropAnchor();
+            if (EnemiesCleared)
+            {
+                DropAnchor();
+            }
         }
     }
 
-    private void DropAnchor()
+    public void DropAnchor()
     {
         Anchor.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }

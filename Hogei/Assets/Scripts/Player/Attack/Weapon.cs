@@ -72,6 +72,14 @@ public abstract class Weapon : MonoBehaviour {
         public float Value;
     }
 
+    public struct WeaponStats
+    {
+        public int BulletDamage;
+        public float TimeBetweenShots;
+        public float angleVariance;
+        public float BulletSpeed;
+    }
+
     public WeaponTypes Type;
 
     private SoupUpgrade Upgrade;

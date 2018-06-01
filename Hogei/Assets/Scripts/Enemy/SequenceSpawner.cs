@@ -32,6 +32,7 @@ public class SequenceSpawner : MonoBehaviour
     [Header("Gate ref")]
     [Tooltip("Ref to gate for this spawner")]
     public GateManager gate;
+    public ExitTrigger anchor;
 
     [Header("Tags")]
     public string playerTag = "Player";
@@ -114,7 +115,7 @@ public class SequenceSpawner : MonoBehaviour
             {
                 gate.enemyList.Add(enemyClone);
             }
-            
+
         }
         //set timing
         lastSpawnTime = Time.time;
@@ -123,6 +124,10 @@ public class SequenceSpawner : MonoBehaviour
         //check if group index has exceeded group array size
         if (DestroySelf && currentGroupIndex >= spawnGroupsArray.Length)
         {
+            if (anchor)
+            {
+                anchor.DropAnchor();
+            }
             //destroy self
             Destroy(gameObject);
         }

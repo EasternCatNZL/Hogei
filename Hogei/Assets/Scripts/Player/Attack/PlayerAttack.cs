@@ -147,8 +147,14 @@ public class PlayerAttack : MonoBehaviour
         if (PrimaryWeapon && _PriUpg) PrimaryWeapon.ApplyUpgrade(_PriUpg);
         if (SecondaryWeapon && _SecUpg) SecondaryWeapon.ApplyUpgrade(_SecUpg);
         //Increment Weapon Count
-        if (PrimaryWeapon != null) numWeapons++;
-        if (SecondaryWeapon != null) numWeapons++;
+        if (PrimaryWeapon != null)
+        {
+            numWeapons++;
+        }
+        if (SecondaryWeapon != null)
+        {
+            numWeapons++;
+        }
         //Swap the primary for the secondary if there is only a secondary weapon
         if (SecondaryWeapon != null && PrimaryWeapon == null)
         {
