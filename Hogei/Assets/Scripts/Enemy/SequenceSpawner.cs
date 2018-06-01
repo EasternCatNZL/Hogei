@@ -37,7 +37,7 @@ public class SequenceSpawner : MonoBehaviour
     public string playerTag = "Player";
 
     //control vars
-    private bool isTriggered = false; //checks to see if triggered
+    public bool isTriggered = false; //checks to see if triggered
 
     private int currentGroupIndex = 0; //the current index of array
 
@@ -110,7 +110,11 @@ public class SequenceSpawner : MonoBehaviour
             }
 
             //add to gate
-            gate.enemyList.Add(enemyClone);
+            if (gate)
+            {
+                gate.enemyList.Add(enemyClone);
+            }
+            
         }
         //set timing
         lastSpawnTime = Time.time;

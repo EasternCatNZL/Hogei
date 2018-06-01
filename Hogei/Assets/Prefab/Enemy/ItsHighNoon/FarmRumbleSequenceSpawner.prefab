@@ -1,0 +1,350 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1819308880928446}
+  m_IsPrefabParent: 1
+--- !u!1 &1819308880928446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4801404540649374}
+  - component: {fileID: 135620784901021566}
+  - component: {fileID: 114907124060461524}
+  m_Layer: 0
+  m_Name: FarmRumbleSequenceSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4801404540649374
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819308880928446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 13.26, z: -3.82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114907124060461524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819308880928446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2e70ef20a8b0744bd183f305c25b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroySelf: 1
+  spawnGroupsArray:
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: 0, y: 0, z: 5}
+      spawnTransform: {fileID: 0}
+      startRot: 180
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: 1, y: 0, z: 6}
+      spawnTransform: {fileID: 0}
+      startRot: 180
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: -1, y: 0, z: 6}
+      spawnTransform: {fileID: 0}
+      startRot: 180
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: 2, y: 0, z: 8}
+      spawnTransform: {fileID: 0}
+      startRot: 180
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: -2, y: 0, z: 8}
+      spawnTransform: {fileID: 0}
+      startRot: 180
+    spawnTiming: 1
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 8, y: 0.5, z: 0}
+      spawnTransform: {fileID: 0}
+      startRot: 270
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 8, y: 0.5, z: 3}
+      spawnTransform: {fileID: 0}
+      startRot: 270
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 8, y: 0.5, z: -3}
+      spawnTransform: {fileID: 0}
+      startRot: 270
+    spawnTiming: 4
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -8, y: 0.5, z: 1.5}
+      spawnTransform: {fileID: 0}
+      startRot: 90
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -8, y: 0.5, z: 4.5}
+      spawnTransform: {fileID: 0}
+      startRot: 90
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -8, y: 0.5, z: -2.5}
+      spawnTransform: {fileID: 0}
+      startRot: 90
+    spawnTiming: 2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1833907904037428, guid: fa70af3f4d4fab848819124a855d916f,
+        type: 2}
+      spawnLocationLocal: {x: -5, y: 0.5, z: -7}
+      spawnTransform: {fileID: 0}
+      startRot: 40
+    - enemyObject: {fileID: 1833907904037428, guid: fa70af3f4d4fab848819124a855d916f,
+        type: 2}
+      spawnLocationLocal: {x: 5, y: 0.5, z: -7}
+      spawnTransform: {fileID: 0}
+      startRot: 320
+    spawnTiming: 1
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: 0, y: 0, z: -7}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: 1, y: 0, z: -9}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: -1, y: 0, z: -9}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: 2, y: 0, z: -10}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1,
+        type: 2}
+      spawnLocationLocal: {x: 0, y: -2, z: -10}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    spawnTiming: 5
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1243737086686220, guid: d991abc3d723eff4bba3492611464d3d,
+        type: 2}
+      spawnLocationLocal: {x: 7, y: 0, z: -5}
+      spawnTransform: {fileID: 0}
+      startRot: 320
+    - enemyObject: {fileID: 1243737086686220, guid: d991abc3d723eff4bba3492611464d3d,
+        type: 2}
+      spawnLocationLocal: {x: 5, y: 0, z: -6}
+      spawnTransform: {fileID: 0}
+      startRot: 320
+    - enemyObject: {fileID: 1243737086686220, guid: d991abc3d723eff4bba3492611464d3d,
+        type: 2}
+      spawnLocationLocal: {x: 8, y: 0, z: -3}
+      spawnTransform: {fileID: 0}
+      startRot: 320
+    spawnTiming: 2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -7, y: 0, z: -5}
+      spawnTransform: {fileID: 0}
+      startRot: 40
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -5, y: 0, z: -7}
+      spawnTransform: {fileID: 0}
+      startRot: 40
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -9, y: 0, z: -3}
+      spawnTransform: {fileID: 0}
+      startRot: 40
+    spawnTiming: 1
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1833907904037428, guid: fa70af3f4d4fab848819124a855d916f,
+        type: 2}
+      spawnLocationLocal: {x: -9, y: 0, z: 6}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1833907904037428, guid: fa70af3f4d4fab848819124a855d916f,
+        type: 2}
+      spawnLocationLocal: {x: 7, y: 0, z: 5}
+      spawnTransform: {fileID: 0}
+      startRot: 230
+    spawnTiming: 2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 0}
+      spawnLocationLocal: {x: 0, y: 0, z: 7}
+      spawnTransform: {fileID: 4009532678284430, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      startRot: 180
+    spawnTiming: 6
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      spawnLocationLocal: {x: -7, y: 0, z: 0}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    spawnTiming: 3
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      spawnLocationLocal: {x: -9, y: 0, z: 0}
+      spawnTransform: {fileID: 0}
+      startRot: 90
+    spawnTiming: 3
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      spawnLocationLocal: {x: 9, y: 0, z: 0}
+      spawnTransform: {fileID: 0}
+      startRot: 270
+    spawnTiming: 3
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 0, y: 180, z: 8}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    spawnTiming: 20
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 4, y: 0, z: 7}
+      spawnTransform: {fileID: 0}
+      startRot: 210
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 7, y: 0, z: 4}
+      spawnTransform: {fileID: 0}
+      startRot: 240
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 7, y: 0, z: 0}
+      spawnTransform: {fileID: 0}
+      startRot: 270
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 6, y: 0, z: -4}
+      spawnTransform: {fileID: 0}
+      startRot: 300
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 4, y: 0, z: -6}
+      spawnTransform: {fileID: 0}
+      startRot: 330
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: 0, y: 0, z: -7}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -4, y: 0, z: -6}
+      spawnTransform: {fileID: 0}
+      startRot: 30
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -6, y: 0, z: -3}
+      spawnTransform: {fileID: 0}
+      startRot: 60
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -7, y: 0, z: 0}
+      spawnTransform: {fileID: 0}
+      startRot: 90
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -8, y: 0, z: 5}
+      spawnTransform: {fileID: 0}
+      startRot: 120
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+        type: 2}
+      spawnLocationLocal: {x: -4, y: 0, z: 7}
+      spawnTransform: {fileID: 0}
+      startRot: 150
+    spawnTiming: 0.2
+  - spawnDetailsArray:
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      spawnLocationLocal: {x: -9, y: 0, z: 6}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      spawnLocationLocal: {x: 6.5, y: 0, z: 5}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      spawnLocationLocal: {x: 7, y: 0, z: -8}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+        type: 2}
+      spawnLocationLocal: {x: -9, y: 0, z: -5.5}
+      spawnTransform: {fileID: 0}
+      startRot: 0
+    spawnTiming: 6
+  gate: {fileID: 0}
+  playerTag: Player
+--- !u!135 &135620784901021566
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819308880928446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}

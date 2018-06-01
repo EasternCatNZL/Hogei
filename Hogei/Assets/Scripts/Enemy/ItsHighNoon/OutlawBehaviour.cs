@@ -75,6 +75,11 @@ public class OutlawBehaviour : EnemyBehavior {
             if (isActive)
             {
                 AttackBehaviour();
+                //if target null, try and search for target
+                if (!target)
+                {
+                    target = GameObject.FindGameObjectWithTag("Player");
+                }
                 Vector3 Dist = target.transform.position - transform.position;
                 if (Dist.magnitude > MaxRange)
                 {                   
