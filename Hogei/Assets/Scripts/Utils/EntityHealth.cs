@@ -23,8 +23,10 @@ public class EntityHealth : MonoBehaviour {
 
     private bool ChainLighting = false;
     private bool Stunned = false;
-    
-    bool InvincibilityFrame = false;
+
+    public float InvincibilityFrameDuration = 0.1f;
+    public bool InvincibilityFrame = false;
+    private float LastInvincibilityFrame = 0f;
     bool FlashBack = false;
     float LastTime = 0f;
 
@@ -81,8 +83,15 @@ public class EntityHealth : MonoBehaviour {
 
     //Update is called once per frame
     void Update () {
+        if(InvincibilityFrame)
+        {
+            if(Time.time - LastInvincibilityFrame > InvincibilityFrameDuration)
+            {
+                InvincibilityFrame = false;
+            }
+        }
         //If the current health is zero or below(ie Entity is dead)
-        if(!Dead && CurrentHealth <= 0.0f)
+        if (!Dead && CurrentHealth <= 0.0f)
         {
             Dead = true;
             if (gameObject.tag == "Enemy")
@@ -164,6 +173,11 @@ public class EntityHealth : MonoBehaviour {
 
     public void DecreaseHealth(float _value)
     {
+        //Check if the entity is invicible
+        if(InvincibilityFrame)
+        {
+            return;
+        }
         //Call first hit function and set entity to isHit
         if (!isHit && HitTriggerFunction != null)
         {
@@ -230,6 +244,10 @@ public class EntityHealth : MonoBehaviour {
             transform.DOComplete();
             transform.DOShakePosition(0.1f, 0.1f, 1);
         }
+        if(!InvincibilityFrame)
+        {
+            SetInvincible(InvincibilityFrameDuration);
+        }
     }
     
     public void IncreaseHealth(float _value)
@@ -252,6 +270,12 @@ public class EntityHealth : MonoBehaviour {
     public void Kill()
     {
         CurrentHealth = 0f;
+    }
+
+    public void SetInvincible(float _Duration)
+    {
+        InvincibilityFrame = true;
+        LastInvincibilityFrame = Time.time;
     }
 
     //Deals the given damage spread over the time given

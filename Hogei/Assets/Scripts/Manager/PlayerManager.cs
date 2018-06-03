@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
-    public HealthBarNotched HealthBar = null;
+    public ProgressBar HealthBar = null;
     public GameObject GameoverScreen = null;
     public GameObject Player = null;
 
@@ -112,7 +112,7 @@ public class PlayerManager : MonoBehaviour {
         //Setup HealthBar
         if (!HealthBar)
         {
-            if (GameObject.Find("HealthBar")) HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarNotched>();
+            if (GameObject.Find("HealthBar")) HealthBar = GameObject.Find("HealthBar").GetComponent<ProgressBar>();
             else Debug.LogWarning("NO HEALTH BAR UI IN SCENE");
         }
         if (HealthBar)
@@ -125,8 +125,7 @@ public class PlayerManager : MonoBehaviour {
             else
             {
                 HealthBar.EnableSprites();
-                HealthBar.TargetHealth = Player.GetComponent<EntityHealth>();
-                HealthBar.UpdateNotches();
+                HealthBar.EntityHealth = Player.GetComponent<EntityHealth>();
             }
         }
         Debug.Log(Time.time + ": " + gameObject.name + " - Setting up gameover screen...");
