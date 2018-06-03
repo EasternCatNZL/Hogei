@@ -201,10 +201,10 @@ MonoBehaviour:
       startRot: 230
     spawnTiming: 2
   - spawnDetailsArray:
-    - enemyObject: {fileID: 0}
-      spawnLocationLocal: {x: 0, y: 0, z: 7}
-      spawnTransform: {fileID: 4009532678284430, guid: 6163030ffb8cd864aa88bab8a880d4dd,
+    - enemyObject: {fileID: 1570839101031200, guid: 6163030ffb8cd864aa88bab8a880d4dd,
         type: 2}
+      spawnLocationLocal: {x: 0, y: 0, z: 7}
+      spawnTransform: {fileID: 0}
       startRot: 180
     spawnTiming: 6
   - spawnDetailsArray:
@@ -335,7 +335,9 @@ MonoBehaviour:
       startRot: 0
     spawnTiming: 6
   gate: {fileID: 0}
+  anchor: {fileID: 0}
   playerTag: Player
+  isTriggered: 0
 --- !u!135 &135620784901021566
 SphereCollider:
   m_ObjectHideFlags: 1
