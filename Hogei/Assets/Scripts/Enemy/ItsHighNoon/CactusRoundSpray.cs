@@ -32,7 +32,7 @@ public class CactusRoundSpray : EnemyBehavior {
 
     // Use this for initialization
     void Start () {
-        bulletOffset = new Vector3(0f, bulletOffsetY, 0f);
+        bulletOffset = new Vector3(0f, bulletYOffset, 0f);
     }
 	
 	// Update is called once per frame
@@ -73,7 +73,7 @@ public class CactusRoundSpray : EnemyBehavior {
             //get a bullet from the bank
             GameObject bullet = Instantiate(bulletObject, transform.position + bulletOffset, transform.rotation);
             //set the bullets position to this pos
-            bullet.transform.position = transform.position + transform.up * bulletYOffset;
+            bullet.transform.position = transform.position + bulletOffset;
             //set the bullet's rotation to current rotation
             bullet.transform.rotation = currentRotation;
             //setup the bullet and fire
