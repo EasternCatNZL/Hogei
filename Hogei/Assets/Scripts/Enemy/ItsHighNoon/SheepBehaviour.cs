@@ -31,6 +31,7 @@ public class SheepBehaviour : EnemyBehavior {
 
     [Header("SFX Settings")]
     private AudioSource mySource;
+    private bool LaunchSoundPlayed = false;
     public AudioClip LaunchSound;
 
     [Header("VFX Settings")]
@@ -155,12 +156,13 @@ public class SheepBehaviour : EnemyBehavior {
         //Set Animation Trigger
         myAnim.SetTrigger("Charge");
         //Play the Launch SFX if it isn't already
-        if (mySource)
+        if (!LaunchSoundPlayed && mySource)
         {
             if (!mySource.isPlaying)
             {
                 mySource.clip = LaunchSound;
                 mySource.Play();
+                LaunchSoundPlayed = true;
             }
         }
         else
@@ -169,7 +171,7 @@ public class SheepBehaviour : EnemyBehavior {
         }
 
         //Play the rocket VFX if it isn't already
-        if (RocketFlames)
+        if ( RocketFlames)
         {
             if (!RocketFlames.isPlaying)
             {

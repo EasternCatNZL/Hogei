@@ -10,6 +10,20 @@ public class ProgressBar : MonoBehaviour {
 
     public List<Sprite> BorderSprites; 
 
+    private static ProgressBar Singleton;
+
+    void Start()
+    {
+        if(Singleton == null)
+        {
+            Singleton = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void SetPercentage(float _Percentage)
     {
         progressBar.localScale = new Vector3(_Percentage, progressBar.localScale.y , progressBar.localScale.z);
@@ -31,13 +45,13 @@ public class ProgressBar : MonoBehaviour {
     public void DisableSprites()
     {
         GetComponent<SpriteRenderer>().enabled = false;
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        progressBar.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void EnableSprites()
     {
         GetComponent<SpriteRenderer>().enabled = true;
-        GetComponentInChildren<SpriteRenderer>().enabled = true;
+        progressBar.GetComponent<SpriteRenderer>().enabled = true;
     }
 
 }

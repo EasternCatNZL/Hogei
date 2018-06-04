@@ -14,8 +14,8 @@ public class OutlawWave : OutlawBehaviour {
     [Tooltip("Wave angle offset")]
     public float angleOffset = 2.5f;
 
-    [Header("Animation tags")]
-    public string attackTrigger = "DoAttack";
+    //[Header("Animation tags")]
+    //public string attackTrigger = "DoAttack";
 
     //control vars
     private bool isAttacking = false; //check if currently attacking

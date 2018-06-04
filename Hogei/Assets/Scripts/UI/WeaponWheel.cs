@@ -12,6 +12,7 @@ public class WeaponWheel : MonoBehaviour {
     public GameObject PrimaryIcon;
     public GameObject SecondaryIcon;
     public Sprite StreamSprite;
+    public Sprite ShotSprite;
     public Sprite FertSprite;
     public Sprite HomeSprite;
     public Sprite ExplSprite;
@@ -32,6 +33,9 @@ public class WeaponWheel : MonoBehaviour {
             case Weapon.WeaponTypes.Stream:
                 SpriteToUse = StreamSprite;
                 break;
+            case Weapon.WeaponTypes.Bloom:
+                SpriteToUse = ShotSprite;
+                break;
             case Weapon.WeaponTypes.Fert:
                 SpriteToUse = FertSprite;
                 break;
@@ -49,6 +53,9 @@ public class WeaponWheel : MonoBehaviour {
         {
             case Weapon.WeaponTypes.Stream:
                 SpriteToUse = StreamSprite;
+                break;
+            case Weapon.WeaponTypes.Bloom:
+                SpriteToUse = ShotSprite;
                 break;
             case Weapon.WeaponTypes.Fert:
                 SpriteToUse = FertSprite;

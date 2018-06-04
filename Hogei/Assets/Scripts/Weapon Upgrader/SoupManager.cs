@@ -15,9 +15,6 @@ public class SoupManager : MonoBehaviour {
     public List<SoupIngredient> SoupIngredients;
     public Dictionary<Weapon.WeaponEffects, float> SoupUpgrades;
     public List<GameObject> IngredientPrefabs;
-    [Header("Spawn Positions")]
-    public Transform IngredientSpawn;
-    public Transform SoupSpawn;
     [Header("UI Settings")]
     public Text UpgradeDescText;
     public TextMesh SoupCapacityText;

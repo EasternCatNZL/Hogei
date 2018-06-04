@@ -134,20 +134,6 @@ public class RamBehaviour : EnemyBehavior {
         }
     }
 
-    private void OnEnable()
-    {
-        PauseHandler.PauseEvent += OnPause;
-        PauseHandler.UnpauseEvent += OnUnpause;
-        //print("Subscribed to event");
-    }
-
-    private void OnDisable()
-    {
-        PauseHandler.PauseEvent -= OnPause;
-        PauseHandler.UnpauseEvent -= OnUnpause;
-        //print("Unsubscribed to event");
-    }
-
     //behaviour during charge up
     public void ChargeUp()
     {

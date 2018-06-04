@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class IngredientBowl : MonoBehaviour {
 
@@ -17,14 +18,16 @@ public class IngredientBowl : MonoBehaviour {
 
     public int IngredientAmount = 0;
     private PlayerManager PlayMgt;
+    private Vector3 OriginalScale;
 
     void Start()
     {
         PlayMgt = PlayerManager.GetInstance();
         IngredientAmount = PlayMgt.GetIngredientAmount(IngredientType);
-        if(IngredientAmount <= 0)
+        OriginalScale = transform.localScale;
+        if (IngredientAmount <= 0)
         {
-            gameObject.SetActive(false);
+            Hide();
         }
     }
 
@@ -55,15 +58,21 @@ public class IngredientBowl : MonoBehaviour {
             SoupManager.GetComponent<ItemGrabbing>().SetHeldItem(Ingred);
             IngredientAmount -= 1;
         }
+        if(IngredientAmount <= 0)
+        {
+            Hide();
+        }
     }
 
     public void Show()
     {
-
+        transform.DOScale(OriginalScale, 0.5f);
+        GetComponent<MeshCollider>().enabled = true;
     }
 
     public void Hide()
     {
-
+        transform.DOScale(Vector3.zero, 0.5f);
+        GetComponent<MeshCollider>().enabled = false;
     }
 }
