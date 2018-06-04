@@ -320,8 +320,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4871751872554754}
-  - component: {fileID: 114530700641287052}
   - component: {fileID: 65734121252067898}
+  - component: {fileID: 114228425594579088}
   m_Layer: 0
   m_Name: GunslingerWaveTrigger
   m_TagString: Enemy
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 136502472256875374}
   - component: {fileID: 114117320319717674}
   - component: {fileID: 114078257070599140}
-  - component: {fileID: 114816106932203538}
+  - component: {fileID: 114445457423791856}
   m_Layer: 10
   m_Name: Gunslinger_pose
   m_TagString: Enemy
@@ -943,8 +943,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620340186445410}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -94.07715, y: 15.212, z: -48.582157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4338647892565836}
@@ -1018,6 +1018,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
+  HasInvincibilityFrames: 0
+  InvincibilityFrameDuration: 0.1
+  InvincibilityFrame: 0
   CurrentHealth: 0
   MaxHealth: 10
   OnHitShake: 0
@@ -1058,7 +1061,7 @@ MonoBehaviour:
   RotationOffset: {x: 0, y: 0, z: 0}
   itemDrop:
   - {fileID: 1589430576805740, guid: 745c6adb27257c64783e30e914314916, type: 2}
---- !u!114 &114530700641287052
+--- !u!114 &114228425594579088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1066,7 +1069,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620340186445410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6c2809a75f53e43b788995ffa440ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 166208f7a6d1a0f448bce45cb805062b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
@@ -1074,14 +1077,13 @@ MonoBehaviour:
   isTriggered: 0
   doTriggerPlayer: 1
   doTriggerBullet: 0
-  WarningObject: {fileID: 1585930551208490, guid: 75c6f504236aadb4c9f53b1c56c87d1a,
-    type: 2}
+  WarningObject: {fileID: 0}
   WarningBegan: 0
   WarningTime: 0.5
   WarningYEndValue: 0.4
   WarningActive: 0
-  Enemy: {fileID: 114816106932203538}
---- !u!114 &114816106932203538
+  Enemy: {fileID: 114445457423791856}
+--- !u!114 &114445457423791856
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1089,31 +1091,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1844511202801158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 331ac571069fb214ba546cf0ab5235c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4277ea1f14a920b4a98d5cc4634253f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sfxArray: []
   managerTag: Manager
   music: {fileID: 0}
   isActive: 0
+  SpawnerParent: {fileID: 0}
   bulletObject: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55,
     type: 2}
-  bulletSpeed: 12
+  bulletSpeed: 5
   damage: 1
   numShotsInRound: 3
   MaxRange: 1000
-  timeBetweenShots: 0.2
+  timeBetweenShots: 0.1
   timeBetweenRounds: 1
   ShotSound: {fileID: 8300000, guid: b500386c44c59a54aad6b9634f097328, type: 3}
   ShotSoundVolume: 1
-  PitchVarianceRange: {x: 1, y: 1}
+  PitchVarianceRange: {x: 0, y: 0}
   ShotSpatialBlend: 0.5
   targetTag: Player
   bulletTag: Bullet
+  attackTrigger: DoAttack
   setupDistance: 0
   setupTime: 0
   isMoving: 0
   target: {fileID: 0}
+  minNumBullets: 1
+  maxNumBullets: 5
+  angleBetweenShots: 5
+  angleOffset: 2.5
 --- !u!136 &136502472256875374
 CapsuleCollider:
   m_ObjectHideFlags: 1
