@@ -608,7 +608,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1231385170438876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4348377065429820}
@@ -817,11 +817,13 @@ MonoBehaviour:
   managerTag: Manager
   music: {fileID: 0}
   isActive: 0
+  SpawnerParent: {fileID: 0}
   bulletObject: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761,
     type: 2}
   bulletSpeed: 7
   timeBetweenSprays: 1.5
   angleChangePerShot: 30
+  bulletOffsetY: 1
 --- !u!114 &114802309440483014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -834,6 +836,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
+  InvincibilityFrameDuration: 0.1
+  InvincibilityFrame: 0
   CurrentHealth: 0
   MaxHealth: 100
   OnHitShake: 0

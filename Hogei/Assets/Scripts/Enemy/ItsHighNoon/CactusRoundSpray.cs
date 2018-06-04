@@ -28,10 +28,12 @@ public class CactusRoundSpray : EnemyBehavior {
     private float pauseEndTime = 0.0f; //the time when pause ends
     private bool isPaused = false; //check if paused
 
+    private Vector3 bulletOffset = Vector3.zero;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        bulletOffset = new Vector3(0f, bulletOffsetY, 0f);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -69,7 +71,7 @@ public class CactusRoundSpray : EnemyBehavior {
             Quaternion currentRotation = new Quaternion();
             currentRotation.eulerAngles = new Vector3(0.0f, angle, 0.0f);
             //get a bullet from the bank
-            GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(bulletObject, transform.position + bulletOffset, transform.rotation);
             //set the bullets position to this pos
             bullet.transform.position = transform.position + transform.up * bulletYOffset;
             //set the bullet's rotation to current rotation
