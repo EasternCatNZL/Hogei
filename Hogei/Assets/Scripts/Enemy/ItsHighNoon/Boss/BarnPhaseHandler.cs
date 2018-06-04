@@ -58,8 +58,6 @@ public class BarnPhaseHandler : BossHandler
                 //change phase
                 inPhaseOne = false;
                 inPhaseTwo = true;
-                //set take damage to off <- invunerable
-
                 //start phase two
                 Invoke("StartPhaseTwo", delayPhaseOneToTwo);
             }
@@ -77,6 +75,8 @@ public class BarnPhaseHandler : BossHandler
                 sheepLaunch.isUsing = false;
                 //turn off front shot
                 frontCannon.isUsing = false;
+                //turn on invinc frames while moving
+                GetComponent<EntityHealth>().SetInvincible(moveTime * 2);
                 SinkBarn();
             }
             

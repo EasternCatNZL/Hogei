@@ -1,0 +1,342 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1241079580095154}
+  m_IsPrefabParent: 1
+--- !u!1 &1241079580095154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4594087772192484}
+  - component: {fileID: 114867429334686174}
+  - component: {fileID: 114589851056359624}
+  - component: {fileID: 114640143095367786}
+  m_Layer: 0
+  m_Name: BarnAxis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1286250450721626
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4620954122765564}
+  - component: {fileID: 114388267634584008}
+  - component: {fileID: 114251344686623806}
+  m_Layer: 0
+  m_Name: BarnAttackSpawnPointHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1349425617595242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4801796697608676}
+  - component: {fileID: 33367413379024440}
+  - component: {fileID: 23874259722943904}
+  - component: {fileID: 95285864244189924}
+  - component: {fileID: 65708141698035510}
+  - component: {fileID: 114348187665118184}
+  - component: {fileID: 114863244061270504}
+  m_Layer: 10
+  m_Name: Large_Barn
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4594087772192484
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241079580095154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.32, y: 19.5, z: -4.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4801796697608676}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4620954122765564
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286250450721626}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 71.3, y: -427, z: -650}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_Children: []
+  m_Father: {fileID: 4801796697608676}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4801796697608676
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349425617595242}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.05, z: 20}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children:
+  - {fileID: 4620954122765564}
+  m_Father: {fileID: 4594087772192484}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23874259722943904
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349425617595242}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6f5b2a298390d0f4d992432de126793a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33367413379024440
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349425617595242}
+  m_Mesh: {fileID: 4300000, guid: 5753d43c586d78943b0953cf41b22b84, type: 3}
+--- !u!65 &65708141698035510
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349425617595242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1491.5, y: 1417, z: 1439.5862}
+  m_Center: {x: 0, y: -0.000030517578, z: 0}
+--- !u!95 &95285864244189924
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349425617595242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5753d43c586d78943b0953cf41b22b84, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114251344686623806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286250450721626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a74e8de9b89a0418fcc148e8898d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sheepObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+    type: 2}
+  numSheepSpawnedPer: 3
+  timeBetweenLaunches: 0.2
+  maxChargeSpeed: 20
+  minChargeSpeed: 10
+  angleVariance: 30
+  isUsing: 0
+--- !u!114 &114348187665118184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349425617595242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631980bfaba84584b8c1088a08088542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sheepObject: {fileID: 1386237171912776, guid: 8485c4f718337364380278b624f0d715,
+    type: 2}
+  numSheepPer: 7
+  timeBetweenSheep: 0.1
+  timeBetweenLaunches: 4
+  launchSpeed: 20
+  dropSpeed: 10
+  dropHeight: 10
+  launchAreaRadius: 2
+  dropCenter: {x: 0, y: 20, z: -7}
+  dropRadius: 10
+  crosshair: {fileID: 0}
+  isUsing: 0
+--- !u!114 &114388267634584008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286250450721626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa7c3e61c0be284699dd22c264cb7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 1311224428304362, guid: 223c3cc5e1a870049957e1954db71c55,
+    type: 2}
+  sheepObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
+    type: 2}
+  bulletSpeed: 8
+  numArcs: 5
+  timeBetweenSprays: 0.5
+  angleChangePerShot: 12
+  playerTag: Player
+  isUsing: 1
+  fireSheep: 1
+--- !u!114 &114589851056359624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241079580095154}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64a54c6f9a55d64394f62e587e9bc75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 20
+  doRotation: 1
+--- !u!114 &114640143095367786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241079580095154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f7040a23616ed4bb3d171165b974d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barnMaxMoveSpeed: 10
+  barnAccelSpeed: 50
+  angleRotationLimit: 20
+  angleRotationLeeway: 10
+  startDirection: -1
+  tiltAmount: 10
+  tiltTime: 0.5
+  barn: {fileID: 4801796697608676}
+  direction: 1
+  isUsing: 1
+--- !u!114 &114863244061270504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349425617595242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHit: 0
+  HasInvincibilityFrames: 0
+  InvincibilityFrameDuration: 0.1
+  InvincibilityFrame: 0
+  CurrentHealth: 0
+  MaxHealth: 500
+  OnHitShake: 0
+  DeathVFX: []
+  HitVFX: {fileID: 0}
+  HitVFXScale: {x: 0, y: 0, z: 0}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114867429334686174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241079580095154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f5d3e77e3503c4cbe65c13061ebfb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossStartHealth: 500
+  phaseTwoStartHealth: 400
+  phaseThreeStartHealth: 150
+  health: {fileID: 114863244061270504}
+  barn: {fileID: 1349425617595242}
+  delayPhaseOneToTwo: 2
+  descentAmount: 15
+  moveTime: 2
+  riseLocation: {fileID: 0}
+  riseEndLocation: {fileID: 0}
+  sideMove: {fileID: 114640143095367786}
+  frontCannon: {fileID: 114388267634584008}
+  sheepLaunch: {fileID: 114348187665118184}
+  sheepRumble: {fileID: 114251344686623806}
