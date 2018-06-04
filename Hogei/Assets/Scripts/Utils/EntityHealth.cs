@@ -24,6 +24,7 @@ public class EntityHealth : MonoBehaviour {
     private bool ChainLighting = false;
     private bool Stunned = false;
 
+    public bool HasInvincibilityFrames = false;
     public float InvincibilityFrameDuration = 0.1f;
     public bool InvincibilityFrame = false;
     private float LastInvincibilityFrame = 0f;
@@ -244,7 +245,7 @@ public class EntityHealth : MonoBehaviour {
             transform.DOComplete();
             transform.DOShakePosition(0.1f, 0.1f, 1);
         }
-        if(!InvincibilityFrame)
+        if(HasInvincibilityFrames && !InvincibilityFrame)
         {
             SetInvincible(InvincibilityFrameDuration);
         }

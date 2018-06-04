@@ -1099,7 +1099,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1430720723601020}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.672, z: 0}
   m_LocalScale: {x: 0.24287969, y: 0.24287967, z: 0.24287967}
   m_Children:
   - {fileID: 4476542341081412}
@@ -1863,7 +1863,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340835982495674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5369258, y: 0.011, z: -5.5271626}
+  m_LocalPosition: {x: -9.37, y: 0.011, z: -5.5271626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4263451193435234}
@@ -2304,6 +2304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
+  InvincibilityFrameDuration: 0.1
+  InvincibilityFrame: 0
   CurrentHealth: 0
   MaxHealth: 10
   OnHitShake: 0
@@ -2412,7 +2414,7 @@ MonoBehaviour:
   OriginalBulletTravelSpeed: 0
   timeBetweenShots: 1
   OriginalTimeBetweenShots: 0
-  angleVariance: 10
+  angleVariance: 15
   OriginalAngleVariance: 0
   bulletLifeTime: 5
   distanceToStart: 0.1
@@ -2424,7 +2426,7 @@ MonoBehaviour:
   muzzleFireVFX: {fileID: 1978202538288588, guid: f455973ec3baad34cb0d1ffc18e8e373,
     type: 2}
   Type: 5
-  numBulletsInBloom: 7
+  numBulletsInBloom: 10
   bulletSpeedVariation: 2
 --- !u!114 &114275573569465760
 MonoBehaviour:

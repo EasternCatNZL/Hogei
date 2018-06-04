@@ -67,13 +67,13 @@ public class CactusTwoSideSpray : EnemyBehavior {
         for(int i = 0; i < numShotsPerSpray; i++)
         {
             //create a bullet
-            GameObject bulletOne = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) + (i * angleBetweenBullets), 0.0f));
+            GameObject bulletOne = Instantiate(bulletObject, transform.position + transform.up * bulletOffsetY, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) + (i * angleBetweenBullets), 0.0f));
             //set up the bullet vars
             bulletOne.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
             //if not the first bullet, make second
             if(i > 0)
             {
-                GameObject bulletTwo = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) - (i * angleBetweenBullets), 0.0f));
+                GameObject bulletTwo = Instantiate(bulletObject, transform.position + transform.up * bulletOffsetY, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) - (i * angleBetweenBullets), 0.0f));
                 //set up the bullet vars
                 bulletTwo.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
             }
@@ -86,13 +86,13 @@ public class CactusTwoSideSpray : EnemyBehavior {
         for (int i = 0; i < numShotsPerSpray; i++)
         {
             //create a bullet
-            GameObject bulletOne = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) + (i * angleBetweenBullets), 0.0f));
+            GameObject bulletOne = Instantiate(bulletObject, transform.position + transform.up * bulletOffsetY, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) + (i * angleBetweenBullets), 0.0f));
             //set up the bullet vars
             bulletOne.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
             //if not the first bullet, make second
             if (i > 0)
             {
-                GameObject bulletTwo = Instantiate(bulletObject, transform.position, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) - (i * angleBetweenBullets), 0.0f));
+                GameObject bulletTwo = Instantiate(bulletObject, transform.position + transform.up * bulletOffsetY, Quaternion.Euler(0.0f, (transform.rotation.eulerAngles.y + randomAngle) - (i * angleBetweenBullets), 0.0f));
                 //set up the bullet vars
                 bulletTwo.GetComponent<RegularStraightBullet>().SetupVars(bulletSpeed);
             }

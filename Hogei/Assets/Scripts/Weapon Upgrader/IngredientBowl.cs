@@ -56,4 +56,14 @@ public class IngredientBowl : MonoBehaviour {
             IngredientAmount -= 1;
         }
     }
+
+    public void Show()
+    {
+
+    }
+
+    public void Hide()
+    {
+
+    }
 }

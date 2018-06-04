@@ -18,6 +18,9 @@ public class CactusRoundSpray : EnemyBehavior {
     [Tooltip("Angle change per shot in spray")]
     public float angleChangePerShot = 60.0f;
 
+    [Header("Bullet vars")]
+    public float bulletYOffset = 1f;
+
     //control vars
     private float timeLastSprayFired = 0.0f; //the time last spray began
     private float currentAngleTotal = 0.0f; //the current angle the bullet is angled at in regards to owner
@@ -68,7 +71,7 @@ public class CactusRoundSpray : EnemyBehavior {
             //get a bullet from the bank
             GameObject bullet = Instantiate(bulletObject, transform.position, transform.rotation);
             //set the bullets position to this pos
-            bullet.transform.position = transform.position;
+            bullet.transform.position = transform.position + transform.up * bulletYOffset;
             //set the bullet's rotation to current rotation
             bullet.transform.rotation = currentRotation;
             //setup the bullet and fire
