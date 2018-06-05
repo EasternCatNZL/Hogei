@@ -57,6 +57,7 @@ public class IngredientBowl : MonoBehaviour {
             GameObject Ingred = Instantiate(IngredientPrefab);
             SoupManager.GetComponent<ItemGrabbing>().SetHeldItem(Ingred);
             IngredientAmount -= 1;
+            Ingred.GetComponent<SoupIngredient>().myBowl = this;
         }
         if(IngredientAmount <= 0)
         {

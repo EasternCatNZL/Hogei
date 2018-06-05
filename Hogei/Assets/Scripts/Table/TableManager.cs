@@ -21,6 +21,9 @@ public class TableManager : MonoBehaviour {
     [Header("Weapon Selection Settings")]
     public WeaponInventory WeapInvent;
 
+    [Header("Soup manager")]
+    public SoupManager soup;
+
     private Animator Anim;
     private bool IsOpen = false;
 
@@ -116,6 +119,15 @@ public class TableManager : MonoBehaviour {
                 WeapInvent.SetActive(false);
                 OpenButton.enabled = true;
                 CloseButton.enabled = false;
+
+                GameObject[] ingredients = GameObject.FindGameObjectsWithTag("Ingredient");
+                //for all the objects
+                for(int i = 0; i < ingredients.Length; i++)
+                {
+                    ingredients[i].GetComponent<SoupIngredient>().SendBackToBowl();
+                }
+                //clear the soup
+                soup.ClearSoup();
             }
             else//Show Hot Pot
             {

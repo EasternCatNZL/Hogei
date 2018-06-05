@@ -12,7 +12,8 @@ public class PlayerAttack : MonoBehaviour
     [Tooltip("Switch weapon <-")]
     public KeyCode prevWeaponInput = KeyCode.Q;
     [Tooltip("Switch weapon ->")]
-    public KeyCode nextWeaponInput = KeyCode.E;
+    public string nextWeaponInput = "Switch";
+    public string cNextWeaponInput = "CSwitch";
     [Tooltip("Input axis")]
     public string attackInputAxis = "Attack";
     public string attackInputAxisController = "ControllerAttack";
@@ -195,23 +196,47 @@ public class PlayerAttack : MonoBehaviour
     //switch weapon
     private void SwitchWeapon()
     {
-        if (Input.GetKeyDown(nextWeaponInput))
+        if (canDo.useKeyboard)
         {
-            if (WW) WW.NextWeapon(); //Change the weapon wheel UI
-            else
+            if (Luminosity.IO.InputManager.GetButton(nextWeaponInput))
             {
-                GameObject temp = GameObject.FindGameObjectWithTag("WeaponWheel");
-                if (temp) WW = temp.GetComponent<WeaponWheel>();
-            }
-            if (currentWeaponIndex == 0)
-            {
-                currentWeaponIndex = 1;
-            }
-            else if (currentWeaponIndex == 1)
-            {
-                currentWeaponIndex = 0;
+                if (WW) WW.NextWeapon(); //Change the weapon wheel UI
+                else
+                {
+                    GameObject temp = GameObject.FindGameObjectWithTag("WeaponWheel");
+                    if (temp) WW = temp.GetComponent<WeaponWheel>();
+                }
+                if (currentWeaponIndex == 0)
+                {
+                    currentWeaponIndex = 1;
+                }
+                else if (currentWeaponIndex == 1)
+                {
+                    currentWeaponIndex = 0;
+                }
             }
         }
+        else if (canDo.useController)
+        {
+            if (Luminosity.IO.InputManager.GetButton(cNextWeaponInput))
+            {
+                if (WW) WW.NextWeapon(); //Change the weapon wheel UI
+                else
+                {
+                    GameObject temp = GameObject.FindGameObjectWithTag("WeaponWheel");
+                    if (temp) WW = temp.GetComponent<WeaponWheel>();
+                }
+                if (currentWeaponIndex == 0)
+                {
+                    currentWeaponIndex = 1;
+                }
+                else if (currentWeaponIndex == 1)
+                {
+                    currentWeaponIndex = 0;
+                }
+            }
+        }
+
 
         /*
         //switch to prev weapon

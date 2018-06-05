@@ -1863,7 +1863,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340835982495674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.37, y: 0.011, z: -5.5271626}
+  m_LocalPosition: {x: -2.5369258, y: 0.011, z: -5.5271626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4263451193435234}
@@ -2304,6 +2304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
+  HasInvincibilityFrames: 0
   InvincibilityFrameDuration: 0.1
   InvincibilityFrame: 0
   CurrentHealth: 0
@@ -2442,7 +2443,7 @@ MonoBehaviour:
   prevWeaponInput: 113
   nextWeaponInput: 101
   attackInputAxis: Attack
-  attackInputAxisController: ControllerAttack
+  attackInputAxisController: CAttack
   isShooting: 0
   peaShootStrengthened: 0
   PrimaryWeapon: {fileID: 0}
@@ -2465,6 +2466,11 @@ MonoBehaviour:
   AimIndicator: {fileID: 4024352100417294}
   Speed: 5
   SpeedModifier: 1
+  leftStickX: CHorizontal
+  leftStickY: CVertical
+  rightStickX: CHorizontalAim
+  rightStickY: CVerticalAim
+  deadZone: 0.5
 --- !u!114 &114377819279241882
 MonoBehaviour:
   m_ObjectHideFlags: 1
