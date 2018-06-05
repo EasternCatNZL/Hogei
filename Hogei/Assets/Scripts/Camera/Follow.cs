@@ -100,8 +100,8 @@ public class Follow : MonoBehaviour
     //camera controller aim follow
     private void CameraControllerFollow()
     {
-        print("X Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(rightStickX));
-        print("Y Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(rightStickY));
+        //print("X Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(rightStickX));
+        //print("Y Axis input: " + Luminosity.IO.InputManager.GetAxisRaw(rightStickY));
 
         //get direction from sticks
         Vector3 direction = Quaternion.AngleAxis(alignment.rotation.eulerAngles.y, Vector3.up) * new Vector3(Luminosity.IO.InputManager.GetAxis(rightStickX), 0.0f, Luminosity.IO.InputManager.GetAxis(rightStickY));

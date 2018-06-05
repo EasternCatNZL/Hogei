@@ -5,8 +5,8 @@ using UnityEngine;
 public class Aiming : MonoBehaviour {
 
     [Header("Input axis")]
-    public string rightStickX = "RightStickX";
-    public string rightStickY = "RightStickY";
+    public string rightStickX = "CHorizontalAim";
+    public string rightStickY = "CVerticalAim";
 
     [Header("Mouse input check handling")]
     [Tooltip("Amount mouse has to have moved to have been considered moved")]

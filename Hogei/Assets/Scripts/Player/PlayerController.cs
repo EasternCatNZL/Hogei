@@ -29,6 +29,15 @@ public class PlayerController : MonoBehaviour
     public float Speed;
     public float SpeedModifier;
 
+    [Header("Input axis")]
+    public string leftStickX = "CHorizontal";
+    public string leftStickY = "CVertical";
+    public string rightStickX = "CHorizontalAim";
+    public string rightStickY = "CVerticalAim";
+
+    [Header("Dead zone var")]
+    public float deadZone = 0.5f;
+
     private bool DebuggingMode = false;
 
     // Use this for initialization
@@ -51,10 +60,42 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void LateUpdate()
     {
-        MovementUpdate();
+        //movement
+        if (GetComponent<WhatCanIDO>().useKeyboard)
+        {
+            MovementUpdate();
+        }
+        else if (GetComponent<WhatCanIDO>().useController)
+        {
+            ControllerMovementUpdate();
+        }
+        //lowerbody
         if(LowerBody)LowerBodyUpdate();
-        if (UpperBody) UpperBodyUpdate();
-        if (AimIndicator) AimIndicatorUpdate();
+        //upperbody
+        if (UpperBody)
+        {
+            if (GetComponent<WhatCanIDO>().useKeyboard)
+            {
+                UpperBodyUpdate();
+            }
+            else if (GetComponent<WhatCanIDO>().useController)
+            {
+                ControllerUpperBodyUpdate();
+            }
+        }
+        //aim indicator
+        if (AimIndicator)
+        {
+            if (GetComponent<WhatCanIDO>().useKeyboard)
+            {
+                AimIndicatorUpdate();
+            }
+            else if (GetComponent<WhatCanIDO>().useController)
+            {
+                ControllerAimIndicatorUpdate();
+            }
+
+        }
         //Debugging
         if (DebuggingMode)
         {
@@ -86,6 +127,32 @@ public class PlayerController : MonoBehaviour
         UpperBodyAim = UpperBody.up;
     }
 
+    //controller input for upper body
+    private void ControllerUpperBodyUpdate()
+    {
+        //get direction from stick
+        Vector3 direction = new Vector3(Luminosity.IO.InputManager.GetAxis(rightStickX), 0.0f, Luminosity.IO.InputManager.GetAxisRaw(rightStickY)/* + MovementAlignment.rotation.eulerAngles.y*/);
+        //only work if meaningful
+        if(direction.sqrMagnitude > deadZone)
+        {
+            //apply rotation
+            float angle = Mathf.Atan2(Luminosity.IO.InputManager.GetAxisRaw(rightStickX), Luminosity.IO.InputManager.GetAxisRaw(rightStickY)) * Mathf.Rad2Deg;
+
+            if (Vector3.Dot(-UpperBody.forward, direction) < 0.0f)
+            {
+                UpperBody.Rotate(Vector3.Angle(UpperBody.up, direction) + MovementAlignment.rotation.eulerAngles.y, 0.0f, 0.0f);
+            }
+            if (Vector3.Dot(-UpperBody.forward, direction) > 0.0f)
+            {
+                UpperBody.Rotate(-Vector3.Angle(UpperBody.up, direction) + MovementAlignment.rotation.eulerAngles.y, 0.0f, 0.0f);
+            }
+
+            //UpperBody.rotation = Quaternion.Euler(0.0f, MovementAlignment.rotation.eulerAngles.y + angle, 0.0f);
+
+            UpperBodyAim = UpperBody.up;
+        }
+    }
+
     /// <summary>
     /// Handles the rotation of the aiming indicator
     /// </summary>
@@ -100,6 +167,33 @@ public class PlayerController : MonoBehaviour
         {
             AimIndicator.Rotate(0, 0, -Vector3.Angle(AimIndicator.up, _AimDirection));
         }
+    }
+
+    //aim indicator update for controller
+    void ControllerAimIndicatorUpdate()
+    {
+        //get direction
+        Vector3 direction = new Vector3(Luminosity.IO.InputManager.GetAxisRaw(rightStickX), 0.0f,  Luminosity.IO.InputManager.GetAxisRaw(rightStickY)/* + MovementAlignment.rotation.eulerAngles.y*/);
+        //only do if meaningful
+        //print(direction.sqrMagnitude);
+        if(direction.sqrMagnitude > deadZone)
+        {
+            //apply rotation
+            float angle = Mathf.Atan2(Luminosity.IO.InputManager.GetAxisRaw(rightStickX), Luminosity.IO.InputManager.GetAxisRaw(rightStickY)) * Mathf.Rad2Deg;
+
+            if (Vector3.Dot(AimIndicator.right, direction) < 0.0f)
+            {
+                AimIndicator.Rotate(0, 0, Vector3.Angle(AimIndicator.up, direction) + MovementAlignment.rotation.eulerAngles.y);
+            }
+            if (Vector3.Dot(AimIndicator.right, direction) > 0.0f)
+            {
+                AimIndicator.Rotate(0, 0, -Vector3.Angle(AimIndicator.up, direction) + MovementAlignment.rotation.eulerAngles.y);
+            }
+
+            //AimIndicator.Rotate(0, 0, Vector3.Angle(AimIndicator.up, direction));
+
+        }
+
     }
 
     /// <summary>
@@ -202,6 +296,36 @@ public class PlayerController : MonoBehaviour
             Movement -= MovementAlignment.forward * Speed * SpeedModifier;
             MovementDirection -= MovementAlignment.forward;
         }
+        Rigid.MovePosition(transform.position + Movement * Time.deltaTime);
+    }
+
+    //controller movement logic
+    void ControllerMovementUpdate()
+    {
+        Movement = Vector3.zero;
+
+        //get movement input from sticks
+        if (Luminosity.IO.InputManager.GetAxisRaw(leftStickX) > deadZone)
+        {
+            Movement += MovementAlignment.right * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickX);
+            MovementDirection += MovementAlignment.right;
+        }
+        else if (Luminosity.IO.InputManager.GetAxisRaw(leftStickX) < -deadZone)
+        {
+            Movement += MovementAlignment.right * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickX);
+            MovementDirection -= MovementAlignment.right;
+        }
+        if (Luminosity.IO.InputManager.GetAxisRaw(leftStickY) > deadZone)
+        {
+            Movement += MovementAlignment.forward * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickY);
+            MovementDirection += MovementAlignment.forward;
+        }
+        else if (Luminosity.IO.InputManager.GetAxisRaw(leftStickY) < -deadZone)
+        {
+            Movement += MovementAlignment.forward * Speed * SpeedModifier * Luminosity.IO.InputManager.GetAxisRaw(leftStickY);
+            MovementDirection -= MovementAlignment.forward;
+        }
+
         Rigid.MovePosition(transform.position + Movement * Time.deltaTime);
     }
 }

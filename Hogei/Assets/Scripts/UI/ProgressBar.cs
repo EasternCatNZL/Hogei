@@ -36,7 +36,7 @@ public class ProgressBar : MonoBehaviour {
             float percentage = EntityHealth.CurrentHealth/ EntityHealth.MaxHealth;
             SetPercentage(percentage);
             float _Index = Mathf.Ceil(percentage / (1f / BorderSprites.Count)) - 1;
-            print(percentage + " " + _Index);         
+            //print(percentage + " " + _Index);         
             GetComponent<SpriteRenderer>().sprite = BorderSprites[(int)_Index];
 
         }
