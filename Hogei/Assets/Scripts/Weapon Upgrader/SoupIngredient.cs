@@ -28,6 +28,8 @@ public class SoupIngredient : MonoBehaviour {
     public Vector2 PickupRangeMinMax = new Vector2(5f, 10f);
     private Rigidbody myRigid;
 
+    public IngredientBowl myBowl; //ref to the bowl object this ingredient came from
+
     void Start()
     {
         PlayerRef = PlayerManager.GetInstance().Player;
@@ -78,5 +80,17 @@ public class SoupIngredient : MonoBehaviour {
         PlayerManager.GetInstance().AddIngredientInventory(this);
         if (PickupSounds) MusicManager.GetInstance().PlaySoundAtLocation(PickupSounds, transform.position);
         Destroy(gameObject);
+    }
+
+    //send back to bowl
+    public void SendBackToBowl()
+    {
+        if (myBowl)
+        {
+            //add one back to ingredient bowl
+            myBowl.IngredientAmount++;
+            //destroy the object
+            Destroy(gameObject);
+        }
     }
 }

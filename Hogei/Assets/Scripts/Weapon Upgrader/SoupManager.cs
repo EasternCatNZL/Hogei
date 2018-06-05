@@ -105,7 +105,11 @@ public class SoupManager : MonoBehaviour {
         //Clear Soup Ingredients List
         for (int i = SoupIngredients.Count - 1; i >= 0; --i)
         {
-            Destroy(SoupIngredients[i].gameObject);
+            if (SoupIngredients[i].gameObject)
+            {
+                Destroy(SoupIngredients[i].gameObject);
+            }
+            
         }
         SoupIngredients.Clear();
         //Clear Soup Upgrades List
