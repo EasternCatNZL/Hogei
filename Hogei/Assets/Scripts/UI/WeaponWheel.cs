@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class WeaponWheel : MonoBehaviour {
 
@@ -17,13 +18,70 @@ public class WeaponWheel : MonoBehaviour {
     public Sprite HomeSprite;
     public Sprite ExplSprite;
 
+    private Animator Anim;
+    public Image img;
+    public Sprite PrimSprite;
+    public Sprite SeconSprite;
+
+
+
 	// Use this for initialization
 	void Start () {
         Initialise();
-	}
+
+    }
 
     public void Initialise()
     {
+
+        Anim = gameObject.GetComponent<Animator>();
+
+
+        Weapon.WeaponTypes _Pri = PlayerManager.GetInstance().GetPrimary();
+        Weapon.WeaponTypes _Sec = PlayerManager.GetInstance().GetSecondary();
+
+
+        switch (_Pri)
+        {
+            case Weapon.WeaponTypes.Stream:
+                PrimSprite = StreamSprite;
+                break;
+            case Weapon.WeaponTypes.Bloom:
+                PrimSprite = ShotSprite;
+                break;
+            case Weapon.WeaponTypes.Fert:
+                PrimSprite = FertSprite;
+                break;
+            case Weapon.WeaponTypes.Home:
+                PrimSprite = HomeSprite;
+                break;
+            case Weapon.WeaponTypes.Explosive:
+                PrimSprite = ExplSprite;
+                break;
+        }
+        //Get correct sprite for the Secondary Icon
+        switch (_Sec)
+        {
+            case Weapon.WeaponTypes.Stream:
+                SeconSprite = StreamSprite;
+                break;
+            case Weapon.WeaponTypes.Bloom:
+                SeconSprite = ShotSprite;
+                break;
+            case Weapon.WeaponTypes.Fert:
+                SeconSprite = FertSprite;
+                break;
+            case Weapon.WeaponTypes.Home:
+                SeconSprite = HomeSprite;
+                break;
+            case Weapon.WeaponTypes.Explosive:
+                SeconSprite = ExplSprite;
+                break;
+        }
+
+        img.sprite = PrimSprite;
+
+        /*
         Weapon.WeaponTypes _Pri = PlayerManager.GetInstance().GetPrimary();
         Weapon.WeaponTypes _Sec = PlayerManager.GetInstance().GetSecondary();
         //Get correct sprite for the Primary Icon
@@ -68,20 +126,22 @@ public class WeaponWheel : MonoBehaviour {
                 break;
         }
         SecondaryIcon.GetComponent<SpriteRenderer>().sprite = SpriteToUse;
+        */
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        	
-	}
+    }
 
     public void NextWeapon()
     {
+        Anim.SetTrigger("WeaponChange");
+        /*
         transform.DOComplete();
         currentRotation = transform.localEulerAngles;
         endValue = currentRotation + new Vector3(0, 180, 0);
         transform.DORotate(endValue, TweenDuration, RotateMode.Fast);
-        
+        */
     }
 }
