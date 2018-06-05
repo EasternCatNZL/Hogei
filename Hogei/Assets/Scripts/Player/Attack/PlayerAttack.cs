@@ -9,10 +9,11 @@ public class PlayerAttack : MonoBehaviour
     //[Tooltip("Keyboard input key for weapon fire")]
     //[Range(0, 1)]
     //public int mouseInputKey = 0;
-    [Tooltip("Switch weapon <-")]
-    public KeyCode prevWeaponInput = KeyCode.Q;
-    [Tooltip("Switch weapon ->")]
-    public string nextWeaponInput = "Switch";
+    //[Tooltip("Switch weapon <-")]
+    //public KeyCode prevWeaponInput = KeyCode.Q;
+    //[Tooltip("Switch weapon ->")]
+    //public KeyCode nextWeaponInput = KeyCode.E;
+    public string kNextWeaponInput = "Switch";
     public string cNextWeaponInput = "CSwitch";
     [Tooltip("Input axis")]
     public string attackInputAxis = "Attack";
@@ -198,7 +199,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canDo.useKeyboard)
         {
-            if (Luminosity.IO.InputManager.GetButton(nextWeaponInput))
+            if (Luminosity.IO.InputManager.GetButton(kNextWeaponInput))
             {
                 if (WW) WW.NextWeapon(); //Change the weapon wheel UI
                 else
