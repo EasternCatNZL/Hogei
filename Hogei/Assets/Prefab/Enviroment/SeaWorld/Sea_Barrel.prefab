@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173664964289450}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.208092, y: 16, z: -23.515705}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6850363, w: 0.728509}
+  m_LocalPosition: {x: 20.477762, y: 17.274305, z: 31.930141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 86.477005}
 --- !u!23 &23205157738822992
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 1
+  HasInvincibilityFrames: 0
+  InvincibilityFrameDuration: 0.1
+  InvincibilityFrame: 0
   CurrentHealth: 0
   MaxHealth: 10
   OnHitShake: 1
