@@ -180,6 +180,10 @@ public class CoopWalkerBehaviour : EnemyBehavior
 
     void OnCollisionEnter(Collision _Col)
     {
+        if(_Col.gameObject.CompareTag("Enviroment"))
+        {
+            Destroy(_Col.gameObject);
+        }
         if (_Col.gameObject.CompareTag("Dungeon"))
         {
             CircleSpray(DiveNumBullets, transform.position + transform.up/2);
