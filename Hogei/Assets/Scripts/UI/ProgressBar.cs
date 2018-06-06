@@ -26,7 +26,7 @@ public class ProgressBar : MonoBehaviour {
 
     public void SetPercentage(float _Percentage)
     {
-        progressBar.localScale = new Vector3(_Percentage - 0.01f, progressBar.localScale.y , progressBar.localScale.z) ;
+        progressBar.localScale = new Vector3(_Percentage/* - 0.01f*/, progressBar.localScale.y , progressBar.localScale.z) ;
     }
 
     private void Update()
