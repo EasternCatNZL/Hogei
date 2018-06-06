@@ -73,7 +73,7 @@ public class InfinateSpawner : EnemyBehavior
         EnemiesSpawned++;
     }
 
-    void BurstSpawnEnemy()
+    public void BurstSpawnEnemy()
     {
         int SpawnAmount = BurstAmount;
         //Get the number of enemies to be spawned

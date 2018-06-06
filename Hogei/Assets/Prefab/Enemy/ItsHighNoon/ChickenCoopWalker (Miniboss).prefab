@@ -417,6 +417,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1498287580517542
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4330699120762440}
+  - component: {fileID: 114850950186459014}
+  m_Layer: 10
+  m_Name: ChickenSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1508715843726372
 GameObject:
   m_ObjectHideFlags: 1
@@ -607,8 +623,11 @@ GameObject:
   - component: {fileID: 4627486020505958}
   - component: {fileID: 95608344709326824}
   - component: {fileID: 114147887859577780}
+  - component: {fileID: 54935764087838670}
+  - component: {fileID: 136399457174667874}
+  - component: {fileID: 114163374008982742}
   m_Layer: 10
-  m_Name: ChickenCoopWalker
+  m_Name: ChickenCoopWalker (Miniboss)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,6 +988,19 @@ Transform:
   m_Father: {fileID: 4677067346092328}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 12.453046, y: -175.13501, z: 69.57318}
+--- !u!4 &4330699120762440
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498287580517542}
+  m_LocalRotation: {x: -0.70703113, y: 0.70703113, z: 0.010345215, w: 0.010345215}
+  m_LocalPosition: {x: -0.1, y: -0.005, z: -0.445}
+  m_LocalScale: {x: 0.50000036, y: 0.5, z: 0.5000004}
+  m_Children: []
+  m_Father: {fileID: 4677067346092328}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 181.677, y: 0, z: 89.99999}
 --- !u!4 &4331782855880808
 Transform:
   m_ObjectHideFlags: 1
@@ -1213,7 +1245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744083238910716}
   m_LocalRotation: {x: -0, y: 0.83717465, z: -0, w: 0.54693574}
-  m_LocalPosition: {x: -9.750755, y: 15.74, z: -24.938229}
+  m_LocalPosition: {x: -16.078827, y: 12.66, z: -2.2358818}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4699613646383216}
@@ -1266,6 +1298,7 @@ Transform:
   - {fileID: 4573982790360418}
   - {fileID: 4316546440915704}
   - {fileID: 4335114235676988}
+  - {fileID: 4330699120762440}
   m_Father: {fileID: 4627486020505958}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30.07211, y: 0, z: -90}
@@ -1405,6 +1438,21 @@ Transform:
   m_Father: {fileID: 4331782855880808}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 4.651615, y: 60.50079, z: -15.62098}
+--- !u!54 &54935764087838670
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744083238910716}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 1
 --- !u!95 &95608344709326824
 Animator:
   serializedVersion: 3
@@ -1437,6 +1485,92 @@ MonoBehaviour:
   managerTag: Manager
   music: {fileID: 0}
   isActive: 0
+  SpawnerParent: {fileID: 0}
+  SlamBullet: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761, type: 2}
+  SlamBulletSpeed: 5
+  SlamNumBullets: 30
+  RightFoot: {fileID: 4445312733181192}
+  LeftFoot: {fileID: 4222728036145870}
+  Spawner: {fileID: 114850950186459014}
+  JumpHeight: 20
+  DiveNumBullets: 30
+  DelayBetweenAttacks: 4
+--- !u!114 &114163374008982742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744083238910716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b373b55f57f1f44a833b46478f3d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHit: 0
+  HasInvincibilityFrames: 0
+  InvincibilityFrameDuration: 0
+  InvincibilityFrame: 0
+  CurrentHealth: 0
+  MaxHealth: 200
+  OnHitShake: 0
+  DeathVFX:
+  - {fileID: 1294647698978500, guid: e71004a09d9e1d54b895c44a4fb93eb2, type: 2}
+  HitVFX: {fileID: 1472612522538362, guid: 82dfe341cd17f774aa232f89849e9e67, type: 2}
+  HitVFXScale: {x: 5, y: 5, z: 5}
+  HitAnimationOn: 0
+  ScaleUpBeforeDeath: 0
+  StackSounds: 0
+  HitSoundVol: 1
+  HitSoundPitchRange: {x: 0, y: 0}
+  HitSound: []
+  FinalHitSound: {fileID: 0}
+  HitTriggerFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DeathFunction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114850950186459014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498287580517542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a66e3a30444dc24284e17c97a2b973d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxArray: []
+  managerTag: Manager
+  music: {fileID: 0}
+  isActive: 0
+  SpawnerParent: {fileID: 0}
+  Enemy: {fileID: 1008184312404850, guid: ed974a4c0299b3d41afffa6955e076f1, type: 2}
+  SpawnMaximum: 10
+  SpawnTime: 1
+  ScaleUpTime: 0.5
+  BurstSpawn: 1
+  BurstAmount: 2
+  SpawnAngle: 180
+  LaunchForce: 3
+--- !u!136 &136399457174667874
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744083238910716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.83
+  m_Height: 2.05
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.01, z: 0}
 --- !u!137 &137102250715387228
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1451,7 +1585,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d1b4b233ebbd33c4d90f04d259b385e8, type: 3}
+  - {fileID: 2100000, guid: 88cb5f8daf03ef54d9029200c2bdf9b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
