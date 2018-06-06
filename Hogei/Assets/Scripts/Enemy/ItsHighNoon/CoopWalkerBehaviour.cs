@@ -186,6 +186,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
             myAnim.SetTrigger("LookAround");
             myAnim.SetTrigger("Stomp");
             myAnim.SetBool("Idle", true);
+            myAnim.SetBool("Flying", false);
             MinimumY = transform.position.y + JumpHeight - JumpHeight * 0.1f;
             Landed = true;
             Flying = false;

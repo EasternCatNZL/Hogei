@@ -111,7 +111,7 @@ namespace Luminosity.IO
 			}
 			else
 			{
-				//Debug.LogError(string.Format("An button named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
+				Debug.LogError(string.Format("An button named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
 				return false;
 			}
 		}

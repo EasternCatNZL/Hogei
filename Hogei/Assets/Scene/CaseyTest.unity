@@ -3876,7 +3876,7 @@ Prefab:
     - target: {fileID: 114109841204675530, guid: 3e1f46124fcde1e44a663c739cb3ca7e,
         type: 2}
       propertyPath: InvincibilityFrameDuration
-      value: 0.2
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 136104530227502168, guid: 3e1f46124fcde1e44a663c739cb3ca7e,
         type: 2}
@@ -4066,8 +4066,8 @@ MonoBehaviour:
   functionToCall:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 147333661}
-        m_MethodName: UnlockGate
+      - m_Target: {fileID: 1619567608}
+        m_MethodName: Activate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7008,6 +7008,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1619567608 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114147887859577780, guid: 58b6cd017ec2ce54a90fbc9d7054a742,
+    type: 2}
+  m_PrefabInternal: {fileID: 1135864014}
+  m_Script: {fileID: 11500000, guid: 48af54b2657726543a0946e4c64ff1d2, type: 3}
 --- !u!1 &1675754740
 GameObject:
   m_ObjectHideFlags: 0
