@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1114434591215262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -112.47, y: 15.84, z: -2.46}
+  m_LocalPosition: {x: -142.05566, y: 0.511, z: 5.3585205}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4786602737160548}
@@ -150,7 +150,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: aebb5e221b8e0bd4697da483e9e07aea, type: 3}
+  - {fileID: 2100000, guid: 63bf31cb60dab834da8e9ac188a8816b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,7 +184,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: aebb5e221b8e0bd4697da483e9e07aea, type: 3}
+  - {fileID: 2100000, guid: 8d4e390e173c25345962411e8a22c843, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -239,7 +239,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1119058178191914}
-  m_Material: {fileID: 13400000, guid: 50f76a9092347264fbf5fb68c69c39a7, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d1c09bec891a44a9caf97e8c65f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaitForTrigger: 0
   enemyList:
   - {fileID: 0}
 --- !u!114 &114821561993485104
