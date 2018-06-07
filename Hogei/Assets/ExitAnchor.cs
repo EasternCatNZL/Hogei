@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class ExitAnchor : MonoBehaviour {
 
+    [Header("VFX Settings")]
+    public ParticleSystem DustExplosion;
+
 	void OnCollisionEnter(Collision _Col)
     {
         GameObject _Obj = _Col.gameObject;
@@ -16,6 +19,13 @@ public class ExitAnchor : MonoBehaviour {
             GetComponent<Rigidbody>().useGravity = false;
             PlayerManager.GetInstance().AddLevelCompleted(SceneHandler.GetSceneHandler().sceneNumber);
             SceneHandler.GetSceneHandler().LoadMapScene();         
+        }
+        if(_Obj.CompareTag("Dungeon"))
+        {
+            if(DustExplosion.isStopped)
+            {
+                DustExplosion.Play();
+            }
         }
     }
 }

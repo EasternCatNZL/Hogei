@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.22768158, g: 0.47445533, b: 0.6555884, a: 1}
+  m_IndirectSpecularColor: {r: 0.22767574, g: 0.47442454, b: 0.6555762, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -10910,9 +10911,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a9bf219759ac5774e8d893dbfca890aa, type: 3}
 --- !u!4 &801805767 stripped
@@ -20374,7 +20375,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541098432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000030517578, y: 137.88, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1077694304}
@@ -22359,7 +22360,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -94.61268
+      value: -93.64
       objectReference: {fileID: 0}
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -22367,7 +22368,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 61.14929
+      value: 60.95
       objectReference: {fileID: 0}
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalRotation.x
@@ -22657,9 +22658,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a9bf219759ac5774e8d893dbfca890aa, type: 3}
 --- !u!1001 &1668028580
