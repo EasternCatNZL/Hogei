@@ -33,6 +33,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
 
     [Header("Dive Settings")]
     public int DiveNumBullets;
+    public GameObject DiveMarker;
 
     [Header("VFX Settings")]
     public GameObject DustExplosion;
@@ -122,9 +123,16 @@ public class CoopWalkerBehaviour : EnemyBehavior
         }
     }
 
+    private void SetDiveMarker()
+    {
+        GameObject _Marker = Instantiate(DiveMarker, PlayerRef.transform.position, Quaternion.identity);
+        Destroy(_Marker, 2f);
+    }
+
     void Jump()
     {
         PlayDustExplosion(DustExplosionSpawn.position);
+
         myAnim.SetTrigger("Jump");
         myRigid.DOMoveY(transform.position.y + JumpHeight, 1f);
     }
@@ -134,6 +142,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
         myAnim.SetTrigger("Crouch");
         Vector3 _NewPos = new Vector3(PlayerRef.transform.position.x, transform.position.y, PlayerRef.transform.position.z);
         transform.position = _NewPos;
+        SetDiveMarker();
         myRigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
