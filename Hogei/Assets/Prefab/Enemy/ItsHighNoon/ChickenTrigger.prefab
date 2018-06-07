@@ -765,13 +765,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1416412087401258}
   m_LocalRotation: {x: -0, y: 0.99988693, z: -0, w: 0.015037353}
-  m_LocalPosition: {x: 13.34, y: 15.5497055, z: -28.81}
+  m_LocalPosition: {x: -22.525532, y: 9.467466, z: 73.72618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4251111754172102}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 178.27701, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -11.394001, z: 0}
 --- !u!4 &4638463069818664
 Transform:
   m_ObjectHideFlags: 1
@@ -1088,6 +1088,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
+  HasInvincibilityFrames: 0
+  InvincibilityFrameDuration: 0.1
+  InvincibilityFrame: 0
   CurrentHealth: 0
   MaxHealth: 4
   OnHitShake: 0
@@ -1128,6 +1131,7 @@ MonoBehaviour:
   managerTag: Manager
   music: {fileID: 0}
   isActive: 0
+  SpawnerParent: {fileID: 0}
   AnimationTriggered: 1
   TimeBetweenJumps: 1
   jumpForce: 3
