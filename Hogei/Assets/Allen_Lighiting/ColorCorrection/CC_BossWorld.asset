@@ -16,7 +16,7 @@ MonoBehaviour:
     m_Settings:
       mode: 0
       depth:
-        scale: 1
+        scale: 0.324
       motionVectors:
         sourceOpacity: 1
         motionImageOpacity: 0
@@ -71,9 +71,9 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 0
     m_Settings:
-      focusDistance: 2.84
-      aperture: 6.6
-      focalLength: 63
+      focusDistance: 10.76
+      aperture: 8.5
+      focalLength: 55
       useCameraFov: 0
       kernelSize: 1
   motionBlur:
@@ -94,7 +94,7 @@ MonoBehaviour:
       adaptationType: 0
       speedUp: 2
       speedDown: 1
-      logMin: -8
+      logMin: -11
       logMax: 4
   bloom:
     m_Enabled: 1
@@ -113,24 +113,24 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.02
-        neutralWhiteIn: 10
-        neutralBlackOut: 0
-        neutralWhiteOut: 10
-        neutralWhiteLevel: 5.3
-        neutralWhiteClip: 8.82
+        neutralBlackIn: -0.0081
+        neutralWhiteIn: 6.47
+        neutralBlackOut: -0.0201
+        neutralWhiteOut: 9.69
+        neutralWhiteLevel: 6.98
+        neutralWhiteClip: 9.58
       basic:
-        postExposure: -0.03
+        postExposure: -0.09
         temperature: 15.9
-        tint: 0.6
+        tint: -8.1
         hueShift: -1
-        saturation: 1.14
-        contrast: 1.082
+        saturation: 1.165
+        contrast: 0.955
       channelMixer:
-        red: {x: 0.96, y: -0.09, z: -0.05}
-        green: {x: 0.01, y: 0.92, z: 0}
-        blue: {x: 0, y: -0.03, z: 1.06}
-        currentEditingChannel: 2
+        red: {x: 0.96, y: -0.16, z: -0.05}
+        green: {x: 0.04, y: 0.82, z: 0.05}
+        blue: {x: 0.27, y: -0.43, z: 1.3}
+        currentEditingChannel: 0
       colorWheels:
         mode: 1
         log:
@@ -149,6 +149,12 @@ MonoBehaviour:
             - serializedVersion: 2
               time: 0
               value: 0
+              inSlope: 0.8438564
+              outSlope: 0.8438564
+              tangentMode: 0
+            - serializedVersion: 2
+              time: 0.47751606
+              value: 0.33928573
               inSlope: 1
               outSlope: 1
               tangentMode: 0
@@ -213,20 +219,26 @@ MonoBehaviour:
             serializedVersion: 2
             m_Curve:
             - serializedVersion: 2
-              time: 0
+              time: 0.00856531
               value: 0
               inSlope: 1
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 1
-              value: 1
+              time: 0.32119915
+              value: 0.3035714
               inSlope: 1
               outSlope: 1
               tangentMode: 0
+            - serializedVersion: 2
+              time: 1
+              value: 0.75892854
+              inSlope: 0.26060158
+              outSlope: 0.26060158
+              tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
-            m_RotationOrder: 4
+            m_RotationOrder: 0
           m_Loop: 0
           m_ZeroValue: 0
           m_Range: 1
@@ -276,7 +288,7 @@ MonoBehaviour:
         e_CurveG: 0
         e_CurveB: 0
   userLut:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       lut: {fileID: 2800000, guid: 5036c53a28ccfed4480d73d9ae7695c7, type: 3}
       contribution: 0.59
@@ -296,11 +308,11 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.39821354, g: 0.104455, b: 0.61764705, a: 1}
+      color: {r: 0.28676468, g: 0.17604327, b: 0.11597102, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.24
-      smoothness: 0.25
-      roundness: 1
+      intensity: 0.3
+      smoothness: 0.448
+      roundness: 0.126
       mask: {fileID: 0}
       opacity: 1
       rounded: 1
