@@ -15,6 +15,8 @@ public class CoopWalkerBehaviour : EnemyBehavior
     private GameObject PlayerRef;
 
     private GameObject Target;
+    [Header("Attack Settings")]
+    public float DelayBetweenAttacks = 5f;
     [Header("Slam Attack Settings")]
     public GameObject SlamBullet;
     public float SlamBulletSpeed;
@@ -32,6 +34,10 @@ public class CoopWalkerBehaviour : EnemyBehavior
     [Header("Dive Settings")]
     public int DiveNumBullets;
 
+    [Header("VFX Settings")]
+    public GameObject DustExplosion;
+    public Transform DustExplosionSpawn;
+
     private bool Landed = false;
     private bool Flying = false;
     private Animator myAnim;
@@ -39,7 +45,8 @@ public class CoopWalkerBehaviour : EnemyBehavior
     private int CurrentAttack = 0;
     private int LastAttack = 0;
 
-    public float DelayBetweenAttacks = 5f;
+
+
     private float LastAttackTime = 0;
 
     // Use this for initialization
@@ -117,6 +124,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
 
     void Jump()
     {
+        PlayDustExplosion(DustExplosionSpawn.position);
         myAnim.SetTrigger("Jump");
         myRigid.DOMoveY(transform.position.y + JumpHeight, 1f);
     }
@@ -137,6 +145,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
     //Gets called by animation events
     void SlamEvent(int _FootIndex)//0 = RightFoot, 1 = LeftFoot
     {
+        PlayDustExplosion(DustExplosionSpawn.position);
         if (_FootIndex == 0) CircleSpray(SlamNumBullets, RightFoot.position);
         else if (_FootIndex == 1) CircleSpray(SlamNumBullets, LeftFoot.position);
     }
@@ -144,6 +153,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
     //Gets called by animation events
     void SpawnEvent()
     {
+        PlayDustExplosion(DustExplosionSpawn.position);
         SpawnChickens();
     }
 
@@ -186,6 +196,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
         }
         if (_Col.gameObject.CompareTag("Dungeon"))
         {
+            PlayDustExplosion(DustExplosionSpawn.position);
             CircleSpray(DiveNumBullets, transform.position + transform.up/2);
             myAnim.SetTrigger("LookAround");
             myAnim.SetTrigger("Stomp");
@@ -195,5 +206,11 @@ public class CoopWalkerBehaviour : EnemyBehavior
             Landed = true;
             Flying = false;
         }
+    }
+
+    private void PlayDustExplosion(Vector3 _Location)
+    {
+        GameObject _VFX = Instantiate(DustExplosion, _Location, Quaternion.Euler(new Vector3(-90f, 0f, 0f)));
+        _VFX.transform.localScale = new Vector3(2f, 2f, 2f);
     }
 }

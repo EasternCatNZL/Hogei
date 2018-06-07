@@ -10,12 +10,25 @@ public class WeaponSelector : MonoBehaviour
     public bool SecondarySelector = false;
     public Text DescriptionText;
     public SoupManager SoupManager;
+
+    [Header("Sprite Settings")]
+    public Sprite SelectorSprite;
+    public Sprite SelectorSpriteSelected;
+    [Header("Weapon Sprites")]
+    public SpriteRenderer WeaponIcon;
+    public Sprite StreamSprite;
+    public Sprite ShotSprite;
+    public Sprite HomeSprite;
+    public Sprite ExplosiveSprite;
+
+    private SpriteRenderer Renderer;
     private Weapon.WeaponTypes WeaponSelected;
     private WeaponInventory weaponInventory;
 
     private void Start()
     {
         GameObject Finder = GameObject.Find("WeaponInventory");
+        Renderer = GetComponent<SpriteRenderer>();
         if (Finder != null)
         {
             weaponInventory = Finder.GetComponent<WeaponInventory>();
@@ -26,11 +39,13 @@ public class WeaponSelector : MonoBehaviour
 
     private void OnMouseExit()
     {
+        Renderer.sprite = SelectorSprite;
         SoupManager.UpdateUI();
     }
 
     private void OnMouseEnter()
     {
+        Renderer.sprite = SelectorSpriteSelected;
         if (PrimarySelector)
         {
             DescriptionText.text = GetDescriptionText();
@@ -44,6 +59,31 @@ public class WeaponSelector : MonoBehaviour
     private void OnMouseDown()
     {
         weaponInventory.OpenInventory(this);
+    }
+
+    private void UpdateWeaponIcon()
+    {
+        switch(WeaponSelected)
+        {
+            case Weapon.WeaponTypes.Stream:
+                WeaponIcon.sprite = StreamSprite;
+                break;
+            case Weapon.WeaponTypes.Explosive:
+                WeaponIcon.sprite = ExplosiveSprite;
+                break;
+            case Weapon.WeaponTypes.Fert:
+                Debug.Log(gameObject.name + ": Sorry but the fertiliser gun is no longer in production.");
+                break;
+            case Weapon.WeaponTypes.Home:
+                WeaponIcon.sprite = HomeSprite;
+                break;
+            case Weapon.WeaponTypes.Bloom://The Shotgun
+                WeaponIcon.sprite = ShotSprite;
+                break;
+            default:
+                WeaponIcon.sprite = null;
+                break;
+        }
     }
 
     private string GetDescriptionText()
@@ -92,6 +132,7 @@ public class WeaponSelector : MonoBehaviour
         {
             PlayerManager.GetInstance().SetSecondary(WeaponSelected);
         }
+        UpdateWeaponIcon();
 
     }
     public Weapon.WeaponTypes GetWeapon() { return WeaponSelected; }

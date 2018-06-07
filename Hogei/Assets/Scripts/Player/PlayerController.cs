@@ -278,24 +278,26 @@ public class PlayerController : MonoBehaviour
         MovementDirection = Vector3.zero;
         if (Luminosity.IO.InputManager.GetAxisRaw("Horizontal") > 0f)
         {
-            Movement += MovementAlignment.right * Speed * SpeedModifier;
+            Movement += MovementAlignment.right;
             MovementDirection += MovementAlignment.right;
         }
         else if (Luminosity.IO.InputManager.GetAxisRaw("Horizontal") < 0f)
         {
-            Movement -= MovementAlignment.right * Speed * SpeedModifier;
+            Movement -= MovementAlignment.right;
             MovementDirection -= MovementAlignment.right;
         }
         if (Luminosity.IO.InputManager.GetAxisRaw("Vertical") > 0f)
         {
-            Movement += MovementAlignment.forward * Speed * SpeedModifier;
+            Movement += MovementAlignment.forward;
             MovementDirection += MovementAlignment.forward;
         }
         else if (Luminosity.IO.InputManager.GetAxisRaw("Vertical") < 0f)
         {
-            Movement -= MovementAlignment.forward * Speed * SpeedModifier;
+            Movement -= MovementAlignment.forward;
             MovementDirection -= MovementAlignment.forward;
         }
+        Movement.Normalize();
+        Movement *= Speed * SpeedModifier;
         Rigid.MovePosition(transform.position + Movement * Time.deltaTime);
     }
 
@@ -328,4 +330,6 @@ public class PlayerController : MonoBehaviour
 
         Rigid.MovePosition(transform.position + Movement * Time.deltaTime);
     }
+
+    public void SetSpeedModifier(float _NewMod) { SpeedModifier = _NewMod; }
 }

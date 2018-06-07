@@ -139,5 +139,20 @@ public class TableManager : MonoBehaviour {
         }
     }
 
+    public void DisableNodeInteraction()
+    {
+        foreach(TableMapNode _Node in MapNodes)
+        {
+            _Node.gameObject.GetComponent<SphereCollider>().enabled = false;
+        }
+    }
+
+    public void EnableNodeInteraction()
+    {
+        foreach (TableMapNode _Node in MapNodes)
+        {
+            _Node.gameObject.GetComponent<SphereCollider>().enabled = true;
+        }
+    }
     public bool GetIsOpen() { return IsOpen; }
 }

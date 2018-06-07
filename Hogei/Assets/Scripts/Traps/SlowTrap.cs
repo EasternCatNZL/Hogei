@@ -49,7 +49,7 @@ public class SlowTrap : GameEntity {
         {
             if (entitiesInTrapList[i].CompareTag(playerTag))
             {
-                entitiesInTrapList[i].GetComponent<Movement>().SetSpeedModifier(1f);
+                entitiesInTrapList[i].GetComponent<PlayerController>().SetSpeedModifier(1f);
             }
             else if (entitiesInTrapList[i].CompareTag(enemyTag))
             {
@@ -68,7 +68,7 @@ public class SlowTrap : GameEntity {
     {     
         if(other.gameObject.tag.Equals(playerTag))
         {
-            other.gameObject.GetComponent<Movement>().SetSpeedModifier(1f - SlowPercentage);
+            other.gameObject.GetComponent<PlayerController>().SetSpeedModifier(1f - SlowPercentage);
             entitiesInTrapList.Add(other.gameObject);
         }
         else if (other.gameObject.CompareTag(enemyTag))
@@ -87,7 +87,7 @@ public class SlowTrap : GameEntity {
     {
         if (other.gameObject.tag.Equals(playerTag))
         {
-            other.gameObject.GetComponent<Movement>().SetSpeedModifier(1f);
+            other.gameObject.GetComponent<PlayerController>().SetSpeedModifier(1f);
             entitiesInTrapList.Remove(other.gameObject);
         }
         else if (other.gameObject.CompareTag(enemyTag))

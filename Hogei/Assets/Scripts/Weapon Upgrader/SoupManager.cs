@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SoupManager : MonoBehaviour {
 
@@ -52,6 +53,8 @@ public class SoupManager : MonoBehaviour {
         {
             Debug.Log("No ingredients in the pot to make soup");
         }
+        if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
+        UpdateUI();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,6 +74,7 @@ public class SoupManager : MonoBehaviour {
                 SoupUpgrades.Add(Obj.WeaponMod.Effect,Obj.WeaponMod.Value);
             }
             if (UpgradeDescText) UpdateUI();
+            if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
         }
         else
         {
