@@ -478,6 +478,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1558006934649714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4517889979271340}
+  m_Layer: 0
+  m_Name: DustParticleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1590994706743444
 GameObject:
   m_ObjectHideFlags: 1
@@ -1115,6 +1130,19 @@ Transform:
   m_Father: {fileID: 4335114235676988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.1046242e-14, y: -1.8919167e-14, z: 32.772175}
+--- !u!4 &4517889979271340
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558006934649714}
+  m_LocalRotation: {x: -0.7071068, y: 0.000000029802319, z: 0.000000029802319, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.20900011, z: 0}
+  m_LocalScale: {x: 2.1327128, y: 2.132714, z: 2.1327133}
+  m_Children: []
+  m_Father: {fileID: 4627486020505958}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4529703617823162
 Transform:
   m_ObjectHideFlags: 1
@@ -1250,6 +1278,7 @@ Transform:
   m_Children:
   - {fileID: 4699613646383216}
   - {fileID: 4677067346092328}
+  - {fileID: 4517889979271340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 113.686005, z: 0}
@@ -1486,6 +1515,7 @@ MonoBehaviour:
   music: {fileID: 0}
   isActive: 0
   SpawnerParent: {fileID: 0}
+  DelayBetweenAttacks: 4
   SlamBullet: {fileID: 1172009469086094, guid: 6820706de582be5489e49794f638a761, type: 2}
   SlamBulletSpeed: 5
   SlamNumBullets: 30
@@ -1494,7 +1524,9 @@ MonoBehaviour:
   Spawner: {fileID: 114850950186459014}
   JumpHeight: 20
   DiveNumBullets: 30
-  DelayBetweenAttacks: 4
+  DustExplosion: {fileID: 1293232673375748, guid: 294381ec437fbae41bca75f523c0d288,
+    type: 2}
+  DustExplosionSpawn: {fileID: 4517889979271340}
 --- !u!114 &114163374008982742
 MonoBehaviour:
   m_ObjectHideFlags: 1

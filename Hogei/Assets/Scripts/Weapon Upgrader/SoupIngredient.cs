@@ -93,4 +93,12 @@ public class SoupIngredient : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    void OnCollision(Collision _Col)
+    {
+        if(_Col.gameObject.CompareTag("HotPot"))
+        {
+            SendBackToBowl();
+        }
+    }
 }

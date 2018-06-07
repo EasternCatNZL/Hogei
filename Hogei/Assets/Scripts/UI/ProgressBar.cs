@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProgressBar : MonoBehaviour {
 
     public Transform progressBar;
+    public Transform backgroundBar;
 
     public EntityHealth EntityHealth;
 
@@ -57,12 +58,14 @@ public class ProgressBar : MonoBehaviour {
     {
         GetComponent<SpriteRenderer>().enabled = false;
         progressBar.GetComponent<SpriteRenderer>().enabled = false;
+        backgroundBar.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void EnableSprites()
     {
         GetComponent<SpriteRenderer>().enabled = true;
         progressBar.GetComponent<SpriteRenderer>().enabled = true;
+        backgroundBar.GetComponent<SpriteRenderer>().enabled = true;
     }
 
 }

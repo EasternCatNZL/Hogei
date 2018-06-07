@@ -23,6 +23,12 @@ public class HoverOverText : MonoBehaviour {
         {
             CreateTextObject();
         }
+        else
+        {
+            TextYScale = TextObject.transform.localScale.y;
+            if (TextYScale <= 0) TextYScale = 1f;
+            TextObject.transform.DOScaleY(0, 0.5f);
+        }
 	}
 	
 	// Update is called once per frame
@@ -62,15 +68,11 @@ public class HoverOverText : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        print("MouseOver");
-        TextObject.transform.DOScaleY(1f, 0.5f).SetEase(Ease.OutBounce);
-        //TextObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        TextObject.transform.DOScaleY(TextYScale, 0.5f).SetEase(Ease.OutBounce);
     }
 
     private void OnMouseExit()
     {
-        print("MouseExit");
         TextObject.transform.DOScaleY(0, 0.5f);
-        //TextObject.transform.localScale = Vector3.zero;
     }
 }
