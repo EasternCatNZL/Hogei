@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.22767574, g: 0.47442454, b: 0.6555762, a: 1}
+  m_IndirectSpecularColor: {r: 0.22768158, g: 0.47445533, b: 0.6555884, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -2811,6 +2811,42 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.10665921
       objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
   m_IsPrefabParent: 0
@@ -2988,6 +3024,21 @@ Prefab:
     - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 49.475002
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -5449,6 +5500,21 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 0.009999999
       objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
   m_IsPrefabParent: 0
@@ -6180,6 +6246,21 @@ Prefab:
     - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -8682,33 +8763,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 217
       objectReference: {fileID: 0}
-    - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -7.018
-      objectReference: {fileID: 0}
-    - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.629
-      objectReference: {fileID: 0}
-    - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.6710001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.087919995
-      objectReference: {fileID: 0}
-    - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.087919995
-      objectReference: {fileID: 0}
-    - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.087919995
-      objectReference: {fileID: 0}
     - target: {fileID: 1822698429227908, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_Name
       value: Corn_3 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -8940,6 +9018,42 @@ Prefab:
     - target: {fileID: 1822698429227908, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_Name
       value: Corn_3 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -10821,15 +10935,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: a9bf219759ac5774e8d893dbfca890aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.4
+      value: -64.84
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9bf219759ac5774e8d893dbfca890aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.04
+      value: 12.27
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9bf219759ac5774e8d893dbfca890aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.44
+      value: -3.31
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9bf219759ac5774e8d893dbfca890aa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -13002,6 +13116,21 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.010000011
       objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
   m_IsPrefabParent: 0
@@ -13931,11 +14060,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.009999998
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.009999998
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -14836,12 +14965,12 @@ Prefab:
     - target: {fileID: 224010583235119198, guid: a359092b90a7a38448c9e233c4232d51,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 511.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224010583235119198, guid: a359092b90a7a38448c9e233c4232d51,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 311
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224010583235119198, guid: a359092b90a7a38448c9e233c4232d51,
         type: 2}
@@ -15073,6 +15202,42 @@ Prefab:
     - target: {fileID: 4336466859141206, guid: 11b89394ebe8fc945a16f7639c86bb6c, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.0931
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11b89394ebe8fc945a16f7639c86bb6c, type: 2}
@@ -15406,6 +15571,26 @@ Prefab:
     - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.010000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -16646,6 +16831,42 @@ Prefab:
     - target: {fileID: 1822698429227908, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_Name
       value: Corn_3 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -19847,6 +20068,42 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.0931
       objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608290348233532, guid: 11b89394ebe8fc945a16f7639c86bb6c,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11b89394ebe8fc945a16f7639c86bb6c, type: 2}
   m_IsPrefabParent: 0
@@ -22360,7 +22617,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -93.64
+      value: -92.86
       objectReference: {fileID: 0}
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -22368,7 +22625,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 60.95
+      value: 60.28
       objectReference: {fileID: 0}
     - target: {fileID: 4484032791757756, guid: b37584cdfb91f0a488beb7d6ad83a6e0, type: 2}
       propertyPath: m_LocalRotation.x
@@ -24369,6 +24626,42 @@ Prefab:
       propertyPath: m_Name
       value: Corn_3 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
   m_IsPrefabParent: 0
@@ -24744,6 +25037,42 @@ Prefab:
     - target: {fileID: 4073842705779844, guid: 0e5403886434f534c8fc0ce5c77b260b, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.08157001
+      objectReference: {fileID: 0}
+    - target: {fileID: 114571970765158876, guid: 0e5403886434f534c8fc0ce5c77b260b,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114571970765158876, guid: 0e5403886434f534c8fc0ce5c77b260b,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114571970765158876, guid: 0e5403886434f534c8fc0ce5c77b260b,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114571970765158876, guid: 0e5403886434f534c8fc0ce5c77b260b,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114571970765158876, guid: 0e5403886434f534c8fc0ce5c77b260b,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114571970765158876, guid: 0e5403886434f534c8fc0ce5c77b260b,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114571970765158876, guid: 0e5403886434f534c8fc0ce5c77b260b,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5403886434f534c8fc0ce5c77b260b, type: 2}
@@ -25495,6 +25824,42 @@ Prefab:
     - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.08791594
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: HitVFX
+      value: 
+      objectReference: {fileID: 1570438671803912, guid: 8664ff46e62c3e643b63e39ebfc2bbe6,
+        type: 2}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXScaleOverride.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
@@ -29101,6 +29466,21 @@ Prefab:
     - target: {fileID: 4554056760796524, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.010000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062510339273880, guid: c35a9fa545a072a43a46713dd855cdb4,
+        type: 2}
+      propertyPath: VFXRotationOffset.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c35a9fa545a072a43a46713dd855cdb4, type: 2}
