@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.22768158, g: 0.47445533, b: 0.6555884, a: 1}
+  m_IndirectSpecularColor: {r: 0.22767574, g: 0.47442454, b: 0.6555762, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -315,9 +316,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &121859908
@@ -976,9 +977,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &297572445
@@ -1148,9 +1149,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &391387943
@@ -1297,6 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1038686829}
+  backgroundBar: {fileID: 0}
   EntityHealth: {fileID: 1529776239}
   BorderSprites: []
 --- !u!1001 &497272883
@@ -1415,6 +1417,44 @@ Prefab:
       propertyPath: riseEndLocation
       value: 
       objectReference: {fileID: 1391061583}
+    - target: {fileID: 33367413379024440, guid: 22a826cc35c428442b76433743262fc9,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 8a16619830104c441bba6854dbe1e7cf, type: 3}
+    - target: {fileID: 4801796697608676, guid: 22a826cc35c428442b76433743262fc9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.4785766
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801796697608676, guid: 22a826cc35c428442b76433743262fc9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.4785766
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801796697608676, guid: 22a826cc35c428442b76433743262fc9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.4785766
+      objectReference: {fileID: 0}
+    - target: {fileID: 23874259722943904, guid: 22a826cc35c428442b76433743262fc9,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a16619830104c441bba6854dbe1e7cf, type: 3}
+    - target: {fileID: 4620954122765564, guid: 22a826cc35c428442b76433743262fc9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620954122765564, guid: 22a826cc35c428442b76433743262fc9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -6.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620954122765564, guid: 22a826cc35c428442b76433743262fc9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -7.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801796697608676, guid: 22a826cc35c428442b76433743262fc9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 15.67
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22a826cc35c428442b76433743262fc9, type: 2}
   m_IsPrefabParent: 0
@@ -1654,7 +1694,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 823991344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000091552734, y: 137.87999, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1208848421}
@@ -1757,9 +1797,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &825051667
@@ -2262,9 +2302,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1124222189
@@ -2465,12 +2505,12 @@ Prefab:
     - target: {fileID: 224010583235119198, guid: a359092b90a7a38448c9e233c4232d51,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 511.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224010583235119198, guid: a359092b90a7a38448c9e233c4232d51,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 311
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224010583235119198, guid: a359092b90a7a38448c9e233c4232d51,
         type: 2}
@@ -2576,6 +2616,10 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMapScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090361354251948, guid: a359092b90a7a38448c9e233c4232d51, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a359092b90a7a38448c9e233c4232d51, type: 2}
@@ -2809,9 +2853,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1358946384
@@ -2975,7 +3019,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4888204339978660, guid: 3e1f46124fcde1e44a663c739cb3ca7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.011
+      value: 15.98
       objectReference: {fileID: 0}
     - target: {fileID: 4888204339978660, guid: 3e1f46124fcde1e44a663c739cb3ca7e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3313,9 +3357,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1633788633
@@ -3452,9 +3496,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1719389325
@@ -3574,9 +3618,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1735257688
@@ -3759,7 +3803,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 8a16619830104c441bba6854dbe1e7cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.47
+      value: 24.7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a16619830104c441bba6854dbe1e7cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3767,7 +3811,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a16619830104c441bba6854dbe1e7cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.13
+      value: 23.9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8a16619830104c441bba6854dbe1e7cf, type: 3}
       propertyPath: m_LocalRotation.x
