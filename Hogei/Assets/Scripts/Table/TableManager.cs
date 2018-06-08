@@ -24,12 +24,23 @@ public class TableManager : MonoBehaviour {
     [Header("Soup manager")]
     public SoupManager soup;
 
+    [Header("Tags")]
+    public string playerTag = "Player";
+
+    [Header("Inputs")]
+    public string cOpenBox = "CSwitch";
+
     private Animator Anim;
     private bool IsOpen = false;
+
+    //script refs
+    WhatCanIDO canDo;
 
     // Use this for initialization
     void Start()
     {
+        canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
+
         //Get attached animator
         if (GetComponent<Animator>())
         {
@@ -44,20 +55,38 @@ public class TableManager : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {        
-		if(Input.GetMouseButtonDown(0))
+	void Update () {
+        if (canDo.useKeyboard)
+        {
+            ClickMapNodeMouse();
+        }
+        else if (canDo.useController)
+        {
+            if (Luminosity.IO.InputManager.GetButton(cOpenBox))
+            {
+                ChangeConfiguration();
+            }
+        }
+	}
+
+    //mouse click on map nodes
+    void ClickMapNodeMouse()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit RayHit = MouseTarget.GetWorldMouseHit(1 << MapNodeLayer);
-            if(RayHit.collider)
+            if (RayHit.collider)
             {
                 GameObject ObjHit = RayHit.collider.gameObject;
-                if(ObjHit.GetComponent<TableMapNode>())
+                if (ObjHit.GetComponent<TableMapNode>())
                 {
                     ObjHit.GetComponent<TableMapNode>().LoadLevel();
                 }
             }
         }
-	}
+    }
+
+    //controller on map node
 
     public void UnlockMapNodes()
     {

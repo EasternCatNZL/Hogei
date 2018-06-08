@@ -33,13 +33,19 @@ public class IngredientBowl : MonoBehaviour {
 
     private void OnMouseOver()
     {
+        Highlighted();
+    }
+
+    //when highlighted
+    void Highlighted()
+    {
         if (TextDisplay)
         {
             Weapon.WeaponModifier WeaponMod = IngredientPrefab.GetComponent<SoupIngredient>().WeaponMod;
-            if(WeaponMod.Value < -1 & WeaponMod.Value < 0) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    " + WeaponMod.Value;
+            if (WeaponMod.Value < -1 & WeaponMod.Value < 0) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    " + WeaponMod.Value;
             else if (WeaponMod.Value > -1 && WeaponMod.Value < 0) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":   " + WeaponMod.Value + "%";
-            else if (WeaponMod.Value > 0 && WeaponMod.Value < 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value +"%";
-            else if(WeaponMod.Value >= 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value;
+            else if (WeaponMod.Value > 0 && WeaponMod.Value < 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value + "%";
+            else if (WeaponMod.Value >= 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value;
 
         }
     }
@@ -52,6 +58,12 @@ public class IngredientBowl : MonoBehaviour {
     //In-built function called when collider is clicked down on
     void OnMouseDown()
     {
+        IngredientSelected();
+    }
+
+    //when object seleceted
+    public void IngredientSelected()
+    {
         if (IngredientAmount > 0)
         {
             GameObject Ingred = Instantiate(IngredientPrefab);
@@ -59,7 +71,7 @@ public class IngredientBowl : MonoBehaviour {
             IngredientAmount -= 1;
             Ingred.GetComponent<SoupIngredient>().myBowl = this;
         }
-        if(IngredientAmount <= 0)
+        if (IngredientAmount <= 0)
         {
             Hide();
         }

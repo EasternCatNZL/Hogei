@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour {
 
-    [Header("Cursor object")]
-    [Tooltip("Game representation of cursor")]
-    public GameObject cursorObject;
+    //[Header("Cursor object")]
+    //[Tooltip("Game representation of cursor")]
+    //public GameObject cursorObject;
+
+    [Header("Camera ref")]
+    [Tooltip("Current camera in use")]
+    public Camera cam;
 
     [Header("Cursor move speed")]
     [Tooltip("Speed of cursor movement with controller")]
@@ -19,9 +23,11 @@ public class CursorController : MonoBehaviour {
     [Header("Inputs")]
     public string contX = "CHorizontal";
     public string contY = "CVertical";
+    public string contSelect = "CSelect";
 
     [Header("Tags")]
     public string playerTag = "Player";
+    public string soupTag = "Soup";
 
     //script refs
     WhatCanIDO canDo;
@@ -75,23 +81,19 @@ public class CursorController : MonoBehaviour {
         if (Luminosity.IO.InputManager.GetAxisRaw(contX) > deadZone)
         {
             moveDirection += transform.right * cursorMoveSpeed * Luminosity.IO.InputManager.GetAxisRaw(contX);
-
         }
         else if (Luminosity.IO.InputManager.GetAxisRaw(contX) < -deadZone)
         {
             moveDirection += transform.right * cursorMoveSpeed * Luminosity.IO.InputManager.GetAxisRaw(contX);
-
         }
         //y axis
         if (Luminosity.IO.InputManager.GetAxisRaw(contY) > deadZone)
         {
             moveDirection += transform.up * cursorMoveSpeed * Luminosity.IO.InputManager.GetAxisRaw(contY);
-
         }
         else if (Luminosity.IO.InputManager.GetAxisRaw(contY) < -deadZone)
         {
-            moveDirection += transform.up * cursorMoveSpeed * Luminosity.IO.InputManager.GetAxisRaw(contY);
-        }
+            moveDirection += transform.up * cursorMoveSpeed * Luminosity.IO.InputManager.GetAxisRaw(contY);        }
         //move the object
         transform.position = transform.position + moveDirection * cursorMoveSpeed * Time.deltaTime;
     }
@@ -99,6 +101,34 @@ public class CursorController : MonoBehaviour {
     //when on controller controls, launch ray from cursor pos into world as if mouse behavior
     private void CursorMouseBehavior()
     {
+        //check if input
+        if (Luminosity.IO.InputManager.GetButton(contSelect))
+        {
+            //first check soup manager holding something
+            if (GameObject.FindGameObjectWithTag(soupTag))
+            {
 
+            }
+
+            //send ray from cursor pos in canvas
+            Ray ray = cam.ScreenPointToRay(transform.position);
+            //get hit information
+            RaycastHit rayHit;
+            Physics.Raycast(ray, out rayHit, Mathf.Infinity);
+
+            //if map node is hovered over
+            if (rayHit.collider.gameObject.GetComponent<TableMapNode>())
+            {
+                rayHit.collider.gameObject.GetComponent<TableMapNode>().LoadLevel();
+            }
+            else if (rayHit.collider.gameObject.GetComponent<IngredientBowl>())
+            {
+                rayHit.collider.gameObject.GetComponent<IngredientBowl>().IngredientSelected();
+            }
+        }
+
+        
     }
+
+
 }
