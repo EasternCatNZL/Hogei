@@ -39,17 +39,20 @@ public class ItemGrabbing : MonoBehaviour {
 
     private void PlaneFollowGrabbing()
     {
+        //This grabs items when there isn't one held on mouse click
         if (!HeldItem && Input.GetMouseButtonDown(0))
         {
             CheckRayCast();
         }
+        //This lets go of the object on mouse click
         else if (!JustPickedUp && Input.GetMouseButtonDown(0))
         {
             if(DebugSphere) DebugSphere.transform.position = Vector3.zero;
             MovementPlane.SetActive(false);
             HeldItem.GetComponent<SphereCollider>().enabled = true;
-            HeldItem = null;
+            HeldItem = null;//By setting helditem to null it lets go of the object
         }
+        //If there is a held item make it follow the mouse curser on the plane
         if (HeldItem)
         {            
             //raycast stuff
