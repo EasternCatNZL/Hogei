@@ -144,7 +144,9 @@ public class PlayerManager : MonoBehaviour {
         }
         if (SoupInventory == null) SoupInventory = new List<SoupUpgrade>();
         if (WeaponInventory == null) WeaponInventory = new List<Weapon>();
-        //Setup For Map Scene
+        //Setup for cursor
+        if (SceneManager.GetActiveScene().buildIndex == 1) Cursor.visible = true; //If its the map scene show it
+        else Cursor.visible = false;
         Debug.Log(Time.time + ": " + gameObject.name + " - ...Setup Done");
     }
 
