@@ -6,9 +6,15 @@ using DG.Tweening;
 public class TableMapNode : MonoBehaviour {
 
     public bool IsUnlocked = false;
+    public bool IsNext = false;
     [Header("Level Info")]
     public GameObject LevelName;
     public int LevelIndex;
+
+    [Header("Materials")]
+    public Material CompleteMat;
+    public Material NextMat;
+    public Material LockedMat;
 
     private string NameString;
     private bool Disabled = false;
@@ -18,15 +24,39 @@ public class TableMapNode : MonoBehaviour {
 
     void Start()
     {
+        if(LevelName) LevelName.transform.DOScaleY(0, 0f);
         NameString = LevelName.GetComponent<TextMesh>().text;
         if (RequiredNode == null)
         {
             IsUnlocked = true;
         }
+        ChangeSign();
+    }
+
+    public void ChangeSign()
+    {
+        MeshRenderer Renderer = GetComponent<MeshRenderer>();
+        if(IsUnlocked)
+        {
+            if(IsNext)
+            {
+                Renderer.material = NextMat;
+            }
+            else
+            {
+                Renderer.material = CompleteMat;
+            }
+        }
+        else
+        {
+            Renderer.material = LockedMat;
+        }
     }
 
     private void OnMouseEnter()
     {
+        transform.DOComplete();
+        transform.DOShakeRotation(1f, 5, 5, 10);
         if (!Disabled)
         {
             if (!IsUnlocked)
