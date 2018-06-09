@@ -91,18 +91,29 @@ public class TableManager : MonoBehaviour {
     public void UnlockMapNodes()
     {
         List<int> Unlocks = PlayerManager.GetInstance().GetLevelsCompleted();
+        TableMapNode LastNode = null;
         foreach(TableMapNode _Node in MapNodes)
-        {
+        {           
             if (_Node.RequiredNode == null)
             {
                 _Node.IsUnlocked = true;
+                _Node.ChangeSign();
+                LastNode = _Node;
                 continue;
             }
             if(Unlocks.Contains(_Node.RequiredNode.LevelIndex))
             {
                 _Node.IsUnlocked = true;
+                _Node.ChangeSign();
+                LastNode = _Node;
                 continue;
             }
+            else
+            {
+                LastNode.IsNext = true;
+                LastNode.ChangeSign();
+            }
+            
         }
     }
 

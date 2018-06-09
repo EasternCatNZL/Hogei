@@ -6,6 +6,7 @@ using DG.Tweening;
 public class TableMapNode : MonoBehaviour {
 
     public bool IsUnlocked = false;
+    public bool IsNext = false;
     [Header("Level Info")]
     public GameObject LevelName;
     public int LevelIndex;
@@ -29,6 +30,7 @@ public class TableMapNode : MonoBehaviour {
         {
             IsUnlocked = true;
         }
+        ChangeSign();
     }
 
     public void ChangeSign()
@@ -36,13 +38,13 @@ public class TableMapNode : MonoBehaviour {
         MeshRenderer Renderer = GetComponent<MeshRenderer>();
         if(IsUnlocked)
         {
-            if(RequiredNode.IsUnlocked)
+            if(IsNext)
             {
-                Renderer.material = CompleteMat;
+                Renderer.material = NextMat;
             }
             else
             {
-                Renderer.material = NextMat;
+                Renderer.material = CompleteMat;
             }
         }
         else
@@ -53,6 +55,8 @@ public class TableMapNode : MonoBehaviour {
 
     private void OnMouseEnter()
     {
+        transform.DOComplete();
+        transform.DOShakeRotation(1f, 5, 5, 10);
         if (!Disabled)
         {
             if (!IsUnlocked)

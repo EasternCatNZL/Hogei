@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class SoupManager : MonoBehaviour {
+public class SoupManager : MonoBehaviour
+{
 
 
 
@@ -19,18 +20,22 @@ public class SoupManager : MonoBehaviour {
     [Header("UI Settings")]
     public Text UpgradeDescText;
     public TextMesh SoupCapacityText;
+    [Header("VFX Settings")]
+    public ParticleSystem CompleteVFX;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         SoupIngredients = new List<SoupIngredient>();
         SoupUpgrades = new Dictionary<Weapon.WeaponEffects, float>();
         UpdateUI();
     }
-	
-	// Update is called once per frame
-	void Update () {       
+
+    // Update is called once per frame
+    void Update()
+    {
         TheSoup.transform.Rotate(new Vector3(0f, 0f, SoupRotationSpeed * Time.deltaTime));
-	}
+    }
 
     public void CompleteSoup()
     {
@@ -48,12 +53,20 @@ public class SoupManager : MonoBehaviour {
             PlayerManager.GetInstance().SetPrimarySoup(NewSoupUpgrade.GetComponent<SoupUpgrade>());
             PlayerManager.GetInstance().SetSecondarySoup(NewSoupUpgrade.GetComponent<SoupUpgrade>());
             ClearSoup();
+            //Glitter and Sparkles
+            if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
+
+            if (CompleteVFX && !CompleteVFX.isPlaying)
+            {
+                CompleteVFX.Play();
+            }
         }
         else
         {
             Debug.Log("No ingredients in the pot to make soup");
         }
-        if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
+
+
         UpdateUI();
     }
 
@@ -61,17 +74,17 @@ public class SoupManager : MonoBehaviour {
     {
         SoupIngredient Obj = other.gameObject.GetComponent<SoupIngredient>();
         if (SoupIngredients.Count < MaxSoupSize && !SoupIngredients.Contains(Obj))
-        {         
+        {
             //Add ingredient to ingredients list
             SoupIngredients.Add(Obj);
             //Add the weapon mods to the upgrade list
-            if(SoupUpgrades.ContainsKey(Obj.WeaponMod.Effect))
+            if (SoupUpgrades.ContainsKey(Obj.WeaponMod.Effect))
             {
                 SoupUpgrades[Obj.WeaponMod.Effect] += Obj.WeaponMod.Value;
             }
             else
             {
-                SoupUpgrades.Add(Obj.WeaponMod.Effect,Obj.WeaponMod.Value);
+                SoupUpgrades.Add(Obj.WeaponMod.Effect, Obj.WeaponMod.Value);
             }
             if (UpgradeDescText) UpdateUI();
             if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
@@ -85,8 +98,8 @@ public class SoupManager : MonoBehaviour {
     public void UpdateUI()
     {
         UpgradeDescText.text = "Soup Effects:";
-        foreach (KeyValuePair<Weapon.WeaponEffects,float> _Upgrade in SoupUpgrades)
-        {           
+        foreach (KeyValuePair<Weapon.WeaponEffects, float> _Upgrade in SoupUpgrades)
+        {
             string oldText = UpgradeDescText.text;
             string append = "\n" + _Upgrade.Key + " " + _Upgrade.Value;
             UpgradeDescText.text = oldText + append;
@@ -113,7 +126,7 @@ public class SoupManager : MonoBehaviour {
             {
                 Destroy(SoupIngredients[i].gameObject);
             }
-            
+
         }
         SoupIngredients.Clear();
         //Clear Soup Upgrades List
