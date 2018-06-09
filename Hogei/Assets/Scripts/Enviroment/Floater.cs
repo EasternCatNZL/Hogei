@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Floater : MonoBehaviour {
 
+    public bool UseLocalPosition = false;
     //spin
     public float DegreesPerSec = 0.0f;
     //up/down
@@ -26,7 +27,14 @@ public class Floater : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        PositionOffset = transform.position;
+        if (UseLocalPosition)
+        {
+            PositionOffset = transform.localPosition;
+        }
+        else
+        {
+            PositionOffset = transform.position;
+        }
         //Get random speeds within the range
         ySpeed = Random.Range(ySpeedRange.x, ySpeedRange.y);
         xSpeed = Random.Range(xSpeedRange.x, xSpeedRange.y);
@@ -35,15 +43,29 @@ public class Floater : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {        
-        transform.Rotate(new Vector3(0.0f, Time.deltaTime * DegreesPerSec, 0.0f), Space.World);
-        TempPos = PositionOffset;       
-        //Set new position based on sine wave
-        TempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * ySpeed) * yAmp;
-        TempPos.x += Mathf.Sin(Time.fixedTime * Mathf.PI * xSpeed) * xAmp;
-        TempPos.z += Mathf.Sin(Time.fixedTime * Mathf.PI * zSpeed) * zAmp;
-        //Set new position
-        transform.position = TempPos;
+    {
+        if (UseLocalPosition)
+        {
+            transform.Rotate(new Vector3(0.0f, Time.deltaTime * DegreesPerSec, 0.0f), Space.World);
+            TempPos = PositionOffset;
+            //Set new position based on sine wave
+            TempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * ySpeed) * yAmp;
+            TempPos.x += Mathf.Sin(Time.fixedTime * Mathf.PI * xSpeed) * xAmp;
+            TempPos.z += Mathf.Sin(Time.fixedTime * Mathf.PI * zSpeed) * zAmp;
+            //Set new position
+            transform.localPosition = TempPos;
+        }
+        else
+        {
+            transform.Rotate(new Vector3(0.0f, Time.deltaTime * DegreesPerSec, 0.0f), Space.World);
+            TempPos = PositionOffset;
+            //Set new position based on sine wave
+            TempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * ySpeed) * yAmp;
+            TempPos.x += Mathf.Sin(Time.fixedTime * Mathf.PI * xSpeed) * xAmp;
+            TempPos.z += Mathf.Sin(Time.fixedTime * Mathf.PI * zSpeed) * zAmp;
+            //Set new position
+            transform.position = TempPos;
+        }
         
     }
 }
