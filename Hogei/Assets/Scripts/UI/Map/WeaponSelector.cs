@@ -14,8 +14,11 @@ public class WeaponSelector : MonoBehaviour
     [Header("Sprite Settings")]
     public Sprite SelectorSprite;
     public Sprite SelectorSpriteSelected;
+    public Sprite SelectorNoneSprite;
+    public Sprite SelectorNoneSpriteSelected;
     [Header("Weapon Sprites")]
     public SpriteRenderer WeaponIcon;
+
     public Sprite StreamSprite;
     public Sprite ShotSprite;
     public Sprite HomeSprite;
@@ -39,13 +42,27 @@ public class WeaponSelector : MonoBehaviour
 
     private void OnMouseExit()
     {
-        Renderer.sprite = SelectorSprite;
+        if (WeaponSelected == Weapon.WeaponTypes.None || WeaponSelected == null)
+        {
+            Renderer.sprite = SelectorNoneSprite;
+        }
+        else
+        {
+            Renderer.sprite = SelectorSprite;
+        }
         SoupManager.UpdateUI();
     }
 
     private void OnMouseEnter()
     {
-        Renderer.sprite = SelectorSpriteSelected;
+        if (WeaponSelected == Weapon.WeaponTypes.None || WeaponSelected == null)
+        {
+            Renderer.sprite = SelectorNoneSpriteSelected;
+        }
+        else
+        {
+            Renderer.sprite = SelectorSpriteSelected;
+        }
         if (PrimarySelector)
         {
             DescriptionText.text = GetDescriptionText();
@@ -63,6 +80,14 @@ public class WeaponSelector : MonoBehaviour
 
     private void UpdateWeaponIcon()
     {
+        if(WeaponSelected == Weapon.WeaponTypes.None || WeaponSelected == null)
+        {
+            Renderer.sprite = SelectorNoneSprite;
+        }
+        else
+        {
+            Renderer.sprite = SelectorSprite;
+        }
         switch(WeaponSelected)
         {
             case Weapon.WeaponTypes.Stream:

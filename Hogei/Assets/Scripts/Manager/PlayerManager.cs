@@ -142,7 +142,15 @@ public class PlayerManager : MonoBehaviour {
                 IngredientInventory[i] = 10;
             }
         }
+        //Soup settings
+        Debug.Log(Time.time + ": " + gameObject.name + " - Setting up soup inventories...");
         if (SoupInventory == null) SoupInventory = new List<SoupUpgrade>();
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SoupInventory.Clear();
+            PrimarySoup = null;
+            SecondarySoup = null;
+        }
         if (WeaponInventory == null) WeaponInventory = new List<Weapon>();
         //Setup for cursor
         //if (SceneManager.GetActiveScene().buildIndex == 1) Cursor.visible = true; //If its the map scene show it
