@@ -10,6 +10,11 @@ public class TableMapNode : MonoBehaviour {
     public GameObject LevelName;
     public int LevelIndex;
 
+    [Header("Materials")]
+    public Material CompleteMat;
+    public Material NextMat;
+    public Material LockedMat;
+
     private string NameString;
     private bool Disabled = false;
 
@@ -18,10 +23,31 @@ public class TableMapNode : MonoBehaviour {
 
     void Start()
     {
+        if(LevelName) LevelName.transform.DOScaleY(0, 0f);
         NameString = LevelName.GetComponent<TextMesh>().text;
         if (RequiredNode == null)
         {
             IsUnlocked = true;
+        }
+    }
+
+    public void ChangeSign()
+    {
+        MeshRenderer Renderer = GetComponent<MeshRenderer>();
+        if(IsUnlocked)
+        {
+            if(RequiredNode.IsUnlocked)
+            {
+                Renderer.material = CompleteMat;
+            }
+            else
+            {
+                Renderer.material = NextMat;
+            }
+        }
+        else
+        {
+            Renderer.material = LockedMat;
         }
     }
 
