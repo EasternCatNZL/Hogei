@@ -16,6 +16,12 @@ public class ItemGrabbing : MonoBehaviour {
     private bool JustPickedUp = false;
     private Vector3 lastPos = Vector3.zero;
 
+    [Header("Inputs")]
+    public string contSelect = "CSelect";
+
+    [Header("Tags")]
+    public string playerTag = "Player";
+
     void Start()
     {
         if (ItemsFollowPlane)
@@ -45,12 +51,30 @@ public class ItemGrabbing : MonoBehaviour {
             CheckRayCast();
         }
         //This lets go of the object on mouse click
-        else if (!JustPickedUp && Input.GetMouseButtonDown(0))
+        else if (!JustPickedUp)
         {
-            if(DebugSphere) DebugSphere.transform.position = Vector3.zero;
-            MovementPlane.SetActive(false);
-            HeldItem.GetComponent<SphereCollider>().enabled = true;
-            HeldItem = null;//By setting helditem to null it lets go of the object
+            //find player
+            if (GameObject.FindGameObjectWithTag(playerTag))
+            {
+                //get can do script
+                WhatCanIDO canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
+                //if keyboard
+                if (canDo.useKeyboard)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ReleaseHeldItem();
+                    }
+                }
+                ////if controller
+                //else if (canDo.useController)
+                //{
+                //    if (Luminosity.IO.InputManager.GetButton(contSelect))
+                //    {
+                //        ReleaseHeldItem();
+                //    }
+                //}
+            }
         }
         //If there is a held item make it follow the mouse curser on the plane
         if (HeldItem)
@@ -67,6 +91,15 @@ public class ItemGrabbing : MonoBehaviour {
             else HeldItem.transform.position = lastPos;
             JustPickedUp = false;
         }
+    }
+
+    //release held item
+    public void ReleaseHeldItem()
+    {
+        if (DebugSphere) DebugSphere.transform.position = Vector3.zero;
+        MovementPlane.SetActive(false);
+        HeldItem.GetComponent<SphereCollider>().enabled = true;
+        HeldItem = null;//By setting helditem to null it lets go of the object
     }
 
     private void MouseFollowGrabbing()
