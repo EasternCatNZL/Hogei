@@ -52,6 +52,7 @@ public class CursorController : MonoBehaviour {
         else if (canDo.useController)
         {
             CursorMove();
+            CursorMouseBehavior();
         }
     }
 
@@ -101,30 +102,40 @@ public class CursorController : MonoBehaviour {
     //when on controller controls, launch ray from cursor pos into world as if mouse behavior
     private void CursorMouseBehavior()
     {
+        //if camera not set, set it
+        if (!cam) {
+            cam = Camera.main;
+        }
+            
         //check if input
         if (Luminosity.IO.InputManager.GetButton(contSelect))
         {
             //first check soup manager holding something
-            if (GameObject.FindGameObjectWithTag(soupTag))
+            if (GameObject.FindGameObjectWithTag(soupTag).GetComponent<ItemGrabbing>().HeldItem)
             {
-
+                //let go
+                GameObject.FindGameObjectWithTag(soupTag).GetComponent<ItemGrabbing>().ReleaseHeldItem();
             }
-
-            //send ray from cursor pos in canvas
-            Ray ray = cam.ScreenPointToRay(transform.position);
-            //get hit information
-            RaycastHit rayHit;
-            Physics.Raycast(ray, out rayHit, Mathf.Infinity);
-
-            //if map node is hovered over
-            if (rayHit.collider.gameObject.GetComponent<TableMapNode>())
+            //else do things
+            else
             {
-                rayHit.collider.gameObject.GetComponent<TableMapNode>().LoadLevel();
+                //send ray from cursor pos in canvas
+                Ray ray = cam.ScreenPointToRay(transform.position);
+                //get hit information
+                RaycastHit rayHit;
+                Physics.Raycast(ray, out rayHit, Mathf.Infinity);
+
+                //if map node is hovered over
+                if (rayHit.collider.gameObject.GetComponent<TableMapNode>())
+                {
+                    rayHit.collider.gameObject.GetComponent<TableMapNode>().LoadLevel();
+                }
+                else if (rayHit.collider.gameObject.GetComponent<IngredientBowl>())
+                {
+                    rayHit.collider.gameObject.GetComponent<IngredientBowl>().IngredientSelected();
+                }
             }
-            else if (rayHit.collider.gameObject.GetComponent<IngredientBowl>())
-            {
-                rayHit.collider.gameObject.GetComponent<IngredientBowl>().IngredientSelected();
-            }
+            
         }
 
         
