@@ -10,8 +10,10 @@ public class WeaponWheel : MonoBehaviour {
     private Vector3 endValue;
     private Vector3 currentRotation;
     [Header("UI Settings")]
-    public GameObject PrimaryIcon;
-    public GameObject SecondaryIcon;
+    //public GameObject PrimaryIcon;
+    //public GameObject SecondaryIcon;
+    public Image PrimaryWeaponIcon;
+    public Image SecondaryWeaponIcon;
     public Sprite StreamSprite;
     public Sprite ShotSprite;
     public Sprite FertSprite;
@@ -19,29 +21,28 @@ public class WeaponWheel : MonoBehaviour {
     public Sprite ExplSprite;
 
     private Animator Anim;
-    public Image PrimaryWeaponIcon;
-    public Image SecondaryWeaponIcon;
     public Sprite PrimSprite;
     public Sprite SeconSprite;
-
     private Color PrimAlpha;
     private Color SecAlpha;
-    public bool isPrimary;
+    private bool isPrimary;
 
 	// Use this for initialization
 	void Start () {
         Initialise();
-
     }
 
     public void Initialise()
     {
         Anim = gameObject.GetComponent<Animator>();
-
         isPrimary = true;
         Weapon.WeaponTypes _Pri = PlayerManager.GetInstance().GetPrimary();
         Weapon.WeaponTypes _Sec = PlayerManager.GetInstance().GetSecondary();
 
+       // Weapon _Pri = PlayerManager.GetInstance().Player.GetComponent<PlayerAttack>().PrimaryWeapon;
+       // Weapon _Sec = PlayerManager.GetInstance().Player.GetComponent<PlayerAttack>().SecondaryWeapon;        
+
+        
         switch (_Pri)
         {
             case Weapon.WeaponTypes.Stream:
