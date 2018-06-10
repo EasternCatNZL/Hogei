@@ -27,17 +27,35 @@ public class WeaponInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData _Event)
     {
+        OnSelect();
+    }
+
+    //when seleceted
+    public void OnSelect()
+    {
         Renderer.sprite = WeaponIconSelected;
         DetailsText.text = GetDescriptionText();
     }
 
     public void OnPointerExit(PointerEventData _Event)
     {
+        OnDeselect();
+    }
+
+    //when deselected
+    public void OnDeselect()
+    {
         Renderer.sprite = WeaponIcon;
         DetailsText.text = "";
     }
 
     public void OnPointerClick(PointerEventData _Event)
+    {
+        OnInteract();
+    }
+
+    //on interact
+    public void OnInteract()
     {
         weaponInventory.GetSelector().SetWeapon(weaponType);
         weaponInventory.CloseInventory();

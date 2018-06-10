@@ -42,6 +42,12 @@ public class WeaponSelector : MonoBehaviour
 
     private void OnMouseExit()
     {
+        OnDeselected();
+    }
+
+    //when no longer hovered over
+    public void OnDeselected()
+    {
         if (WeaponSelected == Weapon.WeaponTypes.None || WeaponSelected == null)
         {
             Renderer.sprite = SelectorNoneSprite;
@@ -49,7 +55,7 @@ public class WeaponSelector : MonoBehaviour
         else
         {
             Renderer.sprite = SelectorSprite;
-            if(WeaponIcon.sprite == null)
+            if (WeaponIcon.sprite == null)
             {
                 UpdateWeaponIcon();
             }
@@ -58,6 +64,12 @@ public class WeaponSelector : MonoBehaviour
     }
 
     private void OnMouseEnter()
+    {
+        OnSelected();
+    }
+
+    //when hovered over
+    public void OnSelected()
     {
         if (WeaponSelected == Weapon.WeaponTypes.None || WeaponSelected == null)
         {

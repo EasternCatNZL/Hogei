@@ -70,6 +70,12 @@ public class SoupManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         SoupIngredient Obj = other.gameObject.GetComponent<SoupIngredient>();
+        AddToSoup(Obj);
+    }
+
+    //add ingredient to soup
+    public void AddToSoup(SoupIngredient Obj)
+    {
         if (SoupIngredients.Count < MaxSoupSize && !SoupIngredients.Contains(Obj))
         {
             //Add ingredient to ingredients list
@@ -88,9 +94,11 @@ public class SoupManager : MonoBehaviour
         }
         else
         {
-            Destroy(other.gameObject);
+            Destroy(Obj.gameObject);
         }
     }
+
+    
 
     public void UpdateUI()
     {

@@ -28,6 +28,7 @@ public class TableManager : MonoBehaviour {
     public ControllerMenuNavigator navigator;
     public ControllerIndexedMenu mapMenu;
     public ControllerIndexedMenu openBoxMenu;
+    public ControllerIndexedMenu weaponSelectorMenu;
 
     [Header("Tags")]
     public string playerTag = "Player";
@@ -65,13 +66,13 @@ public class TableManager : MonoBehaviour {
         {
             ClickMapNodeMouse();
         }
-        else if (canDo.useController)
-        {
-            if (Luminosity.IO.InputManager.GetButton(cOpenBox))
-            {
-                ChangeConfiguration();
-            }
-        }
+        //else if (canDo.useController)
+        //{
+        //    if (Luminosity.IO.InputManager.GetButton(cOpenBox))
+        //    {
+        //        ChangeConfiguration();
+        //    }
+        //}
 	}
 
     //mouse click on map nodes
@@ -177,6 +178,10 @@ public class TableManager : MonoBehaviour {
                     //set menu to navigate to map menu
                     navigator.SetMenu(mapMenu);
                 }
+
+                //close weapon invent
+                WeapInvent.CloseInventory();
+                
                 
                 //clear the soup
                 soup.ClearSoup();

@@ -37,7 +37,7 @@ public class IngredientBowl : MonoBehaviour {
     }
 
     //when highlighted
-    void Highlighted()
+    public void Highlighted()
     {
         if (TextDisplay)
         {
@@ -71,6 +71,24 @@ public class IngredientBowl : MonoBehaviour {
             IngredientAmount -= 1;
             Ingred.GetComponent<SoupIngredient>().myBowl = this;
         }
+        if (IngredientAmount <= 0)
+        {
+            Hide();
+        }
+    }
+
+    //Add straight to soup
+    public void AddIngredientToSoup()
+    {
+        //if ingredients exists
+        if(IngredientAmount > 0)
+        {
+            //add ingredient to soup
+            SoupManager.AddToSoup(IngredientPrefab.GetComponent<SoupIngredient>());
+            //decrement the ingredient amount
+            IngredientAmount--;
+        }
+        //if all ingredients used
         if (IngredientAmount <= 0)
         {
             Hide();

@@ -11,23 +11,36 @@ public class ControllerMenuNavigator : MonoBehaviour {
     [Header("Dead zone var")]
     public float deadZone = 0.5f;
 
+    [Header("Tags")]
+    public string playerTag = "Player";
+
     [Header("Inputs")]
     public string contX = "CHorizontal";
     public string contY = "CVertical";
+    public string contSelect = "CSelect";
 
     //control vars
     private bool stickHeld = false; //checks if stick held to avoid scrolling through menu at lightspeed
 
     private int currentIndex = 0;  //the current index currently seleceted
 
+    //script refs
+    WhatCanIDO canDo;
+
 	// Use this for initialization
 	void Start () {
-		
+        canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        //only do when using controller
+        if (canDo.useController)
+        {
+            ResetStickHeld();
+            NavigateMenu();
+            SelectItem();
+        }
 	}
 
     //set the current menu to navigate
@@ -105,6 +118,11 @@ public class ControllerMenuNavigator : MonoBehaviour {
     //trigger seleceted item's select event
     private void SelectItem()
     {
-        menu.menuItemArray[currentIndex].CallSelectedEvent();
+        //check input
+        if (Luminosity.IO.InputManager.GetButtonDown(contSelect))
+        {
+            menu.menuItemArray[currentIndex].CallSelectedEvent();
+        }
+        
     }
 }
