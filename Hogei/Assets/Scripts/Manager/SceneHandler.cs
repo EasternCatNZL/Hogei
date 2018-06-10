@@ -138,18 +138,34 @@ public class SceneHandler : MonoBehaviour
     //Load the map scene
     public void LoadMapScene()
     {
-        LoadingScene = true;
-        LoadingScreenRef = Instantiate(LoadingScreenPrefab, Vector3.zero, Quaternion.identity).GetComponent<LoadingScreenManager>();
-        LoadingScreenRef.GetComponent<LoadingScreenManager>().StartLoadingScreen();
-        StartCoroutine(DelayedLoad(1f, MapSceneIndex));
+        if (LoadingScreenPrefab)
+        {
+            LoadingScene = true;
+            LoadingScreenRef = Instantiate(LoadingScreenPrefab, Vector3.zero, Quaternion.identity).GetComponent<LoadingScreenManager>();
+            LoadingScreenRef.GetComponent<LoadingScreenManager>().StartLoadingScreen();
+            StartCoroutine(DelayedLoad(1f, MapSceneIndex));
+        }
+        else
+        {
+            Debug.Log(gameObject.name + ": No loadingscreen found");
+            SceneManager.LoadScene(MapSceneIndex);
+        }
     }
 
     public void LoadScene(int _SceneIndex)
     {
-        LoadingScene = true;
-        LoadingScreenRef = Instantiate(LoadingScreenPrefab, Vector3.zero, Quaternion.identity).GetComponent<LoadingScreenManager>();
-        LoadingScreenRef.GetComponent<LoadingScreenManager>().StartLoadingScreen();
-        StartCoroutine(DelayedLoad(1f, _SceneIndex));
+        if (LoadingScreenPrefab)
+        {
+            LoadingScene = true;
+            LoadingScreenRef = Instantiate(LoadingScreenPrefab, Vector3.zero, Quaternion.identity).GetComponent<LoadingScreenManager>();
+            LoadingScreenRef.GetComponent<LoadingScreenManager>().StartLoadingScreen();
+            StartCoroutine(DelayedLoad(1f, _SceneIndex));
+        }
+        else
+        {
+            Debug.Log(gameObject.name + ": No loadingscreen found");
+            SceneManager.LoadScene(_SceneIndex);
+        }
     }
 
     public void QuitGame()
