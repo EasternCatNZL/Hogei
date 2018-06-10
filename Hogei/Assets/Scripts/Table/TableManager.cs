@@ -171,8 +171,13 @@ public class TableManager : MonoBehaviour {
                 {
                     ingredients[i].GetComponent<SoupIngredient>().SendBackToBowl();
                 }
-                //set menu to navigate to map menu
-                navigator.SetMenu(mapMenu);
+
+                if(navigator && mapMenu)
+                {
+                    //set menu to navigate to map menu
+                    navigator.SetMenu(mapMenu);
+                }
+                
                 //clear the soup
                 soup.ClearSoup();
             }
@@ -182,8 +187,12 @@ public class TableManager : MonoBehaviour {
                 WeapInvent.SetActive(true);
                 OpenButton.enabled = false;
                 CloseButton.enabled = true;
-                //set menu to navigate to menu for open box
-                navigator.SetMenu(openBoxMenu);
+                if (navigator && openBoxMenu)
+                {
+                    //set menu to navigate to menu for open box
+                    navigator.SetMenu(openBoxMenu);
+                }
+                
             }
         }
     }
