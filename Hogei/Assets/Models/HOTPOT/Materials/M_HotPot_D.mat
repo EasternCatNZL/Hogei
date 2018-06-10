@@ -7,14 +7,13 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: M_HotPot_D
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 10511, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHATEST_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -48,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8812bd2089aab9b47b299d53678e9d46, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1dc9bfe800e01bf4b85bcd7d2c480e31, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -72,11 +71,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AO: 2.54
-    - _BaseLight: 0.758
+    - _AO: 4.6
+    - _BaseLight: 0.552
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0.625
+    - _Cutoff: 0.9
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -84,7 +83,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 1
-    - _Occlusion: 0
+    - _Occlusion: 3.66
     - _OcclusionStrength: 0.355
     - _Parallax: 0.02
     - _Shininess: 0.078125
