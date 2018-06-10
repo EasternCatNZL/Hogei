@@ -28,6 +28,7 @@ public class WeaponWheel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Initialise();
+
     }
 
     public void Initialise()
