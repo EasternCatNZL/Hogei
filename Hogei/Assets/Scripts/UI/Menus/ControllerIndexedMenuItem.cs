@@ -15,7 +15,10 @@ public class ControllerIndexedMenuItem : MonoBehaviour {
     [Header("Control vars")]
     public bool isSelected = false; //checks to see if current selected
 
+    [Header("Events")]
     public UnityEvent selectedEvent;
+    public UnityEvent deselectedEvent;
+    public UnityEvent interactedEvent;
 
     // Use this for initialization
     void Start () {
@@ -27,13 +30,35 @@ public class ControllerIndexedMenuItem : MonoBehaviour {
 		
 	}
 
-    //when selected by controller
+    //when selected by controller <- same as mouse hovered over
     public void CallSelectedEvent()
     {
         //check event exists
         if (selectedEvent != null)
         {
             selectedEvent.Invoke();
+        }
+    }
+
+    //when deselected by controller <- same as mouse hovered away
+    public void CallDeselectedEvent()
+    {
+        //check event exists
+        if (deselectedEvent != null)
+        {
+            deselectedEvent.Invoke();
+        }
+    }
+
+    //when interacted with controller <- same as mouse clicked
+    public void CallInteractedEvent()
+    {
+        //check event exists
+        if (interactedEvent != null)
+        {
+            //deselect self
+            Deselected();
+            interactedEvent.Invoke();
         }
     }
 
@@ -51,6 +76,8 @@ public class ControllerIndexedMenuItem : MonoBehaviour {
         {
             selectedUiIndicator.color = new Color(0, 0, 0, 1);
         }
+        //call event when selected
+        CallSelectedEvent();
     }
 
     //when deselected
