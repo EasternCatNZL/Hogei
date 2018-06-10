@@ -20,6 +20,9 @@ public class SceneHandler : MonoBehaviour
     public GameObject CountDownUI;
     public GameObject NotificationUI;
 
+    [Header("Loading Screen Settings")]
+    public GameObject LoadingScreenPrefab;
+
     [Header("Intro Settings")]
     [TextArea]
     public string IntroText = "";
@@ -35,6 +38,9 @@ public class SceneHandler : MonoBehaviour
     public List<GameObject> enemiesInSceneList = new List<GameObject>();
 
     private int MapSceneIndex = 1;
+    private LoadingScreenManager LoadingScreenRef;
+    private bool LoadingScene = false;
+    private AsyncOperation asyncLoad;
 
     void Awake()
     {
@@ -79,7 +85,13 @@ public class SceneHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if(LoadingScene)
+        //{
+        //    if(asyncLoad.isDone)
+        //    {
+        //        LoadingScreenRef.FinishLoadingScreen();
+        //    }
+        //}
     }
 
     public Transform GetPlayerSpawnPoint() { return PlayerSpawnPoint; }
@@ -126,12 +138,18 @@ public class SceneHandler : MonoBehaviour
     //Load the map scene
     public void LoadMapScene()
     {
-        SceneManager.LoadScene(MapSceneIndex);
+        LoadingScene = true;
+        LoadingScreenRef = Instantiate(LoadingScreenPrefab, Vector3.zero, Quaternion.identity).GetComponent<LoadingScreenManager>();
+        LoadingScreenRef.GetComponent<LoadingScreenManager>().StartLoadingScreen();
+        StartCoroutine(DelayedLoad(1f, MapSceneIndex));
     }
 
     public void LoadScene(int _SceneIndex)
     {
-        SceneManager.LoadScene(_SceneIndex);
+        LoadingScene = true;
+        LoadingScreenRef = Instantiate(LoadingScreenPrefab, Vector3.zero, Quaternion.identity).GetComponent<LoadingScreenManager>();
+        LoadingScreenRef.GetComponent<LoadingScreenManager>().StartLoadingScreen();
+        StartCoroutine(DelayedLoad(1f, _SceneIndex));
     }
 
     public void QuitGame()
@@ -157,5 +175,12 @@ public class SceneHandler : MonoBehaviour
             return Obj.GetComponent<SceneHandler>();
         }
         else return null;
+    }
+
+    IEnumerator DelayedLoad(float _Wait, int _SceneIndex)
+    {
+        // Wait until the asynchronous scene fully loads
+        yield return new WaitForSeconds(_Wait);
+        SceneManager.LoadScene(_SceneIndex);
     }
 }

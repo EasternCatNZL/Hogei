@@ -70,6 +70,7 @@ public class HelpAndCreditsManager : MonoBehaviour {
             float CanvasHeight = GetComponent<RectTransform>().rect.height;
             foreach (GameObject _Obj in HelpImages)
             {
+                _Obj.transform.DOComplete();
                 _Obj.GetComponent<RectTransform>().transform.DOLocalMoveY(HelpExitDirection * -1f, 1f);
             }
         }
@@ -101,6 +102,7 @@ public class HelpAndCreditsManager : MonoBehaviour {
             float CanvasHeight = GetComponent<RectTransform>().rect.height;
             foreach (GameObject _Obj in CreditImages)
             {
+                _Obj.transform.DOComplete();
                 _Obj.GetComponent<RectTransform>().transform.DOLocalMoveY(CreditExitDirection * -1f, 1f);
             }
         }
