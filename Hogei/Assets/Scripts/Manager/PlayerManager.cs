@@ -85,6 +85,8 @@ public class PlayerManager : MonoBehaviour {
             {
                 Debug.Log(Time.time + ": " + gameObject.name + " - No weapons selected; setting default weapons (Stream + Shotgun)...");
                 Player.GetComponent<PlayerAttack>().SetupWeapons(Weapon.WeaponTypes.Stream, Weapon.WeaponTypes.Bloom, PrimarySoup, SecondarySoup);
+                PrimaryWeapon = Weapon.WeaponTypes.Stream;
+                SecondaryWeapon = Weapon.WeaponTypes.Bloom;
             }
             else
             {

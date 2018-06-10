@@ -10,8 +10,10 @@ public class WeaponWheel : MonoBehaviour {
     private Vector3 endValue;
     private Vector3 currentRotation;
     [Header("UI Settings")]
-    public GameObject PrimaryIcon;
-    public GameObject SecondaryIcon;
+    //public GameObject PrimaryIcon;
+    //public GameObject SecondaryIcon;
+    public Image PrimaryWeaponIcon;
+    public Image SecondaryWeaponIcon;
     public Sprite StreamSprite;
     public Sprite ShotSprite;
     public Sprite FertSprite;
@@ -19,11 +21,11 @@ public class WeaponWheel : MonoBehaviour {
     public Sprite ExplSprite;
 
     private Animator Anim;
-    public Image img;
     public Sprite PrimSprite;
     public Sprite SeconSprite;
-
-
+    private Color PrimAlpha;
+    private Color SecAlpha;
+    private bool isPrimary;
 
 	// Use this for initialization
 	void Start () {
@@ -32,14 +34,15 @@ public class WeaponWheel : MonoBehaviour {
 
     public void Initialise()
     {
-
         Anim = gameObject.GetComponent<Animator>();
-
-
+        isPrimary = true;
         Weapon.WeaponTypes _Pri = PlayerManager.GetInstance().GetPrimary();
         Weapon.WeaponTypes _Sec = PlayerManager.GetInstance().GetSecondary();
 
+       // Weapon _Pri = PlayerManager.GetInstance().Player.GetComponent<PlayerAttack>().PrimaryWeapon;
+       // Weapon _Sec = PlayerManager.GetInstance().Player.GetComponent<PlayerAttack>().SecondaryWeapon;        
 
+        
         switch (_Pri)
         {
             case Weapon.WeaponTypes.Stream:
@@ -58,6 +61,8 @@ public class WeaponWheel : MonoBehaviour {
                 PrimSprite = ExplSprite;
                 break;
         }
+        PrimAlpha = PrimaryWeaponIcon.color;
+        PrimaryWeaponIcon.sprite = PrimSprite;
         //Get correct sprite for the Secondary Icon
         switch (_Sec)
         {
@@ -78,7 +83,12 @@ public class WeaponWheel : MonoBehaviour {
                 break;
         }
 
-        img.sprite = PrimSprite;
+        SecondaryWeaponIcon.sprite = SeconSprite;
+        SecAlpha = SecondaryWeaponIcon.color;
+        SecAlpha.a = 0.0f;
+        SecondaryWeaponIcon.color = SecAlpha;
+        
+        
 
         /*
         Weapon.WeaponTypes _Pri = PlayerManager.GetInstance().GetPrimary();
@@ -135,12 +145,51 @@ public class WeaponWheel : MonoBehaviour {
 
     public void NextWeapon()
     {
-        Anim.SetTrigger("WeaponChange");
+        
+        if(isPrimary)
+        {
+            Anim.SetTrigger("WeaponChange");
+            isPrimary = false;
+        }
+        else
+        {
+            isPrimary = true;
+            Anim.SetTrigger("WeaponChange");
+        }
+
         /*
         transform.DOComplete();
         currentRotation = transform.localEulerAngles;
         endValue = currentRotation + new Vector3(0, 180, 0);
         transform.DORotate(endValue, TweenDuration, RotateMode.Fast);
         */
+    }
+
+    public void SetAlphaToZero()
+    {
+        if(isPrimary)
+        {
+            PrimAlpha.a = 0.0f;
+            PrimaryWeaponIcon.color = PrimAlpha;
+        }
+        else
+        {
+            SecAlpha.a = 0.0f;
+            SecondaryWeaponIcon.color = SecAlpha;
+        }
+    }
+
+    public void SetAlphaToOne()
+    {
+        if(isPrimary)
+        {
+            SecAlpha.a = 1.0f;
+            SecondaryWeaponIcon.color = SecAlpha;
+        }
+        else
+        {
+            PrimAlpha.a = 1.0f;
+            PrimaryWeaponIcon.color = PrimAlpha;
+        }
     }
 }

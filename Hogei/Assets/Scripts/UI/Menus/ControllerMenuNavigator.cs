@@ -37,6 +37,8 @@ public class ControllerMenuNavigator : MonoBehaviour {
         currentIndex = 0;
         //set menu to this menu
         menu = thisMenu;
+        //select the first menu item preemptively
+        menu.menuItemArray[currentIndex].Selected();
     }
 
     //navigation logic for menu
