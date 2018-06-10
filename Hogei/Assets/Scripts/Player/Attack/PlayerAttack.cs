@@ -199,7 +199,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canDo.useKeyboard)
         {
-            if (Luminosity.IO.InputManager.GetButton(kNextWeaponInput))
+            if (Luminosity.IO.InputManager.GetButtonDown(kNextWeaponInput))
             {
                 if (WW) WW.NextWeapon(); //Change the weapon wheel UI
                 else
@@ -219,7 +219,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (canDo.useController)
         {
-            if (Luminosity.IO.InputManager.GetButton(cNextWeaponInput))
+            if (Luminosity.IO.InputManager.GetButtonDown(cNextWeaponInput))
             {
                 if (WW) WW.NextWeapon(); //Change the weapon wheel UI
                 else
