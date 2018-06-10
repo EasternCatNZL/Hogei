@@ -22,6 +22,9 @@ public class TableMapNode : MonoBehaviour {
     [Tooltip("The node required to unlock this one")]
     public TableMapNode RequiredNode;
 
+    //script refs
+    ControllerIndexedMenuItem item;
+
     void Start()
     {
         if(LevelName) LevelName.transform.DOScaleY(0, 0f);
@@ -55,6 +58,12 @@ public class TableMapNode : MonoBehaviour {
 
     private void OnMouseEnter()
     {
+        OnSelected();
+    }
+
+    //when seleceted <- mouse hover
+    public void OnSelected()
+    {
         transform.DOComplete();
         transform.DOShakeRotation(1f, 5, 5, 10);
         if (!Disabled)
@@ -71,14 +80,19 @@ public class TableMapNode : MonoBehaviour {
         }
     }
 
-    private void OnMouseExit()
+    public void OnMouseExit()
+    {
+        OnDeselected();
+    }
+
+    //when deselected
+    public void OnDeselected()
     {
         if (!Disabled)
         {
             LevelName.transform.DOScaleY(0, 0.5f);
         }
     }
-
 
     public bool LoadLevel()
     {
@@ -87,7 +101,15 @@ public class TableMapNode : MonoBehaviour {
             SceneHandler.GetSceneHandler().LoadScene(LevelIndex);
             return true;
         }
+        //if didn't work reselect self
+        item.Selected();
         return false;
+    }
+
+    //when interacted with
+    public void OnInteract()
+    {
+        LoadLevel();
     }
 
     public void SetUnlocked() { IsUnlocked = true; }
