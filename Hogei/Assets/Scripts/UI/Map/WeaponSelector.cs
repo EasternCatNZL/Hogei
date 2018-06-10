@@ -49,6 +49,10 @@ public class WeaponSelector : MonoBehaviour
         else
         {
             Renderer.sprite = SelectorSprite;
+            if(WeaponIcon.sprite == null)
+            {
+                UpdateWeaponIcon();
+            }
         }
         SoupManager.UpdateUI();
     }

@@ -6,9 +6,6 @@ using DG.Tweening;
 
 public class SoupManager : MonoBehaviour
 {
-
-
-
     public GameObject TheSoup;
     [Tooltip("The angle the soup rotates each second")]
     public float SoupRotationSpeed = 90f;
@@ -97,12 +94,72 @@ public class SoupManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        UpgradeDescText.text = "Soup Effects:";
-        foreach (KeyValuePair<Weapon.WeaponEffects, float> _Upgrade in SoupUpgrades)
+        if(SoupIngredients.Count > 0)
         {
-            string oldText = UpgradeDescText.text;
-            string append = "\n" + _Upgrade.Key + " " + _Upgrade.Value;
-            UpgradeDescText.text = oldText + append;
+            UpgradeDescText.text = "Soup Effects:";
+            foreach (KeyValuePair<Weapon.WeaponEffects, float> _Upgrade in SoupUpgrades)
+            {
+                string oldText = UpgradeDescText.text;
+                string append = "\n" + _Upgrade.Key + " " + _Upgrade.Value;
+                if(_Upgrade.Key != Weapon.WeaponEffects.Damage) append += "%";
+                UpgradeDescText.text = oldText + append;
+            }          
+        }
+        else if(PlayerManager.GetInstance().GetPrimarySoup() == null)//If there is no igredients in the soup
+        {
+            string _newText = "No Soup Upgrades";
+            UpgradeDescText.text = _newText;
+        }
+        else if(PlayerManager.GetInstance().GetPrimarySoup() != null)
+        {
+            SoupUpgrade _Soup = PlayerManager.GetInstance().GetPrimarySoup();
+            string _newText = "Current Soup Effects:";
+            int TotalDamage = 0;
+            float TotalAngle = 0;
+            float TotalFirerate = 0; //Perventages
+            float TotalSpeed = 0; //Percentages
+            foreach (Weapon.WeaponModifier Mod in _Soup.WeaponModifiers)
+            {
+                switch (Mod.Effect)
+                {
+                    case Weapon.WeaponEffects.Damage:
+                        TotalDamage += (int)Mod.Value;
+                        break;
+                    case Weapon.WeaponEffects.Spread:
+                        TotalAngle += Mod.Value;
+                        break;
+                    case Weapon.WeaponEffects.Bullet:
+                        break;
+                    case Weapon.WeaponEffects.Split:
+                        break;
+                    case Weapon.WeaponEffects.Firerate:
+                        TotalFirerate += Mod.Value;
+                        break;
+                    case Weapon.WeaponEffects.BulletSpeed:
+                        TotalSpeed += Mod.Value;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            print(TotalDamage + " " + TotalAngle + " " + TotalFirerate + " " + TotalSpeed);
+            if(TotalDamage > 0)
+            {
+                _newText += "\nDamage " + TotalDamage;
+            }
+            if(TotalAngle != 0)
+            {
+                _newText += "\nSpread " + TotalAngle + "%";
+            }
+            if(TotalFirerate > 0)
+            {
+                _newText += "\nFirerate " + TotalFirerate + "%";
+            }
+            if(TotalSpeed > 0)
+            {
+                _newText += "\nBullet Speed " + TotalSpeed + "%";
+            }
+            UpgradeDescText.text = _newText;
         }
         SoupCapacityText.text = SoupIngredients.Count + "/" + MaxSoupSize;
     }

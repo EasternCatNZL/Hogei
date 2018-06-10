@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 7720873}
   - component: {fileID: 7720872}
   - component: {fileID: 7720871}
-  - component: {fileID: 7720870}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -134,29 +133,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7720870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7720869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c0737248ed87d4bbf67149a89b40e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerSpawnPoint: {fileID: 0}
-  sceneNumber: 0
-  BackgroundMusic: {fileID: 0}
-  CountDownUI: {fileID: 0}
-  NotificationUI: {fileID: 0}
-  LoadingScreenPrefab: {fileID: 1955638050995100, guid: fd8adf9e4f2b4fa49915e23428ff1395,
-    type: 2}
-  IntroText: 
-  TimeShown: 0.8
-  enemyTag: Enemy
-  enemiesInSceneCopyList: []
-  enemiesInSceneList: []
 --- !u!114 &7720871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9563,9 +9539,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7720870}
-        m_MethodName: LoadScene
-        m_Mode: 3
+      - m_Target: {fileID: 1758175912}
+        m_MethodName: LoadMapScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11268,6 +11244,58 @@ Transform:
   m_PrefabParentObject: {fileID: 4355962372214706, guid: 515929ee763e4284dba4310ffbd84275,
     type: 2}
   m_PrefabInternal: {fileID: 1752102051}
+--- !u!1 &1758175911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1758175913}
+  - component: {fileID: 1758175912}
+  m_Layer: 0
+  m_Name: SceneHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1758175912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1758175911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c0737248ed87d4bbf67149a89b40e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSpawnPoint: {fileID: 0}
+  sceneNumber: 0
+  BackgroundMusic: {fileID: 0}
+  CountDownUI: {fileID: 0}
+  NotificationUI: {fileID: 0}
+  LoadingScreenPrefab: {fileID: 1955638050995100, guid: fd8adf9e4f2b4fa49915e23428ff1395,
+    type: 2}
+  IntroText: 
+  TimeShown: 0.8
+  enemyTag: Enemy
+  enemiesInSceneCopyList: []
+  enemiesInSceneList: []
+--- !u!4 &1758175913
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1758175911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.990435, y: -1.3238002, z: 32.326225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1765199998
 Prefab:
   m_ObjectHideFlags: 0
@@ -11605,7 +11633,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7720870}
+      - m_Target: {fileID: 1758175912}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
