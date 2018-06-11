@@ -167,29 +167,46 @@ public class WeaponWheel : MonoBehaviour {
 
     public void SetAlphaToZero()
     {
-        if(isPrimary)
-        {
-            PrimAlpha.a = 0.0f;
-            PrimaryWeaponIcon.color = PrimAlpha;
-        }
-        else
-        {
-            SecAlpha.a = 0.0f;
-            SecondaryWeaponIcon.color = SecAlpha;
-        }
+        //if (PlayerManager.GetInstance().Player.GetComponent<PlayerAttack>().GetWeaponIndex() == 0) isPrimary = true;
+        //if (isPrimary)
+        //{
+        //    PrimAlpha.a = 0.0f;
+        //    PrimaryWeaponIcon.color = PrimAlpha;
+        //}
+        //else
+        //{
+        //    SecAlpha.a = 0.0f;
+        //    SecondaryWeaponIcon.color = SecAlpha;
+        //}
+        PrimaryWeaponIcon.color = new Color(1f, 1f, 1f, 0f);
     }
 
     public void SetAlphaToOne()
     {
-        if(isPrimary)
+        //if (PlayerManager.GetInstance().Player.GetComponent<PlayerAttack>().GetWeaponIndex() == 0) isPrimary = true;
+        //if (isPrimary)
+        //{
+        //    SecAlpha.a = 1.0f;
+        //    SecondaryWeaponIcon.color = SecAlpha;
+        //}
+        //else
+        //{
+        //    PrimAlpha.a = 1.0f;
+        //    PrimaryWeaponIcon.color = PrimAlpha;
+        //}
+    }
+
+    public void SetWeaponIcon()
+    {
+        PrimaryWeaponIcon.color = new Color(1f, 1f, 1f, 1f);
+        int WeaponIndex = PlayerManager.GetInstance().Player.GetComponent<PlayerAttack>().GetWeaponIndex();
+        if(WeaponIndex == 0)
         {
-            SecAlpha.a = 1.0f;
-            SecondaryWeaponIcon.color = SecAlpha;
+            PrimaryWeaponIcon.sprite = PrimSprite;
         }
         else
         {
-            PrimAlpha.a = 1.0f;
-            PrimaryWeaponIcon.color = PrimAlpha;
+            PrimaryWeaponIcon.sprite = SeconSprite;
         }
     }
 }
