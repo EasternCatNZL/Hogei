@@ -16,6 +16,11 @@ public class WeaponInventory : MonoBehaviour {
     private bool Opened = false;
     private bool Active = true;
 
+    [Header("Menus")]
+    public ControllerMenuNavigator navigator;
+    public ControllerIndexedMenu openBoxMenu;
+    public ControllerIndexedMenu weaponSelectorMenu;
+
     private void Start()
     {
         transform.DOMove(ClosePosition.position, TransitionDuration);
@@ -28,6 +33,8 @@ public class WeaponInventory : MonoBehaviour {
             TargetSelector = _Selector;
             WeaponInventoryUI.transform.DOMove(OpenPosition.position, TransitionDuration);
             Opened = true;
+            //change menu
+            navigator.SetMenu(weaponSelectorMenu);
         }
     }
 
@@ -35,6 +42,8 @@ public class WeaponInventory : MonoBehaviour {
     {
         WeaponInventoryUI.transform.DOMove(ClosePosition.position, TransitionDuration);
         Opened = false;
+        //change menu
+        navigator.SetMenu(openBoxMenu);
     }
 
     public Text GetDetailsText() { return DetailsText; }
