@@ -21,6 +21,7 @@ public class ControllerMenuNavigator : MonoBehaviour {
 
     //control vars
     private bool stickHeld = false; //checks if stick held to avoid scrolling through menu at lightspeed
+    private bool navigatingWithCont = false; //checks to see if was using controller last frame
 
     private int currentIndex = 0;  //the current index currently seleceted
 
@@ -30,6 +31,7 @@ public class ControllerMenuNavigator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         canDo = GameObject.FindGameObjectWithTag(playerTag).GetComponent<WhatCanIDO>();
+        //SetMenu(menu);
 	}
 	
 	// Update is called once per frame
@@ -37,9 +39,24 @@ public class ControllerMenuNavigator : MonoBehaviour {
         //only do when using controller
         if (canDo.useController)
         {
+            //if was not using controller, re init
+            if (!navigatingWithCont)
+            {
+                navigatingWithCont = true;
+                SetMenu(menu);
+            }
+            Cursor.visible = false;
             ResetStickHeld();
             NavigateMenu();
             SelectItem();
+        }
+        else
+        {
+            if (navigatingWithCont)
+            {
+                navigatingWithCont = true;
+            }
+            Cursor.visible = true;
         }
 	}
 
@@ -121,7 +138,7 @@ public class ControllerMenuNavigator : MonoBehaviour {
         //check input
         if (Luminosity.IO.InputManager.GetButtonDown(contSelect))
         {
-            menu.menuItemArray[currentIndex].CallSelectedEvent();
+            menu.menuItemArray[currentIndex].CallInteractedEvent();
         }
         
     }

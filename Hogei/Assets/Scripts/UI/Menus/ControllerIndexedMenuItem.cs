@@ -70,11 +70,11 @@ public class ControllerIndexedMenuItem : MonoBehaviour {
         //make indicator visible
         if (selectedIndicator)
         {
-            selectedIndicator.color = new Color(0, 0, 0, 1);
+            selectedIndicator.color = new Color(1, 1, 1, 1);
         }
         else if (selectedUiIndicator)
         {
-            selectedUiIndicator.color = new Color(0, 0, 0, 1);
+            selectedUiIndicator.color = new Color(1, 1, 1, 1);
         }
         //call event when selected
         CallSelectedEvent();
@@ -94,5 +94,7 @@ public class ControllerIndexedMenuItem : MonoBehaviour {
         {
             selectedUiIndicator.color = new Color(0, 0, 0, 0);
         }
+        //call event when deselected
+        CallDeselectedEvent();
     }
 }

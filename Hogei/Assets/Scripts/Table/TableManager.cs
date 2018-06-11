@@ -28,7 +28,7 @@ public class TableManager : MonoBehaviour {
     public ControllerMenuNavigator navigator;
     public ControllerIndexedMenu mapMenu;
     public ControllerIndexedMenu openBoxMenu;
-    public ControllerIndexedMenu weaponSelectorMenu;
+    
 
     [Header("Tags")]
     public string playerTag = "Player";
