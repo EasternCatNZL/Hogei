@@ -183,11 +183,11 @@ public class PlayerController : MonoBehaviour
 
             if (Vector3.Dot(AimIndicator.right, direction) < 0.0f)
             {
-                AimIndicator.Rotate(0, 0, Vector3.Angle(AimIndicator.up, direction) + MovementAlignment.rotation.eulerAngles.y);
+                AimIndicator.Rotate(0, 0, Vector3.Angle(AimIndicator.up, direction) - MovementAlignment.rotation.eulerAngles.y);
             }
             if (Vector3.Dot(AimIndicator.right, direction) > 0.0f)
             {
-                AimIndicator.Rotate(0, 0, -Vector3.Angle(AimIndicator.up, direction) + MovementAlignment.rotation.eulerAngles.y);
+                AimIndicator.Rotate(0, 0, -Vector3.Angle(AimIndicator.up, direction) - MovementAlignment.rotation.eulerAngles.y);
             }
 
             //AimIndicator.Rotate(0, 0, Vector3.Angle(AimIndicator.up, direction));
