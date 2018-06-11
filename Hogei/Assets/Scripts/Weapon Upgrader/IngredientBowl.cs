@@ -46,8 +46,9 @@ public class IngredientBowl : MonoBehaviour {
             else if (WeaponMod.Value > -1 && WeaponMod.Value < 0) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":   " + WeaponMod.Value + "%";
             else if (WeaponMod.Value > 0 && WeaponMod.Value < 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value + "%";
             else if (WeaponMod.Value >= 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value;
-
         }
+        TextMesh _Text = GetComponent<HoverOverText>().TextObject.GetComponent<TextMesh>();
+        _Text.text = IngredientType.ToString() + "\n" + IngredientAmount;
     }
 
     private void OnMouseExit()
@@ -83,8 +84,10 @@ public class IngredientBowl : MonoBehaviour {
         //if ingredients exists
         if(IngredientAmount > 0)
         {
+            //create copy of soup ingredient
+            GameObject ingreClone = Instantiate(IngredientPrefab);
             //add ingredient to soup
-            SoupManager.AddToSoup(IngredientPrefab.GetComponent<SoupIngredient>());
+            SoupManager.AddToSoup(ingreClone.GetComponent<SoupIngredient>());
             //decrement the ingredient amount
             IngredientAmount--;
         }
