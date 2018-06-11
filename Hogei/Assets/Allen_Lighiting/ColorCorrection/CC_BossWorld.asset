@@ -109,11 +109,11 @@ MonoBehaviour:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: -0.0081
+        neutralBlackIn: -0.0027
         neutralWhiteIn: 6.47
         neutralBlackOut: -0.0201
         neutralWhiteOut: 9.69
@@ -288,10 +288,10 @@ MonoBehaviour:
         e_CurveG: 0
         e_CurveB: 0
   userLut:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      lut: {fileID: 2800000, guid: 5036c53a28ccfed4480d73d9ae7695c7, type: 3}
-      contribution: 0.59
+      lut: {fileID: 2800000, guid: 8932061ca6e680145842d21f2d63b202, type: 3}
+      contribution: 1
   chromaticAberration:
     m_Enabled: 1
     m_Settings:

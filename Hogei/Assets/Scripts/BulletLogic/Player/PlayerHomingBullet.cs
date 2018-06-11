@@ -151,13 +151,17 @@ public class PlayerHomingBullet : MonoBehaviour {
     //collision = deactivate
     private void OnTriggerEnter(Collider collision)
     {
-        //any collision
-        if(collision.gameObject.GetComponent<EntityHealth>() || collision.CompareTag("Enviroment"))
+        if (!collision.isTrigger)
         {
-            collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
-            if (explosionVFX) Instantiate(explosionVFX, transform.position, transform.rotation);
+            //any collision
+            if (collision.gameObject.GetComponent<EntityHealth>()/* || collision.CompareTag("Enviroment")*/)
+            {
+                collision.gameObject.GetComponent<EntityHealth>().DecreaseHealth(bulletDamage);
+                if (explosionVFX) Instantiate(explosionVFX, transform.position, transform.rotation);
+
+            }
             Deactivate();
-        } 
+        }
     }
 
 
