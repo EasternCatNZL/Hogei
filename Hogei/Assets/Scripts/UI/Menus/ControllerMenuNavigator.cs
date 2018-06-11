@@ -67,8 +67,13 @@ public class ControllerMenuNavigator : MonoBehaviour {
         currentIndex = 0;
         //set menu to this menu
         menu = thisMenu;
-        //select the first menu item preemptively
-        menu.menuItemArray[currentIndex].Selected();
+        //if navigating with controller, then select
+        if (navigatingWithCont)
+        {
+            //select the first menu item preemptively
+            menu.menuItemArray[currentIndex].Selected();
+        }
+        
     }
 
     //navigation logic for menu
