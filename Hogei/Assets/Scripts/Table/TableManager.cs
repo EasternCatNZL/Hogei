@@ -173,11 +173,7 @@ public class TableManager : MonoBehaviour {
                     ingredients[i].GetComponent<SoupIngredient>().SendBackToBowl();
                 }
 
-                if(navigator && mapMenu)
-                {
-                    //set menu to navigate to map menu
-                    navigator.SetMenu(mapMenu);
-                }
+
 
                 //close weapon invent
                 WeapInvent.CloseInventory();
@@ -185,6 +181,12 @@ public class TableManager : MonoBehaviour {
                 
                 //clear the soup
                 soup.ClearSoup();
+
+                if (navigator && mapMenu)
+                {
+                    //set menu to navigate to map menu
+                    navigator.SetMenu(mapMenu);
+                }
             }
             else//Show Hot Pot
             {
