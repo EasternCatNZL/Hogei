@@ -76,19 +76,38 @@ public class SoupManager : MonoBehaviour
     //add ingredient to soup
     public void AddToSoup(SoupIngredient Obj)
     {
-        if(Obj.Type == SoupIngredient.IngredientType.Chicken)
+        if (SoupIngredients.Count < MaxSoupSize)
         {
-            bool NoChicken = true;
-            foreach(SoupIngredient _Ingr in SoupIngredients)
+            if (Obj.Type == SoupIngredient.IngredientType.Chicken)
             {
-                if(_Ingr.Type == SoupIngredient.IngredientType.Chicken)
+                bool NoChicken = true;
+                foreach (SoupIngredient _Ingr in SoupIngredients)
                 {
-                    Destroy(Obj);
-                    NoChicken = false;
-                    break;
+                    if (_Ingr.Type == SoupIngredient.IngredientType.Chicken)
+                    {
+                        Obj.GetComponent<SoupIngredient>().SendBackToBowl();
+                        NoChicken = false;
+                        break;
+                    }
+                }
+                if (NoChicken)
+                {
+                    //Add ingredient to ingredients list
+                    SoupIngredients.Add(Obj);
+                    //Add the weapon mods to the upgrade list
+                    if (SoupUpgrades.ContainsKey(Obj.WeaponMod.Effect))
+                    {
+                        SoupUpgrades[Obj.WeaponMod.Effect] += Obj.WeaponMod.Value;
+                    }
+                    else
+                    {
+                        SoupUpgrades.Add(Obj.WeaponMod.Effect, Obj.WeaponMod.Value);
+                    }
+                    if (UpgradeDescText) UpdateUI();
+                    if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
                 }
             }
-            if (NoChicken)
+            else if (!SoupIngredients.Contains(Obj))
             {
                 //Add ingredient to ingredients list
                 SoupIngredients.Add(Obj);
@@ -105,21 +124,9 @@ public class SoupManager : MonoBehaviour
                 if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
             }
         }
-        else if (SoupIngredients.Count < MaxSoupSize && !SoupIngredients.Contains(Obj))
+        else
         {
-            //Add ingredient to ingredients list
-            SoupIngredients.Add(Obj);
-            //Add the weapon mods to the upgrade list
-            if (SoupUpgrades.ContainsKey(Obj.WeaponMod.Effect))
-            {
-                SoupUpgrades[Obj.WeaponMod.Effect] += Obj.WeaponMod.Value;
-            }
-            else
-            {
-                SoupUpgrades.Add(Obj.WeaponMod.Effect, Obj.WeaponMod.Value);
-            }
-            if (UpgradeDescText) UpdateUI();
-            if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
+            Obj.GetComponent<SoupIngredient>().SendBackToBowl();
         }
     }
 

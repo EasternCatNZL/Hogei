@@ -206,7 +206,7 @@ public class CoopWalkerBehaviour : EnemyBehavior
         {
             Destroy(_Col.gameObject);
         }
-        if (_Col.gameObject.CompareTag("Dungeon"))
+        if (!Landed && _Col.gameObject.CompareTag("Dungeon"))
         {
             PlayDustExplosion(DustExplosionSpawn.position);
             CircleSpray(DiveNumBullets, transform.position + transform.up/2);

@@ -48,7 +48,7 @@ public class IngredientBowl : MonoBehaviour {
             else if (WeaponMod.Value >= 1) TextDisplay.text = IngredientType.ToString() + "\n" + WeaponMod.Effect + ":    +" + WeaponMod.Value;
         }
         TextMesh _Text = GetComponent<HoverOverText>().TextObject.GetComponent<TextMesh>();
-        _Text.text = IngredientType.ToString() + "\n" + IngredientAmount;
+        _Text.text = IngredientType.ToString() + ": " + IngredientAmount;
     }
 
     private void OnMouseExit()

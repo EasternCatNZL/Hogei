@@ -32,6 +32,7 @@ public class BarnPhaseHandler : BossHandler
 
     private float barnSinkStartTime = 0.0f; //time when barn desent began
     public EntityHealth EntityHealthComponent;
+    public Animator BarnAnimator;
 
 	// Use this for initialization
 	void Start () {
@@ -127,5 +128,6 @@ public class BarnPhaseHandler : BossHandler
     {
         //turn on sheep rumble
         sheepRumble.isUsing = true;
+        BarnAnimator.SetBool("DoorOpen", true);
     }
 }
