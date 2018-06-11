@@ -45,7 +45,7 @@ public class ControllerMenuNavigator : MonoBehaviour {
                 navigatingWithCont = true;
                 SetMenu(menu);
             }
-            Cursor.visible = false;
+            //Cursor.visible = false;
             ResetStickHeld();
             NavigateMenu();
             SelectItem();
@@ -56,7 +56,7 @@ public class ControllerMenuNavigator : MonoBehaviour {
             {
                 navigatingWithCont = true;
             }
-            Cursor.visible = true;
+            //Cursor.visible = true;
         }
 	}
 

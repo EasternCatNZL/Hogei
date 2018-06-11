@@ -121,10 +121,6 @@ public class SoupManager : MonoBehaviour
             if (UpgradeDescText) UpdateUI();
             if (SoupCapacityText) SoupCapacityText.gameObject.transform.DOShakeScale(0.3f);
         }
-        else
-        {
-            Destroy(Obj.gameObject);
-        }
     }
 
     

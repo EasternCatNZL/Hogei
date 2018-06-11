@@ -140,11 +140,11 @@ public class PlayerController : MonoBehaviour
 
             if (Vector3.Dot(-UpperBody.forward, direction) < 0.0f)
             {
-                UpperBody.Rotate(Vector3.Angle(UpperBody.up, direction) + MovementAlignment.rotation.eulerAngles.y, 0.0f, 0.0f);
+                UpperBody.Rotate(Vector3.Angle(UpperBody.up, direction) - MovementAlignment.rotation.eulerAngles.y, 0.0f, 0.0f);
             }
             if (Vector3.Dot(-UpperBody.forward, direction) > 0.0f)
             {
-                UpperBody.Rotate(-Vector3.Angle(UpperBody.up, direction) + MovementAlignment.rotation.eulerAngles.y, 0.0f, 0.0f);
+                UpperBody.Rotate(-Vector3.Angle(UpperBody.up, direction) - MovementAlignment.rotation.eulerAngles.y, 0.0f, 0.0f);
             }
 
             //UpperBody.rotation = Quaternion.Euler(0.0f, MovementAlignment.rotation.eulerAngles.y + angle, 0.0f);

@@ -98,9 +98,12 @@ public class TableMapNode : MonoBehaviour {
     {
         if (IsUnlocked)
         {
-            SceneHandler.GetSceneHandler().LoadScene(LevelIndex);
+            //reactivate mouse when leaving scene
+            Cursor.visible = true;
+            SceneHandler.GetSceneHandler().LoadScene(LevelIndex);            
             return true;
         }
+        
         //if didn't work reselect self
         item.Selected();
         return false;

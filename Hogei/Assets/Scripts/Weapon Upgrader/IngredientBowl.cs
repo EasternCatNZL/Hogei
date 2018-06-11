@@ -84,8 +84,10 @@ public class IngredientBowl : MonoBehaviour {
         //if ingredients exists
         if(IngredientAmount > 0)
         {
+            //create copy of soup ingredient
+            GameObject ingreClone = Instantiate(IngredientPrefab);
             //add ingredient to soup
-            SoupManager.AddToSoup(IngredientPrefab.GetComponent<SoupIngredient>());
+            SoupManager.AddToSoup(ingreClone.GetComponent<SoupIngredient>());
             //decrement the ingredient amount
             IngredientAmount--;
         }
