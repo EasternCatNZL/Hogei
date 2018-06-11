@@ -94,11 +94,13 @@ public class SoupIngredient : MonoBehaviour {
         }
     }
 
-    void OnCollision(Collision _Col)
+
+
+    void OnCollisionEnter(Collision _Col)
     {
-        if(_Col.gameObject.CompareTag("HotPot"))
-        {
-            SendBackToBowl();
-        }
+        //if(_Col.gameObject.CompareTag("HotPot"))
+        //{
+        //    SendBackToBowl();
+        //}
     }
 }
