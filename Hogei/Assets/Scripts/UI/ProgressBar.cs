@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProgressBar : MonoBehaviour {
 
+    public bool EnemyHealthBar = false;
     public Transform progressBar;
     public Transform backgroundBar;
 
@@ -15,13 +16,16 @@ public class ProgressBar : MonoBehaviour {
 
     void Start()
     {
-        if(Singleton == null)
+        if (!EnemyHealthBar)
         {
-            Singleton = this;
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (Singleton == null)
+            {
+                Singleton = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -47,9 +51,14 @@ public class ProgressBar : MonoBehaviour {
         {
             float percentage = EntityHealth.CurrentHealth / EntityHealth.MaxHealth;
             SetPercentage(percentage);
-            float _Index = Mathf.Ceil(percentage / (1f / BorderSprites.Count)) - 1;
-            //print(percentage + " " + _Index);         
-            GetComponent<SpriteRenderer>().sprite = BorderSprites[(int)_Index];
+            if (BorderSprites.Count > 0)
+            {
+                float _Index = Mathf.Ceil(percentage / (1f / BorderSprites.Count)) - 1;
+                //print(percentage + " " + _Index);         
+                if (_Index < 0) _Index = 0;
+                else if (_Index >= BorderSprites.Count) _Index = BorderSprites.Count - 1;
+                GetComponent<SpriteRenderer>().sprite = BorderSprites[(int)_Index];
+            }
 
         }
     }

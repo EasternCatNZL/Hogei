@@ -31,6 +31,7 @@ public class BarnPhaseHandler : BossHandler
     private bool isMoving = false; //checks if in descent for final phase
 
     private float barnSinkStartTime = 0.0f; //time when barn desent began
+    public EntityHealth EntityHealthComponent;
 
 	// Use this for initialization
 	void Start () {
@@ -76,7 +77,7 @@ public class BarnPhaseHandler : BossHandler
                 //turn off front shot
                 frontCannon.isUsing = false;
                 //turn on invinc frames while moving
-                GetComponent<EntityHealth>().SetInvincible(moveTime * 2);
+                EntityHealthComponent.SetInvincible(moveTime * 2);
                 SinkBarn();
             }
             

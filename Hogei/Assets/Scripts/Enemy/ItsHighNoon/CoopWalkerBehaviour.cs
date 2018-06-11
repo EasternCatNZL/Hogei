@@ -125,8 +125,11 @@ public class CoopWalkerBehaviour : EnemyBehavior
 
     private void SetDiveMarker()
     {
-        GameObject _Marker = Instantiate(DiveMarker, PlayerRef.transform.position, Quaternion.identity);
-        Destroy(_Marker, 2f);
+        if (DiveMarker)
+        {
+            GameObject _Marker = Instantiate(DiveMarker, PlayerRef.transform.position, Quaternion.identity);
+            Destroy(_Marker, 2f);
+        }
     }
 
     void Jump()

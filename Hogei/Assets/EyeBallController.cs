@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class EyeBallController : MonoBehaviour {
 
+    public bool TrackPlayer = false;
     public bool TrackMouse = false;
     public float RayDistance = 10f;
 
@@ -22,10 +23,15 @@ public class EyeBallController : MonoBehaviour {
         {
             RotateAtMouse();
         }
+        else if (TrackPlayer)
+        {
+            RotateAtPlayer();
+        }
         else if(Time.time - LastTime > Delay)
         {
             RotateEye();
         }
+        
 	}
 
     private void RotateEye()
@@ -46,6 +52,11 @@ public class EyeBallController : MonoBehaviour {
         {
             transform.DOLookAt(_hitInfo.point, TransitionDuration);
         }
+    }
+
+    private void RotateAtPlayer()
+    {
+        transform.DOLookAt(PlayerManager.GetInstance().Player.transform.position, 1f);
     }
 
     void OnMouseDown()

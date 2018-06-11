@@ -21,7 +21,7 @@ public class GateController : MonoBehaviour {
 	void Start () {
         if(IsOpen)
         {
-            UnlockGate();
+            UnlockGate(false);
         }
 	}
 	
@@ -69,5 +69,29 @@ public class GateController : MonoBehaviour {
         SoundSettings.Pitch = 1f;
         SoundSettings.SpatialBlend = 0f;
         MusicManager.GetInstance().PlaySoundAtLocation(openClip, transform.position, SoundSettings);
+    }
+
+    public void UnlockGate(bool _PlaySound)
+    {
+        //Set right gate values
+        JointSpring NewSpring = new JointSpring();
+        NewSpring.spring = 2;
+        NewSpring.damper = 1;
+        NewSpring.targetPosition = -90;
+        RightGate.GetComponent<HingeJoint>().spring = NewSpring;
+        //Set left gate values
+        NewSpring.targetPosition = 90;
+        LeftGate.GetComponent<HingeJoint>().spring = NewSpring;
+        //Unfreeze rigidbody positions
+        RightGate.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        LeftGate.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        //Play Sound
+        if (_PlaySound)
+        {
+            MusicManager.AudioSourceSettings SoundSettings = new MusicManager.AudioSourceSettings();
+            SoundSettings.Pitch = 1f;
+            SoundSettings.SpatialBlend = 0f;
+            MusicManager.GetInstance().PlaySoundAtLocation(openClip, transform.position, SoundSettings);
+        }
     }
 }
