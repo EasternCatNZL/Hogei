@@ -36,6 +36,9 @@ public class TableManager : MonoBehaviour {
     [Header("Inputs")]
     public string cOpenBox = "CSwitch";
 
+    [Header("Debugs")]
+    public bool UnlockAllLevels = false;
+
     private Animator Anim;
     private bool IsOpen = false;
 
@@ -57,7 +60,15 @@ public class TableManager : MonoBehaviour {
             Debug.Log("No animator attached to " + gameObject.name);
         }
         if (MapNodes == null) MapNodes = new List<TableMapNode>();
-        UnlockMapNodes();
+        
+        if(UnlockAllLevels)
+        {
+            UnlockLevels();
+        }
+        else
+        {
+            UnlockMapNodes();
+        }
     }
 	
 	// Update is called once per frame
@@ -201,6 +212,15 @@ public class TableManager : MonoBehaviour {
                 }
                 
             }
+        }
+    }
+
+    public void UnlockLevels()
+    {
+        foreach(TableMapNode _Node in MapNodes)
+        {
+            _Node.IsUnlocked = true;
+            _Node.ChangeSign();
         }
     }
 

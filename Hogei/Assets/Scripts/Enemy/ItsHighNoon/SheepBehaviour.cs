@@ -165,10 +165,6 @@ public class SheepBehaviour : EnemyBehavior {
                 LaunchSoundPlayed = true;
             }
         }
-        else
-        {
-            Debug.Log("Add a goddamn source to the sheep bruh");
-        }
 
         //Play the rocket VFX if it isn't already
         if ( RocketFlames)
