@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4709208717211642}
   - component: {fileID: 114585745241532852}
+  - component: {fileID: 114475309537540930}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -34,12 +35,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1835861724766778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114475309537540930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1835861724766778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710a784862812174a9e1df3a1a7445ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114585745241532852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,67 +139,6 @@ MonoBehaviour:
         m_invert: 1
         m_type: 0
         m_axis: 4
-        m_joystick: 0
-        m_gamepadButton: 0
-        m_gamepadAxis: 0
-        m_gamepadIndex: 0
-    - m_name: Skill1
-      m_description: 
-      m_bindings:
-      - m_positive: 113
-        m_negative: 0
-        m_deadZone: 0.3
-        m_gravity: 0
-        m_sensitivity: 1
-        m_snap: 0
-        m_invert: 1
-        m_type: 0
-        m_axis: 9
-        m_joystick: 0
-        m_gamepadButton: 0
-        m_gamepadAxis: 0
-        m_gamepadIndex: 0
-      - m_positive: 304
-        m_negative: 0
-        m_deadZone: 0.3
-        m_gravity: 0
-        m_sensitivity: 1
-        m_snap: 0
-        m_invert: 1
-        m_type: 0
-        m_axis: 9
-        m_joystick: 0
-        m_gamepadButton: 0
-        m_gamepadAxis: 0
-        m_gamepadIndex: 0
-    - m_name: Skill2
-      m_description: 
-      m_bindings:
-      - m_positive: 101
-        m_negative: 0
-        m_deadZone: 0.3
-        m_gravity: 0
-        m_sensitivity: 1
-        m_snap: 0
-        m_invert: 1
-        m_type: 0
-        m_axis: 9
-        m_joystick: 0
-        m_gamepadButton: 0
-        m_gamepadAxis: 0
-        m_gamepadIndex: 0
-    - m_name: Skill3
-      m_description: 
-      m_bindings:
-      - m_positive: 102
-        m_negative: 0
-        m_deadZone: 0.3
-        m_gravity: 0
-        m_sensitivity: 1
-        m_snap: 0
-        m_invert: 1
-        m_type: 0
-        m_axis: 9
         m_joystick: 0
         m_gamepadButton: 0
         m_gamepadAxis: 0
@@ -447,54 +398,6 @@ MonoBehaviour:
         m_gamepadButton: 0
         m_gamepadAxis: 0
         m_gamepadIndex: 0
-    - m_name: CSkill1
-      m_description: 
-      m_bindings:
-      - m_positive: 352
-        m_negative: 0
-        m_deadZone: 0.3
-        m_gravity: 0
-        m_sensitivity: 1
-        m_snap: 0
-        m_invert: 1
-        m_type: 0
-        m_axis: 9
-        m_joystick: 0
-        m_gamepadButton: 12
-        m_gamepadAxis: 0
-        m_gamepadIndex: 0
-    - m_name: CSkill2
-      m_description: 
-      m_bindings:
-      - m_positive: 353
-        m_negative: 0
-        m_deadZone: 0.3
-        m_gravity: 0
-        m_sensitivity: 1
-        m_snap: 0
-        m_invert: 1
-        m_type: 0
-        m_axis: 9
-        m_joystick: 0
-        m_gamepadButton: 0
-        m_gamepadAxis: 0
-        m_gamepadIndex: 0
-    - m_name: CSkill3
-      m_description: 
-      m_bindings:
-      - m_positive: 351
-        m_negative: 0
-        m_deadZone: 0.3
-        m_gravity: 0
-        m_sensitivity: 1
-        m_snap: 0
-        m_invert: 1
-        m_type: 0
-        m_axis: 9
-        m_joystick: 0
-        m_gamepadButton: 0
-        m_gamepadAxis: 0
-        m_gamepadIndex: 0
     - m_name: CSwitch
       m_description: 
       m_bindings:
@@ -511,6 +414,40 @@ MonoBehaviour:
         m_gamepadButton: 0
         m_gamepadAxis: 0
         m_gamepadIndex: 0
+    - m_name: CSelect
+      m_description: 
+      m_bindings:
+      - m_positive: 350
+        m_negative: 0
+        m_deadZone: 0
+        m_gravity: 1
+        m_sensitivity: 1
+        m_snap: 0
+        m_invert: 0
+        m_type: 0
+        m_axis: 0
+        m_joystick: 0
+        m_gamepadButton: 0
+        m_gamepadAxis: 0
+        m_gamepadIndex: 0
+    - m_name: UI_Up
+      m_description: 
+      m_bindings: []
+    - m_name: UI_Down
+      m_description: 
+      m_bindings: []
+    - m_name: UI_Left
+      m_description: 
+      m_bindings: []
+    - m_name: UI_Right
+      m_description: 
+      m_bindings: []
+    - m_name: UI_Submit
+      m_description: 
+      m_bindings: []
+    - m_name: UI_Cancel
+      m_description: 
+      m_bindings: []
   m_playerOneDefault: 3ece541ad8c84236a997ee05e3aef50c
   m_playerTwoDefault: 
   m_playerThreeDefault: 
