@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -6956,7 +6957,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: be34f446c1ade774dbc62c58ad21f825, type: 2}
+      objectReference: {fileID: 2100000, guid: 81de0bc893081be43ae86cdc0617dce1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 814309dbe89136146b224535e2c80e6a, type: 2}
   m_IsPrefabParent: 0
@@ -10194,6 +10195,7 @@ GameObject:
   - component: {fileID: 748956658}
   - component: {fileID: 748956657}
   - component: {fileID: 748956656}
+  - component: {fileID: 748956659}
   m_Layer: 0
   m_Name: ChickenCoopWalkerTrigger
   m_TagString: Untagged
@@ -10255,6 +10257,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 81
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &748956659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748956655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdcd2fbd1778464eab9f85a23b49e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object: {fileID: 1890949392}
 --- !u!4 &749460315 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4355962372214706, guid: 515929ee763e4284dba4310ffbd84275,
@@ -11013,7 +11027,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 9ba9ed5551a99b9429ae79a1c018267f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: be34f446c1ade774dbc62c58ad21f825, type: 2}
+      objectReference: {fileID: 2100000, guid: 81de0bc893081be43ae86cdc0617dce1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ba9ed5551a99b9429ae79a1c018267f, type: 3}
   m_IsPrefabParent: 0
@@ -12274,7 +12288,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: be34f446c1ade774dbc62c58ad21f825, type: 2}
+      objectReference: {fileID: 2100000, guid: 81de0bc893081be43ae86cdc0617dce1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 814309dbe89136146b224535e2c80e6a, type: 2}
   m_IsPrefabParent: 0
@@ -24828,6 +24842,16 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1435055301}
+    - target: {fileID: 114583170722460996, guid: a359092b90a7a38448c9e233c4232d51,
+        type: 2}
+      propertyPath: Deadzone
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114583170722460996, guid: a359092b90a7a38448c9e233c4232d51,
+        type: 2}
+      propertyPath: Delay
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a359092b90a7a38448c9e233c4232d51, type: 2}
   m_IsPrefabParent: 0

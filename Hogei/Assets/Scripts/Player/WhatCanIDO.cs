@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WhatCanIDO : GameEntity
 {
-
+    public bool DontDestroy = true;
     [Header("Control bools")]
     public bool canMove = false;
     public bool canShoot = false;
@@ -32,7 +32,7 @@ public class WhatCanIDO : GameEntity
 
     // Use this for initialization
     void Start () {
-        DontDestroyOnLoad(gameObject);
+       if(DontDestroy) DontDestroyOnLoad(gameObject);
 
         SetControlScheme();
 	}

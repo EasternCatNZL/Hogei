@@ -4901,11 +4901,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11b89394ebe8fc945a16f7639c86bb6c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &823991344 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1194888846089154, guid: a359092b90a7a38448c9e233c4232d51,
-    type: 2}
-  m_PrefabInternal: {fileID: 1800143751}
 --- !u!1 &825051662
 GameObject:
   m_ObjectHideFlags: 0
@@ -5284,8 +5279,8 @@ MonoBehaviour:
   PlayerSpawnPoint: {fileID: 285560269}
   sceneNumber: 1
   BackgroundMusic: {fileID: 1085627342}
-  CountDownUI: {fileID: 0}
-  NotificationUI: {fileID: 823991344}
+  CountDownUI: {fileID: 1800143753}
+  NotificationUI: {fileID: 1800143752}
   LoadingScreenPrefab: {fileID: 0}
   IntroText: 'Farmers
 
@@ -6348,10 +6343,10 @@ MonoBehaviour:
   sheepObject: {fileID: 1386237171912776, guid: 5e7c48206c03a6a49a45a013dc61fb4e,
     type: 2}
   numSheepSpawnedPer: 3
-  timeBetweenLaunches: 0.2
-  maxChargeSpeed: 20
-  minChargeSpeed: 10
-  angleVariance: 30
+  timeBetweenLaunches: 0.4
+  maxChargeSpeed: 15
+  minChargeSpeed: 5
+  angleVariance: 45
   isUsing: 0
 --- !u!4 &1448262204
 Transform:
@@ -11028,9 +11023,29 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1085627341}
+    - target: {fileID: 114583170722460996, guid: a359092b90a7a38448c9e233c4232d51,
+        type: 2}
+      propertyPath: Deadzone
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114583170722460996, guid: a359092b90a7a38448c9e233c4232d51,
+        type: 2}
+      propertyPath: Delay
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a359092b90a7a38448c9e233c4232d51, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1800143752 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1575654690070790, guid: a359092b90a7a38448c9e233c4232d51,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800143751}
+--- !u!1 &1800143753 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1797361991731174, guid: a359092b90a7a38448c9e233c4232d51,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800143751}
 --- !u!1001 &1836285043
 Prefab:
   m_ObjectHideFlags: 0

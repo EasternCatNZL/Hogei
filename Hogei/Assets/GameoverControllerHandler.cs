@@ -21,27 +21,39 @@ public class GameoverControllerHandler : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		print(Luminosity.IO.InputManager.GetAxisRaw("CHorizontal"));
-		if(Time.time - LastTime > Delay)
-		{
-			if(PlayerSettings.useController) CheckControllerUpdate();
-			LastTime = Time.time;
-		}
+        if (PlayerSettings.useController) CheckControllerUpdate();
+
 	}
 
 	void CheckControllerUpdate()
 	{
 		if(Luminosity.IO.InputManager.GetAxisRaw("CHorizontal") > Deadzone)
 		{
-			NextFocus();
+            if (Time.time - LastTime > Delay)
+            {
+                NextFocus();
+                LastTime = Time.time;
+            }
+            
 		}
 		else if(Luminosity.IO.InputManager.GetAxisRaw("CHorizontal") < -Deadzone)
 		{
-			PreviousFocus();
+            if (Time.time - LastTime > Delay)
+            {
+                PreviousFocus();
+                LastTime = Time.time;
+            }
+            
 		}
 		if(Luminosity.IO.InputManager.GetButtonDown("CSelect"))
-		{
-			Focus.onClick.Invoke();
+		{        
+            if (Time.time - LastTime > Delay)
+            {
+                print("Selecting");
+                Focus.onClick.Invoke();
+                LastTime = Time.time;
+            }
+            
 		}
 	}
 

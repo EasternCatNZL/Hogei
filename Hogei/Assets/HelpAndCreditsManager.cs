@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class HelpAndCreditsManager : MonoBehaviour {
+public class HelpAndCreditsManager : MonoBehaviour
+{
 
     public List<GameObject> HelpImages;
     public List<GameObject> CreditImages;
+
+    private bool CanShow = true;
 
     private int HelpIndex = 0;
     private int CreditIndex = 0;
@@ -17,6 +20,10 @@ public class HelpAndCreditsManager : MonoBehaviour {
     public float HelpExitDirection = -1f;
     public float CreditExitDirection = -1f;
 
+    public WhatCanIDO PlayerSettings;
+    private float Delay = 1f;
+    private float LastTime = 0f;
+
     void Start()
     {
         Initialise();
@@ -26,7 +33,7 @@ public class HelpAndCreditsManager : MonoBehaviour {
     {
         //Move all the images above the canvas
         float CanvasHeight = GetComponent<RectTransform>().rect.height;
-        foreach(GameObject _Obj in HelpImages)
+        foreach (GameObject _Obj in HelpImages)
         {
             _Obj.GetComponent<RectTransform>().localPosition = new Vector3(0f, CanvasHeight, 0f);
         }
@@ -38,10 +45,30 @@ public class HelpAndCreditsManager : MonoBehaviour {
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        CanShow = true;
+        if (PlayerSettings.useController)
+        {
+            ControllerUpdate();
+        }
+        else if (Input.GetMouseButtonDown(0))
         {
             if (ShowingHelp) NextHelpScreen();
             else if (ShowingCredits) NextCreditScreen();
+        }
+    }
+
+    public void ControllerUpdate()
+    {
+        if (Luminosity.IO.InputManager.GetButton("CSelect"))
+        {
+            if (CanShow && Time.time - LastTime > Delay)
+            {
+                LastTime = Time.time;
+                print("Boop");
+                if (ShowingHelp) NextHelpScreen();
+                else if (ShowingCredits) NextCreditScreen();
+                CanShow = false;
+            }
         }
     }
 
@@ -58,7 +85,7 @@ public class HelpAndCreditsManager : MonoBehaviour {
 
     void NextHelpScreen()
     {
-        if(HelpIndex < HelpImages.Count)
+        if (HelpIndex < HelpImages.Count)
         {
             HelpImages[HelpIndex].transform.DOLocalMoveY(0f, 1f);
             HelpIndex++;
